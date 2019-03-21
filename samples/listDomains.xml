@@ -1,0 +1,19 @@
+    <namesilo>
+        <request>
+            <operation>listDomains</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <domains>
+                <domain>namesilo.com</domain>
+                <domain>namesilo.net</domain>
+                <domain>namesilo.biz</domain>
+                <domain>namesilo.info</domain>
+                <domain>namesilo.mobi</domain>
+                <domain>namesilo.org</domain>
+            </domains>
+        </reply>
+    </namesilo>
+    

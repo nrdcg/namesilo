@@ -1,0 +1,19 @@
+    <namesilo>
+        <request>
+            <operation>checkTransferAvailability</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <available>
+                <domain>namesilo.com</domain>
+                <domain>namesilo.org</domain>
+            </available>
+            <unavailable>
+                <domain reason="This domain cannot be transferred since it is not currently registered.">namesilo.net</domain>
+                <domain reason="Sorry, we do not currently support the .ASIA extension/TLD">namesilo.asia</domain>                
+            </unavailable>
+        </reply>
+    </namesilo>
+    

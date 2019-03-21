@@ -1,0 +1,39 @@
+    <namesilo>
+        <request>
+            <operation>marketplaceActiveSalesOverview</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <sale_details>
+                <domain>example.com</domain>
+                <status>active</status>
+                <reserve>0.00</reserve>
+                <buy_now>0.00</buy_now>
+                <portfolio>none</portfolio>
+                <sale_type>Offer/Counter</sale_type>
+                <pay_plan_offered>No</pay_plan_offered>
+                <end_date>2018-12-24 00:00:00</end_date>
+                <auto_extend_days>0</auto_extend_days>
+                <time_remaining>1 year</time_remaining>
+                <private>No</private>
+                <active_bid_or_offer>no</active_bid_or_offer>
+            </sale_details>
+            <sale_details>
+                <domain>example2.com</domain>
+                <status>awaiting payment</status>
+                <reserve>25.00 (hidden)</reserve>
+                <buy_now>150.00</buy_now>
+                <portfolio>For Sale Domains</portfolio>
+                <sale_type>Auction</sale_type>
+                <pay_plan_offered>Yes</pay_plan_offered>
+                <end_date>2018-11-21 21:21:21</end_date>
+                <auto_extend_days>15</auto_extend_days>
+                <time_remaining>13 days</time_remaining>
+                <private>Yes</private>
+                <active_bid_or_offer>yes</active_bid_or_offer>
+            </sale_details>
+        </reply>
+    </namesilo>
+    

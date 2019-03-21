@@ -1,0 +1,11 @@
+    <namesilo>
+        <request>
+            <operation>domainLock</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>252</code>
+            <detail>Domain is already Locked - No update made.</detail>
+        </reply>
+    </namesilo>
+    

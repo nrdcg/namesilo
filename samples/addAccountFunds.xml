@@ -1,0 +1,12 @@
+    <namesilo>
+        <request>
+            <operation>addAccountFunds</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <new_balance>420.61</new_balance>
+        </reply>
+    </namesilo>
+    

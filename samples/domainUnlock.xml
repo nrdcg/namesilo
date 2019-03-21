@@ -1,0 +1,11 @@
+    <namesilo>
+        <request>
+            <operation>domainUnlock</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>253</code>
+            <detail>Domain is already Unlocked - No update made.</detail>
+        </reply>
+    </namesilo>
+    

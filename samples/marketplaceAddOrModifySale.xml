@@ -1,0 +1,12 @@
+    <namesilo>
+        <request>
+            <operation>marketplaceAddOrModifySale</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <message>Your selected domains have been added to our marketplace!</message>
+        </reply>
+    </namesilo>
+    

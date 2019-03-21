@@ -1,0 +1,12 @@
+    <namesilo>
+        <request>
+            <operation>getAccountBalance</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <balance>355.75</balance>
+        </reply>
+    </namesilo>
+    
