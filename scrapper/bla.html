@@ -1,0 +1,4604 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+    <TITLE>API Reference</TITLE>
+
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+
+    <LINK REL="shortcut icon" HREF="/favicon.ico" TYPE="image/x-icon">
+
+    <META NAME="google" VALUE="notranslate">
+
+    <LINK REL="stylesheet" TYPE="text/css" HREF="/css/style.css?cb=2">
+    <LINK REL="stylesheet" TYPE="text/css" HREF="/css/cluetip.css">
+    <LINK REL="stylesheet" TYPE="text/css" HREF="/shadowbox/shadowbox.css">
+
+    <SCRIPT TYPE="text/javascript" SRC="/global.js?cb=5"></SCRIPT>
+    <SCRIPT TYPE="text/javascript" SRC="/jslib/jquery-1.9.js"></SCRIPT>
+    <SCRIPT TYPE="text/javascript" SRC="/jslib/jquery.cluetip.js"></SCRIPT>
+    <SCRIPT TYPE="text/javascript" SRC="/shadowbox/shadowbox.js"></SCRIPT>
+    <SCRIPT TYPE="text/javascript" SRC="/jslib/process_block2.66.js"></SCRIPT>
+    <SCRIPT TYPE="text/javascript" SRC="/jslib/jquery.idle-timer2.js"></SCRIPT>
+
+
+    <SCRIPT TYPE="text/javascript" SRC="/syntax_highlighter/scripts/shCore.js"></SCRIPT>
+    <SCRIPT TYPE="text/javascript" SRC="/syntax_highlighter/scripts/shBrushXml.js"></SCRIPT>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="/syntax_highlighter/styles/ns.css">
+    <SCRIPT TYPE="text/javascript">
+        SyntaxHighlighter.all();
+    </SCRIPT>
+
+
+    <script>
+
+        window.intercomSettings = {
+
+            app_id: "pwyqj8en"
+        };
+
+    </script>
+    <script>
+        (function () {
+            var w = window;
+            var ic = w.Intercom;
+            if (typeof ic === "function") {
+                ic('reattach_activator');
+                ic('update', w.intercomSettings);
+            } else {
+                var d = document;
+                var i = function () {
+                    i.c(arguments);
+                };
+                i.q = [];
+                i.c = function (args) {
+                    i.q.push(args);
+                };
+                w.Intercom = i;
+                var l = function () {
+                    var s = d.createElement('script');
+                    s.type = 'text/javascript';
+                    s.async = true;
+                    s.src = 'https://widget.intercom.io/widget/pwyqj8en';
+                    var x = d.getElementsByTagName('script')[0];
+                    x.parentNode.insertBefore(s, x);
+                };
+                if (w.attachEvent) {
+                    w.attachEvent('onload', l);
+                } else {
+                    w.addEventListener('load', l, false);
+                }
+            }
+        })();
+    </script>
+
+
+    <SCRIPT TYPE="text/javascript">
+
+        Shadowbox.init({players: ['iframe']});
+
+        $(document).ready(function () {
+
+            $('a.ct').cluetip({
+                splitTitle: '|',
+                cluetipClass: 'jtip',
+                arrows: true,
+                dropShadow: true,
+                hoverIntent: false
+            });
+
+            nsToggleVisibility('cartAlertBox', 'hide');
+            nsToggleVisibility('cartErrorBox', 'hide');
+            nsToggleVisibility('informationAlertBox', 'hide');
+            nsToggleVisibility('cart_next_discount', 'hide');
+
+
+        });
+
+    </SCRIPT>
+
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '573967183017375');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=573967183017375&ev=PageView
+&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+
+</HEAD>
+<BODY>
+
+<DIV ID="wrapper">
+
+    <DIV ID="topLogoNav">
+
+        <DIV ID="logoCell">
+
+            <A HREF="/index.php"><IMG SRC="/images/logo_main.gif" CLASS="topLogo"
+                                      ALT="Cheapest everyday domain prices on the web, easy processes and enhanced security on all domains"></A>
+
+        </DIV>
+
+        <DIV ID="navCell">
+
+            <DIV ID="textLinks">
+
+                <A HREF="/shopping_cart.php">My Cart <SPAN ID="cartItemsHeader"></SPAN></A> |
+
+
+                <A HREF="/login.php">Log In</A> |
+                <A HREF="/create_account.php">Create New Account</A> |
+
+
+                <A HREF="/account_domains.php">Manage My Domains</A>
+
+
+            </DIV>
+
+            <DIV ID="navTabs">
+
+                <DIV CLASS="left">&nbsp;</DIV>
+
+                <DIV CLASS="right">
+
+                    <UL CLASS="topTabs">
+
+                        <LI><A HREF="https://www.namesilo.com"><SPAN>home</SPAN></A></LI>
+                        <LI><A HREF="/register.php"><SPAN>register</SPAN></A></LI>
+                        <!-- https://new.namesilo.com/domain-search?beta=1 -->
+                        <LI><A HREF="/transfer.php"><SPAN>transfer</SPAN></A></LI>
+                        <!-- https://new.namesilo.com/domain-transfer -->
+                        <LI><A HREF="/Marketplace"><SPAN>marketplace</SPAN></A></LI>
+                        <!-- https://new.namesilo.com/marketplace?beta=1-->
+                        <LI><A HREF="https://www.namesilo.com/pricing.php"><SPAN>pricing</SPAN></A></LI>
+                        <LI CLASS="active"><A HREF="https://www.namesilo.com/api_reference.php"><SPAN>API</SPAN></A>
+                        </LI>
+                        <LI><A HREF="/why_us.php"><SPAN>why us?</SPAN></A></LI>
+                        <LI><A HREF="/Support"><SPAN>support</SPAN></A></LI>
+
+                    </UL>
+
+                </DIV>
+
+                <DIV CLASS="clear"></DIV>
+
+            </DIV>
+
+        </DIV>
+
+        <DIV CLASS="clear"></DIV>
+
+    </DIV>
+
+    <DIV ID="outerContainerTop"></DIV>
+
+    <DIV ID="innerContentContainer">
+
+        <DIV ID="innerContentContainerPush"></DIV>
+
+        <DIV ID="innerContentContainerContent">
+
+
+            <DIV ID="innerContentContainerLeft">
+
+                <H1>API Reference</H1>
+
+                This reference guide is intended to help you access and utilize our API. We provide details for
+                formatting your requests, our
+                basic API structure, how responses will be returned, and a guide for response codes. Take note that
+                certain operations can update the
+                settings for your domains without the standard error checking native to the same operations made through
+                our web interface. Therefore,
+                please only make use of the API if you are comfortable using such a system.
+
+
+                <P>
+
+                <H2>Testing</H2>
+
+                <P>
+
+                    We have an environment that can be used for testing API operations called the "sandbox". To receive
+                    a sandbox API account for testing,
+                    please <A HREF="/contact_us.php">contact us</A> and we will get right back to you with your sandbox
+                    API credentials.
+
+                <P>
+
+                <H2>Request Formatting</H2>
+
+                <P>
+
+                    All requests made to the API should use the following standard format:
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/OPERATION?version=VERSION&type=TYPE&key=YOURAPIKEY
+                </DIV>
+
+                <P>
+
+                    More information on each part of the standard request is as follows:
+
+                <UL>
+                    <LI><B>https:</B> All requests to the API must utilize https.</LI>
+                    <LI><B>OPERATION:</B> To be replaced by the name of the specific operation you would like to
+                        execute.
+                    </LI>
+                    <LI><B>VERSION:</B> To be replaced by the API version you would like to use. The current version is
+                        "1".
+                    </LI>
+                    <LI><B>TYPE:</B> To be replaced by the format you would like to receive returned. The only current
+                        option is "xml".
+                    </LI>
+                    <LI><B>YOURAPIKEY:</B> To be replaced by your unique API key. Visit the API Manager page within your
+                        account for details.
+                    </LI>
+                </UL>
+
+                <P>
+
+                <H2>Standard Response Format</H2>
+
+                <P>
+
+                    All API responses will be returned in a standard format. Here is an example:
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;OPERATION&lt;/operation&gt; 
+            &lt;ip&gt;YOUR IP&lt;/ip&gt; 
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;RESPONSE CODE&lt;/code&gt; 
+            &lt;detail&gt;RESPONSE DETAIL&lt;/detail&gt;            
+        &lt;/reply&gt;
+    &lt;/namesilo>
+    </pre>
+
+                More information on each part of the standard response format are as follows:
+
+                <UL>
+                    <LI><B>OPERATION:</B> Displays the name of the operation you submitted</LI>
+                    <LI><B>YOUR IP:</B> Displays the IP address that originated the API request</LI>
+                    <LI><B>RESPONSE CODE:</B> A code indicating the status of the request</LI>
+                    <LI><B>RESPONSE DETAIL:</B> A message explaining the status of the request in more detail</LI>
+                </UL>
+
+                More information will be made available specific to each of the operations and is covered in more detail
+                within this document.
+
+                <P>
+
+                <H2>Available Operations</H2>
+
+                <P>
+
+                    The available API operations at this time include:
+
+                <UL>
+                    <LI><A HREF="#registerDomain"><B>registerDomain:</B></A><SPAN CLASS="highlight">*</SPAN> Register a
+                        new domain name
+                    </LI>
+                    <LI><A HREF="#registerDomainDrop"><B>registerDomainDrop:</B></A><SPAN CLASS="highlight">*</SPAN>
+                        Register a new domain name using drop-catching
+                    </LI>
+                    <LI><A HREF="#renewDomain"><B>renewDomain:</B></A><SPAN CLASS="highlight">*</SPAN> Renew a domain
+                        name
+                    </LI>
+                    <LI><A HREF="#transferDomain"><B>transferDomain:</B></A><SPAN CLASS="highlight">*</SPAN> Transfer a
+                        domain name into your NameSilo account
+                    </LI>
+                    <LI><A HREF="#checkTransferStatus"><B>checkTransferStatus:</B></A> Check the status of a domain
+                        transfer
+                    </LI>
+                    <LI><A HREF="#transferUpdateChangeEPPCode"><B>transferUpdateChangeEPPCode:</B></A> Add/Change the
+                        EPP code for a domain transfer
+                    </LI>
+                    <LI><A HREF="#transferUpdateResendAdminEmail"><B>transferUpdateResendAdminEmail:</B></A> Update a
+                        Transfer to Re-Send the Admin Verification Email
+                    </LI>
+                    <LI><A HREF="#transferUpdateResubmitToRegistry"><B>transferUpdateResubmitToRegistry:</B></A> Update
+                        a Transfer to Re-Submit the transfer to the registry
+                    </LI>
+                    <LI><A HREF="#checkRegisterAvailability"><B>checkRegisterAvailability:</B></A> Determine if up to
+                        200 domains can be registered at this time
+                    </LI>
+                    <LI><A HREF="#checkTransferAvailability"><B>checkTransferAvailability:</B></A> Determine if up to 200 domains can be transferred into your account at this time </LI>
+                    <LI><A HREF="#listDomains"><B>listDomains:</B></A> A list of all active domains within your account </LI>
+                    <LI><A HREF="#getDomainInfo"><B>getDomainInfo:</B></A> Get essential information on a domain within your account</LI>
+                    <LI><A HREF="#contactList"><B>contactList:</B></A> View all contact profiles in your account</LI>
+                    <LI><A HREF="#contactAdd"><B>contactAdd:</B></A> Add a contact profile to your account</LI>
+                    <LI><A HREF="#contactUpdate"><B>contactUpdate:</B></A> Update a contact profile in account</LI>
+                    <LI><A HREF="#contactDelete"><B>contactDelete:</B></A> Delete a contact profile in account</LI>
+                    <LI><A HREF="#contactDomainAssociate"><B>contactDomainAssociate:</B></A> Associate contact profiles
+                        with a domain
+                    </LI>
+                    <LI><A HREF="#changeNameServers"><B>changeNameServers:</B></A> Change the NameServers for up to 200
+                        domains
+                    </LI>
+                    <LI><A HREF="#dnsListRecords"><B>dnsListRecords:</B></A> View all DNS records associated with your
+                        domain
+                    </LI>
+                    <LI><A HREF="#dnsAddRecord"><B>dnsAddRecord:</B></A> Add a new DNS resource record</LI>
+                    <LI><A HREF="#dnsUpdateRecord"><B>dnsUpdateRecord:</B></A> Update an existing DNS resource record
+                    </LI>
+                    <LI><A HREF="#dnsDeleteRecord"><B>dnsDeleteRecord:</B></A> Delete an existing DNS resource record
+                    </LI>
+                    <LI><A HREF="#dnsSecListRecords"><B>dnsSecListRecords:</B></A> View all DS (DNSSEC) records
+                        associated with your domain
+                    </LI>
+                    <LI><A HREF="#dnsSecAddRecord"><B>dnsSecAddRecord:</B></A> Add a DS record (DNSSEC) to your domain
+                    </LI>
+                    <LI><A HREF="#dnsSecDeleteRecord"><B>dnsSecDeleteRecord</B></A> Delete a DS record (DNSSEC) from
+                        your domain
+                    </LI>
+                    <LI><A HREF="#portfolioList"><B>portfolioList:</B></A> List the active portfolios within your
+                        account
+                    </LI>
+                    <LI><A HREF="#portfolioAdd"><B>portfolioAdd:</B></A> Add a portfolio to your account</LI>
+                    <LI><A HREF="#portfolioDelete"><B>portfolioDelete:</B></A> Delete a portfolio from your account</LI>
+                    <LI><A HREF="#portfolioDomainAssociate"><B>portfolioDomainAssociate:</B></A> Add up to 200 domains
+                        to a portfolio
+                    </LI>
+                    <LI><A HREF="#listRegisteredNameServers"><B>listRegisteredNameServers:</B></A> List the Registered
+                        NameServers associated with one of your domains
+                    </LI>
+                    <LI><A HREF="#addRegisteredNameServer"><B>addRegisteredNameServer:</B></A> Add a Registered
+                        NameServer for one of your domains
+                    </LI>
+                    <LI><A HREF="#modifyRegisteredNameServer"><B>modifyRegisteredNameServer:</B></A> Modify a Registered
+                        NameServer
+                    </LI>
+                    <LI><A HREF="#deleteRegisteredNameServer"><B>deleteRegisteredNameServer:</B></A> Delete a Registered
+                        NameServer
+                    </LI>
+                    <LI><A HREF="#addPrivacy"><B>addPrivacy:</B></A> Add WHOIS Privacy to a domain</LI>
+                    <LI><A HREF="#removePrivacy"><B>removePrivacy:</B></A> Remove WHOIS Privacy from a domain</LI>
+                    <LI><A HREF="#addAutoRenewal"><B>addAutoRenewal:</B></A> Set your domain to be auto-renewed</LI>
+                    <LI><A HREF="#removeAutoRenewal"><B>removeAutoRenewal:</B></A> Remove the auto-renewal setting from
+                        your domain
+                    </LI>
+                    <LI><A HREF="#retrieveAuthCode"><B>retrieveAuthCode:</B></A> Have the EPP authorization code for the
+                        domain emailed to the administrative contact
+                    </LI>
+                    <LI><A HREF="#domainForward"><B>domainForward:</B></A> Forward your domain</LI>
+                    <LI><A HREF="#domainForwardSubDomain"><B>domainForwardSubDomain:</B></A> Forward a sub-domain</LI>
+                    <LI><A HREF="#domainForwardSubDomainDelete"><B>domainForwardSubDomainDelete:</B></A> Delete a
+                        sub-domain forward
+                    </LI>
+                    <LI><A HREF="#domainLock"><B>domainLock:</B></A> Lock your domain</LI>
+                    <LI><A HREF="#domainUnlock"><B>domainUnlock:</B></A> Unlock your domain</LI>
+                    <LI><A HREF="#listEmailForwards"><B>listEmailForwards:</B></A> List all email forwards for your
+                        domain
+                    </LI>
+                    <LI><A HREF="#configureEmailForward"><B>configureEmailForward:</B></A> Add or modify an email
+                        forward for your domain
+                    </LI>
+                    <LI><A HREF="#deleteEmailForward"><B>deleteEmailForward:</B></A> Delete an email forward for your
+                        domain
+                    </LI>
+                    <LI><A HREF="#registrantVerificationStatus"><B>registrantVerificationStatus</B></A> See the
+                        verification status of any Registrant email addresses
+                    </LI>
+                    <LI><A HREF="#emailVerification"><B>emailVerification</B></A> Verify a Registrant email address</LI>
+                    <LI><A HREF="#getAccountBalance"><B>getAccountBalance:</B></A> View your NameSilo account funds
+                        balance
+                    </LI>
+                    <LI><A HREF="#addAccountFunds"><B>addAccountFunds:</B></A><SPAN CLASS="highlight">*</SPAN> Increase
+                        your NameSilo account funds
+                    </LI>
+                    <LI><A HREF="#marketplaceActiveSalesOverview"><B>marketplaceActiveSalesOverview:</B></A> Returns a
+                        list and specifics for all of your active Marketplace sales
+                    </LI>
+                    <LI><A HREF="#marketplaceAddOrModifySale"><B>marketplaceAddOrModifySale:</B></A> Allows you to add a
+                        new Marketplace sale or modify and existing sale
+                    </LI>
+                    <LI><A HREF="#marketplaceLandingPageUpdate"><B>marketplaceLandingPageUpdate</B></A> Allows you to
+                        update the appearance of your Marketplace Landing Page
+                    </LI>
+                    <LI><A HREF="#getPrices"><B>getPrices:</B></A> Returns our price list customized optionally based
+                        upon your account's specific pricing
+                    </LI>
+                    <LI><A HREF="#listOrders"><B>listOrders</B></A> Returns a list of all orders placed in your account
+                    </LI>
+                    <LI><A HREF="#orderDetails"><B>orderDetails</B></A> Provides details for the provided order number
+                    </LI>
+                </UL>
+
+                <SPAN CLASS="highlight">*</SPAN> You must have at least one verified credit card or adequate account
+                funds to utilize these commands
+
+                <P>
+
+                <H2>Response Codes</H2>
+
+                <P>
+
+                    The standard response codes can be found below. Keep in mind that specific codes are used in support
+                    of each operation. More information
+                    can be found following the operation details contained within this document.
+
+                <UL>
+                    <LI><B>101:</B> HTTPS not used</LI>
+                    <LI><B>102:</B> No version specified</LI>
+                    <LI><B>103:</B> Invalid API version</LI>
+                    <LI><B>104:</B> No type specified</LI>
+                    <LI><B>105:</B> Invalid API type</LI>
+                    <LI><B>106:</B> No operation specified</LI>
+                    <LI><B>107:</B> Invalid API operation</LI>
+                    <LI><B>108:</B> Missing parameters for the specified operation</LI>
+                    <LI><B>109:</B> No API key specified</LI>
+                    <LI><B>110:</B> Invalid API key</LI>
+                    <LI><B>111:</B> Invalid User</LI>
+                    <LI><B>112:</B> API not available to Sub-Accounts</LI>
+                    <LI><B>113:</B> This API account cannot be accessed from your IP</LI>
+                    <LI><B>114:</B> Invalid Domain Syntax</LI>
+                    <LI><B>115:</B> Central Registry Not Responding - try again later</LI>
+                    <LI><B>116:</B> Invalid sandbox account</LI>
+                    <LI><B>117:</B> The provided credit card profile either does not exist, or is not associated with
+                        your account
+                    </LI>
+                    <LI><B>118:</B> The provided credit card profile has not been verified</LI>
+                    <LI><B>119:</B> Insufficient account funds for requested transaction</LI>
+                    <LI><B>120:</B> API key must be passed as a GET</LI>
+                </UL>
+
+                <UL>
+                    <LI><B>200:</B> Domain is not active, or does not belong to this user</LI>
+                    <LI><B>201:</B> Internal system error</LI>
+                    <LI><B>210:</B> General error (details provided in response)</LI>
+                    <LI><B>250:</B> Domain is already set to AutoRenew - No update made.</LI>
+                    <LI><B>251:</B> Domain is already set not to AutoRenew - No update made.</LI>
+                    <LI><B>252:</B> Domain is already Locked - No update made.</LI>
+                    <LI><B>253:</B> Domain is already Unlocked - No update made.</LI>
+                    <LI><B>254:</B> NameServer update cannot be made. (details provided in response)</LI>
+                    <LI><B>255:</B> Domain is already Private - No update made.</LI>
+                    <LI><B>256:</B> Domain is already Not Private - No update made.</LI>
+                    <LI><B>261:</B> Domain processing error (details provided in response)</LI>
+                    <LI><B>262:</B> This domain is already active within our system and therefore cannot be processed.
+                    </LI>
+                    <LI><B>263:</B> Invalid number of years, or no years provided.</LI>
+                    <LI><B>264:</B> Domain cannot be renewed for specified number of years (details provided in
+                        response)
+                    </LI>
+                    <LI><B>265:</B> Domain cannot be transferred at this time (details provided in response)</LI>
+                    <LI><B>266:</B> No domain transfer exists for this user for this domain</LI>
+                    <LI><B>267:</B> Invalid domain name, or we do not support the provided extension/TLD.</LI>
+                    <LI><B>280:</B> DNS modification error</LI>
+                </UL>
+
+                <UL>
+                    <LI><B>300:</B> Successful API operation</LI>
+                    <LI><B>301:</B> Successful registration, but not all provided hosts were valid resulting in our
+                        nameservers being used
+                    </LI>
+                    <LI><B>302:</B> Successful order, but there was an error with the contact information provided so
+                        your account default contact profile was used (you can configure your account to reject orders
+                        with invalid contact information via the Reseller Manager page in your account.)
+                    </LI>
+                </UL>
+
+                <UL>
+                    <LI><B>400:</B> Existing API request is still processing - request will need to be re-submitted</LI>
+                </UL>
+
+                <P>
+
+                    As with any HTTP based API, it is always important to check the
+                    <A HREF="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes" TARGET="_blank">HTTP status
+                        code</A> before examining response
+                    details. For purposes of simplicity, any response code other than a 200 should be considered an
+                    error. We monitor API service
+                    performance and employ measures to maintain service reliability and performance for all users. If
+                    you receive a response code other
+                    than 200 and feel it is a problem with our systems, <A HREF="/contact_us.php">please let us know</A>.
+
+                <P>
+
+                <H2>API Operations</H2>
+
+                <P>
+
+                    The following examples demonstrate more information for each of our currently supported API
+                    operations as well as any
+                    operation-specific response codes and response details.
+
+                <P>
+
+                    <A NAME="registerDomain"></A>
+                <H3>Register a Domain</H3>
+
+                <P>
+
+                    Register a new domain name for the specified number of years and with the specified attributes.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/registerDomain?version=1&type=xml&key=12345&domain=namesilo.com&years=2&private=1&auto_renew=1
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain you want to register</LI>
+                            <LI><B>years:</B> The number of years for which you would like to register the domain (must
+                                be a number between 1-10)
+                            </LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>payment_id:</B> The ID number for the <U>verified</U> credit card to use for the
+                                transaction. If you do not specify a payment_id, we will attempt to process the
+                                transaction using your account funds.
+                            </LI>
+                            <LI><B>private:</B> Whether or not you want the registration to utilize our free WHOIS
+                                privacy service. Use "1" for private, and "0" for not private. If not supplied, the
+                                domain will be registered without privacy.
+                            </LI>
+                            <LI><B>auto_renew:</B> Whether or not you want the domain to auto-renew upon its expiration.
+                                Use "1" to auto-renew, and "0" not to auto-renew. If not supplied, the domain will be
+                                set to auto-renew.
+                            </LI>
+                            <LI><B>portfolio:</B> The encoded name of the portfolio to assign the domain to upon
+                                registration. If the portfolio name is not currently in use, our system will
+                                automatically create the portfolio and assign the domain to it.
+                            </LI>
+                            <LI><B>ns1-13:</B> You can provide up to 13 nameservers to use for the domain registration.
+                                If you do not provide any nameservers, or any of the checks below do not pass, our
+                                default nameservers will be used.
+                                <UL>
+                                    <LI>Must provide at least 2 nameservers</LI>
+                                    <LI>All provided nameservers must already exist at the requisite registry. If not
+                                        all nameservers exist, you will receive a 301 response indicating that the
+                                        domain was registered, but our nameservers were used.
+                                </UL>
+                            </LI>
+                            <LI><B>coupon:</B> The coupon code to apply to this order</LI>
+                            <LI><B>Passing Contact Information:</B> You can optionally pass the following fields to use
+                                for the WHOIS contact information (registrant, administrative, billing and technical)
+                                for the domain.
+                                <UL>
+                                    <LI><B>Notes</B>
+                                        <UL>
+                                            <LI>If you do not pass a value for ALL of the required fields, anything you
+                                                do pass for contact information will be ignored and your default account
+                                                contact profile will be used
+                                            </LI>
+                                            <LI>If there is a problem with any of the data you provide, you will receive
+                                                a response code of 302 indicating a successful domain registration, but
+                                                that your account's default contact profile was used (you can configure
+                                                your account to reject orders with invalid contact information via the
+                                                Reseller Manager page in your account.).
+                                            </LI>
+                                            <LI>All values must be encoded.</LI>
+                                            <LI>Character limits for each field are in parentheses.</LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                                <UL>
+                                    <LI><B>Required Fields</B>
+                                        <UL>
+                                            <LI><B>fn:</B> First Name (32)</LI>
+                                            <LI><B>ln:</B> Last Name (32)</LI>
+                                            <LI><B>ad:</B> Mailing Address (128)</LI>
+                                            <LI><B>cy:</B> Mailing City (64)</LI>
+                                            <LI><B>st:</B> Mailing State/Province/Territory (64)
+                                                <UL>
+                                                    <LI>If country is US or CA, you must use the <A
+                                                                HREF="/popups/states.php"
+                                                                REL="shadowbox;height=420;width=575"
+                                                                TITLE="State/Province Abbreviations">correct
+                                                            abbreviation</A></LI>
+                                                </UL>
+                                            </LI>
+                                            <LI><B>zp:</B> Mailing Zip/Postal Code (16)</LI>
+                                            <LI><B>ct:</B> Mailing Country (4)
+                                                <UL>
+                                                    <LI>Country must use the <A HREF="/popups/countries.php"
+                                                                                REL="shadowbox;height=420;width=575"
+                                                                                TITLE="Country Abbreviations">correct
+                                                            abbreviation</A></LI>
+                                                </UL>
+                                            </LI>
+                                            <LI><B>em:</B> Email Address (128)</LI>
+                                            <LI><B>ph:</B> Phone Number (32)
+                                                <UL>
+                                                    <LI>If country is US or CA, the phone number should be exactly 10
+                                                        numbers
+                                                    </LI>
+                                                    <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                                </UL>
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>Optional Fields</B>
+                                        <UL>
+                                            <LI><B>cp:</B> Company (64)</LI>
+                                            <LI><B>ad2:</B> Mailing Address 2 (128)</LI>
+                                            <LI><B>fx:</B> Fax (32)
+                                                <UL>
+                                                    <LI>If country is US or CA, the phone number should be exactly 10
+                                                        numbers
+                                                    </LI>
+                                                    <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                                </UL>
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.US Required Fields</B>
+                                        <UL>
+                                            <LI><B>usnc:</B> .US Nexus Category (3) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                            <LI><B>usap:</B> .US Application Purpose (2) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.CA Domains:</B> You must use one of the two following options when
+                                        registering .ca domains:</B>
+                                        <UL>
+                                            <LI>You can specify a contact ID (see "Passing Contact ID" section below) so
+                                                long as that contact ID is already setup with the requisite .ca
+                                                information and is set as an Individual legal type.
+                                            </LI>
+                                            <LI>If you do not pass a contact ID, you must have a "Default .ca Profile"
+                                                in place to register .ca domains via the API. You can create your
+                                                Default .ca Profile on the <a href="/account_profiles.php">Profile
+                                                    Manager</a> page in your account.
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                            <LI><B>Passing Contact ID:</B> You may alternatively pass the internal NameSilo contact
+                                profile ID. You can get this value by running a getAccountContacts command.
+                                <UL>
+                                    <LI><B>Notes</B>
+                                        <UL>
+                                            <LI>If you do not pass a valid contact ID, you will receive a response code
+                                                of 302 indicating a successful domain registration, but that your
+                                                account's default contact profile was used (you can configure your
+                                                account to reject orders with invalid contact information via the
+                                                Reseller Manager page in your account.).
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                                <UL>
+                                    <LI><B>Required Field</B>
+                                        <UL>
+                                            <LI><B>contact_id:</B> The contact profile ID to assign to this domain</LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;registerDomain&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;Your domain registration was successfully processed.&lt;/message&gt;
+            &lt;domain&gt;namesilo.com&lt;/domain&gt;
+            &lt;order_amount&gt;7.77&lt;/order_amount&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="registerDomainDrop"></A>
+                <H3>Register a Domain using Drop-Catching</H3>
+
+                <p>
+
+                <div class="information_message">
+                    This API function can only be used between 10:45am PT and 12:15pm PT. If you use this function
+                    outside of this timeframe
+                    you will receive an error response.
+                </div>
+
+                <P>
+
+                    Use our free drop-catching API process to register a new domain name for the specified number of
+                    years and
+                    with the specified attributes. There are a few things to keep in mind when using the drop-catching
+                    service:
+
+                <UL>
+                    <LI>The only payment option is to use NameSilo account funds (no credit cards or PayPal)</LI>
+                    <LI>Drop-catching is currently limited to only .com and .net domains</LI>
+                    <LI>All WHOIS roles will utilize your account default contact profile (easily updated from within
+                        your account)
+                    </LI>
+                    <LI>Our default nameservers will be used (easily updated from within your account)</LI>
+                    <LI><b>NOTE: you must use /apibatch for these operations - <a
+                                    href="/Support/API-Automated-Batch-Processing">see here for more details</a>.</b>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/apibatch/registerDomainDrop?version=1&type=xml&key=12345&domain=namesilo.com&years=2&private=1&auto_renew=1
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain you want to register</LI>
+                            <LI><B>years:</B> The number of years for which you would like to register the domain (must
+                                be a number between 1-10)
+                            </LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>private:</B> Whether or not you want the registration to utilize our free WHOIS
+                                privacy service. Use "1" for private, and "0" for not private. If not supplied, the
+                                domain will be registered without privacy.
+                            </LI>
+                            <LI><B>auto_renew:</B> Whether or not you want the domain to auto-renew upon its expiration.
+                                Use "1" to auto-renew, and "0" not to auto-renew. If not supplied, the domain will be
+                                set to auto-renew.
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;registerDomainDrop&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;Your domain registration was successfully processed.&lt;/message&gt;
+            &lt;domain&gt;namesilo.com&lt;/domain&gt;
+            &lt;order_amount&gt;7.77&lt;/order_amount&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="renewDomain"></A>
+                <H3>Renew a Domain</H3>
+
+                <P>
+
+                    Renew a domain in your account for the specified number of years.
+
+                <div class="information_message">
+                    Please note that renewDomain will perform a restoration if the domain is in the restoration period.
+                    You can override
+                    this behavior via the API Manager page in your account.
+                </div>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/renewDomain?version=1&type=xml&key=12345&domain=namesilo.com&years=2
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain you want to renew</LI>
+                            <LI><B>years:</B> The number of years to renew the domain (must be a number between 1-10)
+                            </LI>
+                        </UL>
+                    </LI>
+
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>payment_id:</B> The ID number for the <U>verified</U> credit card to use for the
+                                transaction. If you do not specify a payment_id, we will attempt to process the
+                                transaction using your account funds.
+                            </LI>
+                            <LI><B>coupon:</B> The coupon code to apply to this order</LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;renewDomain&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;Your domain renewal was successfully processed.&lt;/message&gt;
+            &lt;domain&gt;namesilo.com&lt;/domain&gt;
+            &lt;order_amount&gt;7.77&lt;/order_amount&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="transferDomain"></A>
+                <H3>Transfer a Domain</H3>
+
+                <P>
+
+                    Transfer a domain from a different registrar into your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/transferDomain?version=1&type=xml&key=12345&domain=namesilo.com&auth=XXXXX&private=1&auto_renew=1
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain you want to transfer</LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>payment_id:</B> The ID number for the <U>verified</U> credit card to use for the
+                                transaction. If you do not specify a payment_id, we will attempt to process the
+                                transaction using your account funds.
+                            </LI>
+                            <LI><B>auth:</B> The transfer authorization code (this is not required, but must be encoded
+                                if provided)
+                            </LI>
+                            <LI><B>private:</B> Whether or not you want the domain to utilize our free WHOIS privacy
+                                service when the transfer completes. Use "1" for private, and "0" for not private. If
+                                not supplied, the domain will be configured without privacy.
+                            </LI>
+                            <LI><B>auto_renew:</B> Whether or not you want the domain to auto-renew upon its expiration.
+                                Use "1" to auto-renew, and "0" not to auto-renew. If not supplied, the domain will be
+                                set to auto-renew.
+                            <LI><B>portfolio:</B> The encoded name of the portfolio to assign the domain to upon
+                                transfer completion. If the portfolio name is not currently in use, our system will
+                                automatically create the portfolio.
+                            </LI>
+                            <LI><B>coupon:</B> The coupon code to apply to this order</LI>
+                            <LI><B>Passing Contact Information:</B> You can optionally pass the following fields to use
+                                for the WHOIS contact information (registrant, administrative, billing and technical)
+                                for the domain.
+                                <UL>
+                                    <LI><B>Notes</B>
+                                        <UL>
+                                            <LI>If you do not pass a value for ALL of the required fields, anything you
+                                                do pass for contact information will be ignored and your default account
+                                                contact profile will be used
+                                            </LI>
+                                            <LI>If there is a problem with any of the data you provide, you will receive
+                                                a response code of 302 indicating a successful domain transfer, but that
+                                                your account's default contact profile will be used.
+                                            </LI>
+                                            <LI>All values must be encoded.</LI>
+                                            <LI>Character limits for each field are in parentheses.</LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                                <UL>
+                                    <LI><B>Required Fields</B>
+                                        <UL>
+                                            <LI><B>fn:</B> First Name (32)</LI>
+                                            <LI><B>ln:</B> Last Name (32)</LI>
+                                            <LI><B>ad:</B> Mailing Address (128)</LI>
+                                            <LI><B>cy:</B> Mailing City (64)</LI>
+                                            <LI><B>st:</B> Mailing State/Province/Territory (64)
+                                                <UL>
+                                                    <LI>If country is US or CA, you must use the <A
+                                                                HREF="/popups/states.php"
+                                                                REL="shadowbox;height=420;width=575"
+                                                                TITLE="State/Province Abbreviations">correct
+                                                            abbreviation</A></LI>
+                                                </UL>
+                                            </LI>
+                                            <LI><B>zp:</B> Mailing Zip/Postal Code (16)</LI>
+                                            <LI><B>ct:</B> Mailing Country (4)
+                                                <UL>
+                                                    <LI>Country must use the <A HREF="/popups/countries.php"
+                                                                                REL="shadowbox;height=420;width=575"
+                                                                                TITLE="Country Abbreviations">correct
+                                                            abbreviation</A></LI>
+                                                </UL>
+                                            </LI>
+                                            <LI><B>em:</B> Email Address (128)</LI>
+                                            <LI><B>ph:</B> Phone Number (32)
+                                                <UL>
+                                                    <LI>If country is US or CA, the phone number should be exactly 10
+                                                        numbers
+                                                    </LI>
+                                                    <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                                </UL>
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>Optional Fields</B>
+                                        <UL>
+                                            <LI><B>cp:</B> Company (64)</LI>
+                                            <LI><B>ad2:</B> Mailing Address 2 (128)</LI>
+                                            <LI><B>fx:</B> Fax (32)
+                                                <UL>
+                                                    <LI>If country is US or CA, the phone number should be exactly 10
+                                                        numbers
+                                                    </LI>
+                                                    <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                                </UL>
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.US Required Fields</B>
+                                        <UL>
+                                            <LI><B>usnc:</B> .US Nexus Category (3) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                            <LI><B>usap:</B> .US Application Purpose (2) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.CA Domains:</B> You must use one of the two following options when
+                                        transferring .ca domains:</B>
+                                        <UL>
+                                            <LI>You can specify a contact ID (see "Passing Contact ID" section below) so
+                                                long as that contact ID is already setup with the requisite .ca
+                                                information and is set as an Individual legal type.
+                                            </LI>
+                                            <LI>If you do not pass a contact ID, you must have a "Default .ca Profile"
+                                                in place to transfer .ca domains via the API. You can create your
+                                                Default .ca Profile on the <a href="/account_profiles.php">Profile
+                                                    Manager</a> page in your account.
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                            <LI><B>Passing Contact ID:</B> You may alternatively pass the internal NameSilo contact
+                                profile ID. You can get this value by running a getAccountContacts command.
+                                <UL>
+                                    <LI><B>Notes</B>
+                                        <UL>
+                                            <LI>If you do not pass a valid contact ID, you will receive a response code
+                                                of 302 indicating a successful domain transfer, but that your account's
+                                                default contact profile will be used.
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                                <UL>
+                                    <LI><B>Required Field</B>
+                                        <UL>
+                                            <LI><B>contact_id:</B> The contact profile ID to assign to this domain after
+                                                it transfers
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;transferDomain&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;Your domain transfer was successfully processed.&lt;/message&gt;
+            &lt;domain&gt;namesilo.com&lt;/domain&gt;
+            &lt;order_amount&gt;7.77&lt;/order_amount&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="checkTransferStatus"></A>
+                <H3>Check Transfer Status</H3>
+
+                <P>
+
+                    Returns information concerning the domain transfer. Only the last status update will be displayed.
+                    Here is a list
+                    of <A HREF="/popups/transfer_statuses.php" REL="shadowbox;height=420;width=575"
+                          TITLE="Transer Statuses">possible transfer statuses</A>.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/checkTransferStatus?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being transferred</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;checkTransferStatus&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;date&gt;2010-01-01 12:30:59&lt;/date&gt;
+            &lt;status&gt;Pending at Registry&lt;/status&gt;
+            &lt;message&gt;Your transfer request has been successfully submitted to the central registry.&lt;/message&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+                    <A NAME="transferUpdateChangeEPPCode"></A>
+                <H3>Transfer Update (Add/Change EPP Code)</H3>
+
+                <P>
+
+                    Adds/Changes the EPP code for a domain transfer.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/transferUpdateChangeEPPCode?version=1&type=xml&key=12345&domain=namesilo.com&auth=12345ABCDE
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being transferred</LI>
+                    <LI><B>auth:</B> The EPP code to use</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;transferUpdateChangeEPPCode&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+
+                    <A NAME="transferUpdateResendAdminEmail"></A>
+                <H3>Transfer Update (Re-Send Administrative Email Verification)</H3>
+
+                <P>
+
+                    Re-sends the administrative contact email verification to continue a domain transfer.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/transferUpdateResendAdminEmail?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being transferred</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;transferUpdateResendAdminEmail&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+
+                    <A NAME="transferUpdateResubmitToRegistry"></A>
+                <H3>Transfer Update (Re-Submit a transfer to the registry)</H3>
+
+                <P>
+
+                    Re-submits the domain to the registry continue a domain transfer.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/transferUpdateResubmitToRegistry?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being transferred</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;transferUpdateResubmitToRegistry&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+
+                    <A NAME="checkRegisterAvailability"></A>
+                <H3>Check Availability of Domain Registration</H3>
+
+                <P>
+
+                    Determine if you can register the specified domains.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/checkRegisterAvailability?version=1&type=xml&key=12345&domains=namesilo.com,namesilo.net,namesilo.org,n#mesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domains:</B> A comma-delimited list of domains to check (up to 200 can be processed)</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;checkRegisterAvailability&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;available&gt;
+                &lt;domain&gt;namesilo.com&lt;/domain&gt;
+                &lt;domain&gt;namesilo.org&lt;/domain&gt;
+            &lt;/available&gt;
+            &lt;unavailable&gt;
+                &lt;domain&gt;namesilo.net&lt;/domain&gt;
+            &lt;/unavailable&gt;
+            &lt;invalid&gt;
+                &lt;domain&gt;n#mesilo.com&lt;/domain&gt;
+            &lt;/invalid&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+
+                    <A NAME="checkTransferAvailability"></A>
+                <H3>Check Availability of Domain Transfer</H3>
+
+                <P>
+
+                    Check if you can transfer the specified domains to your NameSilo account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/checkTransferAvailability?version=1&type=xml&key=12345&domains=namesilo.com,namesilo.net,namesilo.org,namesilo.asia
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domains:</B> A comma-delimited list of domains to check (up to 200 can be processed)</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;checkTransferAvailability&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;available&gt;
+                &lt;domain&gt;namesilo.com&lt;/domain&gt;
+                &lt;domain&gt;namesilo.org&lt;/domain&gt;
+            &lt;/available&gt;
+            &lt;unavailable&gt;
+                &lt;domain reason="This domain cannot be transferred since it is not currently registered."&gt;namesilo.net&lt;/domain&gt;
+                &lt;domain reason="Sorry, we do not currently support the .ASIA extension/TLD"&gt;namesilo.asia&lt;/domain&gt;                
+            &lt;/unavailable&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="listDomains"></A>
+                <H3>List of Active Domains</H3>
+
+                <P>
+
+                    Generate a list of all active domains within your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/listDomains?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>portfolio:</B> Limit results by an encoded portfolio name</LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;listDomains&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;domains&gt;
+                &lt;domain&gt;namesilo.com&lt;/domain&gt;
+                &lt;domain&gt;namesilo.net&lt;/domain&gt;
+                &lt;domain&gt;namesilo.biz&lt;/domain&gt;
+                &lt;domain&gt;namesilo.info&lt;/domain&gt;
+                &lt;domain&gt;namesilo.mobi&lt;/domain&gt;
+                &lt;domain&gt;namesilo.org&lt;/domain&gt;
+            &lt;/domains&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+                    <A NAME="getDomainInfo"></A>
+                <H3>Get Domain Information</H3>
+
+                <P>
+
+                    Get essential information on a domain within your account including the expiration date, creation
+                    date, status, locked status
+                    and name servers.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/getDomainInfo?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being requested</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;getDomainInfo&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;created&gt;2009-01-11&lt;/created&gt;
+            &lt;expires&gt;2017-01-11&lt;/expires&gt;
+            &lt;status&gt;Active&lt;/status&gt;
+            &lt;locked&gt;Yes&lt;/locked&gt;
+            &lt;private&gt;Yes&lt;/private&gt;
+            &lt;auto_renew&gt;Yes&lt;/auto_renew&gt;
+            &lt;traffic_type&gt;Forwarded&lt;/traffic_type&gt;
+            &lt;email_verification_required&gt;No&lt;/email_verification_required&gt;
+            &lt;portfolio&gt;Main Portfolio&lt;/portfolio&gt;
+            &lt;forward_url&gt;https://www.namesilo.net&lt;/forward_url&gt;
+            &lt;forward_type&gt;Temporary Forward (302)&lt;/forward_type&gt;
+            &lt;nameservers&gt;
+                &lt;nameserver position="1"&gt;NS1.NAMESILO.COM&lt;/nameserver&gt;
+                &lt;nameserver position="2"&gt;NS2.NAMESILO.COM&lt;/nameserver&gt;
+            &lt;/nameservers&gt;
+            &lt;contact_ids&gt;
+                &lt;registrant&gt;444444&lt;/registrant&gt;
+                &lt;administrative&gt;555555&lt;/administrative&gt;
+                &lt;technical&gt;666666&lt;/technical&gt;
+                &lt;billing&gt;7777777&lt;/billing&gt;
+            &lt;/contact_ids&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Operation-Specific Responses</SPAN>
+
+                <UL>
+                    <LI><B>traffic_type:</B> Will reflect the same as the "DNS Setting" value via our web site. The
+                        possible responses are, "Parked", "Forwarded" or "Custom DNS".
+                    </LI>
+                    <LI><B>forward_url:</B> Will show the domain forwarding URL if any. "N/A" will be returned if domain
+                        forwarding is not being used.
+                    </LI>
+                    <LI><B>forward_type:</B> Will show the type of domain forwarding if used. The possible response are,
+                        "Permanent Forward (301)", "Temporary Forward (302)" or "Cloaked Forward". "N/A" will be
+                        returned if domain forwarding is not being used.
+                    </LI>
+                    <LI><B>email_verification_required:</B> Will show if the Registrant email address requires
+                        verification or not. Please note that domains using WHOIS Privacy do not require Registrant
+                        email verification so domains using privacy will always return as "No".
+                    </LI>
+                    <LI><B>contact_ids:</B> These values represent the internal NameSilo ID for each contact associated
+                        with this domain. You can use these IDs when performing registrations, transfers and contact
+                        profile updates.
+                    </LI>
+                </UL>
+
+
+                <P><BR>
+
+                    <A NAME="contactList"></A>
+                <H3>View contact profiles</H3>
+
+                <P>
+
+                    Get a list of all contact profiles within your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/contactList?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>contact_id:</B> You can optionally pass the ID number for a specific contact record to look
+                        up. All contacts associated with your account will be returned if you do not provide this
+                        parameter.
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;contactList&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;contact&gt;
+                &lt;contact_id&gt;4444444&lt;/contact_id&gt;
+                &lt;default_profile&gt;1&lt;/default_profile&gt;
+                &lt;nickname&gt;Test 1&lt;/nickname&gt;
+                &lt;company&gt;Springfield Power Plant&lt;/company&gt;
+                &lt;first_name&gt;Homer&lt;/first_name&gt;
+                &lt;last_name&gt;Simpson&lt;/last_name&gt;
+                &lt;address&gt;742 Evergreen Terrace&lt;/address&gt;
+                &lt;address2/&gt;
+                &lt;city&gt;Springfield&lt;/city&gt;
+                &lt;state&gt;ST&lt;/state&gt;
+                &lt;zip&gt;55555&lt;/zip&gt;
+                &lt;country&gt;US&lt;/country&gt;
+                &lt;email&gt;homer @simpsons.com&lt;/email&gt;
+                &lt;phone&gt;999-555-1212&lt;/phone&gt;
+                &lt;fax&gt;555-123-4567&lt;/fax&gt;
+                &lt;usnc&gt;C21&lt;/usnc&gt;
+                &lt;usap&gt;P2&lt;/usap&gt;
+                &lt;calf&gt;CCT&lt;/calf&gt;
+                &lt;caln&gt;en&lt;/caln&gt;
+                &lt;caag&gt;2.0&lt;/caag&gt;
+                &lt;cawd&gt;1&lt;/cawd&gt;
+            &lt;/contact&gt;
+            &lt;contact&gt;
+                &lt;contact_id&gt;5555555&lt;/contact_id&gt;
+                &lt;default_profile&gt;0&lt;/default_profile&gt;
+                &lt;nickname&gt;Test 2&lt;/nickname&gt;
+                &lt;company&gt;NameSilo&lt;/company&gt;
+                &lt;first_name&gt;John&lt;/first_name&gt;
+                &lt;last_name&gt;Smith&lt;/last_name&gt;
+                &lt;address&gt;555 N. 1st Street&lt;/address&gt;
+                &lt;address2&gt;Suite 500&lt;/address2&gt;
+                &lt;city&gt;Anywhere&lt;/city&gt;
+                &lt;state&gt;AZ&lt;/state&gt;
+                &lt;zip&gt;12345&lt;/zip&gt;
+                &lt;country&gt;US&lt;/country&gt;
+                &lt;email&gt;test @test.com&lt;/email&gt;
+                &lt;phone&gt;480-555-1212&lt;/phone&gt;
+                &lt;fax&gt;888-777-6666&lt;/fax&gt;
+                &lt;usnc/&gt;
+                &lt;usap/&gt;
+                &lt;calf/&gt;
+                &lt;caln/&gt;
+                &lt;caag/&gt;
+                &lt;cawd/&gt;
+            &lt;/contact&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Operation-Specific Responses</SPAN>
+                    <BR>
+                    All results are encoded.
+
+                <UL>
+                    <LI><B>contact_id:</B> The internal NameSilo ID. You can use these IDs when performing
+                        registrations, transfers and contact profile updates.
+                    </LI>
+                    <LI><B>default_profile:</B> Every NameSilo account has 1 default profile. The profile designated as
+                        the default is used when no other contact profile is specified for a number of operations.
+                    </LI>
+                    <LI><B>.US Optional Fields</B>
+                        <UL>
+                            <LI><B>usnc:</B> .US Nexus Category (<A HREF="/popups/us_abbreviations.php"
+                                                                    REL="shadowbox;height=450;width=575"
+                                                                    TITLE=".US Abbreviations">correct abbreviations</A>)
+                            </LI>
+                            <LI><B>usap:</B> .US Application Purpose (<A HREF="/popups/us_abbreviations.php"
+                                                                         REL="shadowbox;height=450;width=575"
+                                                                         TITLE=".US Abbreviations">correct
+                                    abbreviations</A>)
+                            </LI>
+                        </UL>
+                    </LI>
+                    <LI><B>.CA Optional Fields</B>
+                        <UL>
+                            <LI><B>calf:</B> CIRA Legal Form (<A HREF="/popups/ca_abbreviations.php"
+                                                                 REL="shadowbox;height=450;width=575"
+                                                                 TITLE=".US Abbreviations">correct abbreviations</A>)
+                            </LI>
+                            <LI><B>caln:</B> CIRA Language (<A HREF="/popups/ca_abbreviations.php"
+                                                               REL="shadowbox;height=450;width=575"
+                                                               TITLE=".US Abbreviations">correct abbreviations</A>)
+                            </LI>
+                            <LI><B>caag:</B> CIRA Agreement Version (<A HREF="/popups/ca_abbreviations.php"
+                                                                        REL="shadowbox;height=450;width=575"
+                                                                        TITLE=".US Abbreviations">correct
+                                    abbreviations</A>)
+                            </LI>
+                            <LI><B>cawd:</B> CIRA WHOIS Display (<A HREF="/popups/ca_abbreviations.php"
+                                                                    REL="shadowbox;height=450;width=575"
+                                                                    TITLE=".US Abbreviations">correct abbreviations</A>)
+                            </LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+
+                <P><BR>
+
+                    <A NAME="contactAdd"></A>
+                <H3>Add a contact profile</H3>
+
+                <P>
+
+                    Add a contact profile to your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/contactAdd?version=1&type=xml&key=12345&fn=John&ln=Smith&ad=123%20N.%201st%20Street&cy=Anywhere&st=AZ&zp=55555&ct=US&em=test@test.com&ph=4805555555
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Passing Contact Information:</B> You can optionally pass the following fields to use for the
+                        WHOIS contact information (registrant, administrative, billing and technical) for the domain.
+                        <UL>
+                            <LI><B>Notes</B>
+                                <UL>
+                                    <LI>All values must be encoded.</LI>
+                                    <LI>Character limits for each field are in parentheses.</LI>
+                                </UL>
+                            </LI>
+                        </UL>
+                        <UL>
+                            <LI><B>Required Fields</B>
+                                <UL>
+                                    <LI><B>fn:</B> First Name (32)</LI>
+                                    <LI><B>ln:</B> Last Name (32)</LI>
+                                    <LI><B>ad:</B> Mailing Address (128)</LI>
+                                    <LI><B>cy:</B> Mailing City (64)</LI>
+                                    <LI><B>st:</B> Mailing State/Province/Territory (64)
+                                        <UL>
+                                            <LI>If country is US or CA, you must use the <A HREF="/popups/states.php"
+                                                                                            REL="shadowbox;height=420;width=575"
+                                                                                            TITLE="State/Province Abbreviations">correct
+                                                    abbreviation</A></LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>zp:</B> Mailing Zip/Postal Code (16)</LI>
+                                    <LI><B>ct:</B> Mailing Country (4)
+                                        <UL>
+                                            <LI>Country must use the <A HREF="/popups/countries.php"
+                                                                        REL="shadowbox;height=420;width=575"
+                                                                        TITLE="Country Abbreviations">correct
+                                                    abbreviation</A></LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>em:</B> Email Address (128)</LI>
+                                    <LI><B>ph:</B> Phone Number (32)
+                                        <UL>
+                                            <LI>If country is US or CA, the phone number should be exactly 10 numbers
+                                            </LI>
+                                            <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                            <LI><B>Optional Fields</B>
+                                <UL>
+                                    <LI><B>nn:</B> Nickname (24)
+                                        <UL>
+                                            <LI>If you do not provide a nickname one will be automatically assigned</LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>cp:</B> Company (64)</LI>
+                                    <LI><B>ad2:</B> Mailing Address 2 (128)</LI>
+                                    <LI><B>fx:</B> Fax (32)
+                                        <UL>
+                                            <LI>If country is US or CA, the phone number should be exactly 10 numbers
+                                            </LI>
+                                            <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.US Fields</B>
+                                        <UL>
+                                            <LI><B>usnc:</B> .US Nexus Category (3) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                            <LI><B>usap:</B> .US Application Purpose (2) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.CA Optional Fields</B>
+                                        <UL>
+                                            <LI><B>calf:</B> CIRA Legal Form (<A HREF="/popups/ca_abbreviations.php"
+                                                                                 REL="shadowbox;height=450;width=575"
+                                                                                 TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                            <LI><B>caln:</B> CIRA Language (<A HREF="/popups/ca_abbreviations.php"
+                                                                               REL="shadowbox;height=450;width=575"
+                                                                               TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                            <LI><B>caag:</B> CIRA Agreement Version (<A
+                                                        HREF="/popups/ca_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                            <LI><B>cawd:</B> CIRA WHOIS Display (<A HREF="/popups/ca_abbreviations.php"
+                                                                                    REL="shadowbox;height=450;width=575"
+                                                                                    TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;contactAdd&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;contact_id&gt;55555&lt;/contact_id&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Operation-Specific Responses</SPAN>
+
+                <UL>
+                    <LI><B>contact_id:</B> The internal NameSilo ID. You can use these IDs when performing
+                        registrations, transfers and contact profile updates.
+                    </LI>
+                </UL>
+
+
+                <P><BR>
+
+                    <A NAME="contactUpdate"></A>
+                <H3>Update a contact profile</H3>
+
+                <P>
+
+                    Update a contact profile in your account.
+
+                <DIV CLASS="information_message">
+                    Any changes you make to a contact profile will update the registry records for any domains
+                    associated with that contact profile.
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/contactUpdate?version=1&type=xml&key=12345&contact_id=111111&fn=John&ln=Smith&ad=123%20N.%201st%20Street&cy=Anywhere&st=AZ&zp=55555&ct=US&em=test@test.com&ph=4805555555
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Passing Contact Information:</B> You can optionally pass the following fields to use for the
+                        WHOIS contact information (registrant, administrative, billing and technical) for the domain.
+                        <UL>
+                            <LI><B>Notes</B>
+                                <UL>
+                                    <LI>All values must be encoded.</LI>
+                                    <LI>Character limits for each field are in parentheses.</LI>
+                                </UL>
+                            </LI>
+                        </UL>
+                        <UL>
+                            <LI><B>Required Fields</B>
+                                <UL>
+                                    <LI><B>contact_id:</B> The internal NameSilo ID for the contact profile record to
+                                        update
+                                    </LI>
+                                    <LI><B>fn:</B> First Name (32)</LI>
+                                    <LI><B>ln:</B> Last Name (32)</LI>
+                                    <LI><B>ad:</B> Mailing Address (128)</LI>
+                                    <LI><B>cy:</B> Mailing City (64)</LI>
+                                    <LI><B>st:</B> Mailing State/Province/Territory (64)
+                                        <UL>
+                                            <LI>If country is US or CA, you must use the <A HREF="/popups/states.php"
+                                                                                            REL="shadowbox;height=420;width=575"
+                                                                                            TITLE="State/Province Abbreviations">correct
+                                                    abbreviation</A></LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>zp:</B> Mailing Zip/Postal Code (16)</LI>
+                                    <LI><B>ct:</B> Mailing Country (4)
+                                        <UL>
+                                            <LI>Country must use the <A HREF="/popups/countries.php"
+                                                                        REL="shadowbox;height=420;width=575"
+                                                                        TITLE="Country Abbreviations">correct
+                                                    abbreviation</A></LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>em:</B> Email Address (128)</LI>
+                                    <LI><B>ph:</B> Phone Number (32)
+                                        <UL>
+                                            <LI>If country is US or CA, the phone number should be exactly 10 numbers
+                                            </LI>
+                                            <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                            <LI><B>Optional Fields</B>
+                                <UL>
+                                    <LI><B>nn:</B> Nickname (24)
+                                        <UL>
+                                            <LI>If you do not provide a nickname the existing nickname will be
+                                                maintained
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>cp:</B> Company (64)</LI>
+                                    <LI><B>ad2:</B> Mailing Address 2 (128)</LI>
+                                    <LI><B>fx:</B> Fax (32)
+                                        <UL>
+                                            <LI>If country is US or CA, the phone number should be exactly 10 numbers
+                                            </LI>
+                                            <LI>Country dialing code SHOULD NOT be passed for any countries</LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.US Fields</B>
+                                        <UL>
+                                            <LI><B>usnc:</B> .US Nexus Category (3) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                            <LI><B>usap:</B> .US Application Purpose (2) (must use <A
+                                                        HREF="/popups/us_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviation</A>)
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                    <LI><B>.CA Fields</B>
+                                        <UL>
+                                            <LI><B>calf:</B> CIRA Legal Form (<A HREF="/popups/ca_abbreviations.php"
+                                                                                 REL="shadowbox;height=450;width=575"
+                                                                                 TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                            <LI><B>caln:</B> CIRA Language (<A HREF="/popups/ca_abbreviations.php"
+                                                                               REL="shadowbox;height=450;width=575"
+                                                                               TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                            <LI><B>caag:</B> CIRA Agreement Version (<A
+                                                        HREF="/popups/ca_abbreviations.php"
+                                                        REL="shadowbox;height=450;width=575" TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                            <LI><B>cawd:</B> CIRA WHOIS Display (<A HREF="/popups/ca_abbreviations.php"
+                                                                                    REL="shadowbox;height=450;width=575"
+                                                                                    TITLE=".US Abbreviations">correct
+                                                    abbreviations</A>)
+                                            </LI>
+                                        </UL>
+                                    </LI>
+                                </UL>
+                            </LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;contactUpdate&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="contactDelete"></A>
+                <H3>Delete a contact profile</H3>
+
+                <P>
+
+                    Delete a contact profile in your account. Please remember that the only contact profiles that can be
+                    deleted are those that are not
+                    the account default and are not associated with any active domains or order profiles.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/contactDelete?version=1&type=xml&key=12345&contact_id=111111
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>contact_id:</B> The internal NameSilo ID for the contact profile record to update</LI>
+                </UL>
+
+                <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;contactDelete&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="contactDomainAssociate"></A>
+                <H3>Associate a contact profile with a domain</H3>
+
+                <P>
+
+                    Assign the data from your contact profiles to roles for a domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/contactDomainAssociate?version=1&type=xml&key=12345&domain=namesilo.com&administrative=11111&technical=222222
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required Fields</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain being updated</LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Optional Fields
+                            <SMALL>(at least one is required)</SMALL>
+                        </B>
+                        <UL>
+                            <LI><B>registrant:</B> The contact id to use for the domain's Registrant role</LI>
+                            <LI><B>administrative:</B> The contact id to use for the domain's Administrative Contact
+                                role
+                            </LI>
+                            <LI><B>billing:</B> The contact id to use for the domain's Billing Contact role</LI>
+                            <LI><B>technical:</B> The contact id to use for the domain's Technical Contact role</LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Passing Contact ID:</B> You must pass the internal NameSilo contact profile ID. You can get
+                        this value by running a getAccountContacts command.
+                    </LI>
+                </UL>
+
+                <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;contactDomainAssociate&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="changeNameServers"></A>
+                <H3>Change NameServers</H3>
+
+                <P>
+
+                    Change the name servers associated with the provided domain name. You must provide between 2 and 13
+                    name servers in order for this
+                    operation to be successful.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/changeNameServers?version=1&type=xml&key=12345&domain=namesilo.com&ns1=NS1.NAMESILO.COM&ns2=NS2.NAMESILO.COM
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> A comma-delimited list of up to 200 domains</LI>
+                    <LI><B>ns1:</B> NameServer 1 (required)</LI>
+                    <LI><B>ns2:</B> NameServer 2 (required)</LI>
+                    <LI><B>ns3:</B> NameServer 3</LI>
+                    <LI><B>ns4:</B> NameServer 4</LI>
+                    <LI><B>ns5:</B> NameServer 5</LI>
+                    <LI><B>ns6:</B> NameServer 6</LI>
+                    <LI><B>ns7:</B> NameServer 7</LI>
+                    <LI><B>ns8:</B> NameServer 8</LI>
+                    <LI><B>ns9:</B> NameServer 9</LI>
+                    <LI><B>ns10:</B> NameServer 10</LI>
+                    <LI><B>ns11:</B> NameServer 11</LI>
+                    <LI><B>ns12:</B> NameServer 12</LI>
+                    <LI><B>ns13:</B> NameServer 13</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;changeNameServers&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+                    <A NAME="dnsSecListRecords"></A>
+                <H3>List Current DS (DNSSEC) Records</H3>
+
+                <P>
+
+                    View all of the current DS (DNSSEC) records associated with the domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/dnsSecListRecords?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being requested</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;dnsSecListRecords&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+           &lt;ds_record&gt;
+                &lt;digest&gt;123456789ABCDEFGHIJ&lt;/digest&gt;
+                &lt;digest_type&gt;1&lt;/digest_type&gt;
+                &lt;algorithm&gt;5&lt;/algorithm&gt;
+                &lt;key_tag&gt;1234&lt;/key_tag&gt;
+            &lt;/ds_record&gt;
+            &lt;ds_record&gt;
+                &lt;digest&gt;123456789ABCDEFGHIJ&lt;/digest&gt;
+                &lt;digest_type&gt;2&lt;/digest_type&gt;
+                &lt;algorithm&gt;3&lt;/algorithm&gt;
+                &lt;key_tag&gt;9876&lt;/key_tag&gt;
+            &lt;/ds_record&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+                    <A NAME="dnsSecAddRecord"></A>
+                <H3>Add a DS record (DNSSEC) to your domain</H3>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/dnsSecAddRecord?version=1&type=xml&key=12345&domain=namesilo.com&digest=123456789&keyTag=123&digestType=1&alg=5
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to add the DS record to</LI>
+                    <LI><B>digest:</B> The digest</LI>
+                    <LI><B>keyTag:</B> The key tag</LI>
+                    <LI><B>digestType:</B> The digest type ( <A HREF="/popups/dnssec_records.php"
+                                                                REL="shadowbox;height=420;width=575" TITLE="DS records">accepted
+                            values</A> )
+                    </LI>
+                    <LI><B>alg:</B> The algorithm ( <A HREF="/popups/dnssec_records.php"
+                                                       REL="shadowbox;height=420;width=575" TITLE="DS records">accepted
+                            values</A> )
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;dnsSecAddRecord&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="dnsSecDeleteRecord"></A>
+                <H3>Delete a DS record (DNSSEC) from your domain</H3>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/dnsSecDeleteRecord?version=1&type=xml&key=12345&domain=namesilo.com&digest=123456789&keyTag=123&digestType=1&alg=5
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to delete the DS record from</LI>
+                    <LI><B>digest:</B> The digest</LI>
+                    <LI><B>keyTag:</B> The key tag</LI>
+                    <LI><B>digestType:</B> The digest type ( <A HREF="/popups/dnssec_records.php"
+                                                                REL="shadowbox;height=420;width=575" TITLE="DS records">accepted
+                            values</A> )
+                    </LI>
+                    <LI><B>alg:</B> The algorithm ( <A HREF="/popups/dnssec_records.php"
+                                                       REL="shadowbox;height=420;width=575" TITLE="DS records">accepted
+                            values</A> )
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;dnsSecDeleteRecord&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="dnsListRecords"></A>
+                <H3>List Current DNS Records</H3>
+
+                <P>
+
+                    View all of the current DNS records associated with the domain. You will need the "record_id" value
+                    to perform the dnsUpdateRecord and
+                    dnsDeleteRecord functions below.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/dnsListRecords?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being requested</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;dnsListRecords&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;resource_record&gt;
+                &lt;record_id&gt;1a2b3c4d5e6f&lt;/record_id&gt;
+                &lt;type&gt;A&lt;/type&gt;
+                &lt;host&gt;test.namesilo.com&lt;/host&gt;
+                &lt;value&gt;55.555.55.55&lt;/value&gt;
+                &lt;ttl&gt;7207&lt;/ttl&gt;
+                &lt;distance&gt;0&lt;/distance&gt;
+            &lt;/resource_record&gt;
+            &lt;resource_record&gt;
+                &lt;record_id&gt;5Brg5hw25jr&lt;/record_id&gt;
+                &lt;type&gt;CNAME&lt;/type&gt;
+                &lt;host&gt;dev.namesilo.com&lt;/host&gt;
+                &lt;value&gt;testing.namesilo.com&lt;/value&gt;
+                &lt;ttl&gt;7207&lt;/ttl&gt;
+                &lt;distance&gt;0&lt;/distance&gt;
+            &lt;/resource_record&gt;
+            &lt;resource_record&gt;
+                &lt;record_id&gt;fH35aH4hsv&lt;/record_id&gt;
+                &lt;type&gt;MX&lt;/type&gt;
+                &lt;host&gt;namesilo.com&lt;/host&gt;
+                &lt;value&gt;mail.namesilo.com&lt;/value&gt;
+                &lt;ttl&gt;7207&lt;/ttl&gt;
+                &lt;distance&gt;10&lt;/distance&gt;
+            &lt;/resource_record&gt;
+            &lt;resource_record&gt;
+                &lt;record_id&gt;Ldfd26Sfbh&lt;/record_id&gt;
+                &lt;type&gt;MX&lt;/type&gt;
+                &lt;host&gt;namesilo.com&lt;/host&gt;
+                &lt;value&gt;mail2.namesilo.com&lt;/value&gt;
+                &lt;ttl&gt;7207&lt;/ttl&gt;
+                &lt;distance&gt;20&lt;/distance&gt;
+            &lt;/resource_record&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Operation-Specific Responses</SPAN>
+
+                <UL>
+                    <LI><B>type:</B> Possible values are "A", "AAAA", "CNAME", "MX" and "TXT"</LI>
+                </UL>
+
+
+                <P><BR>
+
+                    <A NAME="dnsAddRecord"></A>
+                <H3>Add DNS Records</H3>
+
+                <P>
+
+                    Adds a new DNS resource record to the selected domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/dnsAddRecord?version=1&type=xml&key=12345&domain=namesilo.com&rrtype=A&rrhost=test&rrvalue=55.55.55.55&rrttl=7207
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain being updated</LI>
+                    <LI><B>rrtype:</B> The type of resources record to add. Possible values are "A", "AAAA", "CNAME",
+                        "MX" and "TXT"
+                    </LI>
+                    <LI><B>rrhost:</B> The hostname for the new record (there is no need to include the ".DOMAIN")</LI>
+                    <LI><B>rrvalue:</B> The value for the resource record
+                        <UL>
+                            <LI><B>A - </B> The IPV4 Address</LI>
+                            <LI><B>AAAA - </B> The IPV6 Address</LI>
+                            <LI><B>CNAME - </B> The Target Hostname</LI>
+                            <LI><B>MX - </B> The Target Hostname</LI>
+                            <LI><B>TXT - </B> The Text</LI>
+                        </UL>
+                    </LI>
+                    <LI><B>rrdistance:</B> Only used for MX (default is 10 if not provided)</LI>
+                    <LI><B>rrttl:</B> The TTL for the new record (default is 7207 if not provided)</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;dnsAddRecord&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;record_id&gt;1a2b3c4d5e&lt;/record_id&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Operation-Specific Responses</SPAN>
+
+                <UL>
+                    <LI><B>record_id:</B> The unique ID of the resource record that was created. This value is necessary
+                        to perform the dnsUpdateRecord and dnsDeleteRecord functions below.
+                    </LI>
+                </UL>
+
+
+                <P><BR>
+
+                    <A NAME="dnsUpdateRecord"></A>
+                <H3>Update DNS Records</H3>
+
+                <P>
+
+                    Update an existing DNS resource record.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/dnsUpdateRecord?version=1&type=xml&key=12345&domain=namesilo.com&rrid=1a2b3&rrhost=test&rrvalue=55.55.55.55&rrttl=7207
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain associated with the DNS resource record to modify</LI>
+                    <LI><B>rrid:</B> The unique ID of the resource record. You can get this value using dnsListRecords.
+                    </LI>
+                    <LI><B>rrhost:</B> The hostname to use (there is no need to include the ".DOMAIN")</LI>
+                    <LI><B>rrvalue:</B> The value for the resource record
+                        <UL>
+                            <LI><B>A - </B> The IPV4 Address</LI>
+                            <LI><B>AAAA - </B> The IPV6 Address</LI>
+                            <LI><B>CNAME - </B> The Target Hostname</LI>
+                            <LI><B>MX - </B> The Target Hostname</LI>
+                            <LI><B>TXT - </B> The Text</LI>
+                        </UL>
+                    </LI>
+                    <LI><B>rrdistance:</B> Only used for MX (default is 10 if not provided)</LI>
+                    <LI><B>rrttl:</B> The TTL for this record (default is 7207 if not provided)</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;dnsUpdateRecord&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;record_id&gt;1a2b3c4d5e&lt;/record_id&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Operation-Specific Responses</SPAN>
+
+                <UL>
+                    <LI><B>record_id:</B> The new unique ID for the resource record that was updated. Any successful
+                        updates will result in a new record_id.
+                    </LI>
+                </UL>
+
+
+                <P><BR>
+
+                    <A NAME="dnsDeleteRecord"></A>
+                <H3>Delete DNS Records</H3>
+
+                <P>
+
+                    Delete an existing DNS resource record.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/dnsDeleteRecord?version=1&type=xml&key=12345&domain=namesilo.com&rrid=1a2b3
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain associated with the DNS resource record to delete</LI>
+                    <LI><B>rrid:</B> The unique ID of the resource record. You can get this value using dnsListRecords.
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;dnsDeleteRecord&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+                    <SPAN CLASS="highlight">**</SPAN> If you delete any resource records associated with sub-domain
+                    forwarding then the forwarding will be automatically removed and no longer work.
+
+                <P><BR>
+
+
+                    <A NAME="portfolioList"></A>
+                <H3>View active portfolios</H3>
+
+                <P>
+
+                    Get a list of all active portfolios within your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/portfolioList?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;portfolioList&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;portfolios&gt;
+                &lt;name&gt;Personal domains&lt;/name&gt;
+                &lt;code&gt;Business domains&lt;/code&gt;
+            &lt;/portfolios&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="portfolioAdd"></A>
+                <H3>Add a portfolio</H3>
+
+                <P>
+
+                    Add a new portfolio to your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/portfolioAdd?version=1&type=xml&key=12345&portfolio=New%20Portfolio
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>portfolio:</B> The encoded name of the portfolio to add (required)</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;portfolioAdd&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="portfolioDelete"></A>
+                <H3>Delete a portfolio</H3>
+
+                <P>
+
+                    Delete a portfolio from your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/portfolioDelete?version=1&type=xml&key=12345&portfolio=New%20Portfolio
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>portfolio:</B> The encoded name of the portfolio to delete (required)</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;portfolioDelete&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P>
+
+                    <SMALL>* All domains within the selected portfolio will be set to not be part of any portfolio
+                    </SMALL>
+
+
+                    <A NAME="portfolioDomainAssociate"></A>
+                <H3>Assign a domain to a portfolio</H3>
+
+                <P>
+
+                    Link up to 200 domains to a portfolio.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/portfolioDomainAssociate?version=1&type=xml&key=12345&portfolio=New%20Portfolio&domains=namesilo.com,namesilo.net,namesilo.info
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>portfolio:</B> The encoded name of the portfolio to use (required)</LI>
+                    <LI><B>domains:</B> Comma-delimited list of up to 200 domains to assign to the portfolio (required)
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;portfolioDomainAssociate&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;All supplied domains belonging to your account have been updated.&lt;/message&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="listRegisteredNameServers"></A>
+                <H3>List Registered NameServers</H3>
+
+                <P>
+
+                    List the Registered NameServers associated with a domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/listRegisteredNameServers?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;listRegisteredNameServers&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;hosts&gt;
+                &lt;host&gt;ns1&lt;/host&gt;
+                &lt;ip&gt;123.456.78.9&lt;/ip&gt;
+                &lt;ip&gt;11.22.33.44&lt;/ip&gt;
+            &lt;/hosts&gt;
+            &lt;hosts&gt;
+                &lt;host&gt;ns2&lt;/host&gt;
+                &lt;ip&gt;99.88.77.6&lt;/ip&gt;
+            &lt;/hosts&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="addRegisteredNameServer"></A>
+                <H3>Add a Registered NameServer</H3>
+
+                <P>
+
+                    Add a Registered NameServer for your domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/addRegisteredNameServer?version=1&type=xml&key=12345&domain=namesilo.com&new_host=ns5&ip1=123.45.67.8&ip2=11.22.33.44
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>new_host:</B> The host name for the new Registered NameServer (do not include the domain
+                        name) (required)
+                    </LI>
+                    <LI><B>ip1:</B> The IP Address for the new Registered NameServer (required)</LI>
+                    <LI><B>ip2-ip13:</B> Any additional IPs to associate with the new Registered NameServer</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;addRegisteredNameServer&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="modifyRegisteredNameServer"></A>
+                <H3>Modify a Registered NameServer</H3>
+
+                <P>
+
+                    Modify a Registered NameServer for your domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/modifyRegisteredNameServer?version=1&type=xml&key=12345&domain=namesilo.com&
+                    current_host=ns5&new_host=ns5&ip1=123.45.67.8&ip2=11.22.33.44
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>current_host:</B> The current host name for the Registered NameServer to modify (do not
+                        include the domain name) (required)
+                    </LI>
+                    <LI><B>new_host:</B> The new host name for this Registered NameServer (do not include the domain
+                        name) (required)
+                    </LI>
+                    <LI><B>ip1:</B> The IP Address for this Registered NameServer (required)</LI>
+                    <LI><B>ip2-ip13:</B> Any additional IPs to associate with this Registered NameServer</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;modifyRegisteredNameServer&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="deleteRegisteredNameServer"></A>
+                <H3>Delete a Registered NameServer</H3>
+
+                <P>
+
+                    Delete a Registered NameServer for your domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/deleteRegisteredNameServer?version=1&type=xml&key=12345&domain=namesilo.com&
+                    current_host=ns5
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>current_host:</B> The host name for the Registered NameServer to delete (do not include the
+                        domain name) (required)
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;deleteRegisteredNameServer&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+
+                    <A NAME="addPrivacy"></A>
+                <H3>Add WHOIS Privacy</H3>
+
+                <P>
+
+                    Add WHOIS Privacy to a domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/addPrivacy?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to add privacy to</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;addPrivacy&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+
+                    <A NAME="removePrivacy"></A>
+                <H3>Remove WHOIS Privacy</H3>
+
+                <P>
+
+                    Remove WHOIS Privacy from a domain.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/removePrivacy?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to remove privacy from</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;removePrivacy&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+
+                    <A NAME="addAutoRenewal"></A>
+                <H3>Add Auto-Renewal</H3>
+
+                <P>
+
+                    Set the specified domain to be auto-renewed.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/addAutoRenewal?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to add auto-renewal to</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;addAutoRenewal&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;250&lt;/code&gt;
+            &lt;detail&gt;Domain is already set to AutoRenew - No update made.&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="removeAutoRenewal"></A>
+                <H3>Remove Auto-Renewal</H3>
+
+                <P>
+
+                    Set the specified domain to not be auto-renewed.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/removeAutoRenewal?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to remove auto-renewal from</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;removeAutoRenewal&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;251&lt;/code&gt;
+            &lt;detail&gt;Domain is already set not to AutoRenew - No update made.&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+                    <A NAME="retrieveAuthCode"></A>
+                <H3>Retrieve EPP Code</H3>
+
+                <P>
+
+                    Have the EPP transfer code for the domain emailed to the administrative contact.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/retrieveAuthCode?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to retrieve the authorization code</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;retrieveAuthCode&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;Success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="domainForward"></A>
+                <H3>Forward a Domain</H3>
+
+                <P>
+
+                    Configure your domain to forward using any one of our forwarding options.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/domainForward?version=1&type=xml&key=12345&domain=namesilo.com&protocol=http&address=google.com&method=302
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain you want to forward</LI>
+                            <LI><B>protocol:</B> The URL protocol to use (options are "http" or "https")</LI>
+                            <LI><B>address:</B> The web site address to forward to</LI>
+                            <LI><B>method:</B> The forwarding method to utilize (options are "301", "302" or "cloaked").
+                                You can read more about these options <A HREF="/Support/Domain-Forwarding">here</A>.
+                        </UL>
+                    </LI>
+                    <LI><B>Optional (only used when selecting "cloaked" as the method and all values must be
+                            encoded)</B>
+                        <UL>
+                            <LI><B>meta_title:</B> The META title for your cloaked forward</LI>
+                            <LI><B>meta_description:</B> The META description for your cloaked forward</LI>
+                            <LI><B>meta_keywords:</B> The META keywords for your cloaked forward</LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;domainForward&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="domainForwardSubDomain"></A>
+                <H3>Forward a Sub-Domain</H3>
+
+                <P>
+
+                    Configure a sub-domain to forward using any one of our forwarding options.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/domainForwardSubDomain?version=1&type=xml&key=12345&domain=namesilo.com&sub_domain=test&protocol=http&address=google.com&method=302
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain you want to forward</LI>
+                            <LI><B>sub_domain:</B> The sub-domain you want to forward</LI>
+                            <LI><B>protocol:</B> The URL protocol to use (options are "http" or "https")</LI>
+                            <LI><B>address:</B> The web site address to forward to</LI>
+                            <LI><B>method:</B> The forwarding method to utilize (options are "301", "302" or "cloaked").
+                                You can read more about these options <A HREF="/Support/Domain-Forwarding">here</A>.
+                        </UL>
+                    </LI>
+                    <LI><B>Optional (only used when selecting "cloaked" as the method and all values must be
+                            encoded)</B>
+                        <UL>
+                            <LI><B>meta_title:</B> The META title for your cloaked forward</LI>
+                            <LI><B>meta_description:</B> The META description for your cloaked forward</LI>
+                            <LI><B>meta_keywords:</B> The META keywords for your cloaked forward</LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;domainForwardSubDomain&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;The sub-domain has been successfully (created OR modified)&lt;/message&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="domainForwardSubDomainDelete"></A>
+                <H3>Delete a Sub-Domain Forward</H3>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/domainForwardSubDomainDelete?version=1&type=xml&key=12345&domain=namesilo.com&sub_domain=test
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The main domain</LI>
+                            <LI><B>sub_domain:</B> The sub-domain you want to delete</LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;domainForwardSubDomainDelete&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="domainLock"></A>
+                <H3>Lock a Domain</H3>
+
+                <P>
+
+                    Set the specified domain to be locked.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/domainLock?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to lock</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;domainLock&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;252&lt;/code&gt;
+            &lt;detail&gt;Domain is already Locked - No update made.&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="domainUnlock"></A>
+                <H3>Unlock a Domain</H3>
+
+                <P>
+
+                    Set the specified domain to be unlocked.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/domainUnlock?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to unlock</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;domainUnlock&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;253&lt;/code&gt;
+            &lt;detail&gt;Domain is already Unlocked - No update made.&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+                <P><BR>
+
+                    <A NAME="listEmailForwards"></A>
+                <H3>View the email forwards for your domain</H3>
+
+                <P>
+
+                    List of all email forwards for your domain
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/listEmailForwards?version=1&type=xml&key=12345&domain=namesilo.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain to view</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;listEmailForwards&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;addresses&gt;
+                &lt;email&gt;test@namesilo.com&lt;/email&gt;
+                &lt;forwards_to&gt;test@test.com&lt;/forwards_to&gt;
+                &lt;forwards_to&gt;test2@test.com&lt;/forwards_to&gt;
+            &lt;/addresses&gt;
+            &lt;addresses&gt;
+                &lt;email&gt;testing@namesilo.com&lt;/email&gt;
+                &lt;forwards_to&gt;test@test.com&lt;/forwards_to&gt;
+            &lt;/addresses&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="configureEmailForward"></A>
+                <H3>Add or modify an email forward for your domain</H3>
+
+                <P>
+
+                    Either create a new email forward or modify an existing email forward.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/configureEmailForward?version=1&type=xml&key=12345&domain=namesilo.com&email=test&forward1=test@test.com&forward2=test2@test.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain related to the email address addition or modification</LI>
+                            <LI><B>email:</B> The email forward to create/modify. For example, if you wanted to
+                                create/modify test@namesilo.com, you would use "test". You can use "*" too create/modify
+                                a catch-all address.
+                            </LI>
+                            <LI><B>forward1:</B> The first email address to forward email. For example, in the sample
+                                request above, test@namesilo.com would be set to forward to test@test.com.
+                            </LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>forward2-5:</B> Up to 4 additional addresses to forward email. For example, in the
+                                sample request above, in addition to forwarding test@namesilo.com to the value for
+                                "forward1", email would also forward to test2@test.com.
+                            </LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;configureEmailForward&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;test@namesilo.com has been successfully ("created" or "changed") &lt;/message&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="deleteEmailForward"></A>
+                <H3>Delete an email forward for your domain</H3>
+
+                <P>
+
+                    Delete an email forward.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/deleteEmailForward?version=1&type=xml&key=12345&domain=namesilo.com&email=test
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>domain:</B> The domain related to the email address to delete</LI>
+                    <LI><B>email:</B> The forward to delete. For example, to delete test@namesilo.com, you would use
+                        "test"
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;deleteEmailForward&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;test@namesilo.com has been deleted&lt;/message&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="registrantVerificationStatus"></A>
+                <H3>View the verification status of any Registrant email addresses</H3>
+
+                <P>
+
+                    Shows the verification status for any Registrant email addresses.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/registrantVerificationStatus?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;registrantVerificationStatus&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;email&gt;
+                &lt;email_address&gt;test@sample.com&lt;/email_address&gt;
+                &lt;domains&gt;32&lt;/domains&gt;
+                &lt;verified&gt;Yes&lt;/verified&gt;
+            &lt;/email&gt;
+            &lt;email&gt;
+                &lt;email_address&gt;anothertest@sample.com&lt;/email_address&gt;
+                &lt;domains&gt;12&lt;/domains&gt;
+                &lt;verified&gt;No&lt;/verified&gt;
+            &lt;/email&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="emailVerification"></A>
+                <H3>Verify a Registrant email address</H3>
+
+                <P>
+
+                    Send an email verification message to a domain Registrant per ICANN requirements.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/emailVerification?version=1&type=xml&key=12345&email=test@example.com
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>email:</B> The email address to verify</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;emailVerification&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;The verification email has been sent&lt;/message&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="getAccountBalance"></A>
+                <H3>View NameSilo Account Funds Balance</H3>
+
+                <P>
+
+                    View your current account funds balance.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/getAccountBalance?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;getAccountBalance&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;balance&gt;355.75&lt;/balance&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="addAccountFunds"></A>
+                <H3>Add NameSilo Account Funds</H3>
+
+                <P>
+
+                    Increase your NameSilo account funds balance.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/addAccountFunds?version=1&type=xml&key=12345&amount=65.43&payment_id=123
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>amount:</B> The amount in US Dollars to add to your NameSilo account funds</LI>
+                    <LI><B>payment_id:</B> The ID number for the <U>verified</U> credit card to use for the transaction.
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;addAccountFunds&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;new_balance&gt;420.61&lt;/new_balance&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="marketplaceActiveSalesOverview"></A>
+                <H3>View all of your active Marketplace sales</H3>
+
+                <P>
+
+                    A list and associated details for all active Marketplace sales in your account.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/marketplaceActiveSalesOverview?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;marketplaceActiveSalesOverview&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;sale_details&gt;
+                &lt;domain&gt;example.com&lt;/domain&gt;
+                &lt;status&gt;active&lt;/status&gt;
+                &lt;reserve&gt;0.00&lt;/reserve&gt;
+                &lt;buy_now&gt;0.00&lt;/buy_now&gt;
+                &lt;portfolio&gt;none&lt;/portfolio&gt;
+                &lt;sale_type&gt;Offer/Counter&lt;/sale_type&gt;
+                &lt;pay_plan_offered&gt;No&lt;/pay_plan_offered&gt;
+                &lt;end_date&gt;2018-12-24 00:00:00&lt;/end_date&gt;
+                &lt;auto_extend_days&gt;0&lt;/auto_extend_days&gt;
+                &lt;time_remaining&gt;1 year&lt;/time_remaining&gt;
+                &lt;private&gt;No&lt;/private&gt;
+                &lt;active_bid_or_offer&gt;no&lt;/active_bid_or_offer&gt;
+            &lt;/sale_details&gt;
+            &lt;sale_details&gt;
+                &lt;domain&gt;example2.com&lt;/domain&gt;
+                &lt;status&gt;awaiting payment&lt;/status&gt;
+                &lt;reserve&gt;25.00 (hidden)&lt;/reserve&gt;
+                &lt;buy_now&gt;150.00&lt;/buy_now&gt;
+                &lt;portfolio&gt;For Sale Domains&lt;/portfolio&gt;
+                &lt;sale_type&gt;Auction&lt;/sale_type&gt;
+                &lt;pay_plan_offered&gt;Yes&lt;/pay_plan_offered&gt;
+                &lt;end_date&gt;2018-11-21 21:21:21&lt;/end_date&gt;
+                &lt;auto_extend_days&gt;15&lt;/auto_extend_days&gt;
+                &lt;time_remaining&gt;13 days&lt;/time_remaining&gt;
+                &lt;private&gt;Yes&lt;/private&gt;
+                &lt;active_bid_or_offer&gt;yes&lt;/active_bid_or_offer&gt;
+            &lt;/sale_details&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="marketplaceAddOrModifySale"></A>
+                <H3>Allows you to add a new Marketplace sale or modify and existing sale</H3>
+
+                <P>
+
+                    Either create a new Marketplace sale or modify an existing sale.
+
+                <div class="information_message">
+                    Please remember that use of our API assumes that you agree to all of our terms and conditions,
+                    including our
+                    Marketplace terms and conditions.
+                </div>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/marketplaceAddOrModifySale?version=1&type=xml&key=12345&domain=example.com&action=add&sale_type=auction&reserve=250.00&buy_now=750.00&payment_plan_offered=1
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                    If you need more information on any of these fields, we recommend going into your account and
+                    selecting to add a domain
+                    for sale. The subsequent page will have a more detailed description of each field.
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain to add or modify</LI>
+                            <LI><B>action:</B> Must be "add" or "modify"</LI>
+                            <LI><B>sale_type:</B> Must be either "offer_counter_offer" or "auction"
+                                <small>(only required when adding)</small>
+                            </LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>reserve:</B> The reserve price for the sale</LI>
+                            <LI><B>show_reserve:</B> Whether or not to show the reserve price ("1" for yes, "0" or not
+                                passed for no)
+                            </LI>
+                            <LI><B>allow_bids_under_reserve:</B> Whether or not to allow bids for Auctions under the
+                                reserve price ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>buy_now:</B> The buy now (BIN) price for the sale</LI>
+                            <LI><B>payment_plan_offered:</B> Whether or not to offer a payment plan to the Buyer ("1"
+                                for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>payment_plan_months:</B> The maximum number of months for the payment plan (Any
+                                number between 1-12)
+                            </LI>
+                            <LI><B>payment_plan_down_payment:</B> The minimum required down payment for the payment plan
+                            </LI>
+                            <LI><B>end_date:</B> The date/time for the sale to end (must be in YYYY-MM-DD HH:MM:SS
+                                format)
+                            </LI>
+                            <LI><B>end_date_use_maximum:</B> Whether or not to have our system apply the maximum
+                                possible end date/time ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>notify_buyers:</B> When adding, pass to notify any Buyers who had previously bid or
+                                offered to buy the domain ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>category1:</B> The ID of the category to add the sale to in our Marketplace ( <A
+                                        HREF="/popups/mp_cats.php" REL="shadowbox;height=420;width=575"
+                                        TITLE="Marketplace Categories">category IDs</A> )
+                            </LI>
+                            <LI><B>description:</B> A url-encoded description to be used on the bid/offer page for your
+                                sale
+                            </LI>
+                            <LI><B>use_for_sale_landing_page:</B> When adding, whether or not to use a "For Sale"
+                                landing page ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>mp_use_our_nameservers:</B> When adding and selecting to use a landing page, whether
+                                or not to update the domain to use our name servers ("1" for yes, "0" or not passed for
+                                no)
+                            </LI>
+                            <LI><B>password:</B> the passowrd to use if you want to password-protect your sale</LI>
+                            <LI><B>cancel_sale:</B> Pass "1" if you want to cancel your sale</LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;marketplaceAddOrModifySale&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;message&gt;Your selected domains have been added to our marketplace!&lt;/message&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="marketplaceLandingPageUpdate"></A>
+                <H3>Allows you to update the appearance of your Marketplace Landing Page</H3>
+
+                <P>
+
+                    Configure the display options for your Marketplace Landing Page.
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/marketplaceLandingPageUpdate?version=1&type=xml&key=12345&domain=example.com&mp_template=2&mp_bgcolor=000000
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                    If you need more information on any of these fields, we recommend going into your account and
+                    selecting to modify one of
+                    your landing pages. The subsequent page will have a more detailed description of each field.
+
+                <UL>
+                    <LI><B>Required</B>
+                        <UL>
+                            <LI><B>domain:</B> The domain landing page to update</LI>
+                        </UL>
+                    </LI>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>mp_template:</B>
+                                <ul>
+                                    <li>Enter "1" for <a href="/images/landing_page_template_6.jpg" rel="shadowbox;">Template
+                                            1</a></li>
+                                    <li>Enter "2" for <a href="/images/landing_page_template_5.jpg" rel="shadowbox;">Template
+                                            2</a></li>
+                                    <li>Enter "3" for <a href="/images/landing_page_template_7.jpg" rel="shadowbox;">Template
+                                            3</a></li>
+                                    <li>Enter "4" for <a href="/images/landing_page_template_8.jpg" rel="shadowbox;">Template
+                                            4</a></li>
+                                    <li>Enter "5" for <a href="/images/landing_page_template_9.jpg" rel="shadowbox;">Template
+                                            5</a></li>
+                                </ul>
+                            </LI>
+                            <LI><B>mp_bgcolor:</B> The hexadecimal value of the color to use for the background color of
+                                the landing page (only applies to Template 2 currently)
+                            </LI>
+                            <LI><B>mp_textcolor:</B> The hexadecimal value of the color to use for the font color of the
+                                landing page (only applies to Templates 2 or 3 currently)
+                            </LI>
+                            <LI><B>mp_show_buy_now:</B> Whether or not include a "Buy Now" button if your sale has a Buy
+                                It Now price ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>mp_show_more_info:</B> Whether or not to show a "More Info" button linking to your
+                                sale ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>mp_show_renewal_price:</B> Whether or not to display the annual renewal price for the
+                                domain ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>mp_show_other_for_sale:</B> Whether or not to display other domains you have listed
+                                for sale in our Marketplace ("1" for yes, "0" or not passed for no)
+                            </LI>
+                            <LI><B>mp_other_domain_links:</B> If you chose to show other domains, select how you would
+                                like to link to those domains ("none" for no link, "domain" to link to the URL for the
+                                domain, "sale_page" to link to the NameSilo Marketplace sale page for the domain)
+                            </LI>
+                            <LI><B>mp_message:</B> A url-encoded description to be used on the landing page</LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;marketplaceLandingPageUpdate&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="getPrices"></A>
+                <H3>Return our price list</H3>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/getPrices?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>Optional</B>
+                        <UL>
+                            <LI><B>retail_prices:</B> If passed, the prices returned will be our retail prices and will
+                                not include Discount Program discounts applied to your account if you are enrolled in
+                                the Discount Program
+                            </LI>
+                            <LI><B>registration_domains:</B> The price based upon this number of domains being
+                                registered
+                            </LI>
+                        </UL>
+                    </LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;getPrices&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;com&gt;
+                &lt;registration&gt;8.99&lt;/registration&gt;
+                &lt;transfer&gt;8.39&lt;/transfer&gt;
+                &lt;renew&gt;8.99&lt;/renew&gt;
+            &lt;/com&gt;
+            &lt;net&gt;
+                &lt;registration&gt;9.29&lt;/registration&gt;
+                &lt;transfer&gt;8.99&lt;/transfer&gt;
+                &lt;renew&gt;9.29&lt;/renew&gt;
+            &lt;/net&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="listOrders"></A>
+                <H3>Returns Complete Account Order History</H3>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/listOrders?version=1&type=xml&key=12345
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;listOrders&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;order&gt;
+                &lt;order_number&gt;77777&lt;/order_number&gt;
+                &lt;order_date&gt;2016-12-24 12:12:12&lt;/order_date&gt;
+                &lt;method&gt;Bitcoin&lt;/method&gt;
+                &lt;total&gt;26.97&lt;/total&gt;
+            &lt;/order&gt;
+            &lt;order&gt;
+                &lt;order_number&gt;888888&lt;/order_number&gt;
+                &lt;order_date&gt;2016-12-24 13:14:15&lt;/order_date&gt;
+                &lt;method&gt;PayPal&lt;/method&gt;
+                &lt;total&gt;8.99&lt;/total&gt;
+            &lt;/order&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+                <P><BR>
+
+                    <A NAME="orderDetails"></A>
+                <H3>View Details For Provided Order Number</H3>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Sample Request</SPAN>
+
+                <P>
+
+                <DIV CLASS="apiRequestExamples">
+                    https://www.namesilo.com/api/orderDetails?version=1&type=xml&key=12345&order_number=77777
+                </DIV>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Request Parameters</SPAN>
+
+                <UL>
+                    <LI><B>order_number:</B> The order number to view</LI>
+                </UL>
+
+                <P>
+
+                    <SPAN CLASS="highlight">Response</SPAN>
+
+                <P>
+
+                <pre class="brush: xml; toolbar:false;">
+    &lt;namesilo&gt;
+        &lt;request&gt;
+            &lt;operation&gt;orderDetails&lt;/operation&gt;
+            &lt;ip&gt;55.555.55.55&lt;/ip&gt;
+        &lt;/request&gt;
+        &lt;reply&gt;
+            &lt;code&gt;300&lt;/code&gt;
+            &lt;detail&gt;success&lt;/detail&gt;
+            &lt;order_date&gt;2016-12-24 12:12:12&lt;/order_date&gt;
+            &lt;method&gt;Bitcoin&lt;/method&gt;
+            &lt;total&gt;26.97&lt;/total&gt;
+            &lt;order_details&gt;
+                &lt;description&gt;testdomain.com - registration&lt;/description&gt;
+                &lt;years_qty&gt;2&lt;/years_qty&gt;
+                &lt;price&gt;8.99&lt;/price&gt;
+                &lt;subtotal&gt;17.98&lt;/subtotal&gt;
+                &lt;status&gt;Processed&lt;/status&gt;
+            &lt;/order_details&gt;
+            &lt;order_details&gt;
+                &lt;description&gt;testdomain2.com - renewal&lt;/description&gt;
+                &lt;years_qty&gt;1&lt;/years_qty&gt;
+                &lt;price&gt;8.99&lt;/price&gt;
+                &lt;subtotal&gt;8.99&lt;/subtotal&gt;
+                &lt;status&gt;Credited&lt;/status&gt;
+                &lt;credited_date&gt;2016-12-25 09:09:09&lt;/credited_date&gt;
+                &lt;credited_amount&gt;8.99&lt;/credited_amount&gt;
+            &lt;/order_details&gt;
+        &lt;/reply&gt;
+    &lt;/namesilo&gt;
+    </pre>
+
+
+            </DIV>
+
+            <DIV ID="innerContentContainerRight">
+
+
+                <DIV ID="widgetBox">
+
+                    <DIV CLASS="top"></DIV>
+
+                    <DIV ID="content">
+
+                        <DIV CLASS="header"><IMG SRC="/images/widget_why_choose_namesilo.gif"></DIV>
+
+                        <UL ID="sections">
+
+                            <LI>
+                                <A HREF="javascript:;" ID="awidgetCheap" onClick="widgetToggle('widgetCheap');">
+
+                                    <IMG SRC="/images/home_features_cheap.png" STYLE="padding:5px 0 0 0;">
+                                    <DIV>cheap</DIV>
+
+                                </A>
+
+                                <DIV ID="widgetCheap" CLASS="widgetDescription">
+
+                                    <DIV CLASS="header">Find the cheapest domains on the web with NameSilo!</DIV>
+
+                                    <DIV CLASS="subheader">No hidden fees. No upsells. No bait and switch... Just cheap
+                                        domains!
+                                    </DIV>
+
+                                    <DIV CLASS="bodyText">You don't have to qualify by ordering other services, placing
+                                        minimum orders, or worry about fees getting tacked on before purchase. The price
+                                        you see is the price you pay!
+                                    </DIV>
+
+                                    <A HREF="/pricing.php" STYLE="background:none;"><IMG
+                                                SRC="/images/button_blue_get_details.gif" STYLE="float:none;"></A>
+
+                                </DIV>
+                            </LI>
+
+                            <LI>
+                                <A HREF="javascript:;" ID="awidgetEasy" onClick="widgetToggle('widgetEasy');">
+
+                                    <IMG SRC="/images/home_features_easy.png" STYLE="padding:0 12px 0 0;">
+                                    <DIV>easy</DIV>
+
+                                </A>
+
+                                <DIV ID="widgetEasy" CLASS="widgetDescription">
+
+                                    <DIV CLASS="header">Just want to get your domain and get on with life?</DIV>
+
+                                    <DIV CLASS="subheader">At NameSilo, we believe registering and renewing should be
+                                        <EM>fast...</EM></DIV>
+
+                                    <DIV CLASS="bodyText">We will never bombard you with offers for services you don't
+                                        want and are already getting elsewhere. Just select your domain names, fill out
+                                        a 1-page form, and get on with your life!
+                                    </DIV>
+
+                                    <A HREF="/why_us.php" STYLE="background:none;"><IMG
+                                                SRC="/images/button_blue_get_details.gif" STYLE="float:none;"></A>
+
+                                </DIV>
+                            </LI>
+
+                            <LI>
+                                <A HREF="javascript:;" ID="awidgetSecure" onClick="widgetToggle('widgetSecure');">
+
+                                    <IMG SRC="/images/home_features_secure.png" STYLE="padding:0 15px 0 0;">
+                                    <DIV>secure</DIV>
+
+                                </A>
+
+                                <DIV ID="widgetSecure" CLASS="widgetDescription">
+
+                                    <DIV CLASS="header">Secure your domain name assets and get peace of mind with Domain
+                                        Defender
+                                    </DIV>
+
+                                    <DIV CLASS="subheader">Don't be another victim of malicious domain name attacks and
+                                        changes!
+                                    </DIV>
+
+                                    <DIV CLASS="bodyText">Unauthorized changes to your domain names could result in
+                                        serious damage to your business. Prevent simple mistakes and keep hackers from
+                                        compromising your valuable assets.
+                                    </DIV>
+
+                                    <A HREF="/Support/Domain-Defender" STYLE="background:none;"><IMG
+                                                SRC="/images/button_blue_get_details.gif" STYLE="float:none;"></A>
+
+                                </DIV>
+                            </LI>
+
+                            <LI>
+                                <A HREF="javascript:;" ID="awidgetTools" onClick="widgetToggle('widgetTools');">
+
+                                    <IMG SRC="/images/home_features_tools.png" STYLE="padding:0 10px 0 0;">
+                                    <DIV>tools</DIV>
+
+                                </A>
+
+                                <DIV ID="widgetTools" CLASS="widgetDescription">
+
+                                    <DIV CLASS="header">Who said "cheaper" meant sacrificing quality?</DIV>
+
+                                    <DIV CLASS="subheader">We put powerful tools in your hands to manage your domains.
+                                    </DIV>
+
+                                    <DIV CLASS="bodyText">Take advantage of our best-in-class domain management tools.
+                                        Easily categorize, locate and modify your domain settings one-by-one or in bulk.
+                                        We also offer a secure API for common domain management tasks.
+                                    </DIV>
+
+                                    <A HREF="/domain_tools.php" STYLE="background:none;"><IMG
+                                                SRC="/images/button_blue_get_details.gif" STYLE="float:none;"></A>
+
+                                </DIV>
+                            </LI>
+
+                        </UL>
+
+                    </DIV>
+
+                    <DIV CLASS="bottom"></DIV>
+
+                </DIV>
+
+                <DIV STYLE="margin:20px 0;">
+                    <A HREF="/help.php" ID="liveChatButton"></A>
+                </DIV>
+
+                <DIV STYLE="margin:20px 0;">
+                    <A HREF="/popups/videos/namesilo_vid1.php"
+                       onClick="NewWindow(this.href,'name','485','285','yes');return false;"><IMG
+                                SRC="/images/right_video_button.jpg"></A>
+                </DIV>
+
+                <DIV STYLE="margin:15px auto;text-align:center;">
+                    <IMG SRC="/images/no_hidden_fees.gif">
+                </DIV>
+
+            </DIV>
+
+            <DIV CLASS="clear"></DIV>
+
+        </DIV>
+
+        <DIV CLASS="clear"></DIV>
+
+    </DIV>
+
+    <DIV ID="outerContainerBottom"></DIV>
+
+</DIV>
+
+<DIV ID="footer">
+
+    <DIV ID="footerContent">
+
+        <DIV CLASS="left">
+
+            <A HREF="/index.php" STYLE="padding-left:0;">Home</A> |
+            <A HREF="https://new.namesilo.com/domain-search?beta=1">Register</A> |
+            <A HREF="/transfer.php">Transfer</A> |
+            <A HREF="/pricing.php">Pricing</A> |
+            <A HREF="/Support">Support</A> |
+
+            <A HREF="/login.php">Log In</A> |
+
+            <A HREF="/contact_us.php">Contact Us</A>
+
+
+            | <A HREF="/whois.php">WHOIS</A>
+
+
+            <P>
+
+            <DIV CLASS="copyright">
+                &copy; 2009 - 2019 NameSilo, LLC
+                <BR>
+                All Rights Reserved
+            </DIV>
+
+            <DIV CLASS="paymentOptions">
+                <IMG SRC="/images/payment_options_bottom_alp.gif"
+                     alt="We accept Visa, Amex, Discover, Mastercard, PayPal, Bitcoin, Dwolla, and Skrill and AliPay">
+            </DIV>
+
+            <DIV CLASS="clear"></DIV>
+
+        </DIV>
+
+        <DIV CLASS="middle">
+
+            <DIV CLASS="twitter">
+                <A HREF="https://twitter.com/namesilo" ID="twitterLink" TARGET="_blank"
+                   TITLE="Follow NameSilo on Twitter">Follow us on Twitter</A>
+            </DIV>
+
+            <DIV CLASS="facebook">
+                <A HREF="http://www.facebook.com/namesilo" ID="facebookLink" TARGET="_blank"
+                   TITLE="Like NameSilo on Facebook">Like us on Facebook</A>
+            </DIV>
+
+            <DIV CLASS="clear"></DIV>
+
+        </DIV>
+
+        <DIV CLASS="right">
+
+            <IMG SRC="/images/icann_logo_new.gif" TITLE="NameSilo is proud to be an ICANN-accredited registrar">
+
+        </DIV>
+
+        <DIV CLASS="clear"></DIV>
+
+    </DIV>
+
+</DIV>
+
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-19852558-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+</BODY>
+</HTML>
