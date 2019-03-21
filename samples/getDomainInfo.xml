@@ -1,0 +1,32 @@
+    <namesilo>
+        <request>
+            <operation>getDomainInfo</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <created>2009-01-11</created>
+            <expires>2017-01-11</expires>
+            <status>Active</status>
+            <locked>Yes</locked>
+            <private>Yes</private>
+            <auto_renew>Yes</auto_renew>
+            <traffic_type>Forwarded</traffic_type>
+            <email_verification_required>No</email_verification_required>
+            <portfolio>Main Portfolio</portfolio>
+            <forward_url>https://www.namesilo.net</forward_url>
+            <forward_type>Temporary Forward (302)</forward_type>
+            <nameservers>
+                <nameserver position="1">NS1.NAMESILO.COM</nameserver>
+                <nameserver position="2">NS2.NAMESILO.COM</nameserver>
+            </nameservers>
+            <contact_ids>
+                <registrant>444444</registrant>
+                <administrative>555555</administrative>
+                <technical>666666</technical>
+                <billing>7777777</billing>
+            </contact_ids>
+        </reply>
+    </namesilo>
+    

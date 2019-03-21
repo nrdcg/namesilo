@@ -1,0 +1,12 @@
+    <namesilo>
+        <request>
+            <operation>contactAdd</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <contact_id>55555</contact_id>
+        </reply>
+    </namesilo>
+    

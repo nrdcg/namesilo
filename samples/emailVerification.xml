@@ -1,0 +1,12 @@
+    <namesilo>
+        <request>
+            <operation>emailVerification</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <message>The verification email has been sent</message>
+        </reply>
+    </namesilo>
+    

@@ -1,0 +1,30 @@
+    <namesilo>
+        <request>
+            <operation>orderDetails</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+            <order_date>2016-12-24 12:12:12</order_date>
+            <method>Bitcoin</method>
+            <total>26.97</total>
+            <order_details>
+                <description>testdomain.com - registration</description>
+                <years_qty>2</years_qty>
+                <price>8.99</price>
+                <subtotal>17.98</subtotal>
+                <status>Processed</status>
+            </order_details>
+            <order_details>
+                <description>testdomain2.com - renewal</description>
+                <years_qty>1</years_qty>
+                <price>8.99</price>
+                <subtotal>8.99</subtotal>
+                <status>Credited</status>
+                <credited_date>2016-12-25 09:09:09</credited_date>
+                <credited_amount>8.99</credited_amount>
+            </order_details>
+        </reply>
+    </namesilo>
+    

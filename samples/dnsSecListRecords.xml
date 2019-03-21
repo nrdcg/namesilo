@@ -1,0 +1,23 @@
+    <namesilo>
+        <request>
+            <operation>dnsSecListRecords</operation>
+            <ip>55.555.55.55</ip>
+        </request>
+        <reply>
+            <code>300</code>
+            <detail>success</detail>
+           <ds_record>
+                <digest>123456789ABCDEFGHIJ</digest>
+                <digest_type>1</digest_type>
+                <algorithm>5</algorithm>
+                <key_tag>1234</key_tag>
+            </ds_record>
+            <ds_record>
+                <digest>123456789ABCDEFGHIJ</digest>
+                <digest_type>2</digest_type>
+                <algorithm>3</algorithm>
+                <key_tag>9876</key_tag>
+            </ds_record>
+        </reply>
+    </namesilo>
+    
