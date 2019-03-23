@@ -45,7 +45,6 @@ func (c *Client) get(name string, params interface{}) (*http.Response, error) {
 		uri.RawQuery = v.Encode()
 
 	}
-	fmt.Println(uri.RawQuery)
 
 	return c.HTTPClient.Get(uri.String())
 }

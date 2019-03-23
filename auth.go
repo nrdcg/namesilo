@@ -40,7 +40,6 @@ func (t *TokenTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 		req.URL.RawQuery = query.Encode()
 	}
 
-	fmt.Println(req.URL.RawQuery)
 	return t.transport().RoundTrip(enrichedReq)
 }
 
