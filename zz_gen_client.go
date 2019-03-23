@@ -24,6 +24,7 @@ func (c *Client) AddAccountFunds(params *AddAccountFundsParams) (*AddAccountFund
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -58,6 +59,7 @@ func (c *Client) AddAutoRenewal(params *AddAutoRenewalParams) (*AddAutoRenewal, 
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -92,6 +94,7 @@ func (c *Client) AddPrivacy(params *AddPrivacyParams) (*AddPrivacy, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -126,6 +129,7 @@ func (c *Client) AddRegisteredNameServer(params *AddRegisteredNameServerParams) 
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -160,6 +164,7 @@ func (c *Client) ChangeNameServers(params *ChangeNameServersParams) (*ChangeName
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -194,6 +199,7 @@ func (c *Client) CheckRegisterAvailability(params *CheckRegisterAvailabilityPara
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -228,6 +234,7 @@ func (c *Client) CheckTransferAvailability(params *CheckTransferAvailabilityPara
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -262,6 +269,7 @@ func (c *Client) CheckTransferStatus(params *CheckTransferStatusParams) (*CheckT
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -296,6 +304,7 @@ func (c *Client) ConfigureEmailForward(params *ConfigureEmailForwardParams) (*Co
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -330,6 +339,7 @@ func (c *Client) ContactAdd(params *ContactAddParams) (*ContactAdd, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -364,6 +374,7 @@ func (c *Client) ContactDelete(params *ContactDeleteParams) (*ContactDelete, err
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -398,6 +409,7 @@ func (c *Client) ContactDomainAssociate(params *ContactDomainAssociateParams) (*
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -432,6 +444,7 @@ func (c *Client) ContactList(params *ContactListParams) (*ContactList, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -466,6 +479,7 @@ func (c *Client) ContactUpdate(params *ContactUpdateParams) (*ContactUpdate, err
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -500,6 +514,7 @@ func (c *Client) DeleteEmailForward(params *DeleteEmailForwardParams) (*DeleteEm
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -534,6 +549,7 @@ func (c *Client) DeleteRegisteredNameServer(params *DeleteRegisteredNameServerPa
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -568,6 +584,7 @@ func (c *Client) DnsAddRecord(params *DnsAddRecordParams) (*DnsAddRecord, error)
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -602,6 +619,7 @@ func (c *Client) DnsDeleteRecord(params *DnsDeleteRecordParams) (*DnsDeleteRecor
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -636,6 +654,7 @@ func (c *Client) DnsListRecords(params *DnsListRecordsParams) (*DnsListRecords, 
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -670,6 +689,7 @@ func (c *Client) DnsSecAddRecord(params *DnsSecAddRecordParams) (*DnsSecAddRecor
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -704,6 +724,7 @@ func (c *Client) DnsSecDeleteRecord(params *DnsSecDeleteRecordParams) (*DnsSecDe
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -738,6 +759,7 @@ func (c *Client) DnsSecListRecords(params *DnsSecListRecordsParams) (*DnsSecList
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -772,6 +794,7 @@ func (c *Client) DnsUpdateRecord(params *DnsUpdateRecordParams) (*DnsUpdateRecor
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -806,6 +829,7 @@ func (c *Client) DomainForward(params *DomainForwardParams) (*DomainForward, err
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -840,6 +864,7 @@ func (c *Client) DomainForwardSubDomain(params *DomainForwardSubDomainParams) (*
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -874,6 +899,7 @@ func (c *Client) DomainForwardSubDomainDelete(params *DomainForwardSubDomainDele
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -908,6 +934,7 @@ func (c *Client) DomainLock(params *DomainLockParams) (*DomainLock, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -942,6 +969,7 @@ func (c *Client) DomainUnlock(params *DomainUnlockParams) (*DomainUnlock, error)
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -976,6 +1004,7 @@ func (c *Client) EmailVerification(params *EmailVerificationParams) (*EmailVerif
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1010,6 +1039,7 @@ func (c *Client) GetAccountBalance(params *GetAccountBalanceParams) (*GetAccount
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1079,6 +1109,7 @@ func (c *Client) GetPrices(params *GetPricesParams) (*GetPrices, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1113,6 +1144,7 @@ func (c *Client) ListDomains(params *ListDomainsParams) (*ListDomains, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1147,6 +1179,7 @@ func (c *Client) ListEmailForwards(params *ListEmailForwardsParams) (*ListEmailF
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1181,6 +1214,7 @@ func (c *Client) ListOrders(params *ListOrdersParams) (*ListOrders, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1215,6 +1249,7 @@ func (c *Client) ListRegisteredNameServers(params *ListRegisteredNameServersPara
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1249,6 +1284,7 @@ func (c *Client) MarketplaceActiveSalesOverview(params *MarketplaceActiveSalesOv
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1283,6 +1319,7 @@ func (c *Client) MarketplaceAddOrModifySale(params *MarketplaceAddOrModifySalePa
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1317,6 +1354,7 @@ func (c *Client) MarketplaceLandingPageUpdate(params *MarketplaceLandingPageUpda
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1351,6 +1389,7 @@ func (c *Client) ModifyRegisteredNameServer(params *ModifyRegisteredNameServerPa
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1385,6 +1424,7 @@ func (c *Client) OrderDetails(params *OrderDetailsParams) (*OrderDetails, error)
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1419,6 +1459,7 @@ func (c *Client) PortfolioAdd(params *PortfolioAddParams) (*PortfolioAdd, error)
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1453,6 +1494,7 @@ func (c *Client) PortfolioDelete(params *PortfolioDeleteParams) (*PortfolioDelet
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1487,6 +1529,7 @@ func (c *Client) PortfolioDomainAssociate(params *PortfolioDomainAssociateParams
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1521,6 +1564,7 @@ func (c *Client) PortfolioList(params *PortfolioListParams) (*PortfolioList, err
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1555,6 +1599,7 @@ func (c *Client) RegisterDomain(params *RegisterDomainParams) (*RegisterDomain, 
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1589,6 +1634,7 @@ func (c *Client) RegisterDomainDrop(params *RegisterDomainDropParams) (*Register
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1623,6 +1669,7 @@ func (c *Client) RegistrantVerificationStatus(params *RegistrantVerificationStat
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1657,6 +1704,7 @@ func (c *Client) RemoveAutoRenewal(params *RemoveAutoRenewalParams) (*RemoveAuto
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1691,6 +1739,7 @@ func (c *Client) RemovePrivacy(params *RemovePrivacyParams) (*RemovePrivacy, err
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1725,6 +1774,7 @@ func (c *Client) RenewDomain(params *RenewDomainParams) (*RenewDomain, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1759,6 +1809,7 @@ func (c *Client) RetrieveAuthCode(params *RetrieveAuthCodeParams) (*RetrieveAuth
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1793,6 +1844,7 @@ func (c *Client) TransferDomain(params *TransferDomainParams) (*TransferDomain, 
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1827,6 +1879,7 @@ func (c *Client) TransferUpdateChangeEPPCode(params *TransferUpdateChangeEPPCode
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1861,6 +1914,7 @@ func (c *Client) TransferUpdateResendAdminEmail(params *TransferUpdateResendAdmi
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation
@@ -1895,6 +1949,7 @@ func (c *Client) TransferUpdateResubmitToRegistry(params *TransferUpdateResubmit
 	if err != nil {
 		return nil, err
 	}
+
 	switch op.Reply.Code {
 	case SuccessfulAPIOperation:
 		// Successful API operation

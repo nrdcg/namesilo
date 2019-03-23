@@ -22,6 +22,7 @@ check:
 fmt:
 	gofmt -s -l -w $(SRCS)
 
+## Useful to initiate structures
 gen-struct:
 	echo 'package namesilo' > "gen_struct.go";
 	echo '' >> "gen_struct.go";

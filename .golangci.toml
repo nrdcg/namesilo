@@ -51,3 +51,6 @@
   [[issues.exclude-rules]]
     path = "zz_gen_client.go"
     text = "method Dns(.+) should be DNS(.+)"
+  [[issues.exclude-rules]]
+    path = "zz_gen_client_test.go"
+    text = "string `1234` has 56 occurrences, make it a constant"

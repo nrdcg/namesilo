@@ -2,44 +2,39 @@ package gen
 
 import (
 	"bytes"
-	"fmt"
 	"go/format"
 	"io/ioutil"
-	"log"
 	"path/filepath"
 	"strings"
 	"testing"
 	"text/template"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestGenerateClientMethods(t *testing.T) {
 	t.Skip("generator")
 
-	files, err := ioutil.ReadDir("../samples")
-	if err != nil {
-		log.Fatal(err)
-	}
+	clientMethodsTemplate := `package namesilo
 
-	for _, file := range files {
-		if file.Name() == "OPERATION.xml" {
-			continue
-		}
-
-		baseName := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
-
-		fmt.Printf(`
-func (c *Client) %[1]s(params *%[1]sParams) (*%[1]s, error) {
-	resp, err := c.get("%[2]s", params)
+import (
+	"encoding/xml"
+	"fmt"
+	"net/http"
+)
+{{range $key, $value := .Names }}
+func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $value.Upper }}, error) {
+	resp, err := c.get("{{ $value.Lower }}", params)
 	if err != nil {
 		return nil, err
 	}
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %%v", resp.StatusCode)
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &%[1]s{}
+	op := &{{ $value.Upper }}{}
 
 	decoder := xml.NewDecoder(resp.Body)
 	err = decoder.Decode(op)
@@ -59,57 +54,18 @@ func (c *Client) %[1]s(params *%[1]sParams) (*%[1]s, error) {
 		return op, nil
 	default:
 		// error
-		return op, fmt.Errorf("code: %%s, details: %%s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
-`, strings.ToUpper(string(baseName[0]))+baseName[1:], baseName)
-	}
-}
+{{end}}
+`
 
-func TestGenerateModelTest(t *testing.T) {
-	t.Skip("generator")
-
-	files, err := ioutil.ReadDir("../samples")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, file := range files {
-		if file.Name() == "OPERATION.xml" {
-			continue
-		}
-
-		baseName := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
-
-		fmt.Printf(`
-func Test%[1]s(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/%[2]s.xml")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &%[1]s{}
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if fmt.Sprintln(string(indent)) != string(bytes) {
-		t.Logf("Got:\n%%s\n\nWant:\n%%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
-}
-`, strings.ToUpper(string(baseName[0]))+baseName[1:], baseName)
-	}
+	err := generate(clientMethodsTemplate, "zz_gen_client.go")
+	require.NoError(t, err)
 }
 
 func TestGenerateClientTest(t *testing.T) {
-	t.Skip("generator")
+	t.Skip("generator - several exception")
 
 	clientTestsTemplate := `
 package namesilo
@@ -125,7 +81,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-{{range $key, $value := .Names -}}
+{{range $key, $value := .Names }}
 func TestClient_{{ $value.Upper }}(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/{{ $value.Lower }}", func(w http.ResponseWriter, r *http.Request) {
@@ -171,6 +127,68 @@ func TestClient_{{ $value.Upper }}(t *testing.T) {
 {{end}}
 `
 
+	err := generate(clientTestsTemplate, "zz_gen_client_test.go")
+	require.NoError(t, err)
+}
+
+func TestGenerateModelTest(t *testing.T) {
+	t.Skip("generator - one exception")
+
+	modelTestsTemplate := `package namesilo
+
+import (
+	"encoding/xml"
+	"fmt"
+	"io/ioutil"
+	"testing"
+)
+{{range $key, $value := .Names }}
+func Test{{ $value.Upper }}(t *testing.T) {
+	bytes, err := ioutil.ReadFile("./samples/{{ $value.Lower }}.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &{{ $value.Upper }}{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if fmt.Sprintln(string(indent)) != string(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+{{end}}
+`
+
+	err := generate(modelTestsTemplate, "model_test.go")
+	require.NoError(t, err)
+}
+
+func TestGenerateBaseParams(t *testing.T) {
+	t.Skip("generator - only to initiate the structures")
+
+	paramsTemplate := `package namesilo
+
+{{range $key, $value := .Names -}}
+type {{ $value.Upper }}Params struct {
+	// TODO
+}
+{{end}}
+`
+
+	err := generate(paramsTemplate, "zz_gen_params.go")
+	require.NoError(t, err)
+}
+
+func generate(tmpl string, filename string) error {
 	type BaseName struct {
 		Lower string
 		Upper string
@@ -180,7 +198,7 @@ func TestClient_{{ $value.Upper }}(t *testing.T) {
 
 	files, err := ioutil.ReadDir("../samples")
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	for _, file := range files {
@@ -195,51 +213,28 @@ func TestClient_{{ $value.Upper }}(t *testing.T) {
 		})
 	}
 
-	base := template.New("zz_gen_client_test.go")
-	parse, err := base.Parse(clientTestsTemplate)
-
-	b := &bytes.Buffer{}
-
 	data := map[string]interface{}{
 		"Names": baseNames,
 	}
 
+	base := template.New(filename)
+	parse, err := base.Parse(tmpl)
+	if err != nil {
+		return err
+	}
+
+	b := &bytes.Buffer{}
+
 	err = parse.Execute(b, data)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	// gofmt
 	source, err := format.Source(b.Bytes())
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
-	err = ioutil.WriteFile("../zz_gen_client_test.go", source, 0666)
-	if err != nil {
-		log.Fatal(err)
-	}
-}
-
-func TestGenerateBaseParams(t *testing.T) {
-	t.Skip("generator")
-
-	files, err := ioutil.ReadDir("../samples")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, file := range files {
-		if file.Name() == "OPERATION.xml" {
-			continue
-		}
-
-		baseName := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
-
-		fmt.Printf(`type %sParams struct {
-		
-		}
-		
-		`, strings.ToUpper(string(baseName[0]))+baseName[1:])
-	}
+	return ioutil.WriteFile(filepath.Join("..", filename), source, 0666)
 }
