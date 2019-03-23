@@ -8,16 +8,16 @@ clean:
 	rm -rf cover.out
 
 build: clean
-	go build -v .
+	GO111MODULE=on go build -v .
 
 dependencies:
-	dep ensure -v
+	GO111MODULE=on go mod download
 
 test: clean
-	go test -v -cover ./...
+	GO111MODULE=on go test -v -cover ./...
 
 check:
-	golangci-lint run
+	GO111MODULE=on golangci-lint run
 
 fmt:
 	gofmt -s -l -w $(SRCS)

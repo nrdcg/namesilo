@@ -1,3 +1,4 @@
+// Package namesilo A Go client library for accessing the Namesilo API.
 package namesilo
 
 import (
