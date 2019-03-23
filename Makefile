@@ -21,3 +21,12 @@ check:
 
 fmt:
 	gofmt -s -l -w $(SRCS)
+
+gen-struct:
+	echo 'package namesilo' > "gen_struct.go";
+	echo '' >> "gen_struct.go";
+	echo 'import "encoding/xml"' >> "gen_struct.go";
+	echo '' >> "gen_struct.go";
+	for i in $$(ls samples/ -1); do \
+		zek -c -n $${i%.xml} "./samples/$$i" >> "gen_struct.go"; \
+	done
