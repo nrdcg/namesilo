@@ -1,57 +1,56 @@
-    <namesilo>
-        <request>
-            <operation>contactList</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <contact>
-                <contact_id>4444444</contact_id>
-                <default_profile>1</default_profile>
-                <nickname>Test 1</nickname>
-                <company>Springfield Power Plant</company>
-                <first_name>Homer</first_name>
-                <last_name>Simpson</last_name>
-                <address>742 Evergreen Terrace</address>
-                <address2/>
-                <city>Springfield</city>
-                <state>ST</state>
-                <zip>55555</zip>
-                <country>US</country>
-                <email>homer @simpsons.com</email>
-                <phone>999-555-1212</phone>
-                <fax>555-123-4567</fax>
-                <usnc>C21</usnc>
-                <usap>P2</usap>
-                <calf>CCT</calf>
-                <caln>en</caln>
-                <caag>2.0</caag>
-                <cawd>1</cawd>
-            </contact>
-            <contact>
-                <contact_id>5555555</contact_id>
-                <default_profile>0</default_profile>
-                <nickname>Test 2</nickname>
-                <company>NameSilo</company>
-                <first_name>John</first_name>
-                <last_name>Smith</last_name>
-                <address>555 N. 1st Street</address>
-                <address2>Suite 500</address2>
-                <city>Anywhere</city>
-                <state>AZ</state>
-                <zip>12345</zip>
-                <country>US</country>
-                <email>test @test.com</email>
-                <phone>480-555-1212</phone>
-                <fax>888-777-6666</fax>
-                <usnc/>
-                <usap/>
-                <calf/>
-                <caln/>
-                <caag/>
-                <cawd/>
-            </contact>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>contactList</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <contact>
+            <contact_id>4444444</contact_id>
+            <default_profile>1</default_profile>
+            <nickname>Test 1</nickname>
+            <company>Springfield Power Plant</company>
+            <first_name>Homer</first_name>
+            <last_name>Simpson</last_name>
+            <address>742 Evergreen Terrace</address>
+            <address2/>
+            <city>Springfield</city>
+            <state>ST</state>
+            <zip>55555</zip>
+            <country>US</country>
+            <email>homer @simpsons.com</email>
+            <phone>999-555-1212</phone>
+            <fax>555-123-4567</fax>
+            <usnc>C21</usnc>
+            <usap>P2</usap>
+            <calf>CCT</calf>
+            <caln>en</caln>
+            <caag>2.0</caag>
+            <cawd>1</cawd>
+        </contact>
+        <contact>
+            <contact_id>5555555</contact_id>
+            <default_profile>0</default_profile>
+            <nickname>Test 2</nickname>
+            <company>NameSilo</company>
+            <first_name>John</first_name>
+            <last_name>Smith</last_name>
+            <address>555 N. 1st Street</address>
+            <address2>Suite 500</address2>
+            <city>Anywhere</city>
+            <state>AZ</state>
+            <zip>12345</zip>
+            <country>US</country>
+            <email>test @test.com</email>
+            <phone>480-555-1212</phone>
+            <fax>888-777-6666</fax>
+            <usnc/>
+            <usap/>
+            <calf/>
+            <caln/>
+            <caag/>
+            <cawd/>
+        </contact>
+    </reply>
+</namesilo>

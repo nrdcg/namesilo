@@ -1,11 +1,10 @@
-    <namesilo>
-        <request>
-            <operation>removeAutoRenewal</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>251</code>
-            <detail>Domain is already set not to AutoRenew - No update made.</detail>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>removeAutoRenewal</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>251</code>
+        <detail>Domain is already set not to AutoRenew - No update made.</detail>
+    </reply>
+</namesilo>

@@ -1,21 +1,20 @@
-    <namesilo>
-        <request>
-            <operation>getPrices</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <com>
-                <registration>8.99</registration>
-                <transfer>8.39</transfer>
-                <renew>8.99</renew>
-            </com>
-            <net>
-                <registration>9.29</registration>
-                <transfer>8.99</transfer>
-                <renew>9.29</renew>
-            </net>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>getPrices</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <com>
+            <registration>8.99</registration>
+            <transfer>8.39</transfer>
+            <renew>8.99</renew>
+        </com>
+        <net>
+            <registration>9.29</registration>
+            <transfer>8.99</transfer>
+            <renew>9.29</renew>
+        </net>
+    </reply>
+</namesilo>

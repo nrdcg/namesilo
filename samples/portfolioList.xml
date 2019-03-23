@@ -1,15 +1,14 @@
-    <namesilo>
-        <request>
-            <operation>portfolioList</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <portfolios>
-                <name>Personal domains</name>
-                <code>Business domains</code>
-            </portfolios>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>portfolioList</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <portfolios>
+            <name>Personal domains</name>
+            <code>Business domains</code>
+        </portfolios>
+    </reply>
+</namesilo>

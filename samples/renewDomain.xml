@@ -1,14 +1,13 @@
-    <namesilo>
-        <request>
-            <operation>renewDomain</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <message>Your domain renewal was successfully processed.</message>
-            <domain>namesilo.com</domain>
-            <order_amount>7.77</order_amount>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>renewDomain</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <message>Your domain renewal was successfully processed.</message>
+        <domain>namesilo.com</domain>
+        <order_amount>7.77</order_amount>
+    </reply>
+</namesilo>

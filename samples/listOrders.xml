@@ -1,23 +1,22 @@
-    <namesilo>
-        <request>
-            <operation>listOrders</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <order>
-                <order_number>77777</order_number>
-                <order_date>2016-12-24 12:12:12</order_date>
-                <method>Bitcoin</method>
-                <total>26.97</total>
-            </order>
-            <order>
-                <order_number>888888</order_number>
-                <order_date>2016-12-24 13:14:15</order_date>
-                <method>PayPal</method>
-                <total>8.99</total>
-            </order>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>listOrders</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <order>
+            <order_number>77777</order_number>
+            <order_date>2016-12-24 12:12:12</order_date>
+            <method>Bitcoin</method>
+            <total>26.97</total>
+        </order>
+        <order>
+            <order_number>888888</order_number>
+            <order_date>2016-12-24 13:14:15</order_date>
+            <method>PayPal</method>
+            <total>8.99</total>
+        </order>
+    </reply>
+</namesilo>

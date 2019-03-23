@@ -1,14 +1,13 @@
-    <namesilo>
-        <request>
-            <operation>checkTransferStatus</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <date>2010-01-01 12:30:59</date>
-            <status>Pending at Registry</status>
-            <message>Your transfer request has been successfully submitted to the central registry.</message>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>checkTransferStatus</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <date>2010-01-01 12:30:59</date>
+        <status>Pending at Registry</status>
+        <message>Your transfer request has been successfully submitted to the central registry.</message>
+    </reply>
+</namesilo>

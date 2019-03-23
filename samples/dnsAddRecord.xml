@@ -1,12 +1,11 @@
-    <namesilo>
-        <request>
-            <operation>dnsAddRecord</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <record_id>1a2b3c4d5e</record_id>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>dnsAddRecord</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <record_id>1a2b3c4d5e</record_id>
+    </reply>
+</namesilo>

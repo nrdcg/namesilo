@@ -1,21 +1,20 @@
-    <namesilo>
-        <request>
-            <operation>checkRegisterAvailability</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <available>
-                <domain>namesilo.com</domain>
-                <domain>namesilo.org</domain>
-            </available>
-            <unavailable>
-                <domain>namesilo.net</domain>
-            </unavailable>
-            <invalid>
-                <domain>n#mesilo.com</domain>
-            </invalid>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>checkRegisterAvailability</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <available>
+            <domain>namesilo.com</domain>
+            <domain>namesilo.org</domain>
+        </available>
+        <unavailable>
+            <domain>namesilo.net</domain>
+        </unavailable>
+        <invalid>
+            <domain>n#mesilo.com</domain>
+        </invalid>
+    </reply>
+</namesilo>

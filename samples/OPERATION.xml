@@ -1,11 +1,10 @@
-    <namesilo>
-        <request>
-            <operation>OPERATION</operation> 
-            <ip>YOUR IP</ip> 
-        </request>
-        <reply>
-            <code>RESPONSE CODE</code> 
-            <detail>RESPONSE DETAIL</detail>            
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>OPERATION</operation>
+        <ip>YOUR IP</ip>
+    </request>
+    <reply>
+        <code>RESPONSE CODE</code>
+        <detail>RESPONSE DETAIL</detail>
+    </reply>
+</namesilo>

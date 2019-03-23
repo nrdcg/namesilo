@@ -1,20 +1,19 @@
-    <namesilo>
-        <request>
-            <operation>listRegisteredNameServers</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <hosts>
-                <host>ns1</host>
-                <ip>123.456.78.9</ip>
-                <ip>11.22.33.44</ip>
-            </hosts>
-            <hosts>
-                <host>ns2</host>
-                <ip>99.88.77.6</ip>
-            </hosts>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>listRegisteredNameServers</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <hosts>
+            <host>ns1</host>
+            <ip>123.456.78.9</ip>
+            <ip>11.22.33.44</ip>
+        </hosts>
+        <hosts>
+            <host>ns2</host>
+            <ip>99.88.77.6</ip>
+        </hosts>
+    </reply>
+</namesilo>

@@ -1,11 +1,10 @@
-    <namesilo>
-        <request>
-            <operation>retrieveAuthCode</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>Success</detail>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>retrieveAuthCode</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>Success</detail>
+    </reply>
+</namesilo>

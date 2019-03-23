@@ -1,12 +1,11 @@
-    <namesilo>
-        <request>
-            <operation>configureEmailForward</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <message>test@namesilo.com has been successfully ("created" or "changed") </message>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>configureEmailForward</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <message>test@namesilo.com has been successfully ("created" or "changed")</message>
+    </reply>
+</namesilo>

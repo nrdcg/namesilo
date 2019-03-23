@@ -1,12 +1,11 @@
-    <namesilo>
-        <request>
-            <operation>portfolioDomainAssociate</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <message>All supplied domains belonging to your account have been updated.</message>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>portfolioDomainAssociate</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <message>All supplied domains belonging to your account have been updated.</message>
+    </reply>
+</namesilo>

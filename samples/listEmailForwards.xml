@@ -1,20 +1,19 @@
-    <namesilo>
-        <request>
-            <operation>listEmailForwards</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <addresses>
-                <email>test@namesilo.com</email>
-                <forwards_to>test@test.com</forwards_to>
-                <forwards_to>test2@test.com</forwards_to>
-            </addresses>
-            <addresses>
-                <email>testing@namesilo.com</email>
-                <forwards_to>test@test.com</forwards_to>
-            </addresses>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>listEmailForwards</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <addresses>
+            <email>test@namesilo.com</email>
+            <forwards_to>test@test.com</forwards_to>
+            <forwards_to>test2@test.com</forwards_to>
+        </addresses>
+        <addresses>
+            <email>testing@namesilo.com</email>
+            <forwards_to>test@test.com</forwards_to>
+        </addresses>
+    </reply>
+</namesilo>

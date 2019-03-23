@@ -1,12 +1,11 @@
-    <namesilo>
-        <request>
-            <operation>domainForwardSubDomain</operation>
-            <ip>55.555.55.55</ip>
-        </request>
-        <reply>
-            <code>300</code>
-            <detail>success</detail>
-            <message>The sub-domain has been successfully (created OR modified)</message>
-        </reply>
-    </namesilo>
-    
+<namesilo>
+    <request>
+        <operation>domainForwardSubDomain</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <message>The sub-domain has been successfully (created OR modified)</message>
+    </reply>
+</namesilo>
