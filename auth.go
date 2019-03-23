@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// TokenTransport HTTP transport for API authentication
+// TokenTransport HTTP transport for API authentication.
 type TokenTransport struct {
 	apiKey string
 
@@ -14,6 +14,7 @@ type TokenTransport struct {
 	Transport http.RoundTripper
 }
 
+// NewTokenTransport Creates a HTTP transport for API authentication.
 func NewTokenTransport(apiKey string) (*TokenTransport, error) {
 	if apiKey == "" {
 		return nil, fmt.Errorf("credentials missing: API key")

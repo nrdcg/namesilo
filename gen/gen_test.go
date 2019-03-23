@@ -23,6 +23,7 @@ import (
 	"net/http"
 )
 {{range $key, $value := .Names }}
+// {{ $value.Upper }} Execute operation {{ $value.Lower }}. 
 func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $value.Upper }}, error) {
 	resp, err := c.get("{{ $value.Lower }}", params)
 	if err != nil {
@@ -176,8 +177,8 @@ func TestGenerateBaseParams(t *testing.T) {
 	t.Skip("generator - only to initiate the structures")
 
 	paramsTemplate := `package namesilo
-
-{{range $key, $value := .Names -}}
+{{range $key, $value := .Names }}
+// {{ $value.Upper }}Params Parameters for operation {{ $value.Lower }}.
 type {{ $value.Upper }}Params struct {
 	// TODO
 }

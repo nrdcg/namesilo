@@ -18,11 +18,13 @@ const (
 	SuccessfulOrder        = "302"
 )
 
+// Client the Namesilo client.
 type Client struct {
 	Endpoint   string
 	HTTPClient *http.Client
 }
 
+// NewClient Creates a Namesilo client.
 func NewClient(httpClient *http.Client) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
