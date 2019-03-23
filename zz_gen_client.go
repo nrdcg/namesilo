@@ -36,7 +36,7 @@ func (c *Client) AddAccountFunds(params *AddAccountFundsParams) (*AddAccountFund
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -70,7 +70,7 @@ func (c *Client) AddAutoRenewal(params *AddAutoRenewalParams) (*AddAutoRenewal, 
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -104,7 +104,7 @@ func (c *Client) AddPrivacy(params *AddPrivacyParams) (*AddPrivacy, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -138,7 +138,7 @@ func (c *Client) AddRegisteredNameServer(params *AddRegisteredNameServerParams) 
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -172,7 +172,7 @@ func (c *Client) ChangeNameServers(params *ChangeNameServersParams) (*ChangeName
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -206,7 +206,7 @@ func (c *Client) CheckRegisterAvailability(params *CheckRegisterAvailabilityPara
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -240,7 +240,7 @@ func (c *Client) CheckTransferAvailability(params *CheckTransferAvailabilityPara
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -274,7 +274,7 @@ func (c *Client) CheckTransferStatus(params *CheckTransferStatusParams) (*CheckT
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -308,7 +308,7 @@ func (c *Client) ConfigureEmailForward(params *ConfigureEmailForwardParams) (*Co
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -342,7 +342,7 @@ func (c *Client) ContactAdd(params *ContactAddParams) (*ContactAdd, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -376,7 +376,7 @@ func (c *Client) ContactDelete(params *ContactDeleteParams) (*ContactDelete, err
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -410,7 +410,7 @@ func (c *Client) ContactDomainAssociate(params *ContactDomainAssociateParams) (*
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -444,7 +444,7 @@ func (c *Client) ContactList(params *ContactListParams) (*ContactList, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -478,7 +478,7 @@ func (c *Client) ContactUpdate(params *ContactUpdateParams) (*ContactUpdate, err
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -512,7 +512,7 @@ func (c *Client) DeleteEmailForward(params *DeleteEmailForwardParams) (*DeleteEm
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -546,7 +546,7 @@ func (c *Client) DeleteRegisteredNameServer(params *DeleteRegisteredNameServerPa
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -580,7 +580,7 @@ func (c *Client) DnsAddRecord(params *DnsAddRecordParams) (*DnsAddRecord, error)
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -614,7 +614,7 @@ func (c *Client) DnsDeleteRecord(params *DnsDeleteRecordParams) (*DnsDeleteRecor
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -648,7 +648,7 @@ func (c *Client) DnsListRecords(params *DnsListRecordsParams) (*DnsListRecords, 
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -682,7 +682,7 @@ func (c *Client) DnsSecAddRecord(params *DnsSecAddRecordParams) (*DnsSecAddRecor
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -716,7 +716,7 @@ func (c *Client) DnsSecDeleteRecord(params *DnsSecDeleteRecordParams) (*DnsSecDe
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -750,7 +750,7 @@ func (c *Client) DnsSecListRecords(params *DnsSecListRecordsParams) (*DnsSecList
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -784,7 +784,7 @@ func (c *Client) DnsUpdateRecord(params *DnsUpdateRecordParams) (*DnsUpdateRecor
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -818,7 +818,7 @@ func (c *Client) DomainForward(params *DomainForwardParams) (*DomainForward, err
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -852,7 +852,7 @@ func (c *Client) DomainForwardSubDomain(params *DomainForwardSubDomainParams) (*
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -886,7 +886,7 @@ func (c *Client) DomainForwardSubDomainDelete(params *DomainForwardSubDomainDele
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -920,7 +920,7 @@ func (c *Client) DomainLock(params *DomainLockParams) (*DomainLock, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -954,7 +954,7 @@ func (c *Client) DomainUnlock(params *DomainUnlockParams) (*DomainUnlock, error)
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -988,7 +988,7 @@ func (c *Client) EmailVerification(params *EmailVerificationParams) (*EmailVerif
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1022,7 +1022,7 @@ func (c *Client) GetAccountBalance(params *GetAccountBalanceParams) (*GetAccount
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1057,7 +1057,7 @@ func (c *Client) GetDomainInfo(params *GetDomainInfoParams) (*GetDomainInfo, err
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1091,7 +1091,7 @@ func (c *Client) GetPrices(params *GetPricesParams) (*GetPrices, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1125,7 +1125,7 @@ func (c *Client) ListDomains(params *ListDomainsParams) (*ListDomains, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1159,7 +1159,7 @@ func (c *Client) ListEmailForwards(params *ListEmailForwardsParams) (*ListEmailF
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1193,7 +1193,7 @@ func (c *Client) ListOrders(params *ListOrdersParams) (*ListOrders, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1227,7 +1227,7 @@ func (c *Client) ListRegisteredNameServers(params *ListRegisteredNameServersPara
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1261,7 +1261,7 @@ func (c *Client) MarketplaceActiveSalesOverview(params *MarketplaceActiveSalesOv
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1295,7 +1295,7 @@ func (c *Client) MarketplaceAddOrModifySale(params *MarketplaceAddOrModifySalePa
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1329,7 +1329,7 @@ func (c *Client) MarketplaceLandingPageUpdate(params *MarketplaceLandingPageUpda
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1363,7 +1363,7 @@ func (c *Client) ModifyRegisteredNameServer(params *ModifyRegisteredNameServerPa
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1397,7 +1397,7 @@ func (c *Client) OrderDetails(params *OrderDetailsParams) (*OrderDetails, error)
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1431,7 +1431,7 @@ func (c *Client) PortfolioAdd(params *PortfolioAddParams) (*PortfolioAdd, error)
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1465,7 +1465,7 @@ func (c *Client) PortfolioDelete(params *PortfolioDeleteParams) (*PortfolioDelet
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1499,7 +1499,7 @@ func (c *Client) PortfolioDomainAssociate(params *PortfolioDomainAssociateParams
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1533,7 +1533,7 @@ func (c *Client) PortfolioList(params *PortfolioListParams) (*PortfolioList, err
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1567,7 +1567,7 @@ func (c *Client) RegisterDomain(params *RegisterDomainParams) (*RegisterDomain, 
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1601,7 +1601,7 @@ func (c *Client) RegisterDomainDrop(params *RegisterDomainDropParams) (*Register
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1635,7 +1635,7 @@ func (c *Client) RegistrantVerificationStatus(params *RegistrantVerificationStat
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1669,7 +1669,7 @@ func (c *Client) RemoveAutoRenewal(params *RemoveAutoRenewalParams) (*RemoveAuto
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1703,7 +1703,7 @@ func (c *Client) RemovePrivacy(params *RemovePrivacyParams) (*RemovePrivacy, err
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1737,7 +1737,7 @@ func (c *Client) RenewDomain(params *RenewDomainParams) (*RenewDomain, error) {
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1771,7 +1771,7 @@ func (c *Client) RetrieveAuthCode(params *RetrieveAuthCodeParams) (*RetrieveAuth
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1805,7 +1805,7 @@ func (c *Client) TransferDomain(params *TransferDomainParams) (*TransferDomain, 
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1839,7 +1839,7 @@ func (c *Client) TransferUpdateChangeEPPCode(params *TransferUpdateChangeEPPCode
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1873,7 +1873,7 @@ func (c *Client) TransferUpdateResendAdminEmail(params *TransferUpdateResendAdmi
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
 
@@ -1907,6 +1907,6 @@ func (c *Client) TransferUpdateResubmitToRegistry(params *TransferUpdateResubmit
 		return op, nil
 	default:
 		// error
-		return nil, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
 	}
 }
