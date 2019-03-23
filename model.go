@@ -89,6 +89,7 @@ type CheckTransferAvailability struct {
 		} `xml:"available"`
 		Unavailable struct {
 			Domain []struct {
+				Name   string `xml:",chardata"`
 				Reason string `xml:"reason,attr"`
 			} `xml:"domain"`
 		} `xml:"unavailable"`
@@ -360,6 +361,7 @@ type GetDomainInfo struct {
 		ForwardType               string `xml:"forward_type"`
 		Nameservers               struct {
 			Nameserver []struct {
+				Name     string `xml:",chardata"`
 				Position string `xml:"position,attr"`
 			} `xml:"nameserver"`
 		} `xml:"nameservers"`
@@ -514,8 +516,8 @@ type OrderDetails struct {
 			Price          string `xml:"price"`
 			Subtotal       string `xml:"subtotal"`
 			Status         string `xml:"status"`
-			CreditedDate   string `xml:"credited_date"`
-			CreditedAmount string `xml:"credited_amount"`
+			CreditedDate   string `xml:"credited_date,omitempty"`
+			CreditedAmount string `xml:"credited_amount,omitempty"`
 		} `xml:"order_details"`
 	} `xml:"reply"`
 }

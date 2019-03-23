@@ -63,6 +63,48 @@ func (c *Client) %[1]s(params *%[1]sParams) (*%[1]s, error) {
 	}
 }
 
+func TestGenerateModelTest(t *testing.T) {
+	t.Skip("generator")
+
+	files, err := ioutil.ReadDir("../samples")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, file := range files {
+		if file.Name() == "OPERATION.xml" {
+			continue
+		}
+
+		baseName := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
+
+		fmt.Printf(`
+func Test%[1]s(t *testing.T) {
+	bytes, err := ioutil.ReadFile("./samples/%[2]s.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &%[1]s{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if fmt.Sprintln(string(indent)) != string(bytes) {
+		t.Logf("Got:\n%%s\n\nWant:\n%%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+`, strings.ToUpper(string(baseName[0]))+baseName[1:], baseName)
+	}
+}
+
 func TestGenerateBaseParams(t *testing.T) {
 	t.Skip("generator")
 
