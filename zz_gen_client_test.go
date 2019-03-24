@@ -2,18 +2,22 @@ package namesilo
 
 import (
 	"encoding/xml"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-func TestClient_AddAccountFunds(t *testing.T) {
+func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/addAccountFunds", func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(mux)
+
+	mux.HandleFunc("/"+operation, func(w http.ResponseWriter, r *http.Request) {
 		query := r.URL.Query()
 
 		key := query.Get("key")
@@ -24,25 +28,31 @@ func TestClient_AddAccountFunds(t *testing.T) {
 			}
 		}
 
-		bytes, err := ioutil.ReadFile("./samples/addAccountFunds.xml")
+		f, err := os.Open(filepath.Join(".", "samples", operation+".xml"))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
-		_, err = w.Write(bytes)
+		_, err = io.Copy(w, f)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 	})
 
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	return mux, server.URL, func() {
+		server.Close()
+	}
+}
+
+func TestClient_AddAccountFunds(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("addAccountFunds")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &AddAccountFundsParams{}
 
@@ -55,37 +65,14 @@ func TestClient_AddAccountFunds(t *testing.T) {
 }
 
 func TestClient_AddAutoRenewal(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/addAutoRenewal", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/addAutoRenewal.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("addAutoRenewal")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &AddAutoRenewalParams{}
 
@@ -98,37 +85,14 @@ func TestClient_AddAutoRenewal(t *testing.T) {
 }
 
 func TestClient_AddPrivacy(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/addPrivacy", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/addPrivacy.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("addPrivacy")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &AddPrivacyParams{}
 
@@ -141,37 +105,14 @@ func TestClient_AddPrivacy(t *testing.T) {
 }
 
 func TestClient_AddRegisteredNameServer(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/addRegisteredNameServer", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/addRegisteredNameServer.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("addRegisteredNameServer")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &AddRegisteredNameServerParams{}
 
@@ -184,37 +125,14 @@ func TestClient_AddRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_ChangeNameServers(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/changeNameServers", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/changeNameServers.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("changeNameServers")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ChangeNameServersParams{}
 
@@ -227,37 +145,14 @@ func TestClient_ChangeNameServers(t *testing.T) {
 }
 
 func TestClient_CheckRegisterAvailability(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/checkRegisterAvailability", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/checkRegisterAvailability.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("checkRegisterAvailability")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &CheckRegisterAvailabilityParams{}
 
@@ -270,37 +165,14 @@ func TestClient_CheckRegisterAvailability(t *testing.T) {
 }
 
 func TestClient_CheckTransferAvailability(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/checkTransferAvailability", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/checkTransferAvailability.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("checkTransferAvailability")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &CheckTransferAvailabilityParams{}
 
@@ -313,37 +185,14 @@ func TestClient_CheckTransferAvailability(t *testing.T) {
 }
 
 func TestClient_CheckTransferStatus(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/checkTransferStatus", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/checkTransferStatus.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("checkTransferStatus")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &CheckTransferStatusParams{}
 
@@ -356,37 +205,14 @@ func TestClient_CheckTransferStatus(t *testing.T) {
 }
 
 func TestClient_ConfigureEmailForward(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/configureEmailForward", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/configureEmailForward.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("configureEmailForward")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ConfigureEmailForwardParams{}
 
@@ -399,37 +225,14 @@ func TestClient_ConfigureEmailForward(t *testing.T) {
 }
 
 func TestClient_ContactAdd(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/contactAdd", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/contactAdd.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("contactAdd")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ContactAddParams{}
 
@@ -442,37 +245,14 @@ func TestClient_ContactAdd(t *testing.T) {
 }
 
 func TestClient_ContactDelete(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/contactDelete", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/contactDelete.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("contactDelete")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ContactDeleteParams{}
 
@@ -485,37 +265,14 @@ func TestClient_ContactDelete(t *testing.T) {
 }
 
 func TestClient_ContactDomainAssociate(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/contactDomainAssociate", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/contactDomainAssociate.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("contactDomainAssociate")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ContactDomainAssociateParams{}
 
@@ -528,37 +285,14 @@ func TestClient_ContactDomainAssociate(t *testing.T) {
 }
 
 func TestClient_ContactList(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/contactList", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/contactList.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("contactList")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ContactListParams{}
 
@@ -571,37 +305,14 @@ func TestClient_ContactList(t *testing.T) {
 }
 
 func TestClient_ContactUpdate(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/contactUpdate", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/contactUpdate.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("contactUpdate")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ContactUpdateParams{}
 
@@ -614,37 +325,14 @@ func TestClient_ContactUpdate(t *testing.T) {
 }
 
 func TestClient_DeleteEmailForward(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/deleteEmailForward", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/deleteEmailForward.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("deleteEmailForward")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DeleteEmailForwardParams{}
 
@@ -657,37 +345,14 @@ func TestClient_DeleteEmailForward(t *testing.T) {
 }
 
 func TestClient_DeleteRegisteredNameServer(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/deleteRegisteredNameServer", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/deleteRegisteredNameServer.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("deleteRegisteredNameServer")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DeleteRegisteredNameServerParams{}
 
@@ -700,37 +365,14 @@ func TestClient_DeleteRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_DnsAddRecord(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/dnsAddRecord", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/dnsAddRecord.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("dnsAddRecord")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DnsAddRecordParams{}
 
@@ -743,37 +385,14 @@ func TestClient_DnsAddRecord(t *testing.T) {
 }
 
 func TestClient_DnsDeleteRecord(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/dnsDeleteRecord", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/dnsDeleteRecord.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("dnsDeleteRecord")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DnsDeleteRecordParams{}
 
@@ -786,37 +405,14 @@ func TestClient_DnsDeleteRecord(t *testing.T) {
 }
 
 func TestClient_DnsListRecords(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/dnsListRecords", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/dnsListRecords.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("dnsListRecords")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DnsListRecordsParams{}
 
@@ -829,37 +425,14 @@ func TestClient_DnsListRecords(t *testing.T) {
 }
 
 func TestClient_DnsSecAddRecord(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/dnsSecAddRecord", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/dnsSecAddRecord.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("dnsSecAddRecord")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DnsSecAddRecordParams{}
 
@@ -872,37 +445,14 @@ func TestClient_DnsSecAddRecord(t *testing.T) {
 }
 
 func TestClient_DnsSecDeleteRecord(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/dnsSecDeleteRecord", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/dnsSecDeleteRecord.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("dnsSecDeleteRecord")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DnsSecDeleteRecordParams{}
 
@@ -915,37 +465,14 @@ func TestClient_DnsSecDeleteRecord(t *testing.T) {
 }
 
 func TestClient_DnsSecListRecords(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/dnsSecListRecords", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/dnsSecListRecords.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("dnsSecListRecords")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DnsSecListRecordsParams{}
 
@@ -958,37 +485,14 @@ func TestClient_DnsSecListRecords(t *testing.T) {
 }
 
 func TestClient_DnsUpdateRecord(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/dnsUpdateRecord", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/dnsUpdateRecord.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("dnsUpdateRecord")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DnsUpdateRecordParams{}
 
@@ -1001,37 +505,14 @@ func TestClient_DnsUpdateRecord(t *testing.T) {
 }
 
 func TestClient_DomainForward(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/domainForward", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/domainForward.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("domainForward")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DomainForwardParams{}
 
@@ -1044,37 +525,14 @@ func TestClient_DomainForward(t *testing.T) {
 }
 
 func TestClient_DomainForwardSubDomain(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/domainForwardSubDomain", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/domainForwardSubDomain.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("domainForwardSubDomain")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DomainForwardSubDomainParams{}
 
@@ -1087,37 +545,14 @@ func TestClient_DomainForwardSubDomain(t *testing.T) {
 }
 
 func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/domainForwardSubDomainDelete", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/domainForwardSubDomainDelete.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("domainForwardSubDomainDelete")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DomainForwardSubDomainDeleteParams{}
 
@@ -1130,37 +565,14 @@ func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
 }
 
 func TestClient_DomainLock(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/domainLock", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/domainLock.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("domainLock")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DomainLockParams{}
 
@@ -1173,37 +585,14 @@ func TestClient_DomainLock(t *testing.T) {
 }
 
 func TestClient_DomainUnlock(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/domainUnlock", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/domainUnlock.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("domainUnlock")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &DomainUnlockParams{}
 
@@ -1216,37 +605,14 @@ func TestClient_DomainUnlock(t *testing.T) {
 }
 
 func TestClient_EmailVerification(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/emailVerification", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/emailVerification.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("emailVerification")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &EmailVerificationParams{}
 
@@ -1259,37 +625,14 @@ func TestClient_EmailVerification(t *testing.T) {
 }
 
 func TestClient_GetAccountBalance(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/getAccountBalance", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/getAccountBalance.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("getAccountBalance")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &GetAccountBalanceParams{}
 
@@ -1302,37 +645,14 @@ func TestClient_GetAccountBalance(t *testing.T) {
 }
 
 func TestClient_GetDomainInfo(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/getDomainInfo", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/getDomainInfo.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("getDomainInfo")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &GetDomainInfoParams{}
 
@@ -1345,37 +665,14 @@ func TestClient_GetDomainInfo(t *testing.T) {
 }
 
 func TestClient_GetPrices(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/getPrices", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/getPrices.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("getPrices")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &GetPricesParams{}
 
@@ -1388,37 +685,14 @@ func TestClient_GetPrices(t *testing.T) {
 }
 
 func TestClient_ListDomains(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/listDomains", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/listDomains.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("listDomains")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ListDomainsParams{}
 
@@ -1431,37 +705,14 @@ func TestClient_ListDomains(t *testing.T) {
 }
 
 func TestClient_ListEmailForwards(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/listEmailForwards", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/listEmailForwards.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("listEmailForwards")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ListEmailForwardsParams{}
 
@@ -1474,37 +725,14 @@ func TestClient_ListEmailForwards(t *testing.T) {
 }
 
 func TestClient_ListOrders(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/listOrders", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/listOrders.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("listOrders")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ListOrdersParams{}
 
@@ -1517,37 +745,14 @@ func TestClient_ListOrders(t *testing.T) {
 }
 
 func TestClient_ListRegisteredNameServers(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/listRegisteredNameServers", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/listRegisteredNameServers.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("listRegisteredNameServers")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ListRegisteredNameServersParams{}
 
@@ -1560,37 +765,14 @@ func TestClient_ListRegisteredNameServers(t *testing.T) {
 }
 
 func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/marketplaceActiveSalesOverview", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/marketplaceActiveSalesOverview.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("marketplaceActiveSalesOverview")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &MarketplaceActiveSalesOverviewParams{}
 
@@ -1603,37 +785,14 @@ func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
 }
 
 func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/marketplaceAddOrModifySale", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/marketplaceAddOrModifySale.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("marketplaceAddOrModifySale")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &MarketplaceAddOrModifySaleParams{}
 
@@ -1646,37 +805,14 @@ func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
 }
 
 func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/marketplaceLandingPageUpdate", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/marketplaceLandingPageUpdate.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("marketplaceLandingPageUpdate")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &MarketplaceLandingPageUpdateParams{}
 
@@ -1689,37 +825,14 @@ func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
 }
 
 func TestClient_ModifyRegisteredNameServer(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/modifyRegisteredNameServer", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/modifyRegisteredNameServer.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("modifyRegisteredNameServer")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &ModifyRegisteredNameServerParams{}
 
@@ -1732,37 +845,14 @@ func TestClient_ModifyRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_OrderDetails(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/orderDetails", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/orderDetails.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("orderDetails")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &OrderDetailsParams{}
 
@@ -1775,37 +865,14 @@ func TestClient_OrderDetails(t *testing.T) {
 }
 
 func TestClient_PortfolioAdd(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/portfolioAdd", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/portfolioAdd.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("portfolioAdd")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &PortfolioAddParams{}
 
@@ -1818,37 +885,14 @@ func TestClient_PortfolioAdd(t *testing.T) {
 }
 
 func TestClient_PortfolioDelete(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/portfolioDelete", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/portfolioDelete.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("portfolioDelete")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &PortfolioDeleteParams{}
 
@@ -1861,37 +905,14 @@ func TestClient_PortfolioDelete(t *testing.T) {
 }
 
 func TestClient_PortfolioDomainAssociate(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/portfolioDomainAssociate", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/portfolioDomainAssociate.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("portfolioDomainAssociate")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &PortfolioDomainAssociateParams{}
 
@@ -1904,37 +925,14 @@ func TestClient_PortfolioDomainAssociate(t *testing.T) {
 }
 
 func TestClient_PortfolioList(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/portfolioList", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/portfolioList.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("portfolioList")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &PortfolioListParams{}
 
@@ -1947,37 +945,14 @@ func TestClient_PortfolioList(t *testing.T) {
 }
 
 func TestClient_RegisterDomain(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/registerDomain", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/registerDomain.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("registerDomain")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &RegisterDomainParams{}
 
@@ -1990,37 +965,14 @@ func TestClient_RegisterDomain(t *testing.T) {
 }
 
 func TestClient_RegisterDomainDrop(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/registerDomainDrop", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/registerDomainDrop.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("registerDomainDrop")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &RegisterDomainDropParams{}
 
@@ -2033,37 +985,14 @@ func TestClient_RegisterDomainDrop(t *testing.T) {
 }
 
 func TestClient_RegistrantVerificationStatus(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/registrantVerificationStatus", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/registrantVerificationStatus.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("registrantVerificationStatus")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &RegistrantVerificationStatusParams{}
 
@@ -2076,37 +1005,14 @@ func TestClient_RegistrantVerificationStatus(t *testing.T) {
 }
 
 func TestClient_RemoveAutoRenewal(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/removeAutoRenewal", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/removeAutoRenewal.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("removeAutoRenewal")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &RemoveAutoRenewalParams{}
 
@@ -2119,37 +1025,14 @@ func TestClient_RemoveAutoRenewal(t *testing.T) {
 }
 
 func TestClient_RemovePrivacy(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/removePrivacy", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/removePrivacy.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("removePrivacy")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &RemovePrivacyParams{}
 
@@ -2162,37 +1045,14 @@ func TestClient_RemovePrivacy(t *testing.T) {
 }
 
 func TestClient_RenewDomain(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/renewDomain", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/renewDomain.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("renewDomain")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &RenewDomainParams{}
 
@@ -2205,37 +1065,14 @@ func TestClient_RenewDomain(t *testing.T) {
 }
 
 func TestClient_RetrieveAuthCode(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/retrieveAuthCode", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/retrieveAuthCode.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("retrieveAuthCode")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &RetrieveAuthCodeParams{}
 
@@ -2248,37 +1085,14 @@ func TestClient_RetrieveAuthCode(t *testing.T) {
 }
 
 func TestClient_TransferDomain(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/transferDomain", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/transferDomain.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("transferDomain")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &TransferDomainParams{}
 
@@ -2291,37 +1105,14 @@ func TestClient_TransferDomain(t *testing.T) {
 }
 
 func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/transferUpdateChangeEPPCode", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/transferUpdateChangeEPPCode.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("transferUpdateChangeEPPCode")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &TransferUpdateChangeEPPCodeParams{}
 
@@ -2334,37 +1125,14 @@ func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
 }
 
 func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/transferUpdateResendAdminEmail", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/transferUpdateResendAdminEmail.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("transferUpdateResendAdminEmail")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &TransferUpdateResendAdminEmailParams{}
 
@@ -2377,37 +1145,14 @@ func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
 }
 
 func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/transferUpdateResubmitToRegistry", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-
-		key := query.Get("key")
-		if key != "1234" {
-			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
-		}
-
-		bytes, err := ioutil.ReadFile("./samples/transferUpdateResubmitToRegistry.xml")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		_, err = w.Write(bytes)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	_, serverURL, teardown := setupFakeAPI("transferUpdateResubmitToRegistry")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &TransferUpdateResubmitToRegistryParams{}
 

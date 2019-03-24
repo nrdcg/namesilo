@@ -68,24 +68,26 @@ func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $valu
 func TestGenerateClientTest(t *testing.T) {
 	t.Skip("generator - several exception")
 
-	clientTestsTemplate := `
-package namesilo
+	clientTestsTemplate := `package namesilo
 
 import (
 	"encoding/xml"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-{{range $key, $value := .Names }}
-func TestClient_{{ $value.Upper }}(t *testing.T) {
+func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/{{ $value.Lower }}", func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(mux)
+
+	mux.HandleFunc("/"+operation, func(w http.ResponseWriter, r *http.Request) {
 		query := r.URL.Query()
 
 		key := query.Get("key")
@@ -96,25 +98,31 @@ func TestClient_{{ $value.Upper }}(t *testing.T) {
 			}
 		}
 
-		bytes, err := ioutil.ReadFile("./samples/{{ $value.Lower }}.xml")
+		f, err := os.Open(filepath.Join(".", "samples", operation+".xml"))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
-		_, err = w.Write(bytes)
+		_, err = io.Copy(w, f)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 	})
 
-	server := httptest.NewServer(mux)
-	defer server.Close()
+	return mux, server.URL, func() {
+		server.Close()
+	}
+}
+{{range $key, $value := .Names }}
+func TestClient_{{ $value.Upper }}(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("{{ $value.Lower }}")
+	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client.Endpoint = serverURL
 
 	params := &{{ $value.Upper }}Params{}
 
