@@ -9,8 +9,13 @@ import (
 	querystring "github.com/google/go-querystring/query"
 )
 
-// DefaultAPIEndpoint The default API endpoint.
-const DefaultAPIEndpoint = "https://www.namesilo.com/api"
+const (
+	// DefaultAPIEndpoint The default API endpoint.
+	DefaultAPIEndpoint = "https://www.namesilo.com/api"
+
+	// SandboxAPIEndpoint The sandbox API endpoint.
+	SandboxAPIEndpoint = "https://sandbox.namesilo.com/api"
+)
 
 // Response Codes
 const (
