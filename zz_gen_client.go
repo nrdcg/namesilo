@@ -3,6 +3,7 @@ package namesilo
 import (
 	"encoding/xml"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -18,12 +19,15 @@ func (c *Client) AddAccountFunds(params *AddAccountFundsParams) (*AddAccountFund
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &AddAccountFunds{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &AddAccountFunds{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -54,12 +58,15 @@ func (c *Client) AddAutoRenewal(params *AddAutoRenewalParams) (*AddAutoRenewal, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &AddAutoRenewal{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &AddAutoRenewal{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -90,12 +97,15 @@ func (c *Client) AddPrivacy(params *AddPrivacyParams) (*AddPrivacy, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &AddPrivacy{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &AddPrivacy{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -126,12 +136,15 @@ func (c *Client) AddRegisteredNameServer(params *AddRegisteredNameServerParams) 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &AddRegisteredNameServer{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &AddRegisteredNameServer{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -162,12 +175,15 @@ func (c *Client) ChangeNameServers(params *ChangeNameServersParams) (*ChangeName
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ChangeNameServers{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ChangeNameServers{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -198,12 +214,15 @@ func (c *Client) CheckRegisterAvailability(params *CheckRegisterAvailabilityPara
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &CheckRegisterAvailability{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &CheckRegisterAvailability{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -234,12 +253,15 @@ func (c *Client) CheckTransferAvailability(params *CheckTransferAvailabilityPara
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &CheckTransferAvailability{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &CheckTransferAvailability{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -270,12 +292,15 @@ func (c *Client) CheckTransferStatus(params *CheckTransferStatusParams) (*CheckT
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &CheckTransferStatus{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &CheckTransferStatus{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -306,12 +331,15 @@ func (c *Client) ConfigureEmailForward(params *ConfigureEmailForwardParams) (*Co
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ConfigureEmailForward{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ConfigureEmailForward{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -342,12 +370,15 @@ func (c *Client) ContactAdd(params *ContactAddParams) (*ContactAdd, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ContactAdd{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ContactAdd{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -378,12 +409,15 @@ func (c *Client) ContactDelete(params *ContactDeleteParams) (*ContactDelete, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ContactDelete{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ContactDelete{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -414,12 +448,15 @@ func (c *Client) ContactDomainAssociate(params *ContactDomainAssociateParams) (*
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ContactDomainAssociate{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ContactDomainAssociate{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -450,12 +487,15 @@ func (c *Client) ContactList(params *ContactListParams) (*ContactList, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ContactList{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ContactList{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -486,12 +526,15 @@ func (c *Client) ContactUpdate(params *ContactUpdateParams) (*ContactUpdate, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ContactUpdate{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ContactUpdate{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -522,12 +565,15 @@ func (c *Client) DeleteEmailForward(params *DeleteEmailForwardParams) (*DeleteEm
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DeleteEmailForward{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DeleteEmailForward{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -558,12 +604,15 @@ func (c *Client) DeleteRegisteredNameServer(params *DeleteRegisteredNameServerPa
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DeleteRegisteredNameServer{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DeleteRegisteredNameServer{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -594,12 +643,15 @@ func (c *Client) DnsAddRecord(params *DnsAddRecordParams) (*DnsAddRecord, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DnsAddRecord{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DnsAddRecord{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -630,12 +682,15 @@ func (c *Client) DnsDeleteRecord(params *DnsDeleteRecordParams) (*DnsDeleteRecor
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DnsDeleteRecord{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DnsDeleteRecord{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -666,12 +721,15 @@ func (c *Client) DnsListRecords(params *DnsListRecordsParams) (*DnsListRecords, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DnsListRecords{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DnsListRecords{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -702,12 +760,15 @@ func (c *Client) DnsSecAddRecord(params *DnsSecAddRecordParams) (*DnsSecAddRecor
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DnsSecAddRecord{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DnsSecAddRecord{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -738,12 +799,15 @@ func (c *Client) DnsSecDeleteRecord(params *DnsSecDeleteRecordParams) (*DnsSecDe
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DnsSecDeleteRecord{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DnsSecDeleteRecord{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -774,12 +838,15 @@ func (c *Client) DnsSecListRecords(params *DnsSecListRecordsParams) (*DnsSecList
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DnsSecListRecords{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DnsSecListRecords{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -810,12 +877,15 @@ func (c *Client) DnsUpdateRecord(params *DnsUpdateRecordParams) (*DnsUpdateRecor
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DnsUpdateRecord{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DnsUpdateRecord{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -846,12 +916,15 @@ func (c *Client) DomainForward(params *DomainForwardParams) (*DomainForward, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DomainForward{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DomainForward{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -882,12 +955,15 @@ func (c *Client) DomainForwardSubDomain(params *DomainForwardSubDomainParams) (*
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DomainForwardSubDomain{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DomainForwardSubDomain{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -918,12 +994,15 @@ func (c *Client) DomainForwardSubDomainDelete(params *DomainForwardSubDomainDele
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DomainForwardSubDomainDelete{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DomainForwardSubDomainDelete{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -954,12 +1033,15 @@ func (c *Client) DomainLock(params *DomainLockParams) (*DomainLock, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DomainLock{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DomainLock{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -990,12 +1072,15 @@ func (c *Client) DomainUnlock(params *DomainUnlockParams) (*DomainUnlock, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &DomainUnlock{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &DomainUnlock{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1026,12 +1111,15 @@ func (c *Client) EmailVerification(params *EmailVerificationParams) (*EmailVerif
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &EmailVerification{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &EmailVerification{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1062,12 +1150,15 @@ func (c *Client) GetAccountBalance(params *GetAccountBalanceParams) (*GetAccount
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &GetAccountBalance{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &GetAccountBalance{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1098,12 +1189,15 @@ func (c *Client) GetDomainInfo(params *GetDomainInfoParams) (*GetDomainInfo, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &GetDomainInfo{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &GetDomainInfo{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1134,12 +1228,15 @@ func (c *Client) GetPrices(params *GetPricesParams) (*GetPrices, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &GetPrices{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &GetPrices{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1170,12 +1267,15 @@ func (c *Client) ListDomains(params *ListDomainsParams) (*ListDomains, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ListDomains{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ListDomains{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1206,12 +1306,15 @@ func (c *Client) ListEmailForwards(params *ListEmailForwardsParams) (*ListEmailF
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ListEmailForwards{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ListEmailForwards{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1242,12 +1345,15 @@ func (c *Client) ListOrders(params *ListOrdersParams) (*ListOrders, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ListOrders{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ListOrders{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1278,12 +1384,15 @@ func (c *Client) ListRegisteredNameServers(params *ListRegisteredNameServersPara
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ListRegisteredNameServers{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ListRegisteredNameServers{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1314,12 +1423,15 @@ func (c *Client) MarketplaceActiveSalesOverview(params *MarketplaceActiveSalesOv
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &MarketplaceActiveSalesOverview{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &MarketplaceActiveSalesOverview{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1350,12 +1462,15 @@ func (c *Client) MarketplaceAddOrModifySale(params *MarketplaceAddOrModifySalePa
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &MarketplaceAddOrModifySale{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &MarketplaceAddOrModifySale{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1386,12 +1501,15 @@ func (c *Client) MarketplaceLandingPageUpdate(params *MarketplaceLandingPageUpda
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &MarketplaceLandingPageUpdate{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &MarketplaceLandingPageUpdate{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1422,12 +1540,15 @@ func (c *Client) ModifyRegisteredNameServer(params *ModifyRegisteredNameServerPa
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &ModifyRegisteredNameServer{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &ModifyRegisteredNameServer{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1458,12 +1579,15 @@ func (c *Client) OrderDetails(params *OrderDetailsParams) (*OrderDetails, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &OrderDetails{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &OrderDetails{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1494,12 +1618,15 @@ func (c *Client) PortfolioAdd(params *PortfolioAddParams) (*PortfolioAdd, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &PortfolioAdd{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &PortfolioAdd{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1530,12 +1657,15 @@ func (c *Client) PortfolioDelete(params *PortfolioDeleteParams) (*PortfolioDelet
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &PortfolioDelete{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &PortfolioDelete{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1566,12 +1696,15 @@ func (c *Client) PortfolioDomainAssociate(params *PortfolioDomainAssociateParams
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &PortfolioDomainAssociate{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &PortfolioDomainAssociate{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1602,12 +1735,15 @@ func (c *Client) PortfolioList(params *PortfolioListParams) (*PortfolioList, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &PortfolioList{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &PortfolioList{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1638,12 +1774,15 @@ func (c *Client) RegisterDomain(params *RegisterDomainParams) (*RegisterDomain, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &RegisterDomain{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &RegisterDomain{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1674,12 +1813,15 @@ func (c *Client) RegisterDomainDrop(params *RegisterDomainDropParams) (*Register
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &RegisterDomainDrop{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &RegisterDomainDrop{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1710,12 +1852,15 @@ func (c *Client) RegistrantVerificationStatus(params *RegistrantVerificationStat
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &RegistrantVerificationStatus{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &RegistrantVerificationStatus{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1746,12 +1891,15 @@ func (c *Client) RemoveAutoRenewal(params *RemoveAutoRenewalParams) (*RemoveAuto
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &RemoveAutoRenewal{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &RemoveAutoRenewal{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1782,12 +1930,15 @@ func (c *Client) RemovePrivacy(params *RemovePrivacyParams) (*RemovePrivacy, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &RemovePrivacy{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &RemovePrivacy{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1818,12 +1969,15 @@ func (c *Client) RenewDomain(params *RenewDomainParams) (*RenewDomain, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &RenewDomain{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &RenewDomain{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1854,12 +2008,15 @@ func (c *Client) RetrieveAuthCode(params *RetrieveAuthCodeParams) (*RetrieveAuth
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &RetrieveAuthCode{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &RetrieveAuthCode{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1890,12 +2047,15 @@ func (c *Client) TransferDomain(params *TransferDomainParams) (*TransferDomain, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &TransferDomain{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &TransferDomain{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1926,12 +2086,15 @@ func (c *Client) TransferUpdateChangeEPPCode(params *TransferUpdateChangeEPPCode
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &TransferUpdateChangeEPPCode{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &TransferUpdateChangeEPPCode{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1962,12 +2125,15 @@ func (c *Client) TransferUpdateResendAdminEmail(params *TransferUpdateResendAdmi
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &TransferUpdateResendAdminEmail{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &TransferUpdateResendAdminEmail{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1998,12 +2164,15 @@ func (c *Client) TransferUpdateResubmitToRegistry(params *TransferUpdateResubmit
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &TransferUpdateResubmitToRegistry{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &TransferUpdateResubmitToRegistry{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {

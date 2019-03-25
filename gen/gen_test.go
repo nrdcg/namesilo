@@ -20,6 +20,7 @@ func TestGenerateClientMethods(t *testing.T) {
 import (
 	"encoding/xml"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 {{range $key, $value := .Names }}
@@ -35,12 +36,15 @@ func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $valu
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	op := &{{ $value.Upper }}{}
-
-	decoder := xml.NewDecoder(resp.Body)
-	err = decoder.Decode(op)
+	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	op := &{{ $value.Upper }}{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
