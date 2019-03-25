@@ -44,9 +44,11 @@ func (c *Client) get(name string, params interface{}) (*http.Response, error) {
 	}
 
 	if params != nil {
-		v, _ := querystring.Values(params)
+		v, err := querystring.Values(params)
+		if err != nil {
+			return nil, err
+		}
 		uri.RawQuery = v.Encode()
-
 	}
 
 	return c.HTTPClient.Get(uri.String())

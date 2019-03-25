@@ -34,22 +34,14 @@ func (t *TokenTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 
 	if t.apiKey != "" {
-		query := req.URL.Query()
-		query.Add("version", "1")
-		query.Add("type", "xml")
-		query.Add("key", t.apiKey)
-		req.URL.RawQuery = query.Encode()
+		query := enrichedReq.URL.Query()
+		query.Set("version", "1")
+		query.Set("type", "xml")
+		query.Set("key", t.apiKey)
+		enrichedReq.URL.RawQuery = query.Encode()
 	}
 
 	return t.transport().RoundTrip(enrichedReq)
-}
-
-// Wrap Wrap a HTTP client Transport with the TokenTransport
-func (t *TokenTransport) Wrap(client *http.Client) *http.Client {
-	backup := client.Transport
-	t.Transport = backup
-	client.Transport = t
-	return client
 }
 
 // Client Creates a new HTTP client
