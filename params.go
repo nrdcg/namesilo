@@ -18,6 +18,7 @@ type AddPrivacyParams struct {
 
 // AddRegisteredNameServerParams Parameters for operation addRegisteredNameServer.
 type AddRegisteredNameServerParams struct {
+	Domain  string `url:"domain"`   // required
 	NewHost string `url:"new_host"` // Required
 	IP1     string `url:"ip1"`      // Required
 
@@ -162,6 +163,7 @@ type DeleteEmailForwardParams struct {
 
 // DeleteRegisteredNameServerParams Parameters for operation deleteRegisteredNameServer.
 type DeleteRegisteredNameServerParams struct {
+	Domain      string `url:"domain"`       // required
 	CurrentHost string `url:"current_host"` // Required
 }
 
@@ -299,7 +301,9 @@ type ListEmailForwardsParams struct {
 type ListOrdersParams struct{}
 
 // ListRegisteredNameServersParams Parameters for operation listRegisteredNameServers.
-type ListRegisteredNameServersParams struct{}
+type ListRegisteredNameServersParams struct {
+	Domain string `url:"domain"` // required
+}
 
 // MarketplaceActiveSalesOverviewParams Parameters for operation marketplaceActiveSalesOverview.
 type MarketplaceActiveSalesOverviewParams struct{}
@@ -344,6 +348,7 @@ type MarketplaceLandingPageUpdateParams struct {
 
 // ModifyRegisteredNameServerParams Parameters for operation modifyRegisteredNameServer.
 type ModifyRegisteredNameServerParams struct {
+	Domain      string `url:"domain"`       // required
 	CurrentHost string `url:"current_host"` // Required
 	NewHost     string `url:"new_host"`     // Required
 	IP1         string `url:"ip1"`          // Required
