@@ -1,5 +1,7 @@
 .PHONY: clean check test build dependencies fmt
 
+export GO111MODULE=on
+
 SRCS = $(shell git ls-files '*.go' | grep -v '^vendor/')
 
 default: clean check test build
@@ -8,16 +10,13 @@ clean:
 	rm -rf cover.out
 
 build: clean
-	GO111MODULE=on go build -v .
-
-dependencies:
-	GO111MODULE=on go mod download
+	 go build -v .
 
 test: clean
-	GO111MODULE=on go test -v -cover ./...
+	go test -v -cover ./...
 
 check:
-	GO111MODULE=on golangci-lint run
+	golangci-lint run
 
 fmt:
 	gofmt -s -l -w $(SRCS)
