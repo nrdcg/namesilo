@@ -44,7 +44,7 @@ func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $valu
 	op := &{{ $value.Upper }}{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {

@@ -1,4 +1,4 @@
-.PHONY: clean check test build dependencies fmt
+.PHONY: clean check test build fmt
 
 export GO111MODULE=on
 

@@ -31,6 +31,8 @@
     "dupl",
     "prealloc",
     "scopelint",
+    "wsl",
+    "stylecheck",
   ]
 
 [issues]
@@ -51,3 +53,9 @@
   [[issues.exclude-rules]]
     path = "zz_gen_client_test.go"
     text = "string `1234` has 56 occurrences, make it a constant"
+  [[issues.exclude-rules]]
+    path = "zz_gen_client_test.go"
+    text = "setupFakeAPI - result 0 \\(\\*net/http.ServeMux\\) is never used"
+  [[issues.exclude-rules]]
+    path = "(.+)_test.go"
+    linters = ["funlen"]

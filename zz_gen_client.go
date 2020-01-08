@@ -27,7 +27,7 @@ func (c *Client) AddAccountFunds(params *AddAccountFundsParams) (*AddAccountFund
 	op := &AddAccountFunds{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -66,7 +66,7 @@ func (c *Client) AddAutoRenewal(params *AddAutoRenewalParams) (*AddAutoRenewal, 
 	op := &AddAutoRenewal{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -105,7 +105,7 @@ func (c *Client) AddPrivacy(params *AddPrivacyParams) (*AddPrivacy, error) {
 	op := &AddPrivacy{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -144,7 +144,7 @@ func (c *Client) AddRegisteredNameServer(params *AddRegisteredNameServerParams) 
 	op := &AddRegisteredNameServer{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -183,7 +183,7 @@ func (c *Client) ChangeNameServers(params *ChangeNameServersParams) (*ChangeName
 	op := &ChangeNameServers{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -222,7 +222,7 @@ func (c *Client) CheckRegisterAvailability(params *CheckRegisterAvailabilityPara
 	op := &CheckRegisterAvailability{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -261,7 +261,7 @@ func (c *Client) CheckTransferAvailability(params *CheckTransferAvailabilityPara
 	op := &CheckTransferAvailability{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -300,7 +300,7 @@ func (c *Client) CheckTransferStatus(params *CheckTransferStatusParams) (*CheckT
 	op := &CheckTransferStatus{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -339,7 +339,7 @@ func (c *Client) ConfigureEmailForward(params *ConfigureEmailForwardParams) (*Co
 	op := &ConfigureEmailForward{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -378,7 +378,7 @@ func (c *Client) ContactAdd(params *ContactAddParams) (*ContactAdd, error) {
 	op := &ContactAdd{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -417,7 +417,7 @@ func (c *Client) ContactDelete(params *ContactDeleteParams) (*ContactDelete, err
 	op := &ContactDelete{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -456,7 +456,7 @@ func (c *Client) ContactDomainAssociate(params *ContactDomainAssociateParams) (*
 	op := &ContactDomainAssociate{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -495,7 +495,7 @@ func (c *Client) ContactList(params *ContactListParams) (*ContactList, error) {
 	op := &ContactList{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -534,7 +534,7 @@ func (c *Client) ContactUpdate(params *ContactUpdateParams) (*ContactUpdate, err
 	op := &ContactUpdate{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -573,7 +573,7 @@ func (c *Client) DeleteEmailForward(params *DeleteEmailForwardParams) (*DeleteEm
 	op := &DeleteEmailForward{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -612,7 +612,7 @@ func (c *Client) DeleteRegisteredNameServer(params *DeleteRegisteredNameServerPa
 	op := &DeleteRegisteredNameServer{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -651,7 +651,7 @@ func (c *Client) DnsAddRecord(params *DnsAddRecordParams) (*DnsAddRecord, error)
 	op := &DnsAddRecord{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -690,7 +690,7 @@ func (c *Client) DnsDeleteRecord(params *DnsDeleteRecordParams) (*DnsDeleteRecor
 	op := &DnsDeleteRecord{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -729,7 +729,7 @@ func (c *Client) DnsListRecords(params *DnsListRecordsParams) (*DnsListRecords, 
 	op := &DnsListRecords{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -768,7 +768,7 @@ func (c *Client) DnsSecAddRecord(params *DnsSecAddRecordParams) (*DnsSecAddRecor
 	op := &DnsSecAddRecord{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -807,7 +807,7 @@ func (c *Client) DnsSecDeleteRecord(params *DnsSecDeleteRecordParams) (*DnsSecDe
 	op := &DnsSecDeleteRecord{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -846,7 +846,7 @@ func (c *Client) DnsSecListRecords(params *DnsSecListRecordsParams) (*DnsSecList
 	op := &DnsSecListRecords{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -885,7 +885,7 @@ func (c *Client) DnsUpdateRecord(params *DnsUpdateRecordParams) (*DnsUpdateRecor
 	op := &DnsUpdateRecord{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -924,7 +924,7 @@ func (c *Client) DomainForward(params *DomainForwardParams) (*DomainForward, err
 	op := &DomainForward{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -963,7 +963,7 @@ func (c *Client) DomainForwardSubDomain(params *DomainForwardSubDomainParams) (*
 	op := &DomainForwardSubDomain{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1002,7 +1002,7 @@ func (c *Client) DomainForwardSubDomainDelete(params *DomainForwardSubDomainDele
 	op := &DomainForwardSubDomainDelete{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1041,7 +1041,7 @@ func (c *Client) DomainLock(params *DomainLockParams) (*DomainLock, error) {
 	op := &DomainLock{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1080,7 +1080,7 @@ func (c *Client) DomainUnlock(params *DomainUnlockParams) (*DomainUnlock, error)
 	op := &DomainUnlock{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1119,7 +1119,7 @@ func (c *Client) EmailVerification(params *EmailVerificationParams) (*EmailVerif
 	op := &EmailVerification{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1158,7 +1158,7 @@ func (c *Client) GetAccountBalance(params *GetAccountBalanceParams) (*GetAccount
 	op := &GetAccountBalance{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1197,7 +1197,7 @@ func (c *Client) GetDomainInfo(params *GetDomainInfoParams) (*GetDomainInfo, err
 	op := &GetDomainInfo{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1236,7 +1236,7 @@ func (c *Client) GetPrices(params *GetPricesParams) (*GetPrices, error) {
 	op := &GetPrices{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1275,7 +1275,7 @@ func (c *Client) ListDomains(params *ListDomainsParams) (*ListDomains, error) {
 	op := &ListDomains{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1314,7 +1314,7 @@ func (c *Client) ListEmailForwards(params *ListEmailForwardsParams) (*ListEmailF
 	op := &ListEmailForwards{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1353,7 +1353,7 @@ func (c *Client) ListOrders(params *ListOrdersParams) (*ListOrders, error) {
 	op := &ListOrders{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1392,7 +1392,7 @@ func (c *Client) ListRegisteredNameServers(params *ListRegisteredNameServersPara
 	op := &ListRegisteredNameServers{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1431,7 +1431,7 @@ func (c *Client) MarketplaceActiveSalesOverview(params *MarketplaceActiveSalesOv
 	op := &MarketplaceActiveSalesOverview{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1470,7 +1470,7 @@ func (c *Client) MarketplaceAddOrModifySale(params *MarketplaceAddOrModifySalePa
 	op := &MarketplaceAddOrModifySale{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1509,7 +1509,7 @@ func (c *Client) MarketplaceLandingPageUpdate(params *MarketplaceLandingPageUpda
 	op := &MarketplaceLandingPageUpdate{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1548,7 +1548,7 @@ func (c *Client) ModifyRegisteredNameServer(params *ModifyRegisteredNameServerPa
 	op := &ModifyRegisteredNameServer{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1587,7 +1587,7 @@ func (c *Client) OrderDetails(params *OrderDetailsParams) (*OrderDetails, error)
 	op := &OrderDetails{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1626,7 +1626,7 @@ func (c *Client) PortfolioAdd(params *PortfolioAddParams) (*PortfolioAdd, error)
 	op := &PortfolioAdd{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1665,7 +1665,7 @@ func (c *Client) PortfolioDelete(params *PortfolioDeleteParams) (*PortfolioDelet
 	op := &PortfolioDelete{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1704,7 +1704,7 @@ func (c *Client) PortfolioDomainAssociate(params *PortfolioDomainAssociateParams
 	op := &PortfolioDomainAssociate{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1743,7 +1743,7 @@ func (c *Client) PortfolioList(params *PortfolioListParams) (*PortfolioList, err
 	op := &PortfolioList{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1782,7 +1782,7 @@ func (c *Client) RegisterDomain(params *RegisterDomainParams) (*RegisterDomain, 
 	op := &RegisterDomain{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1821,7 +1821,7 @@ func (c *Client) RegisterDomainDrop(params *RegisterDomainDropParams) (*Register
 	op := &RegisterDomainDrop{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1860,7 +1860,7 @@ func (c *Client) RegistrantVerificationStatus(params *RegistrantVerificationStat
 	op := &RegistrantVerificationStatus{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1899,7 +1899,7 @@ func (c *Client) RemoveAutoRenewal(params *RemoveAutoRenewalParams) (*RemoveAuto
 	op := &RemoveAutoRenewal{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1938,7 +1938,7 @@ func (c *Client) RemovePrivacy(params *RemovePrivacyParams) (*RemovePrivacy, err
 	op := &RemovePrivacy{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -1977,7 +1977,7 @@ func (c *Client) RenewDomain(params *RenewDomainParams) (*RenewDomain, error) {
 	op := &RenewDomain{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -2016,7 +2016,7 @@ func (c *Client) RetrieveAuthCode(params *RetrieveAuthCodeParams) (*RetrieveAuth
 	op := &RetrieveAuthCode{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -2055,7 +2055,7 @@ func (c *Client) TransferDomain(params *TransferDomainParams) (*TransferDomain, 
 	op := &TransferDomain{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -2094,7 +2094,7 @@ func (c *Client) TransferUpdateChangeEPPCode(params *TransferUpdateChangeEPPCode
 	op := &TransferUpdateChangeEPPCode{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -2133,7 +2133,7 @@ func (c *Client) TransferUpdateResendAdminEmail(params *TransferUpdateResendAdmi
 	op := &TransferUpdateResendAdminEmail{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
@@ -2172,7 +2172,7 @@ func (c *Client) TransferUpdateResubmitToRegistry(params *TransferUpdateResubmit
 	op := &TransferUpdateResubmitToRegistry{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %v: %s", err, bytes)
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
 	}
 
 	switch op.Reply.Code {
