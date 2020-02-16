@@ -1,7 +1,8 @@
 [run]
   deadline = "5m"
   skip-files = [
-    "^scrapper"
+    "^scrapper",
+    "^exp",
   ]
 
 [linters-settings]
@@ -27,7 +28,7 @@
   disable = [
     "maligned",
     "lll",
-    "gas",
+#    "gas",
     "dupl",
     "prealloc",
     "scopelint",

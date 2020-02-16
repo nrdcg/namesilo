@@ -28,7 +28,7 @@ func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 			}
 		}
 
-		f, err := os.Open(filepath.Join(".", "samples", operation+".xml"))
+		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
