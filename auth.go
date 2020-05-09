@@ -23,7 +23,7 @@ func NewTokenTransport(apiKey string) (*TokenTransport, error) {
 	return &TokenTransport{apiKey: apiKey}, nil
 }
 
-// RoundTrip executes a single HTTP transaction
+// RoundTrip executes a single HTTP transaction.
 func (t *TokenTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	enrichedReq := &http.Request{}
 	*enrichedReq = *req
@@ -44,7 +44,7 @@ func (t *TokenTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	return t.transport().RoundTrip(enrichedReq)
 }
 
-// Client Creates a new HTTP client
+// Client Creates a new HTTP client.
 func (t *TokenTransport) Client() *http.Client {
 	return &http.Client{Transport: t}
 }

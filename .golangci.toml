@@ -34,13 +34,15 @@
     "scopelint",
     "wsl",
     "stylecheck",
+    "goerr113",
+    "testpackage",
   ]
 
 [issues]
   exclude-use-default = false
   max-per-linter = 0
   max-same-issues = 0
-  exclude = []
+  exclude = ["G306"]
 
   [[issues.exclude-rules]]
     path = "model.go"

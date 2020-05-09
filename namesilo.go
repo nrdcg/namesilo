@@ -17,7 +17,7 @@ const (
 	SandboxAPIEndpoint = "https://sandbox.namesilo.com/api"
 )
 
-// Response Codes
+// Response Codes.
 const (
 	SuccessfulAPIOperation = "300"
 	SuccessfulRegistration = "301"
