@@ -36,6 +36,7 @@
     "stylecheck",
     "goerr113",
     "testpackage",
+    "noctx",
   ]
 
 [issues]
@@ -62,3 +63,9 @@
   [[issues.exclude-rules]]
     path = "(.+)_test.go"
     linters = ["funlen"]
+  [[issues.exclude-rules]]
+    path = "gen/gen_test.go"
+    text = "func `generate` is unused"
+  [[issues.exclude-rules]]
+    path = "gen/gen_test.go"
+    text = "type `BaseName` is unused"

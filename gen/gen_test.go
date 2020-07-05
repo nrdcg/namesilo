@@ -201,7 +201,7 @@ type {{ $value.Upper }}Params struct {
 	require.NoError(t, err)
 }
 
-func generate(tmpl string, filename string) error {
+func generate(tmpl, filename string) error {
 	type BaseName struct {
 		Lower string
 		Upper string
@@ -249,5 +249,5 @@ func generate(tmpl string, filename string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join("..", filename), source, 0666)
+	return ioutil.WriteFile(filepath.Join("..", filename), source, 0o666)
 }
