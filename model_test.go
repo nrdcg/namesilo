@@ -4,11 +4,12 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 	"testing"
 )
 
 func TestAddAccountFunds(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/addAccountFunds.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/addAccountFunds.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -31,7 +32,7 @@ func TestAddAccountFunds(t *testing.T) {
 }
 
 func TestAddAutoRenewal(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/addAutoRenewal.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/addAutoRenewal.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -54,7 +55,7 @@ func TestAddAutoRenewal(t *testing.T) {
 }
 
 func TestAddPrivacy(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/addPrivacy.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/addPrivacy.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -77,7 +78,7 @@ func TestAddPrivacy(t *testing.T) {
 }
 
 func TestAddRegisteredNameServer(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/addRegisteredNameServer.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/addRegisteredNameServer.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -100,7 +101,7 @@ func TestAddRegisteredNameServer(t *testing.T) {
 }
 
 func TestChangeNameServers(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/changeNameServers.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/changeNameServers.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -123,7 +124,7 @@ func TestChangeNameServers(t *testing.T) {
 }
 
 func TestCheckRegisterAvailability(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/checkRegisterAvailability.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/checkRegisterAvailability.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -146,7 +147,7 @@ func TestCheckRegisterAvailability(t *testing.T) {
 }
 
 func TestCheckTransferAvailability(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/checkTransferAvailability.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/checkTransferAvailability.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -169,7 +170,7 @@ func TestCheckTransferAvailability(t *testing.T) {
 }
 
 func TestCheckTransferStatus(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/checkTransferStatus.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/checkTransferStatus.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -192,7 +193,7 @@ func TestCheckTransferStatus(t *testing.T) {
 }
 
 func TestConfigureEmailForward(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/configureEmailForward.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/configureEmailForward.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -215,7 +216,7 @@ func TestConfigureEmailForward(t *testing.T) {
 }
 
 func TestContactAdd(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/contactAdd.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/contactAdd.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -238,7 +239,7 @@ func TestContactAdd(t *testing.T) {
 }
 
 func TestContactDelete(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/contactDelete.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/contactDelete.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -261,7 +262,7 @@ func TestContactDelete(t *testing.T) {
 }
 
 func TestContactDomainAssociate(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/contactDomainAssociate.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/contactDomainAssociate.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -286,7 +287,7 @@ func TestContactDomainAssociate(t *testing.T) {
 func TestContactList(t *testing.T) {
 	t.Skip("because <usnc/> become <usnc></usnc>")
 
-	bytes, err := ioutil.ReadFile("./samples/contactList.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/contactList.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -309,7 +310,7 @@ func TestContactList(t *testing.T) {
 }
 
 func TestContactUpdate(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/contactUpdate.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/contactUpdate.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -332,7 +333,7 @@ func TestContactUpdate(t *testing.T) {
 }
 
 func TestDeleteEmailForward(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/deleteEmailForward.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/deleteEmailForward.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -355,7 +356,7 @@ func TestDeleteEmailForward(t *testing.T) {
 }
 
 func TestDeleteRegisteredNameServer(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/deleteRegisteredNameServer.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/deleteRegisteredNameServer.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -378,7 +379,7 @@ func TestDeleteRegisteredNameServer(t *testing.T) {
 }
 
 func TestDnsAddRecord(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/dnsAddRecord.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/dnsAddRecord.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -401,7 +402,7 @@ func TestDnsAddRecord(t *testing.T) {
 }
 
 func TestDnsDeleteRecord(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/dnsDeleteRecord.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/dnsDeleteRecord.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -424,7 +425,7 @@ func TestDnsDeleteRecord(t *testing.T) {
 }
 
 func TestDnsListRecords(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/dnsListRecords.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/dnsListRecords.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -447,7 +448,7 @@ func TestDnsListRecords(t *testing.T) {
 }
 
 func TestDnsSecAddRecord(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/dnsSecAddRecord.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/dnsSecAddRecord.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -470,7 +471,7 @@ func TestDnsSecAddRecord(t *testing.T) {
 }
 
 func TestDnsSecDeleteRecord(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/dnsSecDeleteRecord.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/dnsSecDeleteRecord.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -493,7 +494,7 @@ func TestDnsSecDeleteRecord(t *testing.T) {
 }
 
 func TestDnsSecListRecords(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/dnsSecListRecords.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/dnsSecListRecords.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -516,7 +517,7 @@ func TestDnsSecListRecords(t *testing.T) {
 }
 
 func TestDnsUpdateRecord(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/dnsUpdateRecord.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/dnsUpdateRecord.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -539,7 +540,7 @@ func TestDnsUpdateRecord(t *testing.T) {
 }
 
 func TestDomainForward(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/domainForward.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/domainForward.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -562,7 +563,7 @@ func TestDomainForward(t *testing.T) {
 }
 
 func TestDomainForwardSubDomain(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/domainForwardSubDomain.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/domainForwardSubDomain.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -585,7 +586,7 @@ func TestDomainForwardSubDomain(t *testing.T) {
 }
 
 func TestDomainForwardSubDomainDelete(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/domainForwardSubDomainDelete.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/domainForwardSubDomainDelete.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -608,7 +609,7 @@ func TestDomainForwardSubDomainDelete(t *testing.T) {
 }
 
 func TestDomainLock(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/domainLock.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/domainLock.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -631,7 +632,7 @@ func TestDomainLock(t *testing.T) {
 }
 
 func TestDomainUnlock(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/domainUnlock.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/domainUnlock.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -654,7 +655,7 @@ func TestDomainUnlock(t *testing.T) {
 }
 
 func TestEmailVerification(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/emailVerification.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/emailVerification.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -677,7 +678,7 @@ func TestEmailVerification(t *testing.T) {
 }
 
 func TestGetAccountBalance(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/getAccountBalance.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/getAccountBalance.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -700,7 +701,7 @@ func TestGetAccountBalance(t *testing.T) {
 }
 
 func TestGetDomainInfo(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/getDomainInfo.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/getDomainInfo.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -723,7 +724,7 @@ func TestGetDomainInfo(t *testing.T) {
 }
 
 func TestGetPrices(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/getPrices.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/getPrices.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -746,7 +747,7 @@ func TestGetPrices(t *testing.T) {
 }
 
 func TestListDomains(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/listDomains.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/listDomains.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -769,7 +770,7 @@ func TestListDomains(t *testing.T) {
 }
 
 func TestListEmailForwards(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/listEmailForwards.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/listEmailForwards.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -792,7 +793,7 @@ func TestListEmailForwards(t *testing.T) {
 }
 
 func TestListOrders(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/listOrders.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/listOrders.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -815,7 +816,7 @@ func TestListOrders(t *testing.T) {
 }
 
 func TestListRegisteredNameServers(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/listRegisteredNameServers.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/listRegisteredNameServers.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -838,7 +839,7 @@ func TestListRegisteredNameServers(t *testing.T) {
 }
 
 func TestMarketplaceActiveSalesOverview(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/marketplaceActiveSalesOverview.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/marketplaceActiveSalesOverview.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -861,7 +862,7 @@ func TestMarketplaceActiveSalesOverview(t *testing.T) {
 }
 
 func TestMarketplaceAddOrModifySale(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/marketplaceAddOrModifySale.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/marketplaceAddOrModifySale.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -884,7 +885,7 @@ func TestMarketplaceAddOrModifySale(t *testing.T) {
 }
 
 func TestMarketplaceLandingPageUpdate(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/marketplaceLandingPageUpdate.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/marketplaceLandingPageUpdate.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -907,7 +908,7 @@ func TestMarketplaceLandingPageUpdate(t *testing.T) {
 }
 
 func TestModifyRegisteredNameServer(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/modifyRegisteredNameServer.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/modifyRegisteredNameServer.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -930,7 +931,7 @@ func TestModifyRegisteredNameServer(t *testing.T) {
 }
 
 func TestOrderDetails(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/orderDetails.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/orderDetails.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -953,7 +954,7 @@ func TestOrderDetails(t *testing.T) {
 }
 
 func TestPortfolioAdd(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/portfolioAdd.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/portfolioAdd.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -976,7 +977,7 @@ func TestPortfolioAdd(t *testing.T) {
 }
 
 func TestPortfolioDelete(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/portfolioDelete.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/portfolioDelete.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -999,7 +1000,7 @@ func TestPortfolioDelete(t *testing.T) {
 }
 
 func TestPortfolioDomainAssociate(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/portfolioDomainAssociate.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/portfolioDomainAssociate.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1022,7 +1023,7 @@ func TestPortfolioDomainAssociate(t *testing.T) {
 }
 
 func TestPortfolioList(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/portfolioList.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/portfolioList.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1045,7 +1046,7 @@ func TestPortfolioList(t *testing.T) {
 }
 
 func TestRegisterDomain(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/registerDomain.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/registerDomain.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1068,7 +1069,7 @@ func TestRegisterDomain(t *testing.T) {
 }
 
 func TestRegisterDomainDrop(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/registerDomainDrop.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/registerDomainDrop.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1091,7 +1092,7 @@ func TestRegisterDomainDrop(t *testing.T) {
 }
 
 func TestRegistrantVerificationStatus(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/registrantVerificationStatus.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/registrantVerificationStatus.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1114,7 +1115,7 @@ func TestRegistrantVerificationStatus(t *testing.T) {
 }
 
 func TestRemoveAutoRenewal(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/removeAutoRenewal.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/removeAutoRenewal.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1137,7 +1138,7 @@ func TestRemoveAutoRenewal(t *testing.T) {
 }
 
 func TestRemovePrivacy(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/removePrivacy.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/removePrivacy.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1160,7 +1161,7 @@ func TestRemovePrivacy(t *testing.T) {
 }
 
 func TestRenewDomain(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/renewDomain.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/renewDomain.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1183,7 +1184,7 @@ func TestRenewDomain(t *testing.T) {
 }
 
 func TestRetrieveAuthCode(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/retrieveAuthCode.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/retrieveAuthCode.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1206,7 +1207,7 @@ func TestRetrieveAuthCode(t *testing.T) {
 }
 
 func TestTransferDomain(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/transferDomain.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/transferDomain.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1229,7 +1230,7 @@ func TestTransferDomain(t *testing.T) {
 }
 
 func TestTransferUpdateChangeEPPCode(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/transferUpdateChangeEPPCode.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/transferUpdateChangeEPPCode.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1252,7 +1253,7 @@ func TestTransferUpdateChangeEPPCode(t *testing.T) {
 }
 
 func TestTransferUpdateResendAdminEmail(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/transferUpdateResendAdminEmail.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/transferUpdateResendAdminEmail.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1275,7 +1276,7 @@ func TestTransferUpdateResendAdminEmail(t *testing.T) {
 }
 
 func TestTransferUpdateResubmitToRegistry(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/transferUpdateResubmitToRegistry.xml")
+	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/transferUpdateResubmitToRegistry.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -209,7 +209,7 @@ func generate(tmpl, filename string) error {
 
 	var baseNames []BaseName
 
-	files, err := ioutil.ReadDir("../samples")
+	files, err := ioutil.ReadDir(filepath.FromSlash("../samples"))
 	if err != nil {
 		return err
 	}

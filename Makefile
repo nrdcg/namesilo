@@ -1,8 +1,6 @@
-.PHONY: clean check test build fmt
+.PHONY: clean check test build
 
 export GO111MODULE=on
-
-SRCS = $(shell git ls-files '*.go' | grep -v '^vendor/')
 
 default: clean check test build
 
@@ -17,9 +15,6 @@ test: clean
 
 check:
 	golangci-lint run
-
-fmt:
-	gofmt -s -l -w $(SRCS)
 
 ## Useful to initiate structures
 gen-struct:
