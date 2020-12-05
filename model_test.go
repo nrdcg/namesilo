@@ -2,11 +2,15 @@ package namesilo
 
 import (
 	"encoding/xml"
-	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"strings"
 	"testing"
 )
+
+func toCleanString(data []byte) string {
+	return strings.TrimSuffix(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
+}
 
 func TestAddAccountFunds(t *testing.T) {
 	bytes, err := ioutil.ReadFile(filepath.FromSlash("./samples/addAccountFunds.xml"))
@@ -25,7 +29,7 @@ func TestAddAccountFunds(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -48,7 +52,7 @@ func TestAddAutoRenewal(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -71,7 +75,7 @@ func TestAddPrivacy(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -94,7 +98,7 @@ func TestAddRegisteredNameServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -117,7 +121,7 @@ func TestChangeNameServers(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -140,7 +144,7 @@ func TestCheckRegisterAvailability(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -163,7 +167,7 @@ func TestCheckTransferAvailability(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -186,7 +190,7 @@ func TestCheckTransferStatus(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -209,7 +213,7 @@ func TestConfigureEmailForward(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -232,7 +236,7 @@ func TestContactAdd(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -255,7 +259,7 @@ func TestContactDelete(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -278,7 +282,7 @@ func TestContactDomainAssociate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -303,7 +307,7 @@ func TestContactList(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -326,7 +330,7 @@ func TestContactUpdate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -349,7 +353,7 @@ func TestDeleteEmailForward(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -372,7 +376,7 @@ func TestDeleteRegisteredNameServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -395,7 +399,7 @@ func TestDnsAddRecord(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -418,7 +422,7 @@ func TestDnsDeleteRecord(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -441,7 +445,7 @@ func TestDnsListRecords(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -464,7 +468,7 @@ func TestDnsSecAddRecord(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -487,7 +491,7 @@ func TestDnsSecDeleteRecord(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -510,7 +514,7 @@ func TestDnsSecListRecords(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -533,7 +537,7 @@ func TestDnsUpdateRecord(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -556,7 +560,7 @@ func TestDomainForward(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -579,7 +583,7 @@ func TestDomainForwardSubDomain(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -602,7 +606,7 @@ func TestDomainForwardSubDomainDelete(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -625,7 +629,7 @@ func TestDomainLock(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -648,7 +652,7 @@ func TestDomainUnlock(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -671,7 +675,7 @@ func TestEmailVerification(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -694,7 +698,7 @@ func TestGetAccountBalance(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -717,7 +721,7 @@ func TestGetDomainInfo(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -740,7 +744,7 @@ func TestGetPrices(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -763,7 +767,7 @@ func TestListDomains(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -786,7 +790,7 @@ func TestListEmailForwards(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -809,7 +813,7 @@ func TestListOrders(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -832,7 +836,7 @@ func TestListRegisteredNameServers(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -855,7 +859,7 @@ func TestMarketplaceActiveSalesOverview(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -878,7 +882,7 @@ func TestMarketplaceAddOrModifySale(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -901,7 +905,7 @@ func TestMarketplaceLandingPageUpdate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -924,7 +928,7 @@ func TestModifyRegisteredNameServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -947,7 +951,7 @@ func TestOrderDetails(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -970,7 +974,7 @@ func TestPortfolioAdd(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -993,7 +997,7 @@ func TestPortfolioDelete(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1016,7 +1020,7 @@ func TestPortfolioDomainAssociate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1039,7 +1043,7 @@ func TestPortfolioList(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1062,7 +1066,7 @@ func TestRegisterDomain(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1085,7 +1089,7 @@ func TestRegisterDomainDrop(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1108,7 +1112,7 @@ func TestRegistrantVerificationStatus(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1131,7 +1135,7 @@ func TestRemoveAutoRenewal(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1154,7 +1158,7 @@ func TestRemovePrivacy(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1177,7 +1181,7 @@ func TestRenewDomain(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1200,7 +1204,7 @@ func TestRetrieveAuthCode(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1223,7 +1227,7 @@ func TestTransferDomain(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1246,7 +1250,7 @@ func TestTransferUpdateChangeEPPCode(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1269,7 +1273,7 @@ func TestTransferUpdateResendAdminEmail(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}
@@ -1292,7 +1296,7 @@ func TestTransferUpdateResubmitToRegistry(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}

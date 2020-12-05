@@ -153,8 +153,15 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
+	"strings"
 	"testing"
 )
+
+func toCleanString(data []byte) string {
+	return strings.TrimSuffix(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
+}
+
 {{range $key, $value := .Names }}
 func Test{{ $value.Upper }}(t *testing.T) {
 	bytes, err := ioutil.ReadFile("./samples/{{ $value.Lower }}.xml")
@@ -173,7 +180,7 @@ func Test{{ $value.Upper }}(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if fmt.Sprintln(string(indent)) != string(bytes) {
+	if toCleanString(indent) != toCleanString(bytes) {
 		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
 		t.Error("Errors")
 	}

@@ -1,15 +1,14 @@
 # Go library for accessing the Namesilo API
 
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/nrdcg/namesilo.svg)](https://github.com/nrdcg/namesilo/releases)
-[![GoDoc](https://godoc.org/github.com/nrdcg/namesilo?status.svg)](https://godoc.org/github.com/nrdcg/namesilo)
-[![Build Status](https://travis-ci.com/nrdcg/namesilo.svg?branch=master)](https://travis-ci.com/nrdcg/namesilo)
+[![Build Status](https://github.com/nrdcg/namesilo/workflows/Main/badge.svg?branch=master)](https://github.com/nrdcg/namesilo/actions)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/nrdcg/namesilo)](https://pkg.go.dev/github.com/nrdcg/namesilo)
 
 A Namesilo API client written in Go.
 
 namesilo is a Go client library for accessing the Namesilo API.
 
 ## Example
-
 
 ```go
 package main
