@@ -1,0 +1,99 @@
+run:
+  timeout: 5m
+  skip-files: [ ]
+  skip-dirs: [ ]
+
+linters-settings:
+  govet:
+    enable-all: true
+    disable:
+      - fieldalignment
+  gocyclo:
+    min-complexity: 15
+  maligned:
+    suggest-new: true
+  goconst:
+    min-len: 5
+    min-occurrences: 3
+  misspell:
+    locale: US
+  funlen:
+    lines: -1
+    statements: 40
+  godox:
+    keywords:
+      - FIXME
+  gofumpt:
+    extra-rules: true
+  depguard:
+    list-type: blacklist
+    include-go-root: false
+    packages:
+      - github.com/sirupsen/logrus
+      - github.com/pkg/errors
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+    disabled-checks:
+      - sloppyReassign
+      - unnamedResult
+      - rangeValCopy
+      - octalLiteral
+      - paramTypeCombine # already handle by gofumpt.extra-rules
+    settings:
+      hugeParam:
+        sizeThreshold: 100
+
+linters:
+  enable-all: true
+  disable:
+    - maligned # deprecated
+    - interfacer # deprecated
+    - scopelint # deprecated
+    - golint # deprecated
+    - sqlclosecheck # not relevant (SQL)
+    - rowserrcheck # not relevant (SQL)
+    - cyclop # duplicate of gocyclo
+    - lll
+    - dupl
+    - wsl
+    - nlreturn
+    - gomnd
+    - goerr113
+    - wrapcheck
+    - exhaustive
+    - exhaustivestruct
+    - testpackage
+    - tparallel
+    - paralleltest
+    - prealloc
+    - ifshort
+    - forcetypeassert
+    - noctx
+
+issues:
+  exclude-use-default: false
+  max-per-linter: 0
+  max-same-issues: 0
+  exclude:
+    - "G306:"
+  exclude-rules:
+    - path: .*_test.go
+      linters:
+        - funlen
+    - path: model.go
+      text: type Dns(.+) should be DNS(.+)
+    - path: params.go
+      text: type Dns(.+) should be DNS(.+)
+    - path: zz_gen_client.go
+      text: method Dns(.+) should be DNS(.+)
+    - path: zz_gen_client_test.go
+      text: 'string `1234` has 56 occurrences, make it a constant'
+    - path: zz_gen_client_test.go
+      text: setupFakeAPI - result 0 \(\*net/http\.ServeMux\) is never used
+    - path: gen/gen_test.go
+      text: func `generate` is unused
+    - path: gen/gen_test.go
+      text: type `BaseName` is unused
