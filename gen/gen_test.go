@@ -3,7 +3,7 @@ package gen
 import (
 	"bytes"
 	"go/format"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -36,7 +36,7 @@ func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $valu
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -99,17 +99,20 @@ func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 		}
 
 		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 
 		_, err = io.Copy(w, f)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 	})
 
@@ -164,7 +167,7 @@ func toCleanString(data []byte) string {
 
 {{range $key, $value := .Names }}
 func Test{{ $value.Upper }}(t *testing.T) {
-	bytes, err := ioutil.ReadFile("./samples/{{ $value.Lower }}.xml")
+	bytes, err := os.ReadFile("./samples/{{ $value.Lower }}.xml")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -216,7 +219,7 @@ func generate(tmpl, filename string) error {
 
 	var baseNames []BaseName
 
-	files, err := ioutil.ReadDir(filepath.FromSlash("../samples"))
+	files, err := os.ReadDir(filepath.FromSlash("../samples"))
 	if err != nil {
 		return err
 	}
@@ -256,5 +259,5 @@ func generate(tmpl, filename string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join("..", filename), source, 0o666)
+	return os.WriteFile(filepath.Join("..", filename), source, 0o666)
 }

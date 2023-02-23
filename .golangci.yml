@@ -49,12 +49,19 @@ linters-settings:
 linters:
   enable-all: true
   disable:
-    - maligned # deprecated
-    - interfacer # deprecated
-    - scopelint # deprecated
+    - deadcode # deprecated
+    - exhaustivestruct # deprecated
     - golint # deprecated
+    - ifshort # deprecated
+    - interfacer # deprecated
+    - maligned # deprecated
+    - nosnakecase # deprecated
+    - scopelint # deprecated
+    - structcheck # deprecated
+    - varcheck # deprecated
     - sqlclosecheck # not relevant (SQL)
     - rowserrcheck # not relevant (SQL)
+    - execinquery # not relevant (SQL)
     - cyclop # duplicate of gocyclo
     - lll
     - dupl
@@ -64,7 +71,7 @@ linters:
     - goerr113
     - wrapcheck
     - exhaustive
-    - exhaustivestruct
+    - exhaustruct
     - testpackage
     - tparallel
     - paralleltest
@@ -72,6 +79,7 @@ linters:
     - ifshort
     - forcetypeassert
     - noctx
+    - varnamelen
 
 issues:
   exclude-use-default: false
@@ -97,3 +105,6 @@ issues:
       text: func `generate` is unused
     - path: gen/gen_test.go
       text: type `BaseName` is unused
+    - path: .*/encoding/xml/.* # Disabled to a bug in musttag
+      linters:
+        - musttag

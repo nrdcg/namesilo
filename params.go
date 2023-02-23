@@ -236,7 +236,6 @@ type DomainForwardParams struct {
 	MetaTitle       string `url:"meta_title"`       // Optional
 	MetaDescription string `url:"meta_description"` // Optional
 	MetaKeywords    string `url:"meta_keywords"`    // Optional
-
 }
 
 // DomainForwardSubDomainParams Parameters for operation domainForwardSubDomain.

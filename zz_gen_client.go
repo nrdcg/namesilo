@@ -3,7 +3,7 @@ package namesilo
 import (
 	"encoding/xml"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -19,7 +19,7 @@ func (c *Client) AddAccountFunds(params *AddAccountFundsParams) (*AddAccountFund
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func (c *Client) AddAutoRenewal(params *AddAutoRenewalParams) (*AddAutoRenewal, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func (c *Client) AddPrivacy(params *AddPrivacyParams) (*AddPrivacy, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -136,7 +136,7 @@ func (c *Client) AddRegisteredNameServer(params *AddRegisteredNameServerParams) 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -175,7 +175,7 @@ func (c *Client) ChangeNameServers(params *ChangeNameServersParams) (*ChangeName
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -214,7 +214,7 @@ func (c *Client) CheckRegisterAvailability(params *CheckRegisterAvailabilityPara
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -253,7 +253,7 @@ func (c *Client) CheckTransferAvailability(params *CheckTransferAvailabilityPara
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -292,7 +292,7 @@ func (c *Client) CheckTransferStatus(params *CheckTransferStatusParams) (*CheckT
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -331,7 +331,7 @@ func (c *Client) ConfigureEmailForward(params *ConfigureEmailForwardParams) (*Co
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -370,7 +370,7 @@ func (c *Client) ContactAdd(params *ContactAddParams) (*ContactAdd, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -409,7 +409,7 @@ func (c *Client) ContactDelete(params *ContactDeleteParams) (*ContactDelete, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -448,7 +448,7 @@ func (c *Client) ContactDomainAssociate(params *ContactDomainAssociateParams) (*
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -487,7 +487,7 @@ func (c *Client) ContactList(params *ContactListParams) (*ContactList, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -526,7 +526,7 @@ func (c *Client) ContactUpdate(params *ContactUpdateParams) (*ContactUpdate, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -565,7 +565,7 @@ func (c *Client) DeleteEmailForward(params *DeleteEmailForwardParams) (*DeleteEm
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -604,7 +604,7 @@ func (c *Client) DeleteRegisteredNameServer(params *DeleteRegisteredNameServerPa
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -643,7 +643,7 @@ func (c *Client) DnsAddRecord(params *DnsAddRecordParams) (*DnsAddRecord, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -682,7 +682,7 @@ func (c *Client) DnsDeleteRecord(params *DnsDeleteRecordParams) (*DnsDeleteRecor
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -721,7 +721,7 @@ func (c *Client) DnsListRecords(params *DnsListRecordsParams) (*DnsListRecords, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -760,7 +760,7 @@ func (c *Client) DnsSecAddRecord(params *DnsSecAddRecordParams) (*DnsSecAddRecor
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -799,7 +799,7 @@ func (c *Client) DnsSecDeleteRecord(params *DnsSecDeleteRecordParams) (*DnsSecDe
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -838,7 +838,7 @@ func (c *Client) DnsSecListRecords(params *DnsSecListRecordsParams) (*DnsSecList
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -877,7 +877,7 @@ func (c *Client) DnsUpdateRecord(params *DnsUpdateRecordParams) (*DnsUpdateRecor
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -916,7 +916,7 @@ func (c *Client) DomainForward(params *DomainForwardParams) (*DomainForward, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -955,7 +955,7 @@ func (c *Client) DomainForwardSubDomain(params *DomainForwardSubDomainParams) (*
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -994,7 +994,7 @@ func (c *Client) DomainForwardSubDomainDelete(params *DomainForwardSubDomainDele
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1033,7 +1033,7 @@ func (c *Client) DomainLock(params *DomainLockParams) (*DomainLock, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1072,7 +1072,7 @@ func (c *Client) DomainUnlock(params *DomainUnlockParams) (*DomainUnlock, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1111,7 +1111,7 @@ func (c *Client) EmailVerification(params *EmailVerificationParams) (*EmailVerif
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1150,7 +1150,7 @@ func (c *Client) GetAccountBalance(params *GetAccountBalanceParams) (*GetAccount
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1189,7 +1189,7 @@ func (c *Client) GetDomainInfo(params *GetDomainInfoParams) (*GetDomainInfo, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1228,7 +1228,7 @@ func (c *Client) GetPrices(params *GetPricesParams) (*GetPrices, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1267,7 +1267,7 @@ func (c *Client) ListDomains(params *ListDomainsParams) (*ListDomains, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1306,7 +1306,7 @@ func (c *Client) ListEmailForwards(params *ListEmailForwardsParams) (*ListEmailF
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1345,7 +1345,7 @@ func (c *Client) ListOrders(params *ListOrdersParams) (*ListOrders, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1384,7 +1384,7 @@ func (c *Client) ListRegisteredNameServers(params *ListRegisteredNameServersPara
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1423,7 +1423,7 @@ func (c *Client) MarketplaceActiveSalesOverview(params *MarketplaceActiveSalesOv
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1462,7 +1462,7 @@ func (c *Client) MarketplaceAddOrModifySale(params *MarketplaceAddOrModifySalePa
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1501,7 +1501,7 @@ func (c *Client) MarketplaceLandingPageUpdate(params *MarketplaceLandingPageUpda
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1540,7 +1540,7 @@ func (c *Client) ModifyRegisteredNameServer(params *ModifyRegisteredNameServerPa
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1579,7 +1579,7 @@ func (c *Client) OrderDetails(params *OrderDetailsParams) (*OrderDetails, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1618,7 +1618,7 @@ func (c *Client) PortfolioAdd(params *PortfolioAddParams) (*PortfolioAdd, error)
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1657,7 +1657,7 @@ func (c *Client) PortfolioDelete(params *PortfolioDeleteParams) (*PortfolioDelet
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1696,7 +1696,7 @@ func (c *Client) PortfolioDomainAssociate(params *PortfolioDomainAssociateParams
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1735,7 +1735,7 @@ func (c *Client) PortfolioList(params *PortfolioListParams) (*PortfolioList, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1774,7 +1774,7 @@ func (c *Client) RegisterDomain(params *RegisterDomainParams) (*RegisterDomain, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1813,7 +1813,7 @@ func (c *Client) RegisterDomainDrop(params *RegisterDomainDropParams) (*Register
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1852,7 +1852,7 @@ func (c *Client) RegistrantVerificationStatus(params *RegistrantVerificationStat
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1891,7 +1891,7 @@ func (c *Client) RemoveAutoRenewal(params *RemoveAutoRenewalParams) (*RemoveAuto
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1930,7 +1930,7 @@ func (c *Client) RemovePrivacy(params *RemovePrivacyParams) (*RemovePrivacy, err
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -1969,7 +1969,7 @@ func (c *Client) RenewDomain(params *RenewDomainParams) (*RenewDomain, error) {
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -2008,7 +2008,7 @@ func (c *Client) RetrieveAuthCode(params *RetrieveAuthCodeParams) (*RetrieveAuth
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -2047,7 +2047,7 @@ func (c *Client) TransferDomain(params *TransferDomainParams) (*TransferDomain, 
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -2086,7 +2086,7 @@ func (c *Client) TransferUpdateChangeEPPCode(params *TransferUpdateChangeEPPCode
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -2125,7 +2125,7 @@ func (c *Client) TransferUpdateResendAdminEmail(params *TransferUpdateResendAdmi
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -2164,7 +2164,7 @@ func (c *Client) TransferUpdateResubmitToRegistry(params *TransferUpdateResubmit
 		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
 	}
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}

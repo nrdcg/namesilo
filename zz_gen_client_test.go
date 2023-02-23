@@ -25,17 +25,20 @@ func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 			err := xml.NewEncoder(w).Encode(Operation{Reply: Reply{Code: "110", Detail: "Invalid API Key"}})
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 		}
 
 		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 
 		_, err = io.Copy(w, f)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 	})
 
