@@ -1,7 +1,7 @@
 package namesilo
 
 import (
-	"fmt"
+	"errors"
 	"net/http"
 )
 
@@ -17,7 +17,7 @@ type TokenTransport struct {
 // NewTokenTransport Creates a HTTP transport for API authentication.
 func NewTokenTransport(apiKey string) (*TokenTransport, error) {
 	if apiKey == "" {
-		return nil, fmt.Errorf("credentials missing: API key")
+		return nil, errors.New("credentials missing: API key")
 	}
 
 	return &TokenTransport{apiKey: apiKey}, nil
