@@ -26,7 +26,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	client := namesilo.NewClient(transport.Client())
+	client := namesilo.NewClient(transport.Client(), false)
 
 	params := &namesilo.AddAccountFundsParams{
 		Amount:    "1000000",
