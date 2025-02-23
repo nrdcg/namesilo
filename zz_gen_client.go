@@ -1,6 +1,7 @@
 package namesilo
 
 import (
+	"context"
 	"encoding/xml"
 	"fmt"
 	"io"
@@ -8,8 +9,8 @@ import (
 )
 
 // AddAccountFunds Execute operation addAccountFunds.
-func (c *Client) AddAccountFunds(params *AddAccountFundsParams) (*AddAccountFunds, error) {
-	resp, err := c.get("addAccountFunds", params)
+func (c *Client) AddAccountFunds(ctx context.Context, params *AddAccountFundsParams) (*AddAccountFunds, error) {
+	resp, err := c.get(ctx, "addAccountFunds", params)
 	if err != nil {
 		return nil, err
 	}
@@ -47,8 +48,8 @@ func (c *Client) AddAccountFunds(params *AddAccountFundsParams) (*AddAccountFund
 }
 
 // AddAutoRenewal Execute operation addAutoRenewal.
-func (c *Client) AddAutoRenewal(params *AddAutoRenewalParams) (*AddAutoRenewal, error) {
-	resp, err := c.get("addAutoRenewal", params)
+func (c *Client) AddAutoRenewal(ctx context.Context, params *AddAutoRenewalParams) (*AddAutoRenewal, error) {
+	resp, err := c.get(ctx, "addAutoRenewal", params)
 	if err != nil {
 		return nil, err
 	}
@@ -86,8 +87,8 @@ func (c *Client) AddAutoRenewal(params *AddAutoRenewalParams) (*AddAutoRenewal, 
 }
 
 // AddPrivacy Execute operation addPrivacy.
-func (c *Client) AddPrivacy(params *AddPrivacyParams) (*AddPrivacy, error) {
-	resp, err := c.get("addPrivacy", params)
+func (c *Client) AddPrivacy(ctx context.Context, params *AddPrivacyParams) (*AddPrivacy, error) {
+	resp, err := c.get(ctx, "addPrivacy", params)
 	if err != nil {
 		return nil, err
 	}
@@ -125,8 +126,8 @@ func (c *Client) AddPrivacy(params *AddPrivacyParams) (*AddPrivacy, error) {
 }
 
 // AddRegisteredNameServer Execute operation addRegisteredNameServer.
-func (c *Client) AddRegisteredNameServer(params *AddRegisteredNameServerParams) (*AddRegisteredNameServer, error) {
-	resp, err := c.get("addRegisteredNameServer", params)
+func (c *Client) AddRegisteredNameServer(ctx context.Context, params *AddRegisteredNameServerParams) (*AddRegisteredNameServer, error) {
+	resp, err := c.get(ctx, "addRegisteredNameServer", params)
 	if err != nil {
 		return nil, err
 	}
@@ -164,8 +165,8 @@ func (c *Client) AddRegisteredNameServer(params *AddRegisteredNameServerParams) 
 }
 
 // ChangeNameServers Execute operation changeNameServers.
-func (c *Client) ChangeNameServers(params *ChangeNameServersParams) (*ChangeNameServers, error) {
-	resp, err := c.get("changeNameServers", params)
+func (c *Client) ChangeNameServers(ctx context.Context, params *ChangeNameServersParams) (*ChangeNameServers, error) {
+	resp, err := c.get(ctx, "changeNameServers", params)
 	if err != nil {
 		return nil, err
 	}
@@ -203,8 +204,11 @@ func (c *Client) ChangeNameServers(params *ChangeNameServersParams) (*ChangeName
 }
 
 // CheckRegisterAvailability Execute operation checkRegisterAvailability.
-func (c *Client) CheckRegisterAvailability(params *CheckRegisterAvailabilityParams) (*CheckRegisterAvailability, error) {
-	resp, err := c.get("checkRegisterAvailability", params)
+func (c *Client) CheckRegisterAvailability(
+	ctx context.Context,
+	params *CheckRegisterAvailabilityParams,
+) (*CheckRegisterAvailability, error) {
+	resp, err := c.get(ctx, "checkRegisterAvailability", params)
 	if err != nil {
 		return nil, err
 	}
@@ -242,8 +246,11 @@ func (c *Client) CheckRegisterAvailability(params *CheckRegisterAvailabilityPara
 }
 
 // CheckTransferAvailability Execute operation checkTransferAvailability.
-func (c *Client) CheckTransferAvailability(params *CheckTransferAvailabilityParams) (*CheckTransferAvailability, error) {
-	resp, err := c.get("checkTransferAvailability", params)
+func (c *Client) CheckTransferAvailability(
+	ctx context.Context,
+	params *CheckTransferAvailabilityParams,
+) (*CheckTransferAvailability, error) {
+	resp, err := c.get(ctx, "checkTransferAvailability", params)
 	if err != nil {
 		return nil, err
 	}
@@ -281,8 +288,8 @@ func (c *Client) CheckTransferAvailability(params *CheckTransferAvailabilityPara
 }
 
 // CheckTransferStatus Execute operation checkTransferStatus.
-func (c *Client) CheckTransferStatus(params *CheckTransferStatusParams) (*CheckTransferStatus, error) {
-	resp, err := c.get("checkTransferStatus", params)
+func (c *Client) CheckTransferStatus(ctx context.Context, params *CheckTransferStatusParams) (*CheckTransferStatus, error) {
+	resp, err := c.get(ctx, "checkTransferStatus", params)
 	if err != nil {
 		return nil, err
 	}
@@ -320,8 +327,8 @@ func (c *Client) CheckTransferStatus(params *CheckTransferStatusParams) (*CheckT
 }
 
 // ConfigureEmailForward Execute operation configureEmailForward.
-func (c *Client) ConfigureEmailForward(params *ConfigureEmailForwardParams) (*ConfigureEmailForward, error) {
-	resp, err := c.get("configureEmailForward", params)
+func (c *Client) ConfigureEmailForward(ctx context.Context, params *ConfigureEmailForwardParams) (*ConfigureEmailForward, error) {
+	resp, err := c.get(ctx, "configureEmailForward", params)
 	if err != nil {
 		return nil, err
 	}
@@ -359,8 +366,8 @@ func (c *Client) ConfigureEmailForward(params *ConfigureEmailForwardParams) (*Co
 }
 
 // ContactAdd Execute operation contactAdd.
-func (c *Client) ContactAdd(params *ContactAddParams) (*ContactAdd, error) {
-	resp, err := c.get("contactAdd", params)
+func (c *Client) ContactAdd(ctx context.Context, params *ContactAddParams) (*ContactAdd, error) {
+	resp, err := c.get(ctx, "contactAdd", params)
 	if err != nil {
 		return nil, err
 	}
@@ -398,8 +405,8 @@ func (c *Client) ContactAdd(params *ContactAddParams) (*ContactAdd, error) {
 }
 
 // ContactDelete Execute operation contactDelete.
-func (c *Client) ContactDelete(params *ContactDeleteParams) (*ContactDelete, error) {
-	resp, err := c.get("contactDelete", params)
+func (c *Client) ContactDelete(ctx context.Context, params *ContactDeleteParams) (*ContactDelete, error) {
+	resp, err := c.get(ctx, "contactDelete", params)
 	if err != nil {
 		return nil, err
 	}
@@ -437,8 +444,8 @@ func (c *Client) ContactDelete(params *ContactDeleteParams) (*ContactDelete, err
 }
 
 // ContactDomainAssociate Execute operation contactDomainAssociate.
-func (c *Client) ContactDomainAssociate(params *ContactDomainAssociateParams) (*ContactDomainAssociate, error) {
-	resp, err := c.get("contactDomainAssociate", params)
+func (c *Client) ContactDomainAssociate(ctx context.Context, params *ContactDomainAssociateParams) (*ContactDomainAssociate, error) {
+	resp, err := c.get(ctx, "contactDomainAssociate", params)
 	if err != nil {
 		return nil, err
 	}
@@ -476,8 +483,8 @@ func (c *Client) ContactDomainAssociate(params *ContactDomainAssociateParams) (*
 }
 
 // ContactList Execute operation contactList.
-func (c *Client) ContactList(params *ContactListParams) (*ContactList, error) {
-	resp, err := c.get("contactList", params)
+func (c *Client) ContactList(ctx context.Context, params *ContactListParams) (*ContactList, error) {
+	resp, err := c.get(ctx, "contactList", params)
 	if err != nil {
 		return nil, err
 	}
@@ -515,8 +522,8 @@ func (c *Client) ContactList(params *ContactListParams) (*ContactList, error) {
 }
 
 // ContactUpdate Execute operation contactUpdate.
-func (c *Client) ContactUpdate(params *ContactUpdateParams) (*ContactUpdate, error) {
-	resp, err := c.get("contactUpdate", params)
+func (c *Client) ContactUpdate(ctx context.Context, params *ContactUpdateParams) (*ContactUpdate, error) {
+	resp, err := c.get(ctx, "contactUpdate", params)
 	if err != nil {
 		return nil, err
 	}
@@ -554,8 +561,8 @@ func (c *Client) ContactUpdate(params *ContactUpdateParams) (*ContactUpdate, err
 }
 
 // DeleteEmailForward Execute operation deleteEmailForward.
-func (c *Client) DeleteEmailForward(params *DeleteEmailForwardParams) (*DeleteEmailForward, error) {
-	resp, err := c.get("deleteEmailForward", params)
+func (c *Client) DeleteEmailForward(ctx context.Context, params *DeleteEmailForwardParams) (*DeleteEmailForward, error) {
+	resp, err := c.get(ctx, "deleteEmailForward", params)
 	if err != nil {
 		return nil, err
 	}
@@ -593,8 +600,11 @@ func (c *Client) DeleteEmailForward(params *DeleteEmailForwardParams) (*DeleteEm
 }
 
 // DeleteRegisteredNameServer Execute operation deleteRegisteredNameServer.
-func (c *Client) DeleteRegisteredNameServer(params *DeleteRegisteredNameServerParams) (*DeleteRegisteredNameServer, error) {
-	resp, err := c.get("deleteRegisteredNameServer", params)
+func (c *Client) DeleteRegisteredNameServer(
+	ctx context.Context,
+	params *DeleteRegisteredNameServerParams,
+) (*DeleteRegisteredNameServer, error) {
+	resp, err := c.get(ctx, "deleteRegisteredNameServer", params)
 	if err != nil {
 		return nil, err
 	}
@@ -632,8 +642,8 @@ func (c *Client) DeleteRegisteredNameServer(params *DeleteRegisteredNameServerPa
 }
 
 // DnsAddRecord Execute operation dnsAddRecord.
-func (c *Client) DnsAddRecord(params *DnsAddRecordParams) (*DnsAddRecord, error) {
-	resp, err := c.get("dnsAddRecord", params)
+func (c *Client) DnsAddRecord(ctx context.Context, params *DnsAddRecordParams) (*DnsAddRecord, error) {
+	resp, err := c.get(ctx, "dnsAddRecord", params)
 	if err != nil {
 		return nil, err
 	}
@@ -671,8 +681,8 @@ func (c *Client) DnsAddRecord(params *DnsAddRecordParams) (*DnsAddRecord, error)
 }
 
 // DnsDeleteRecord Execute operation dnsDeleteRecord.
-func (c *Client) DnsDeleteRecord(params *DnsDeleteRecordParams) (*DnsDeleteRecord, error) {
-	resp, err := c.get("dnsDeleteRecord", params)
+func (c *Client) DnsDeleteRecord(ctx context.Context, params *DnsDeleteRecordParams) (*DnsDeleteRecord, error) {
+	resp, err := c.get(ctx, "dnsDeleteRecord", params)
 	if err != nil {
 		return nil, err
 	}
@@ -710,8 +720,8 @@ func (c *Client) DnsDeleteRecord(params *DnsDeleteRecordParams) (*DnsDeleteRecor
 }
 
 // DnsListRecords Execute operation dnsListRecords.
-func (c *Client) DnsListRecords(params *DnsListRecordsParams) (*DnsListRecords, error) {
-	resp, err := c.get("dnsListRecords", params)
+func (c *Client) DnsListRecords(ctx context.Context, params *DnsListRecordsParams) (*DnsListRecords, error) {
+	resp, err := c.get(ctx, "dnsListRecords", params)
 	if err != nil {
 		return nil, err
 	}
@@ -749,8 +759,8 @@ func (c *Client) DnsListRecords(params *DnsListRecordsParams) (*DnsListRecords, 
 }
 
 // DnsSecAddRecord Execute operation dnsSecAddRecord.
-func (c *Client) DnsSecAddRecord(params *DnsSecAddRecordParams) (*DnsSecAddRecord, error) {
-	resp, err := c.get("dnsSecAddRecord", params)
+func (c *Client) DnsSecAddRecord(ctx context.Context, params *DnsSecAddRecordParams) (*DnsSecAddRecord, error) {
+	resp, err := c.get(ctx, "dnsSecAddRecord", params)
 	if err != nil {
 		return nil, err
 	}
@@ -788,8 +798,8 @@ func (c *Client) DnsSecAddRecord(params *DnsSecAddRecordParams) (*DnsSecAddRecor
 }
 
 // DnsSecDeleteRecord Execute operation dnsSecDeleteRecord.
-func (c *Client) DnsSecDeleteRecord(params *DnsSecDeleteRecordParams) (*DnsSecDeleteRecord, error) {
-	resp, err := c.get("dnsSecDeleteRecord", params)
+func (c *Client) DnsSecDeleteRecord(ctx context.Context, params *DnsSecDeleteRecordParams) (*DnsSecDeleteRecord, error) {
+	resp, err := c.get(ctx, "dnsSecDeleteRecord", params)
 	if err != nil {
 		return nil, err
 	}
@@ -827,8 +837,8 @@ func (c *Client) DnsSecDeleteRecord(params *DnsSecDeleteRecordParams) (*DnsSecDe
 }
 
 // DnsSecListRecords Execute operation dnsSecListRecords.
-func (c *Client) DnsSecListRecords(params *DnsSecListRecordsParams) (*DnsSecListRecords, error) {
-	resp, err := c.get("dnsSecListRecords", params)
+func (c *Client) DnsSecListRecords(ctx context.Context, params *DnsSecListRecordsParams) (*DnsSecListRecords, error) {
+	resp, err := c.get(ctx, "dnsSecListRecords", params)
 	if err != nil {
 		return nil, err
 	}
@@ -866,8 +876,8 @@ func (c *Client) DnsSecListRecords(params *DnsSecListRecordsParams) (*DnsSecList
 }
 
 // DnsUpdateRecord Execute operation dnsUpdateRecord.
-func (c *Client) DnsUpdateRecord(params *DnsUpdateRecordParams) (*DnsUpdateRecord, error) {
-	resp, err := c.get("dnsUpdateRecord", params)
+func (c *Client) DnsUpdateRecord(ctx context.Context, params *DnsUpdateRecordParams) (*DnsUpdateRecord, error) {
+	resp, err := c.get(ctx, "dnsUpdateRecord", params)
 	if err != nil {
 		return nil, err
 	}
@@ -905,8 +915,8 @@ func (c *Client) DnsUpdateRecord(params *DnsUpdateRecordParams) (*DnsUpdateRecor
 }
 
 // DomainForward Execute operation domainForward.
-func (c *Client) DomainForward(params *DomainForwardParams) (*DomainForward, error) {
-	resp, err := c.get("domainForward", params)
+func (c *Client) DomainForward(ctx context.Context, params *DomainForwardParams) (*DomainForward, error) {
+	resp, err := c.get(ctx, "domainForward", params)
 	if err != nil {
 		return nil, err
 	}
@@ -944,8 +954,8 @@ func (c *Client) DomainForward(params *DomainForwardParams) (*DomainForward, err
 }
 
 // DomainForwardSubDomain Execute operation domainForwardSubDomain.
-func (c *Client) DomainForwardSubDomain(params *DomainForwardSubDomainParams) (*DomainForwardSubDomain, error) {
-	resp, err := c.get("domainForwardSubDomain", params)
+func (c *Client) DomainForwardSubDomain(ctx context.Context, params *DomainForwardSubDomainParams) (*DomainForwardSubDomain, error) {
+	resp, err := c.get(ctx, "domainForwardSubDomain", params)
 	if err != nil {
 		return nil, err
 	}
@@ -983,8 +993,11 @@ func (c *Client) DomainForwardSubDomain(params *DomainForwardSubDomainParams) (*
 }
 
 // DomainForwardSubDomainDelete Execute operation domainForwardSubDomainDelete.
-func (c *Client) DomainForwardSubDomainDelete(params *DomainForwardSubDomainDeleteParams) (*DomainForwardSubDomainDelete, error) {
-	resp, err := c.get("domainForwardSubDomainDelete", params)
+func (c *Client) DomainForwardSubDomainDelete(
+	ctx context.Context,
+	params *DomainForwardSubDomainDeleteParams,
+) (*DomainForwardSubDomainDelete, error) {
+	resp, err := c.get(ctx, "domainForwardSubDomainDelete", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1022,8 +1035,8 @@ func (c *Client) DomainForwardSubDomainDelete(params *DomainForwardSubDomainDele
 }
 
 // DomainLock Execute operation domainLock.
-func (c *Client) DomainLock(params *DomainLockParams) (*DomainLock, error) {
-	resp, err := c.get("domainLock", params)
+func (c *Client) DomainLock(ctx context.Context, params *DomainLockParams) (*DomainLock, error) {
+	resp, err := c.get(ctx, "domainLock", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1061,8 +1074,8 @@ func (c *Client) DomainLock(params *DomainLockParams) (*DomainLock, error) {
 }
 
 // DomainUnlock Execute operation domainUnlock.
-func (c *Client) DomainUnlock(params *DomainUnlockParams) (*DomainUnlock, error) {
-	resp, err := c.get("domainUnlock", params)
+func (c *Client) DomainUnlock(ctx context.Context, params *DomainUnlockParams) (*DomainUnlock, error) {
+	resp, err := c.get(ctx, "domainUnlock", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1100,8 +1113,8 @@ func (c *Client) DomainUnlock(params *DomainUnlockParams) (*DomainUnlock, error)
 }
 
 // EmailVerification Execute operation emailVerification.
-func (c *Client) EmailVerification(params *EmailVerificationParams) (*EmailVerification, error) {
-	resp, err := c.get("emailVerification", params)
+func (c *Client) EmailVerification(ctx context.Context, params *EmailVerificationParams) (*EmailVerification, error) {
+	resp, err := c.get(ctx, "emailVerification", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1139,8 +1152,8 @@ func (c *Client) EmailVerification(params *EmailVerificationParams) (*EmailVerif
 }
 
 // GetAccountBalance Execute operation getAccountBalance.
-func (c *Client) GetAccountBalance(params *GetAccountBalanceParams) (*GetAccountBalance, error) {
-	resp, err := c.get("getAccountBalance", params)
+func (c *Client) GetAccountBalance(ctx context.Context, params *GetAccountBalanceParams) (*GetAccountBalance, error) {
+	resp, err := c.get(ctx, "getAccountBalance", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1178,8 +1191,8 @@ func (c *Client) GetAccountBalance(params *GetAccountBalanceParams) (*GetAccount
 }
 
 // GetDomainInfo Execute operation getDomainInfo.
-func (c *Client) GetDomainInfo(params *GetDomainInfoParams) (*GetDomainInfo, error) {
-	resp, err := c.get("getDomainInfo", params)
+func (c *Client) GetDomainInfo(ctx context.Context, params *GetDomainInfoParams) (*GetDomainInfo, error) {
+	resp, err := c.get(ctx, "getDomainInfo", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1217,8 +1230,8 @@ func (c *Client) GetDomainInfo(params *GetDomainInfoParams) (*GetDomainInfo, err
 }
 
 // GetPrices Execute operation getPrices.
-func (c *Client) GetPrices(params *GetPricesParams) (*GetPrices, error) {
-	resp, err := c.get("getPrices", params)
+func (c *Client) GetPrices(ctx context.Context, params *GetPricesParams) (*GetPrices, error) {
+	resp, err := c.get(ctx, "getPrices", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1256,8 +1269,8 @@ func (c *Client) GetPrices(params *GetPricesParams) (*GetPrices, error) {
 }
 
 // ListDomains Execute operation listDomains.
-func (c *Client) ListDomains(params *ListDomainsParams) (*ListDomains, error) {
-	resp, err := c.get("listDomains", params)
+func (c *Client) ListDomains(ctx context.Context, params *ListDomainsParams) (*ListDomains, error) {
+	resp, err := c.get(ctx, "listDomains", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1295,8 +1308,8 @@ func (c *Client) ListDomains(params *ListDomainsParams) (*ListDomains, error) {
 }
 
 // ListEmailForwards Execute operation listEmailForwards.
-func (c *Client) ListEmailForwards(params *ListEmailForwardsParams) (*ListEmailForwards, error) {
-	resp, err := c.get("listEmailForwards", params)
+func (c *Client) ListEmailForwards(ctx context.Context, params *ListEmailForwardsParams) (*ListEmailForwards, error) {
+	resp, err := c.get(ctx, "listEmailForwards", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1334,8 +1347,8 @@ func (c *Client) ListEmailForwards(params *ListEmailForwardsParams) (*ListEmailF
 }
 
 // ListOrders Execute operation listOrders.
-func (c *Client) ListOrders(params *ListOrdersParams) (*ListOrders, error) {
-	resp, err := c.get("listOrders", params)
+func (c *Client) ListOrders(ctx context.Context, params *ListOrdersParams) (*ListOrders, error) {
+	resp, err := c.get(ctx, "listOrders", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1373,8 +1386,11 @@ func (c *Client) ListOrders(params *ListOrdersParams) (*ListOrders, error) {
 }
 
 // ListRegisteredNameServers Execute operation listRegisteredNameServers.
-func (c *Client) ListRegisteredNameServers(params *ListRegisteredNameServersParams) (*ListRegisteredNameServers, error) {
-	resp, err := c.get("listRegisteredNameServers", params)
+func (c *Client) ListRegisteredNameServers(
+	ctx context.Context,
+	params *ListRegisteredNameServersParams,
+) (*ListRegisteredNameServers, error) {
+	resp, err := c.get(ctx, "listRegisteredNameServers", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1412,8 +1428,11 @@ func (c *Client) ListRegisteredNameServers(params *ListRegisteredNameServersPara
 }
 
 // MarketplaceActiveSalesOverview Execute operation marketplaceActiveSalesOverview.
-func (c *Client) MarketplaceActiveSalesOverview(params *MarketplaceActiveSalesOverviewParams) (*MarketplaceActiveSalesOverview, error) {
-	resp, err := c.get("marketplaceActiveSalesOverview", params)
+func (c *Client) MarketplaceActiveSalesOverview(
+	ctx context.Context,
+	params *MarketplaceActiveSalesOverviewParams,
+) (*MarketplaceActiveSalesOverview, error) {
+	resp, err := c.get(ctx, "marketplaceActiveSalesOverview", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1451,8 +1470,11 @@ func (c *Client) MarketplaceActiveSalesOverview(params *MarketplaceActiveSalesOv
 }
 
 // MarketplaceAddOrModifySale Execute operation marketplaceAddOrModifySale.
-func (c *Client) MarketplaceAddOrModifySale(params *MarketplaceAddOrModifySaleParams) (*MarketplaceAddOrModifySale, error) {
-	resp, err := c.get("marketplaceAddOrModifySale", params)
+func (c *Client) MarketplaceAddOrModifySale(
+	ctx context.Context,
+	params *MarketplaceAddOrModifySaleParams,
+) (*MarketplaceAddOrModifySale, error) {
+	resp, err := c.get(ctx, "marketplaceAddOrModifySale", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1490,8 +1512,11 @@ func (c *Client) MarketplaceAddOrModifySale(params *MarketplaceAddOrModifySalePa
 }
 
 // MarketplaceLandingPageUpdate Execute operation marketplaceLandingPageUpdate.
-func (c *Client) MarketplaceLandingPageUpdate(params *MarketplaceLandingPageUpdateParams) (*MarketplaceLandingPageUpdate, error) {
-	resp, err := c.get("marketplaceLandingPageUpdate", params)
+func (c *Client) MarketplaceLandingPageUpdate(
+	ctx context.Context,
+	params *MarketplaceLandingPageUpdateParams,
+) (*MarketplaceLandingPageUpdate, error) {
+	resp, err := c.get(ctx, "marketplaceLandingPageUpdate", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1529,8 +1554,11 @@ func (c *Client) MarketplaceLandingPageUpdate(params *MarketplaceLandingPageUpda
 }
 
 // ModifyRegisteredNameServer Execute operation modifyRegisteredNameServer.
-func (c *Client) ModifyRegisteredNameServer(params *ModifyRegisteredNameServerParams) (*ModifyRegisteredNameServer, error) {
-	resp, err := c.get("modifyRegisteredNameServer", params)
+func (c *Client) ModifyRegisteredNameServer(
+	ctx context.Context,
+	params *ModifyRegisteredNameServerParams,
+) (*ModifyRegisteredNameServer, error) {
+	resp, err := c.get(ctx, "modifyRegisteredNameServer", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1568,8 +1596,8 @@ func (c *Client) ModifyRegisteredNameServer(params *ModifyRegisteredNameServerPa
 }
 
 // OrderDetails Execute operation orderDetails.
-func (c *Client) OrderDetails(params *OrderDetailsParams) (*OrderDetails, error) {
-	resp, err := c.get("orderDetails", params)
+func (c *Client) OrderDetails(ctx context.Context, params *OrderDetailsParams) (*OrderDetails, error) {
+	resp, err := c.get(ctx, "orderDetails", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1607,8 +1635,8 @@ func (c *Client) OrderDetails(params *OrderDetailsParams) (*OrderDetails, error)
 }
 
 // PortfolioAdd Execute operation portfolioAdd.
-func (c *Client) PortfolioAdd(params *PortfolioAddParams) (*PortfolioAdd, error) {
-	resp, err := c.get("portfolioAdd", params)
+func (c *Client) PortfolioAdd(ctx context.Context, params *PortfolioAddParams) (*PortfolioAdd, error) {
+	resp, err := c.get(ctx, "portfolioAdd", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1646,8 +1674,8 @@ func (c *Client) PortfolioAdd(params *PortfolioAddParams) (*PortfolioAdd, error)
 }
 
 // PortfolioDelete Execute operation portfolioDelete.
-func (c *Client) PortfolioDelete(params *PortfolioDeleteParams) (*PortfolioDelete, error) {
-	resp, err := c.get("portfolioDelete", params)
+func (c *Client) PortfolioDelete(ctx context.Context, params *PortfolioDeleteParams) (*PortfolioDelete, error) {
+	resp, err := c.get(ctx, "portfolioDelete", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1685,8 +1713,11 @@ func (c *Client) PortfolioDelete(params *PortfolioDeleteParams) (*PortfolioDelet
 }
 
 // PortfolioDomainAssociate Execute operation portfolioDomainAssociate.
-func (c *Client) PortfolioDomainAssociate(params *PortfolioDomainAssociateParams) (*PortfolioDomainAssociate, error) {
-	resp, err := c.get("portfolioDomainAssociate", params)
+func (c *Client) PortfolioDomainAssociate(
+	ctx context.Context,
+	params *PortfolioDomainAssociateParams,
+) (*PortfolioDomainAssociate, error) {
+	resp, err := c.get(ctx, "portfolioDomainAssociate", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1724,8 +1755,8 @@ func (c *Client) PortfolioDomainAssociate(params *PortfolioDomainAssociateParams
 }
 
 // PortfolioList Execute operation portfolioList.
-func (c *Client) PortfolioList(params *PortfolioListParams) (*PortfolioList, error) {
-	resp, err := c.get("portfolioList", params)
+func (c *Client) PortfolioList(ctx context.Context, params *PortfolioListParams) (*PortfolioList, error) {
+	resp, err := c.get(ctx, "portfolioList", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1763,8 +1794,8 @@ func (c *Client) PortfolioList(params *PortfolioListParams) (*PortfolioList, err
 }
 
 // RegisterDomain Execute operation registerDomain.
-func (c *Client) RegisterDomain(params *RegisterDomainParams) (*RegisterDomain, error) {
-	resp, err := c.get("registerDomain", params)
+func (c *Client) RegisterDomain(ctx context.Context, params *RegisterDomainParams) (*RegisterDomain, error) {
+	resp, err := c.get(ctx, "registerDomain", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1802,8 +1833,8 @@ func (c *Client) RegisterDomain(params *RegisterDomainParams) (*RegisterDomain, 
 }
 
 // RegisterDomainDrop Execute operation registerDomainDrop.
-func (c *Client) RegisterDomainDrop(params *RegisterDomainDropParams) (*RegisterDomainDrop, error) {
-	resp, err := c.get("registerDomainDrop", params)
+func (c *Client) RegisterDomainDrop(ctx context.Context, params *RegisterDomainDropParams) (*RegisterDomainDrop, error) {
+	resp, err := c.get(ctx, "registerDomainDrop", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1841,8 +1872,11 @@ func (c *Client) RegisterDomainDrop(params *RegisterDomainDropParams) (*Register
 }
 
 // RegistrantVerificationStatus Execute operation registrantVerificationStatus.
-func (c *Client) RegistrantVerificationStatus(params *RegistrantVerificationStatusParams) (*RegistrantVerificationStatus, error) {
-	resp, err := c.get("registrantVerificationStatus", params)
+func (c *Client) RegistrantVerificationStatus(
+	ctx context.Context,
+	params *RegistrantVerificationStatusParams,
+) (*RegistrantVerificationStatus, error) {
+	resp, err := c.get(ctx, "registrantVerificationStatus", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1880,8 +1914,8 @@ func (c *Client) RegistrantVerificationStatus(params *RegistrantVerificationStat
 }
 
 // RemoveAutoRenewal Execute operation removeAutoRenewal.
-func (c *Client) RemoveAutoRenewal(params *RemoveAutoRenewalParams) (*RemoveAutoRenewal, error) {
-	resp, err := c.get("removeAutoRenewal", params)
+func (c *Client) RemoveAutoRenewal(ctx context.Context, params *RemoveAutoRenewalParams) (*RemoveAutoRenewal, error) {
+	resp, err := c.get(ctx, "removeAutoRenewal", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1919,8 +1953,8 @@ func (c *Client) RemoveAutoRenewal(params *RemoveAutoRenewalParams) (*RemoveAuto
 }
 
 // RemovePrivacy Execute operation removePrivacy.
-func (c *Client) RemovePrivacy(params *RemovePrivacyParams) (*RemovePrivacy, error) {
-	resp, err := c.get("removePrivacy", params)
+func (c *Client) RemovePrivacy(ctx context.Context, params *RemovePrivacyParams) (*RemovePrivacy, error) {
+	resp, err := c.get(ctx, "removePrivacy", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1958,8 +1992,8 @@ func (c *Client) RemovePrivacy(params *RemovePrivacyParams) (*RemovePrivacy, err
 }
 
 // RenewDomain Execute operation renewDomain.
-func (c *Client) RenewDomain(params *RenewDomainParams) (*RenewDomain, error) {
-	resp, err := c.get("renewDomain", params)
+func (c *Client) RenewDomain(ctx context.Context, params *RenewDomainParams) (*RenewDomain, error) {
+	resp, err := c.get(ctx, "renewDomain", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1997,8 +2031,8 @@ func (c *Client) RenewDomain(params *RenewDomainParams) (*RenewDomain, error) {
 }
 
 // RetrieveAuthCode Execute operation retrieveAuthCode.
-func (c *Client) RetrieveAuthCode(params *RetrieveAuthCodeParams) (*RetrieveAuthCode, error) {
-	resp, err := c.get("retrieveAuthCode", params)
+func (c *Client) RetrieveAuthCode(ctx context.Context, params *RetrieveAuthCodeParams) (*RetrieveAuthCode, error) {
+	resp, err := c.get(ctx, "retrieveAuthCode", params)
 	if err != nil {
 		return nil, err
 	}
@@ -2036,8 +2070,8 @@ func (c *Client) RetrieveAuthCode(params *RetrieveAuthCodeParams) (*RetrieveAuth
 }
 
 // TransferDomain Execute operation transferDomain.
-func (c *Client) TransferDomain(params *TransferDomainParams) (*TransferDomain, error) {
-	resp, err := c.get("transferDomain", params)
+func (c *Client) TransferDomain(ctx context.Context, params *TransferDomainParams) (*TransferDomain, error) {
+	resp, err := c.get(ctx, "transferDomain", params)
 	if err != nil {
 		return nil, err
 	}
@@ -2075,8 +2109,11 @@ func (c *Client) TransferDomain(params *TransferDomainParams) (*TransferDomain, 
 }
 
 // TransferUpdateChangeEPPCode Execute operation transferUpdateChangeEPPCode.
-func (c *Client) TransferUpdateChangeEPPCode(params *TransferUpdateChangeEPPCodeParams) (*TransferUpdateChangeEPPCode, error) {
-	resp, err := c.get("transferUpdateChangeEPPCode", params)
+func (c *Client) TransferUpdateChangeEPPCode(
+	ctx context.Context,
+	params *TransferUpdateChangeEPPCodeParams,
+) (*TransferUpdateChangeEPPCode, error) {
+	resp, err := c.get(ctx, "transferUpdateChangeEPPCode", params)
 	if err != nil {
 		return nil, err
 	}
@@ -2114,8 +2151,11 @@ func (c *Client) TransferUpdateChangeEPPCode(params *TransferUpdateChangeEPPCode
 }
 
 // TransferUpdateResendAdminEmail Execute operation transferUpdateResendAdminEmail.
-func (c *Client) TransferUpdateResendAdminEmail(params *TransferUpdateResendAdminEmailParams) (*TransferUpdateResendAdminEmail, error) {
-	resp, err := c.get("transferUpdateResendAdminEmail", params)
+func (c *Client) TransferUpdateResendAdminEmail(
+	ctx context.Context,
+	params *TransferUpdateResendAdminEmailParams,
+) (*TransferUpdateResendAdminEmail, error) {
+	resp, err := c.get(ctx, "transferUpdateResendAdminEmail", params)
 	if err != nil {
 		return nil, err
 	}
@@ -2153,8 +2193,11 @@ func (c *Client) TransferUpdateResendAdminEmail(params *TransferUpdateResendAdmi
 }
 
 // TransferUpdateResubmitToRegistry Execute operation transferUpdateResubmitToRegistry.
-func (c *Client) TransferUpdateResubmitToRegistry(params *TransferUpdateResubmitToRegistryParams) (*TransferUpdateResubmitToRegistry, error) {
-	resp, err := c.get("transferUpdateResubmitToRegistry", params)
+func (c *Client) TransferUpdateResubmitToRegistry(
+	ctx context.Context,
+	params *TransferUpdateResubmitToRegistryParams,
+) (*TransferUpdateResubmitToRegistry, error) {
+	resp, err := c.get(ctx, "transferUpdateResubmitToRegistry", params)
 	if err != nil {
 		return nil, err
 	}

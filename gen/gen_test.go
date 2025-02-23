@@ -24,7 +24,7 @@ import (
 	"net/http"
 )
 {{range $key, $value := .Names }}
-// {{ $value.Upper }} Execute operation {{ $value.Lower }}. 
+// {{ $value.Upper }} Execute operation {{ $value.Lower }}.
 func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $value.Upper }}, error) {
 	resp, err := c.get("{{ $value.Lower }}", params)
 	if err != nil {
@@ -217,7 +217,7 @@ func generate(tmpl, filename string) error {
 		Upper string
 	}
 
-	var baseNames []BaseName
+	baseNames := make([]BaseName, 0)
 
 	files, err := os.ReadDir(filepath.FromSlash("../samples"))
 	if err != nil {
@@ -259,5 +259,5 @@ func generate(tmpl, filename string) error {
 		return err
 	}
 
-	return os.WriteFile(filepath.Join("..", filename), source, 0o666)
+	return os.WriteFile(filepath.Join("..", filename), source, 0o600)
 }

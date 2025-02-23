@@ -1,8 +1,8 @@
 # Go library for accessing the Namesilo API
 
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/nrdcg/namesilo.svg)](https://github.com/nrdcg/namesilo/releases)
-[![Build Status](https://github.com/nrdcg/namesilo/workflows/Main/badge.svg?branch=master)](https://github.com/nrdcg/namesilo/actions)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/nrdcg/namesilo)](https://pkg.go.dev/github.com/nrdcg/namesilo)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/mrehanabbasi/namesilo-go.svg)](https://github.com/mrehanabbasi/namesilo-go/releases)
+[![Build Status](https://github.com/mrehanabbasi/namesilo-go/workflows/Main/badge.svg?branch=master)](https://github.com/mrehanabbasi/namesilo-go/actions)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/mrehanabbasi/namesilo-go)](https://pkg.go.dev/github.com/mrehanabbasi/namesilo-go)
 
 A Namesilo API client written in Go.
 
@@ -17,7 +17,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/nrdcg/namesilo"
+	"github.com/mrehanabbasi/namesilo-go"
 )
 
 func main() {

@@ -2,6 +2,7 @@
 package namesilo
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -31,18 +32,23 @@ type Client struct {
 }
 
 // NewClient Creates a Namesilo client.
-func NewClient(httpClient *http.Client) *Client {
+func NewClient(httpClient *http.Client, isProduction bool) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
 
+	endpoint := SandboxAPIEndpoint
+	if isProduction {
+		endpoint = DefaultAPIEndpoint
+	}
+
 	return &Client{
-		Endpoint:   DefaultAPIEndpoint,
+		Endpoint:   endpoint,
 		HTTPClient: httpClient,
 	}
 }
 
-func (c *Client) get(name string, params interface{}) (*http.Response, error) {
+func (c *Client) get(ctx context.Context, name string, params interface{}) (*http.Response, error) {
 	uri, err := url.Parse(fmt.Sprintf("%s/%s", c.Endpoint, name))
 	if err != nil {
 		return nil, err
@@ -56,5 +62,10 @@ func (c *Client) get(name string, params interface{}) (*http.Response, error) {
 		uri.RawQuery = v.Encode()
 	}
 
-	return c.HTTPClient.Get(uri.String())
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, uri.String(), http.NoBody)
+	if err != nil {
+		return nil, fmt.Errorf("failed creating get request: %w", err)
+	}
+
+	return c.HTTPClient.Do(req)
 }

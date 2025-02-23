@@ -1,6 +1,6 @@
-module github.com/nrdcg/namesilo
+module github.com/mrehanabbasi/namesilo-go
 
-go 1.19
+go 1.23
 
 require (
 	github.com/google/go-querystring v1.1.0

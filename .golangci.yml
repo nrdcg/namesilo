@@ -1,98 +1,130 @@
-run:
-  timeout: 5m
-  show-stats: true
-  skip-files: [ ]
-  skip-dirs: [ ]
-
 linters-settings:
   govet:
-    enable-all: true
-    disable:
-      - fieldalignment
-  gosec:
-    excludes:
-      - G306
+    settings:
+      printf:
+        funcs:
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
+    disable-all: true
+    enable:
+      - asmdecl
+      - assign
+      - atomic
+      - bools
+      - buildtag
+      - cgocall
+      - composites
+      - copylocks
+      - errorsas
+      - httpresponse
+      - loopclosure
+      - lostcancel
+      - nilfunc
+      - nilness
+      - printf
+      - shadow
+      - shift
+      - stdmethods
+      - structtag
+      - tests
+      - unmarshal
+      - unreachable
+      - unsafeptr
+      - unusedresult
   gocyclo:
     min-complexity: 15
-  maligned:
-    suggest-new: true
+  dupl:
+    threshold: 100
   goconst:
-    min-len: 5
-    min-occurrences: 3
+    min-len: 2
+    min-occurrences: 2
   misspell:
     locale: US
-  funlen:
-    lines: -1
-    statements: 40
-  godox:
-    keywords:
-      - FIXME
+  lll:
+    line-length: 140
+  goimports:
+    local-prefixes: github.com/mrehanabbasi/namesilo-go
   gofumpt:
-    extra-rules: true
-  depguard:
-    rules:
-      main:
-        deny:
-          - pkg: "github.com/instana/testify"
-            desc: not allowed
-          - pkg: "github.com/pkg/errors"
-            desc: Should be replaced by standard lib errors package
+    module-path: github.com/mrehanabbasi/namesilo-go
   gocritic:
     enabled-tags:
       - diagnostic
-      - style
+      - experimental
+      - opinionated
       - performance
+      - style
     disabled-checks:
-      - sloppyReassign
-      - unnamedResult
-      - rangeValCopy
+      - hugeParam
+      - dupImport # https://github.com/go-critic/go-critic/issues/845
       - octalLiteral
-      - paramTypeCombine # already handle by gofumpt.extra-rules
-    settings:
-      hugeParam:
-        sizeThreshold: 100
+      - whyNoLint
+      - paramTypeCombine
+  funlen:
+    lines: 100
+    statements: 50
+  depguard:
+    rules:
+      main:
+        files:
+          - $all
+          - $test
+        deny:
+          - pkg: 'github.com/sirupsen/logrus'
+            desc: logging only allowed by logutils.Log
+          - pkg: 'github.com/golang/mock'
+            desc: golang gomock is no longer maintained, use go.uber.org/mock/gomock instead
+  nolintlint:
+    allow-unused: false # report any unused nolint directives
+    require-explanation: false # don't require an explanation for nolint directives
+    require-specific: true # require nolint directives to be specific about which linter is being skipped
 
 linters:
-  enable-all: true
-  disable:
-    - deadcode # deprecated
-    - exhaustivestruct # deprecated
-    - golint # deprecated
-    - ifshort # deprecated
-    - interfacer # deprecated
-    - maligned # deprecated
-    - nosnakecase # deprecated
-    - scopelint # deprecated
-    - structcheck # deprecated
-    - varcheck # deprecated
-    - sqlclosecheck # not relevant (SQL)
-    - rowserrcheck # not relevant (SQL)
-    - execinquery # not relevant (SQL)
-    - cyclop # duplicate of gocyclo
+  enable:
+    - bodyclose
+    - copyloopvar
+    - depguard
+    - dogsled
+    - errcheck
+    - funlen
+    - gocognit
+    - gocritic
+    - gocyclo
+    - godox
+    - gofumpt
+    - goimports
+    - revive
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
     - lll
-    - dupl
-    - wsl
-    - nlreturn
-    - gomnd
-    - goerr113
-    - wrapcheck
-    - exhaustive
-    - exhaustruct
-    - testpackage
-    - tparallel
-    - paralleltest
+    - misspell
+    - nakedret
+    - nolintlint
     - prealloc
-    - ifshort
-    - forcetypeassert
-    - noctx
-    - varnamelen
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unused
+    - whitespace
+
+#run:
+#  modules-download-mode: vendor
 
 issues:
+  exclude:
+    - 'shadow: declaration of "err"'
+    - 'should have comment or be unexported'
+  #    - "ST1000: at least one file in a package should have a package comment"
+  #    - a blank import should be only in a main or test package
+  # - 'fmt.Sprintf can be replaced with string addition'
   exclude-use-default: false
   max-issues-per-linter: 0
   max-same-issues: 0
-  exclude:
-    - 'fmt.Sprintf can be replaced with string addition'
   exclude-rules:
     - path: .*_test.go
       linters:
