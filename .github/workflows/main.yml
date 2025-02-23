@@ -9,17 +9,15 @@ on:
   pull_request:
 
 jobs:
-
   main:
     name: Main Process
     runs-on: ubuntu-latest
     env:
       GO_VERSION: stable
-      GOLANGCI_LINT_VERSION: v1.56.0
+      GOLANGCI_LINT_VERSION: v1.63.4
       CGO_ENABLED: 0
 
     steps:
-
       # https://github.com/marketplace/actions/checkout
       - name: Check out code
         uses: actions/checkout@v4
