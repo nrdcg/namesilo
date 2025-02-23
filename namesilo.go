@@ -3,6 +3,7 @@ package namesilo
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -46,6 +47,44 @@ func NewClient(httpClient *http.Client, isProduction bool) *Client {
 		Endpoint:   endpoint,
 		HTTPClient: httpClient,
 	}
+}
+
+// NewClientWithAPIKey Creates a Namesilo client with API Key.
+func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bool) (*Client, error) {
+	if apiKey == "" {
+		return nil, errors.New("credentials missing: API key")
+	}
+
+	// Extract existing transport if present, otherwise use DefaultTransport
+	baseTransport := http.DefaultTransport
+	if httpClient != nil && httpClient.Transport != nil {
+		baseTransport = httpClient.Transport
+	}
+
+	// Initialize TokenTransport with API key, wrapping the existing transport
+	tokenTransport := &TokenTransport{
+		apiKey:    apiKey,
+		Transport: baseTransport, // Preserve existing transport
+	}
+
+	// Create a new http.Client that applies TokenTransport on top
+	newHTTPClient := &http.Client{
+		Transport:     tokenTransport, // Ensures TokenTransport is always applied
+		CheckRedirect: httpClient.CheckRedirect,
+		Jar:           httpClient.Jar,
+		Timeout:       httpClient.Timeout,
+	}
+
+	// Set API endpoint based on environment
+	endpoint := SandboxAPIEndpoint
+	if isProduction {
+		endpoint = DefaultAPIEndpoint
+	}
+
+	return &Client{
+		Endpoint:   endpoint,
+		HTTPClient: newHTTPClient,
+	}, nil
 }
 
 func (c *Client) get(ctx context.Context, name string, params interface{}) (*http.Response, error) {
