@@ -55,9 +55,15 @@ func NewClient(httpClient *http.Client, isProduction bool, isOTE bool) *Client {
 	}
 }
 
+type Config struct {
+	APIKey       string
+	IsProduction bool
+	IsOTE        bool
+}
+
 // NewClientWithAPIKey Creates a Namesilo client with API Key.
-func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bool, isOTE bool) (*Client, error) {
-	if apiKey == "" {
+func NewClientWithAPIKey(httpClient *http.Client, cfg Config) (*Client, error) {
+	if cfg.APIKey == "" {
 		return nil, errors.New("credentials missing: API key")
 	}
 	if httpClient == nil {
@@ -72,7 +78,7 @@ func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bo
 
 	// Initialize TokenTransport with API key, wrapping the existing transport
 	tokenTransport := &TokenTransport{
-		apiKey:    apiKey,
+		apiKey:    cfg.APIKey,
 		Transport: baseTransport, // Preserve existing transport
 	}
 
@@ -82,9 +88,9 @@ func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bo
 
 	// Set API endpoint based on environment
 	endpoint := DefaultAPIEndpoint
-	if !isProduction {
+	if !cfg.IsProduction {
 		endpoint = SandboxAPIEndpoint
-		if isOTE {
+		if cfg.IsOTE {
 			endpoint = OTESandboxAPIEndpoint
 		}
 	}
