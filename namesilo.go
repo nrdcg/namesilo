@@ -17,6 +17,9 @@ const (
 
 	// SandboxAPIEndpoint The sandbox API endpoint.
 	SandboxAPIEndpoint = "https://sandbox.namesilo.com/api"
+
+	// OTESandboxAPIEndpoint The OTE sandbox API endpoint.
+	OTESandboxAPIEndpoint = "https://ote.namesilo.com/api"
 )
 
 // Response Codes.
@@ -33,14 +36,17 @@ type Client struct {
 }
 
 // NewClient Creates a Namesilo client.
-func NewClient(httpClient *http.Client, isProduction bool) *Client {
+func NewClient(httpClient *http.Client, isProduction bool, isOTE bool) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
 
-	endpoint := SandboxAPIEndpoint
-	if isProduction {
-		endpoint = DefaultAPIEndpoint
+	endpoint := DefaultAPIEndpoint
+	if !isProduction {
+		endpoint = SandboxAPIEndpoint
+		if isOTE {
+			endpoint = OTESandboxAPIEndpoint
+		}
 	}
 
 	return &Client{
@@ -50,7 +56,7 @@ func NewClient(httpClient *http.Client, isProduction bool) *Client {
 }
 
 // NewClientWithAPIKey Creates a Namesilo client with API Key.
-func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bool) (*Client, error) {
+func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bool, isOTE bool) (*Client, error) {
 	if apiKey == "" {
 		return nil, errors.New("credentials missing: API key")
 	}
@@ -75,9 +81,12 @@ func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bo
 	newHTTPClient.Transport = tokenTransport
 
 	// Set API endpoint based on environment
-	endpoint := SandboxAPIEndpoint
-	if isProduction {
-		endpoint = DefaultAPIEndpoint
+	endpoint := DefaultAPIEndpoint
+	if !isProduction {
+		endpoint = SandboxAPIEndpoint
+		if isOTE {
+			endpoint = OTESandboxAPIEndpoint
+		}
 	}
 
 	return &Client{
