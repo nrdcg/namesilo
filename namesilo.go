@@ -3,7 +3,6 @@ package namesilo
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -62,10 +61,7 @@ type Config struct {
 }
 
 // NewClientWithAPIKey Creates a Namesilo client with API Key.
-func NewClientWithAPIKey(httpClient *http.Client, cfg Config) (*Client, error) {
-	if cfg.APIKey == "" {
-		return nil, errors.New("credentials missing: API key")
-	}
+func NewClientWithAPIKey(httpClient *http.Client, cfg Config) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
@@ -98,7 +94,7 @@ func NewClientWithAPIKey(httpClient *http.Client, cfg Config) (*Client, error) {
 	return &Client{
 		Endpoint:   endpoint,
 		HTTPClient: &newHTTPClient,
-	}, nil
+	}
 }
 
 func (c *Client) get(ctx context.Context, name string, params interface{}) (*http.Response, error) {
