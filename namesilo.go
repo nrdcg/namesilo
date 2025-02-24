@@ -54,6 +54,9 @@ func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bo
 	if apiKey == "" {
 		return nil, errors.New("credentials missing: API key")
 	}
+	if httpClient == nil {
+		httpClient = http.DefaultClient
+	}
 
 	// Extract existing transport if present, otherwise use DefaultTransport
 	baseTransport := http.DefaultTransport
@@ -67,13 +70,9 @@ func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bo
 		Transport: baseTransport, // Preserve existing transport
 	}
 
-	// Create a new http.Client that applies TokenTransport on top
-	newHTTPClient := &http.Client{
-		Transport:     tokenTransport, // Ensures TokenTransport is always applied
-		CheckRedirect: httpClient.CheckRedirect,
-		Jar:           httpClient.Jar,
-		Timeout:       httpClient.Timeout,
-	}
+	// Create a new http.Client from the previous one that applies TokenTransport on top
+	newHTTPClient := *httpClient
+	newHTTPClient.Transport = tokenTransport
 
 	// Set API endpoint based on environment
 	endpoint := SandboxAPIEndpoint
@@ -83,7 +82,7 @@ func NewClientWithAPIKey(httpClient *http.Client, apiKey string, isProduction bo
 
 	return &Client{
 		Endpoint:   endpoint,
-		HTTPClient: newHTTPClient,
+		HTTPClient: &newHTTPClient,
 	}, nil
 }
 
