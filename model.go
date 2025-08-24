@@ -69,17 +69,26 @@ type CheckRegisterAvailability struct {
 	Reply   CheckRegisterAvailabilityReply `xml:"reply"`
 }
 
+// Domain A Domain availability representation.
+type Domain struct {
+	Domain   string  `xml:",chardata"`
+	Price    float64 `xml:"price,attr"`
+	Renew    float64 `xml:"renew,attr"`
+	Premium  bool    `xml:"premium,attr"`
+	Duration uint8   `xml:"duration,attr"`
+}
+
 // CheckRegisterAvailabilityReply A reply representation.
 type CheckRegisterAvailabilityReply struct {
 	Reply
 	Available struct {
-		Domain []string `xml:"domain"`
+		Domain []Domain `xml:"domain"`
 	} `xml:"available"`
 	Unavailable struct {
-		Domain string `xml:"domain"`
+		Domain []string `xml:"domain"`
 	} `xml:"unavailable"`
 	Invalid struct {
-		Domain string `xml:"domain"`
+		Domain []string `xml:"domain"`
 	} `xml:"invalid"`
 }
 

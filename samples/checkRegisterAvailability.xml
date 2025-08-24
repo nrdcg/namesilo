@@ -7,8 +7,8 @@
         <code>300</code>
         <detail>success</detail>
         <available>
-            <domain>namesilo.com</domain>
-            <domain>namesilo.org</domain>
+            <domain price="6.99" renew="8.99" premium="0" duration="1">namesilo.com</domain>
+            <domain price="6.99" renew="8.99" premium="1" duration="1">namesilo.org</domain>
         </available>
         <unavailable>
             <domain>namesilo.net</domain>
