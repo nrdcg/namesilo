@@ -11,7 +11,7 @@ build: clean
 	 go build -v .
 
 test: clean
-	go test -v -cover -race -json -count=1 ./... | tparse -all
+	CGO_ENABLED=1 go test -v -cover -race -json -count=1 ./... | tparse -all
 
 format:
 	gofumpt -l -w -e -extra .
