@@ -71,11 +71,11 @@ type CheckRegisterAvailability struct {
 
 // Domain A Domain availability representation.
 type Domain struct {
-	Domain   string  `xml:",chardata"`
-	Price    float64 `xml:"price,attr"`
-	Renew    float64 `xml:"renew,attr"`
-	Premium  bool    `xml:"premium,attr"`
-	Duration uint8   `xml:"duration,attr"`
+	Domain   string `xml:",chardata"`
+	Price    string `xml:"price,attr"`
+	Renew    string `xml:"renew,attr"`
+	Premium  string `xml:"premium,attr"`
+	Duration string `xml:"duration,attr"`
 }
 
 // CheckRegisterAvailabilityReply A reply representation.

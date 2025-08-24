@@ -35,7 +35,7 @@ type Client struct {
 }
 
 // NewClient Creates a Namesilo client.
-func NewClient(httpClient *http.Client, isProduction bool, isOTE bool) *Client {
+func NewClient(httpClient *http.Client, isProduction, isOTE bool) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}

@@ -1,8 +1,8 @@
-.PHONY: clean check test build
+.PHONY: clean format check test build
 
 export GO111MODULE=on
 
-default: clean check test build
+default: clean format check test build
 
 clean:
 	rm -rf cover.out
@@ -13,8 +13,11 @@ build: clean
 test: clean
 	go test -v -cover ./...
 
+format:
+	gofumpt -l -w -e -extra .
+
 check:
-	golangci-lint run
+	golangci-lint run --timeout=5m --max-same-issues=0
 
 ## Useful to initiate structures
 gen-struct:

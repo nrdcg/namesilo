@@ -13,6 +13,7 @@ linters:
   disable:
     - cyclop # duplicate of gocyclo
     - dupl
+    - embeddedstructfieldcheck
     - err113
     - exhaustive
     - exhaustruct
@@ -30,6 +31,7 @@ linters:
     - varnamelen
     - wrapcheck
     - wsl
+    - wsl_v5
 
   settings:
     depguard:
@@ -53,6 +55,7 @@ linters:
         - rangeValCopy
         - octalLiteral
         - paramTypeCombine # already handle by gofumpt.extra-rules
+        - whyNoLint
       enabled-tags:
         - diagnostic
         - style
@@ -95,7 +98,11 @@ linters:
       - path: zz_gen_client.go
         text: method Dns(.+) should be DNS(.+)
       - path: zz_gen_client_test.go
-        text: setupFakeAPI - result 0 \(\*net/http\.ServeMux\) is never used
+        text: setupFakeAPI - result mux is never used
+      - path: zz_gen_client_test.go
+        text: named return ".*" with type ".*" found
+      - path: namesilo.go
+        text: 'shadow: declaration of "err" shadows declaration at line 101'
 
 issues:
   max-issues-per-linter: 0
