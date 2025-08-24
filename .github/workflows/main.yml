@@ -46,5 +46,8 @@ jobs:
       - name: Install gofumpt
         run: go install mvdan.cc/gofumpt@latest
 
+      - name: Install tparse
+        run: go install github.com/mfridman/tparse@latest
+
       - name: Make
         run: make
