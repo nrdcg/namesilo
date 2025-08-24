@@ -39,7 +39,7 @@ jobs:
         run: go install github.com/mfridman/tparse@latest
 
       - name: Test
-        run: go test -v -cover ./...
+        run: go test -v -race -cover -json -count=1 ./... | tparse -all
 
       - name: Build
         run: go build -v -ldflags "-s -w" -trimpath
