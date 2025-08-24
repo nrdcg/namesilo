@@ -32,9 +32,6 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
 
-      - name: Install gofumpt
-        run: go install mvdan.cc/gofumpt@latest
-
       - name: Install tparse
         run: go install github.com/mfridman/tparse@latest
 
