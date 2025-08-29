@@ -34,41 +34,21 @@ type Client struct {
 	HTTPClient *http.Client
 }
 
-// NewClient Creates a Namesilo client.
-func NewClient(httpClient *http.Client, isProduction, isOTE bool) *Client {
-	if httpClient == nil {
-		httpClient = http.DefaultClient
-	}
-
-	endpoint := DefaultAPIEndpoint
-	if !isProduction {
-		endpoint = SandboxAPIEndpoint
-		if isOTE {
-			endpoint = OTESandboxAPIEndpoint
-		}
-	}
-
-	return &Client{
-		Endpoint:   endpoint,
-		HTTPClient: httpClient,
-	}
-}
-
 type Config struct {
 	APIKey       string
 	IsProduction bool
 	IsOTE        bool
 }
 
-// NewClientWithAPIKey Creates a Namesilo client with API Key.
-func NewClientWithAPIKey(httpClient *http.Client, cfg Config) *Client {
+// NewClient Creates a Namesilo client.
+func NewClient(httpClient *http.Client, cfg Config) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
 
 	// Extract existing transport if present, otherwise use DefaultTransport
 	baseTransport := http.DefaultTransport
-	if httpClient != nil && httpClient.Transport != nil {
+	if httpClient.Transport != nil {
 		baseTransport = httpClient.Transport
 	}
 
@@ -104,7 +84,8 @@ func (c *Client) get(ctx context.Context, name string, params interface{}) (*htt
 	}
 
 	if params != nil {
-		v, err := querystring.Values(params)
+		var v url.Values
+		v, err = querystring.Values(params)
 		if err != nil {
 			return nil, err
 		}

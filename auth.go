@@ -25,13 +25,7 @@ func NewTokenTransport(apiKey string) (*TokenTransport, error) {
 
 // RoundTrip executes a single HTTP transaction.
 func (t *TokenTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	enrichedReq := &http.Request{}
-	*enrichedReq = *req
-
-	enrichedReq.Header = make(http.Header, len(req.Header))
-	for k, s := range req.Header {
-		enrichedReq.Header[k] = append([]string(nil), s...)
-	}
+	enrichedReq := req.Clone(req.Context())
 
 	if t.apiKey != "" {
 		query := enrichedReq.URL.Query()

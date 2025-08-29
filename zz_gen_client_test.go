@@ -55,7 +55,7 @@ func TestClient_AddAccountFunds(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &AddAccountFundsParams{}
@@ -75,7 +75,7 @@ func TestClient_AddAutoRenewal(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &AddAutoRenewalParams{}
@@ -95,7 +95,7 @@ func TestClient_AddPrivacy(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &AddPrivacyParams{}
@@ -115,7 +115,7 @@ func TestClient_AddRegisteredNameServer(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &AddRegisteredNameServerParams{}
@@ -135,7 +135,7 @@ func TestClient_ChangeNameServers(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ChangeNameServersParams{}
@@ -155,7 +155,7 @@ func TestClient_CheckRegisterAvailability(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &CheckRegisterAvailabilityParams{}
@@ -175,7 +175,7 @@ func TestClient_CheckTransferAvailability(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &CheckTransferAvailabilityParams{}
@@ -195,7 +195,7 @@ func TestClient_CheckTransferStatus(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &CheckTransferStatusParams{}
@@ -215,7 +215,7 @@ func TestClient_ConfigureEmailForward(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ConfigureEmailForwardParams{}
@@ -235,7 +235,7 @@ func TestClient_ContactAdd(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ContactAddParams{}
@@ -255,7 +255,7 @@ func TestClient_ContactDelete(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ContactDeleteParams{}
@@ -275,7 +275,7 @@ func TestClient_ContactDomainAssociate(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ContactDomainAssociateParams{}
@@ -295,7 +295,7 @@ func TestClient_ContactList(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ContactListParams{}
@@ -315,7 +315,7 @@ func TestClient_ContactUpdate(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ContactUpdateParams{}
@@ -335,7 +335,7 @@ func TestClient_DeleteEmailForward(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DeleteEmailForwardParams{}
@@ -355,7 +355,7 @@ func TestClient_DeleteRegisteredNameServer(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DeleteRegisteredNameServerParams{}
@@ -375,7 +375,7 @@ func TestClient_DnsAddRecord(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DnsAddRecordParams{}
@@ -395,7 +395,7 @@ func TestClient_DnsDeleteRecord(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DnsDeleteRecordParams{}
@@ -415,7 +415,7 @@ func TestClient_DnsListRecords(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DnsListRecordsParams{}
@@ -435,7 +435,7 @@ func TestClient_DnsSecAddRecord(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DnsSecAddRecordParams{}
@@ -455,7 +455,7 @@ func TestClient_DnsSecDeleteRecord(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DnsSecDeleteRecordParams{}
@@ -475,7 +475,7 @@ func TestClient_DnsSecListRecords(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DnsSecListRecordsParams{}
@@ -495,7 +495,7 @@ func TestClient_DnsUpdateRecord(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DnsUpdateRecordParams{}
@@ -515,7 +515,7 @@ func TestClient_DomainForward(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DomainForwardParams{}
@@ -535,7 +535,7 @@ func TestClient_DomainForwardSubDomain(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DomainForwardSubDomainParams{}
@@ -555,7 +555,7 @@ func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DomainForwardSubDomainDeleteParams{}
@@ -575,7 +575,7 @@ func TestClient_DomainLock(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DomainLockParams{}
@@ -595,7 +595,7 @@ func TestClient_DomainUnlock(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &DomainUnlockParams{}
@@ -615,7 +615,7 @@ func TestClient_EmailVerification(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &EmailVerificationParams{}
@@ -635,7 +635,7 @@ func TestClient_GetAccountBalance(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &GetAccountBalanceParams{}
@@ -655,7 +655,7 @@ func TestClient_GetDomainInfo(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &GetDomainInfoParams{}
@@ -675,7 +675,7 @@ func TestClient_GetPrices(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &GetPricesParams{}
@@ -695,7 +695,7 @@ func TestClient_ListDomains(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ListDomainsParams{}
@@ -715,7 +715,7 @@ func TestClient_ListEmailForwards(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ListEmailForwardsParams{}
@@ -735,7 +735,7 @@ func TestClient_ListOrders(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ListOrdersParams{}
@@ -755,7 +755,7 @@ func TestClient_ListRegisteredNameServers(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ListRegisteredNameServersParams{}
@@ -775,7 +775,7 @@ func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &MarketplaceActiveSalesOverviewParams{}
@@ -795,7 +795,7 @@ func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &MarketplaceAddOrModifySaleParams{}
@@ -815,7 +815,7 @@ func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &MarketplaceLandingPageUpdateParams{}
@@ -835,7 +835,7 @@ func TestClient_ModifyRegisteredNameServer(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &ModifyRegisteredNameServerParams{}
@@ -855,7 +855,7 @@ func TestClient_OrderDetails(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &OrderDetailsParams{}
@@ -875,7 +875,7 @@ func TestClient_PortfolioAdd(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &PortfolioAddParams{}
@@ -895,7 +895,7 @@ func TestClient_PortfolioDelete(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &PortfolioDeleteParams{}
@@ -915,7 +915,7 @@ func TestClient_PortfolioDomainAssociate(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &PortfolioDomainAssociateParams{}
@@ -935,7 +935,7 @@ func TestClient_PortfolioList(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &PortfolioListParams{}
@@ -955,7 +955,7 @@ func TestClient_RegisterDomain(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &RegisterDomainParams{}
@@ -975,7 +975,7 @@ func TestClient_RegisterDomainDrop(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &RegisterDomainDropParams{}
@@ -995,7 +995,7 @@ func TestClient_RegistrantVerificationStatus(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &RegistrantVerificationStatusParams{}
@@ -1015,7 +1015,7 @@ func TestClient_RemoveAutoRenewal(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &RemoveAutoRenewalParams{}
@@ -1035,7 +1035,7 @@ func TestClient_RemovePrivacy(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &RemovePrivacyParams{}
@@ -1055,7 +1055,7 @@ func TestClient_RenewDomain(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &RenewDomainParams{}
@@ -1075,7 +1075,7 @@ func TestClient_RetrieveAuthCode(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &RetrieveAuthCodeParams{}
@@ -1095,7 +1095,7 @@ func TestClient_TransferDomain(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &TransferDomainParams{}
@@ -1115,7 +1115,7 @@ func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &TransferUpdateChangeEPPCodeParams{}
@@ -1135,7 +1135,7 @@ func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &TransferUpdateResendAdminEmailParams{}
@@ -1155,7 +1155,7 @@ func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
-	client := NewClient(transport.Client(), false, false)
+	client := NewClient(transport.Client(), Config{})
 	client.Endpoint = serverURL
 
 	params := &TransferUpdateResubmitToRegistryParams{}

@@ -55,7 +55,6 @@ linters:
         - rangeValCopy
         - octalLiteral
         - paramTypeCombine # already handle by gofumpt.extra-rules
-        - whyNoLint
       enabled-tags:
         - diagnostic
         - style
@@ -101,8 +100,6 @@ linters:
         text: setupFakeAPI - result mux is never used
       - path: zz_gen_client_test.go
         text: named return ".*" with type ".*" found
-      - path: namesilo.go
-        text: 'shadow: declaration of "err" shadows declaration at line 101'
 
 issues:
   max-issues-per-linter: 0
