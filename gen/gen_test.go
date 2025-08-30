@@ -5,6 +5,7 @@ import (
 	"go/format"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 	"text/template"
@@ -87,7 +88,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
+func setupFakeAPI(dir, operation string) (*http.ServeMux, string, func()) {
 	mux := http.NewServeMux()
 	server := httptest.NewServer(mux)
 
@@ -103,7 +104,7 @@ func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 			}
 		}
 
-		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", operation+".xml")))
+		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", dir, operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -122,7 +123,7 @@ func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 }
 {{range $key, $value := .Names }}
 func TestClient_{{ $value.Upper }}(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("{{ $value.Lower }}")
+	_, serverURL, teardown := setupFakeAPI("{{ $value.Dir }}", "{{ $value.Lower }}")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -156,6 +157,7 @@ import (
 	"encoding/xml"
 	"os"
 	"path/filepath"
+	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -166,7 +168,7 @@ func toCleanString(data []byte) string {
 
 {{range $key, $value := .Names }}
 func Test{{ $value.Upper }}(t *testing.T) {
-	bytes, err := os.ReadFile("./samples/{{ $value.Lower }}.xml")
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/{{ $value.Dir }}/{{ $value.Lower }}.xml"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -214,26 +216,40 @@ func generate(tmpl, filename string) error {
 	type BaseName struct {
 		Lower string
 		Upper string
+		Dir   string
 	}
 
 	var baseNames []BaseName
 
-	files, err := os.ReadDir(filepath.FromSlash("../samples"))
+	err := filepath.WalkDir(filepath.FromSlash("../samples"), func(path string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if d.IsDir() {
+			return nil
+		}
+
+		if d.Name() == "OPERATION.xml" {
+			return nil
+		}
+
+		baseName := strings.TrimSuffix(d.Name(), filepath.Ext(d.Name()))
+		baseNames = append(baseNames, BaseName{
+			Lower: baseName,
+			Upper: strings.ToUpper(string(baseName[0])) + baseName[1:],
+			Dir:   filepath.Base(filepath.Dir(path)),
+		})
+
+		return nil
+	})
 	if err != nil {
 		return err
 	}
 
-	for _, file := range files {
-		if file.Name() == "OPERATION.xml" {
-			continue
-		}
-
-		baseName := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
-		baseNames = append(baseNames, BaseName{
-			Lower: baseName,
-			Upper: strings.ToUpper(string(baseName[0])) + baseName[1:],
-		})
-	}
+	slices.SortFunc(baseNames, func(a, b BaseName) int {
+		return strings.Compare(a.Lower, b.Lower)
+	})
 
 	data := map[string]any{
 		"Names": baseNames,
