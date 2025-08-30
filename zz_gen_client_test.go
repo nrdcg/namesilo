@@ -52,10 +52,7 @@ func TestClient_AddAccountFunds(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("addAccountFunds")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &AddAccountFundsParams{}
@@ -72,10 +69,7 @@ func TestClient_AddAutoRenewal(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("addAutoRenewal")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &AddAutoRenewalParams{}
@@ -92,10 +86,7 @@ func TestClient_AddPrivacy(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("addPrivacy")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &AddPrivacyParams{}
@@ -112,10 +103,7 @@ func TestClient_AddRegisteredNameServer(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("addRegisteredNameServer")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &AddRegisteredNameServerParams{}
@@ -132,10 +120,7 @@ func TestClient_ChangeNameServers(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("changeNameServers")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ChangeNameServersParams{}
@@ -152,10 +137,7 @@ func TestClient_CheckRegisterAvailability(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("checkRegisterAvailability")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &CheckRegisterAvailabilityParams{}
@@ -172,10 +154,7 @@ func TestClient_CheckTransferAvailability(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("checkTransferAvailability")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &CheckTransferAvailabilityParams{}
@@ -192,10 +171,7 @@ func TestClient_CheckTransferStatus(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("checkTransferStatus")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &CheckTransferStatusParams{}
@@ -212,10 +188,7 @@ func TestClient_ConfigureEmailForward(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("configureEmailForward")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ConfigureEmailForwardParams{}
@@ -232,10 +205,7 @@ func TestClient_ContactAdd(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("contactAdd")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ContactAddParams{}
@@ -252,10 +222,7 @@ func TestClient_ContactDelete(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("contactDelete")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ContactDeleteParams{}
@@ -272,10 +239,7 @@ func TestClient_ContactDomainAssociate(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("contactDomainAssociate")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ContactDomainAssociateParams{}
@@ -292,10 +256,7 @@ func TestClient_ContactList(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("contactList")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ContactListParams{}
@@ -312,10 +273,7 @@ func TestClient_ContactUpdate(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("contactUpdate")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ContactUpdateParams{}
@@ -332,10 +290,7 @@ func TestClient_DeleteEmailForward(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("deleteEmailForward")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DeleteEmailForwardParams{}
@@ -352,10 +307,7 @@ func TestClient_DeleteRegisteredNameServer(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("deleteRegisteredNameServer")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DeleteRegisteredNameServerParams{}
@@ -372,10 +324,7 @@ func TestClient_DnsAddRecord(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("dnsAddRecord")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DnsAddRecordParams{}
@@ -392,10 +341,7 @@ func TestClient_DnsDeleteRecord(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("dnsDeleteRecord")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DnsDeleteRecordParams{}
@@ -412,10 +358,7 @@ func TestClient_DnsListRecords(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("dnsListRecords")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DnsListRecordsParams{}
@@ -432,10 +375,7 @@ func TestClient_DnsSecAddRecord(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("dnsSecAddRecord")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DnsSecAddRecordParams{}
@@ -452,10 +392,7 @@ func TestClient_DnsSecDeleteRecord(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("dnsSecDeleteRecord")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DnsSecDeleteRecordParams{}
@@ -472,10 +409,7 @@ func TestClient_DnsSecListRecords(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("dnsSecListRecords")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DnsSecListRecordsParams{}
@@ -492,10 +426,7 @@ func TestClient_DnsUpdateRecord(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("dnsUpdateRecord")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DnsUpdateRecordParams{}
@@ -512,10 +443,7 @@ func TestClient_DomainForward(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("domainForward")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DomainForwardParams{}
@@ -532,10 +460,7 @@ func TestClient_DomainForwardSubDomain(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("domainForwardSubDomain")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DomainForwardSubDomainParams{}
@@ -552,10 +477,7 @@ func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("domainForwardSubDomainDelete")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DomainForwardSubDomainDeleteParams{}
@@ -572,10 +494,7 @@ func TestClient_DomainLock(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("domainLock")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DomainLockParams{}
@@ -592,10 +511,7 @@ func TestClient_DomainUnlock(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("domainUnlock")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &DomainUnlockParams{}
@@ -612,10 +528,7 @@ func TestClient_EmailVerification(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("emailVerification")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &EmailVerificationParams{}
@@ -632,10 +545,7 @@ func TestClient_GetAccountBalance(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("getAccountBalance")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &GetAccountBalanceParams{}
@@ -652,10 +562,7 @@ func TestClient_GetDomainInfo(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("getDomainInfo")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &GetDomainInfoParams{}
@@ -672,10 +579,7 @@ func TestClient_GetPrices(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("getPrices")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &GetPricesParams{}
@@ -692,10 +596,7 @@ func TestClient_ListDomains(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("listDomains")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ListDomainsParams{}
@@ -712,10 +613,7 @@ func TestClient_ListEmailForwards(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("listEmailForwards")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ListEmailForwardsParams{}
@@ -732,10 +630,7 @@ func TestClient_ListOrders(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("listOrders")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ListOrdersParams{}
@@ -752,10 +647,7 @@ func TestClient_ListRegisteredNameServers(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("listRegisteredNameServers")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ListRegisteredNameServersParams{}
@@ -772,10 +664,7 @@ func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("marketplaceActiveSalesOverview")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &MarketplaceActiveSalesOverviewParams{}
@@ -792,10 +681,7 @@ func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("marketplaceAddOrModifySale")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &MarketplaceAddOrModifySaleParams{}
@@ -812,10 +698,7 @@ func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("marketplaceLandingPageUpdate")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &MarketplaceLandingPageUpdateParams{}
@@ -832,10 +715,7 @@ func TestClient_ModifyRegisteredNameServer(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("modifyRegisteredNameServer")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &ModifyRegisteredNameServerParams{}
@@ -852,10 +732,7 @@ func TestClient_OrderDetails(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("orderDetails")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &OrderDetailsParams{}
@@ -872,10 +749,7 @@ func TestClient_PortfolioAdd(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("portfolioAdd")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &PortfolioAddParams{}
@@ -892,10 +766,7 @@ func TestClient_PortfolioDelete(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("portfolioDelete")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &PortfolioDeleteParams{}
@@ -912,10 +783,7 @@ func TestClient_PortfolioDomainAssociate(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("portfolioDomainAssociate")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &PortfolioDomainAssociateParams{}
@@ -932,10 +800,7 @@ func TestClient_PortfolioList(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("portfolioList")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &PortfolioListParams{}
@@ -952,10 +817,7 @@ func TestClient_RegisterDomain(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("registerDomain")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &RegisterDomainParams{}
@@ -972,10 +834,7 @@ func TestClient_RegisterDomainDrop(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("registerDomainDrop")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &RegisterDomainDropParams{}
@@ -992,10 +851,7 @@ func TestClient_RegistrantVerificationStatus(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("registrantVerificationStatus")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &RegistrantVerificationStatusParams{}
@@ -1012,10 +868,7 @@ func TestClient_RemoveAutoRenewal(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("removeAutoRenewal")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &RemoveAutoRenewalParams{}
@@ -1032,10 +885,7 @@ func TestClient_RemovePrivacy(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("removePrivacy")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &RemovePrivacyParams{}
@@ -1052,10 +902,7 @@ func TestClient_RenewDomain(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("renewDomain")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &RenewDomainParams{}
@@ -1072,10 +919,7 @@ func TestClient_RetrieveAuthCode(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("retrieveAuthCode")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &RetrieveAuthCodeParams{}
@@ -1092,10 +936,7 @@ func TestClient_TransferDomain(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("transferDomain")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &TransferDomainParams{}
@@ -1112,10 +953,7 @@ func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("transferUpdateChangeEPPCode")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &TransferUpdateChangeEPPCodeParams{}
@@ -1132,10 +970,7 @@ func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("transferUpdateResendAdminEmail")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &TransferUpdateResendAdminEmailParams{}
@@ -1152,10 +987,7 @@ func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("transferUpdateResubmitToRegistry")
 	defer teardown()
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client(), Config{})
+	client := NewClient(http.DefaultClient, Config{APIKey: "1234"})
 	client.Endpoint = serverURL
 
 	params := &TransferUpdateResubmitToRegistryParams{}

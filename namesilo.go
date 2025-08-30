@@ -32,6 +32,7 @@ const (
 type Client struct {
 	Endpoint   string
 	HTTPClient *http.Client
+	apiKey     string
 }
 
 type Config struct {
@@ -46,22 +47,6 @@ func NewClient(httpClient *http.Client, cfg Config) *Client {
 		httpClient = http.DefaultClient
 	}
 
-	// Extract existing transport if present, otherwise use DefaultTransport
-	baseTransport := http.DefaultTransport
-	if httpClient.Transport != nil {
-		baseTransport = httpClient.Transport
-	}
-
-	// Initialize TokenTransport with API key, wrapping the existing transport
-	tokenTransport := &TokenTransport{
-		apiKey:    cfg.APIKey,
-		Transport: baseTransport, // Preserve existing transport
-	}
-
-	// Create a new http.Client from the previous one that applies TokenTransport on top
-	newHTTPClient := *httpClient
-	newHTTPClient.Transport = tokenTransport
-
 	// Set API endpoint based on environment
 	endpoint := DefaultAPIEndpoint
 	if !cfg.IsProduction {
@@ -73,11 +58,12 @@ func NewClient(httpClient *http.Client, cfg Config) *Client {
 
 	return &Client{
 		Endpoint:   endpoint,
-		HTTPClient: &newHTTPClient,
+		HTTPClient: httpClient,
+		apiKey:     cfg.APIKey,
 	}
 }
 
-func (c *Client) get(ctx context.Context, name string, params interface{}) (*http.Response, error) {
+func (c *Client) get(ctx context.Context, name string, params any) (*http.Response, error) {
 	uri, err := url.Parse(fmt.Sprintf("%s/%s", c.Endpoint, name))
 	if err != nil {
 		return nil, err
@@ -96,6 +82,12 @@ func (c *Client) get(ctx context.Context, name string, params interface{}) (*htt
 	if err != nil {
 		return nil, fmt.Errorf("failed creating get request: %w", err)
 	}
+
+	query := req.URL.Query()
+	query.Add("version", "1")
+	query.Add("type", "xml")
+	query.Add("key", c.apiKey)
+	req.URL.RawQuery = query.Encode()
 
 	return c.HTTPClient.Do(req)
 }
