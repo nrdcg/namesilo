@@ -84,9 +84,9 @@ func (c *Client) get(ctx context.Context, name string, params any) (*http.Respon
 	}
 
 	query := req.URL.Query()
-	query.Add("version", "1")
-	query.Add("type", "xml")
-	query.Add("key", c.apiKey)
+	query.Set("version", "1")
+	query.Set("type", "xml")
+	query.Set("key", c.apiKey)
 	req.URL.RawQuery = query.Encode()
 
 	return c.HTTPClient.Do(req)
