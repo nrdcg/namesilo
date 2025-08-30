@@ -236,7 +236,7 @@ func generate(tmpl, filename string) error {
 		})
 	}
 
-	data := map[string]interface{}{
+	data := map[string]any{
 		"Names": baseNames,
 	}
 

@@ -31,6 +31,7 @@ type AddAccountFunds struct {
 // AddAccountFundsReply A reply representation.
 type AddAccountFundsReply struct {
 	Reply
+
 	NewBalance string `xml:"new_balance"`
 }
 
@@ -72,6 +73,7 @@ type CheckRegisterAvailability struct {
 // CheckRegisterAvailabilityReply A reply representation.
 type CheckRegisterAvailabilityReply struct {
 	Reply
+
 	Available struct {
 		Domain []string `xml:"domain"`
 	} `xml:"available"`
@@ -93,6 +95,7 @@ type CheckTransferAvailability struct {
 // CheckTransferAvailabilityReply A reply representation.
 type CheckTransferAvailabilityReply struct {
 	Reply
+
 	Available struct {
 		Domain []string `xml:"domain"`
 	} `xml:"available"`
@@ -114,6 +117,7 @@ type CheckTransferStatus struct {
 // CheckTransferStatusReply A reply representation.
 type CheckTransferStatusReply struct {
 	Reply
+
 	Date    string `xml:"date"`
 	Status  string `xml:"status"`
 	Message string `xml:"message"`
@@ -129,6 +133,7 @@ type ConfigureEmailForward struct {
 // ConfigureEmailForwardReply A reply representation.
 type ConfigureEmailForwardReply struct {
 	Reply
+
 	Message string `xml:"message"`
 }
 
@@ -142,6 +147,7 @@ type ContactAdd struct {
 // ContactAddReply A reply representation.
 type ContactAddReply struct {
 	Reply
+
 	ContactID string `xml:"contact_id"`
 }
 
@@ -162,6 +168,7 @@ type ContactList struct {
 // ContactListReply A reply representation.
 type ContactListReply struct {
 	Reply
+
 	Contact []Contact `xml:"contact"`
 }
 
@@ -214,6 +221,7 @@ type DeleteEmailForward struct {
 // DeleteEmailForwardReply A reply representation.
 type DeleteEmailForwardReply struct {
 	Reply
+
 	Message string `xml:"message"`
 }
 
@@ -234,6 +242,7 @@ type DnsAddRecord struct {
 // DnsAddRecordReply A reply representation.
 type DnsAddRecordReply struct {
 	Reply
+
 	RecordID string `xml:"record_id"`
 }
 
@@ -254,6 +263,7 @@ type DnsListRecords struct {
 // DnsListRecordsReply A reply representation.
 type DnsListRecordsReply struct {
 	Reply
+
 	ResourceRecord []ResourceRecord `xml:"resource_record"`
 }
 
@@ -291,6 +301,7 @@ type DnsSecListRecords struct {
 // DnsSecListRecordsReply A reply representation.
 type DnsSecListRecordsReply struct {
 	Reply
+
 	DsRecord []DsRecord `xml:"ds_record"`
 }
 
@@ -312,6 +323,7 @@ type DnsUpdateRecord struct {
 // DnsUpdateRecordReply A reply representation.
 type DnsUpdateRecordReply struct {
 	Reply
+
 	RecordID string `xml:"record_id"`
 }
 
@@ -332,6 +344,7 @@ type DomainForwardSubDomain struct {
 // DomainForwardSubDomainReply A reply representation.
 type DomainForwardSubDomainReply struct {
 	Reply
+
 	Message string `xml:"message"`
 }
 
@@ -366,6 +379,7 @@ type EmailVerification struct {
 // EmailVerificationReply A reply representation.
 type EmailVerificationReply struct {
 	Reply
+
 	Message string `xml:"message"`
 }
 
@@ -379,6 +393,7 @@ type GetAccountBalance struct {
 // GetAccountBalanceReply A reply representation.
 type GetAccountBalanceReply struct {
 	Reply
+
 	Balance string `xml:"balance"`
 }
 
@@ -392,6 +407,7 @@ type GetDomainInfo struct {
 // GetDomainInfoReply A reply representation.
 type GetDomainInfoReply struct {
 	Reply
+
 	Created                   string       `xml:"created"`
 	Expires                   string       `xml:"expires"`
 	Status                    string       `xml:"status"`
@@ -431,6 +447,7 @@ type GetPrices struct {
 // GetPricesReply A reply representation.
 type GetPricesReply struct {
 	Reply
+
 	Com ComNet `xml:"com"`
 	Net ComNet `xml:"net"`
 }
@@ -452,6 +469,7 @@ type ListDomains struct {
 // ListDomainsReply A reply representation.
 type ListDomainsReply struct {
 	Reply
+
 	Domains struct {
 		Domain []string `xml:"domain"`
 	} `xml:"domains"`
@@ -467,6 +485,7 @@ type ListEmailForwards struct {
 // ListEmailForwardsReply A reply representation.
 type ListEmailForwardsReply struct {
 	Reply
+
 	Addresses []Address `xml:"addresses"`
 }
 
@@ -486,6 +505,7 @@ type ListOrders struct {
 // ListOrdersReply A reply representation.
 type ListOrdersReply struct {
 	Reply
+
 	Order []Order `xml:"order"`
 }
 
@@ -507,6 +527,7 @@ type ListRegisteredNameServers struct {
 // ListRegisteredNameServersReply A reply representation.
 type ListRegisteredNameServersReply struct {
 	Reply
+
 	Hosts []Host `xml:"hosts"`
 }
 
@@ -526,6 +547,7 @@ type MarketplaceActiveSalesOverview struct {
 // MarketplaceActiveSalesOverviewReply A reply representation.
 type MarketplaceActiveSalesOverviewReply struct {
 	Reply
+
 	SaleDetails []SaleDetail `xml:"sale_details"`
 }
 
@@ -555,6 +577,7 @@ type MarketplaceAddOrModifySale struct {
 // MarketplaceAddOrModifySaleReply A reply representation.
 type MarketplaceAddOrModifySaleReply struct {
 	Reply
+
 	Message string `xml:"message"`
 }
 
@@ -582,6 +605,7 @@ type OrderDetails struct {
 // OrderDetailsReply A reply representation.
 type OrderDetailsReply struct {
 	Reply
+
 	OrderDate    string        `xml:"order_date"`
 	Method       string        `xml:"method"`
 	Total        string        `xml:"total"`
@@ -623,6 +647,7 @@ type PortfolioDomainAssociate struct {
 // PortfolioDomainAssociateReply A reply representation.
 type PortfolioDomainAssociateReply struct {
 	Reply
+
 	Message string `xml:"message"`
 }
 
@@ -636,6 +661,7 @@ type PortfolioList struct {
 // PortfolioListReply A reply representation.
 type PortfolioListReply struct {
 	Reply
+
 	Portfolios Portfolios `xml:"portfolios"`
 }
 
@@ -655,6 +681,7 @@ type RegisterDomainDrop struct {
 // RegisterDomainDropReply A reply representation.
 type RegisterDomainDropReply struct {
 	Reply
+
 	Message     string `xml:"message"`
 	Domain      string `xml:"domain"`
 	OrderAmount string `xml:"order_amount"`
@@ -670,6 +697,7 @@ type RegisterDomain struct {
 // RegisterDomainReply A reply representation.
 type RegisterDomainReply struct {
 	Reply
+
 	Message     string `xml:"message"`
 	Domain      string `xml:"domain"`
 	OrderAmount string `xml:"order_amount"`
@@ -685,6 +713,7 @@ type RegistrantVerificationStatus struct {
 // RegistrantVerificationStatusReply A reply representation.
 type RegistrantVerificationStatusReply struct {
 	Reply
+
 	Emails []RegistrantEmail `xml:"email"`
 }
 
@@ -719,6 +748,7 @@ type RenewDomain struct {
 // RenewDomainReply A reply representation.
 type RenewDomainReply struct {
 	Reply
+
 	Message     string `xml:"message"`
 	Domain      string `xml:"domain"`
 	OrderAmount string `xml:"order_amount"`
@@ -741,6 +771,7 @@ type TransferDomain struct {
 // TransferDomainReply A reply representation.
 type TransferDomainReply struct {
 	Reply
+
 	Message     string `xml:"message"`
 	Domain      string `xml:"domain"`
 	OrderAmount string `xml:"order_amount"`

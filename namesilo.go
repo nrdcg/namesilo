@@ -42,7 +42,7 @@ func NewClient(httpClient *http.Client) *Client {
 	}
 }
 
-func (c *Client) get(name string, params interface{}) (*http.Response, error) {
+func (c *Client) get(name string, params any) (*http.Response, error) {
 	uri, err := url.Parse(fmt.Sprintf("%s/%s", c.Endpoint, name))
 	if err != nil {
 		return nil, err
