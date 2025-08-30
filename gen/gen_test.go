@@ -20,11 +20,11 @@ func TestGenerateClientMethods(t *testing.T) {
 import (
 	"encoding/xml"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 {{range $key, $value := .Names }}
-// {{ $value.Upper }} Execute operation {{ $value.Lower }}. 
+// {{ $value.Upper }} Execute operation {{ $value.Lower }}.
 func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $value.Upper }}, error) {
 	resp, err := c.get("{{ $value.Lower }}", params)
 	if err != nil {
@@ -154,8 +154,7 @@ func TestGenerateModelTest(t *testing.T) {
 
 import (
 	"encoding/xml"
-	"fmt"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
