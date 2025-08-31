@@ -3,6 +3,7 @@ package namesilo
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -16,6 +17,9 @@ const (
 
 	// SandboxAPIEndpoint The sandbox API endpoint.
 	SandboxAPIEndpoint = "https://sandbox.namesilo.com/api"
+
+	// OTEAPIEndpoint The OTE sandbox API endpoint.
+	OTEAPIEndpoint = "https://ote.namesilo.com/api"
 )
 
 // Response Codes.
@@ -66,4 +70,20 @@ func (c *Client) get(ctx context.Context, name string, params any) (*http.Respon
 	}
 
 	return c.HTTPClient.Do(req)
+}
+
+func GetEndpoint(prod, ote bool) (string, error) {
+	if prod && ote {
+		return "", errors.New("prod and ote are mutually exclusive")
+	}
+
+	if prod {
+		return DefaultAPIEndpoint, nil
+	}
+
+	if ote {
+		return OTEAPIEndpoint, nil
+	}
+
+	return SandboxAPIEndpoint, nil
 }
