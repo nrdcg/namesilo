@@ -517,3 +517,8 @@ type TransferUpdateResendAdminEmailParams struct {
 type TransferUpdateResubmitToRegistryParams struct {
 	Domain string `url:"domain"` // Required
 }
+
+// WhoisInfoParams Parameters for operation whoisInfo.
+type WhoisInfoParams struct {
+	Domain string `url:"domain"` // Required
+}

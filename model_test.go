@@ -1301,3 +1301,26 @@ func TestTransferUpdateResubmitToRegistry(t *testing.T) {
 		t.Error("Errors")
 	}
 }
+
+func TestWhoisInfo(t *testing.T) {
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/whoisInfo.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &WhoisInfo{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}

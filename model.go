@@ -864,3 +864,22 @@ type TransferUpdateResubmitToRegistry struct {
 	Request Request  `xml:"request"`
 	Reply   Reply    `xml:"reply"`
 }
+
+// WhoisInfo was generated 2025-08-31 10:05:00.
+type WhoisInfo struct {
+	XMLName xml.Name       `xml:"namesilo"`
+	Request Request        `xml:"request"`
+	Reply   WhoisInfoReply `xml:"reply"`
+}
+
+// WhoisInfoReply A reply representation.
+type WhoisInfoReply struct {
+	Reply
+
+	Domain     string `xml:"domain"`
+	Registered string `xml:"registered"`
+	Changed    string `xml:"changed"`
+	Created    string `xml:"created"`
+	Expires    string `xml:"expires"`
+	Registrar  string `xml:"registrar"`
+}

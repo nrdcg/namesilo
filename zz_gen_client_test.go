@@ -1167,3 +1167,23 @@ func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
 
 	assert.IsType(t, &TransferUpdateResubmitToRegistry{}, result)
 }
+
+func TestClient_WhoisInfo(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("domains", "whoisInfo")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &WhoisInfoParams{}
+
+	result, err := client.WhoisInfo(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &WhoisInfo{}, result)
+}
