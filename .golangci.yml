@@ -88,7 +88,7 @@ linters:
       - linters:
           - funlen
         path: .*_test.go
-      - path: model.go
+      - path: types.go
         text: type Dns(.+) should be DNS(.+)
       - path: params.go
         text: type Dns(.+) should be DNS(.+)

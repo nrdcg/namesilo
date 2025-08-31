@@ -17,11 +17,16 @@ check:
 	golangci-lint run
 
 ## Useful to initiate structures
-gen-struct:
-	echo 'package namesilo' > "gen_struct.go";
-	echo '' >> "gen_struct.go";
-	echo 'import "encoding/xml"' >> "gen_struct.go";
-	echo '' >> "gen_struct.go";
-	for i in $$(ls samples/ -1); do \
-		zek -c -n $${i%.xml} "./samples/$$i" >> "gen_struct.go"; \
-	done
+# TODO: must be updated to support the subfolders.
+#gen-struct:
+#	# go install github.com/miku/zek/cmd/zek@latest
+#	echo 'package namesilo' > "gen_struct.go";
+#	echo '' >> "gen_struct.go";
+#	echo 'import "encoding/xml"' >> "gen_struct.go";
+#	echo '' >> "gen_struct.go";
+#	for i in $$(ls samples/ -1); do \
+#		zek -c -n $${i%.xml} "./samples/$$i" >> "gen_struct.go"; \
+#	done
+
+generate:
+	go run ./internal/
