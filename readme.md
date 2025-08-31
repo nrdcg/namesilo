@@ -22,12 +22,7 @@ import (
 )
 
 func main() {
-	transport, err := namesilo.NewTokenTransport("1234")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	client := namesilo.NewClient(transport.Client())
+	client := namesilo.NewClient("1234")
 
 	params := &namesilo.AddAccountFundsParams{
 		Amount:    "1000000",
@@ -55,12 +50,7 @@ import (
 )
 
 func main() {
-	transport, err := namesilo.NewTokenTransport("1234")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	client := namesilo.NewClient(transport.Client())
+	client := namesilo.NewClient("1234")
 
 	// Set the endpoint to use the OTE endpoint.
 	endpoint, err := namesilo.GetEndpoint(false, true)

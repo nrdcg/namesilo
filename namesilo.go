@@ -4,9 +4,9 @@ package namesilo
 import (
 	"context"
 	"errors"
-	"fmt"
 	"net/http"
 	"net/url"
+	"time"
 
 	querystring "github.com/google/go-querystring/query"
 )
@@ -31,40 +31,42 @@ const (
 
 // Client the Namesilo client.
 type Client struct {
-	Endpoint   string
+	apiKey string
+
+	Endpoint   *url.URL
 	HTTPClient *http.Client
 }
 
 // NewClient Creates a Namesilo client.
-func NewClient(httpClient *http.Client) *Client {
-	if httpClient == nil {
-		httpClient = http.DefaultClient
-	}
+func NewClient(apiKey string) *Client {
+	endpoint, _ := url.Parse(DefaultAPIEndpoint)
 
 	return &Client{
-		Endpoint:   DefaultAPIEndpoint,
-		HTTPClient: httpClient,
+		apiKey:     apiKey,
+		Endpoint:   endpoint,
+		HTTPClient: &http.Client{Timeout: 10 * time.Second},
 	}
 }
 
 func (c *Client) get(ctx context.Context, name string, params any) (*http.Response, error) {
-	uri, err := url.Parse(fmt.Sprintf("%s/%s", c.Endpoint, name))
-	if err != nil {
-		return nil, err
-	}
+	endpoint := c.Endpoint.JoinPath(name)
 
 	if params != nil {
-		var v url.Values
-
-		v, err = querystring.Values(params)
+		v, err := querystring.Values(params)
 		if err != nil {
 			return nil, err
 		}
 
-		uri.RawQuery = v.Encode()
+		endpoint.RawQuery = v.Encode()
 	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, uri.String(), http.NoBody)
+	query := endpoint.Query()
+	query.Set("version", "1")
+	query.Set("type", "xml")
+	query.Set("key", c.apiKey)
+	endpoint.RawQuery = query.Encode()
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, endpoint.String(), http.NoBody)
 	if err != nil {
 		return nil, err
 	}
@@ -72,18 +74,18 @@ func (c *Client) get(ctx context.Context, name string, params any) (*http.Respon
 	return c.HTTPClient.Do(req)
 }
 
-func GetEndpoint(prod, ote bool) (string, error) {
+func GetEndpoint(prod, ote bool) (*url.URL, error) {
 	if prod && ote {
-		return "", errors.New("prod and ote are mutually exclusive")
+		return nil, errors.New("prod and ote are mutually exclusive")
 	}
 
 	if prod {
-		return DefaultAPIEndpoint, nil
+		return url.Parse(DefaultAPIEndpoint)
 	}
 
 	if ote {
-		return OTEAPIEndpoint, nil
+		return url.Parse(OTEAPIEndpoint)
 	}
 
-	return SandboxAPIEndpoint, nil
+	return url.Parse(SandboxAPIEndpoint)
 }

@@ -88,6 +88,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"os"
 	"path/filepath"
 	"testing"
@@ -128,11 +129,8 @@ func setupFakeAPI(t *testing.T, dir, operation string) *Client {
 		}
 	})
 
-	transport, err := NewTokenTransport("1234")
-	require.NoError(t, err)
-
-	client := NewClient(transport.Client())
-	client.Endpoint = server.URL
+	client := NewClient("1234")
+	client.Endpoint, _ = url.Parse(server.URL)
 
 	return client
 }
