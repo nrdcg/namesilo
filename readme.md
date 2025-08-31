@@ -14,6 +14,7 @@ namesilo is a Go client library for accessing the Namesilo API.
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 
@@ -33,7 +34,7 @@ func main() {
 		PaymentID: "acbd",
 	}
 
-	funds, err := client.AddAccountFunds(params)
+	funds, err := client.AddAccountFunds(context.Background(), params)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -46,6 +47,7 @@ func main() {
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 
@@ -59,21 +61,21 @@ func main() {
 	}
 
 	client := namesilo.NewClient(transport.Client())
-	
+
 	// Set the endpoint to use the OTE endpoint.
-	endpoint, err := GetEndpoint(false, true)
+	endpoint, err := namesilo.GetEndpoint(false, true)
 	if err != nil {
 		log.Fatal(err)
 	}
-	
-	client.Endpoint = endpoint 
+
+	client.Endpoint = endpoint
 
 	params := &namesilo.AddAccountFundsParams{
 		Amount:    "1000000",
 		PaymentID: "acbd",
 	}
 
-	funds, err := client.AddAccountFunds(params)
+	funds, err := client.AddAccountFunds(context.Background(), params)
 	if err != nil {
 		log.Fatal(err)
 	}
