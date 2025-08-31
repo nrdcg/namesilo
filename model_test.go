@@ -19,6 +19,7 @@ func TestAddAccountFunds(t *testing.T) {
 	}
 
 	model := &AddAccountFunds{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -42,6 +43,7 @@ func TestAddAutoRenewal(t *testing.T) {
 	}
 
 	model := &AddAutoRenewal{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -65,6 +67,7 @@ func TestAddPrivacy(t *testing.T) {
 	}
 
 	model := &AddPrivacy{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -88,6 +91,7 @@ func TestAddRegisteredNameServer(t *testing.T) {
 	}
 
 	model := &AddRegisteredNameServer{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -113,6 +117,7 @@ func TestBidAuction(t *testing.T) {
 	}
 
 	model := &BidAuction{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -138,6 +143,7 @@ func TestBuyNowAuction(t *testing.T) {
 	}
 
 	model := &BuyNowAuction{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -161,6 +167,7 @@ func TestChangeNameServers(t *testing.T) {
 	}
 
 	model := &ChangeNameServers{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -184,6 +191,7 @@ func TestCheckRegisterAvailability(t *testing.T) {
 	}
 
 	model := &CheckRegisterAvailability{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -207,6 +215,7 @@ func TestCheckTransferAvailability(t *testing.T) {
 	}
 
 	model := &CheckTransferAvailability{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -230,6 +239,7 @@ func TestCheckTransferStatus(t *testing.T) {
 	}
 
 	model := &CheckTransferStatus{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -253,6 +263,7 @@ func TestConfigureEmailForward(t *testing.T) {
 	}
 
 	model := &ConfigureEmailForward{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -276,6 +287,7 @@ func TestContactAdd(t *testing.T) {
 	}
 
 	model := &ContactAdd{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -299,6 +311,7 @@ func TestContactDelete(t *testing.T) {
 	}
 
 	model := &ContactDelete{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -322,6 +335,7 @@ func TestContactDomainAssociate(t *testing.T) {
 	}
 
 	model := &ContactDomainAssociate{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -347,6 +361,7 @@ func TestContactList(t *testing.T) {
 	}
 
 	model := &ContactList{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -370,6 +385,7 @@ func TestContactUpdate(t *testing.T) {
 	}
 
 	model := &ContactUpdate{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -393,6 +409,7 @@ func TestCountExpiringDomains(t *testing.T) {
 	}
 
 	model := &CountExpiringDomains{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -416,6 +433,7 @@ func TestDeleteEmailForward(t *testing.T) {
 	}
 
 	model := &DeleteEmailForward{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -439,6 +457,7 @@ func TestDeleteRegisteredNameServer(t *testing.T) {
 	}
 
 	model := &DeleteRegisteredNameServer{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -462,6 +481,7 @@ func TestDnsAddRecord(t *testing.T) {
 	}
 
 	model := &DnsAddRecord{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -485,6 +505,7 @@ func TestDnsDeleteRecord(t *testing.T) {
 	}
 
 	model := &DnsDeleteRecord{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -508,6 +529,7 @@ func TestDnsListRecords(t *testing.T) {
 	}
 
 	model := &DnsListRecords{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -531,6 +553,7 @@ func TestDnsSecAddRecord(t *testing.T) {
 	}
 
 	model := &DnsSecAddRecord{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -554,6 +577,7 @@ func TestDnsSecDeleteRecord(t *testing.T) {
 	}
 
 	model := &DnsSecDeleteRecord{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -577,6 +601,7 @@ func TestDnsSecListRecords(t *testing.T) {
 	}
 
 	model := &DnsSecListRecords{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -600,6 +625,7 @@ func TestDnsUpdateRecord(t *testing.T) {
 	}
 
 	model := &DnsUpdateRecord{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -623,6 +649,7 @@ func TestDomainForward(t *testing.T) {
 	}
 
 	model := &DomainForward{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -646,6 +673,7 @@ func TestDomainForwardSubDomain(t *testing.T) {
 	}
 
 	model := &DomainForwardSubDomain{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -669,6 +697,7 @@ func TestDomainForwardSubDomainDelete(t *testing.T) {
 	}
 
 	model := &DomainForwardSubDomainDelete{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -692,6 +721,7 @@ func TestDomainLock(t *testing.T) {
 	}
 
 	model := &DomainLock{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -715,6 +745,7 @@ func TestDomainUnlock(t *testing.T) {
 	}
 
 	model := &DomainUnlock{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -738,6 +769,7 @@ func TestEmailVerification(t *testing.T) {
 	}
 
 	model := &EmailVerification{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -761,6 +793,7 @@ func TestGetAccountBalance(t *testing.T) {
 	}
 
 	model := &GetAccountBalance{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -784,6 +817,7 @@ func TestGetDomainInfo(t *testing.T) {
 	}
 
 	model := &GetDomainInfo{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -807,6 +841,7 @@ func TestGetPrices(t *testing.T) {
 	}
 
 	model := &GetPrices{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -830,6 +865,7 @@ func TestListAuctions(t *testing.T) {
 	}
 
 	model := &ListAuctions{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -853,6 +889,7 @@ func TestListDomains(t *testing.T) {
 	}
 
 	model := &ListDomains{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -876,6 +913,7 @@ func TestListEmailForwards(t *testing.T) {
 	}
 
 	model := &ListEmailForwards{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -899,6 +937,7 @@ func TestListExpiringDomains(t *testing.T) {
 	}
 
 	model := &ListExpiringDomains{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -922,6 +961,7 @@ func TestListOrders(t *testing.T) {
 	}
 
 	model := &ListOrders{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -945,6 +985,7 @@ func TestListRegisteredNameServers(t *testing.T) {
 	}
 
 	model := &ListRegisteredNameServers{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -968,6 +1009,7 @@ func TestMarketplaceActiveSalesOverview(t *testing.T) {
 	}
 
 	model := &MarketplaceActiveSalesOverview{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -991,6 +1033,7 @@ func TestMarketplaceAddOrModifySale(t *testing.T) {
 	}
 
 	model := &MarketplaceAddOrModifySale{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1014,6 +1057,7 @@ func TestMarketplaceLandingPageUpdate(t *testing.T) {
 	}
 
 	model := &MarketplaceLandingPageUpdate{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1037,6 +1081,7 @@ func TestModifyRegisteredNameServer(t *testing.T) {
 	}
 
 	model := &ModifyRegisteredNameServer{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1060,6 +1105,7 @@ func TestOrderDetails(t *testing.T) {
 	}
 
 	model := &OrderDetails{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1083,6 +1129,7 @@ func TestPortfolioAdd(t *testing.T) {
 	}
 
 	model := &PortfolioAdd{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1106,6 +1153,7 @@ func TestPortfolioDelete(t *testing.T) {
 	}
 
 	model := &PortfolioDelete{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1129,6 +1177,7 @@ func TestPortfolioDomainAssociate(t *testing.T) {
 	}
 
 	model := &PortfolioDomainAssociate{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1152,6 +1201,7 @@ func TestPortfolioList(t *testing.T) {
 	}
 
 	model := &PortfolioList{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1175,6 +1225,7 @@ func TestRegisterDomain(t *testing.T) {
 	}
 
 	model := &RegisterDomain{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1198,6 +1249,7 @@ func TestRegisterDomainDrop(t *testing.T) {
 	}
 
 	model := &RegisterDomainDrop{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1221,6 +1273,7 @@ func TestRegistrantVerificationStatus(t *testing.T) {
 	}
 
 	model := &RegistrantVerificationStatus{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1244,6 +1297,7 @@ func TestRemoveAutoRenewal(t *testing.T) {
 	}
 
 	model := &RemoveAutoRenewal{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1267,6 +1321,7 @@ func TestRemovePrivacy(t *testing.T) {
 	}
 
 	model := &RemovePrivacy{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1290,6 +1345,7 @@ func TestRenewDomain(t *testing.T) {
 	}
 
 	model := &RenewDomain{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1313,6 +1369,7 @@ func TestRetrieveAuthCode(t *testing.T) {
 	}
 
 	model := &RetrieveAuthCode{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1336,6 +1393,7 @@ func TestTransferDomain(t *testing.T) {
 	}
 
 	model := &TransferDomain{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1359,6 +1417,7 @@ func TestTransferUpdateChangeEPPCode(t *testing.T) {
 	}
 
 	model := &TransferUpdateChangeEPPCode{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1382,6 +1441,7 @@ func TestTransferUpdateResendAdminEmail(t *testing.T) {
 	}
 
 	model := &TransferUpdateResendAdminEmail{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1405,6 +1465,7 @@ func TestTransferUpdateResubmitToRegistry(t *testing.T) {
 	}
 
 	model := &TransferUpdateResubmitToRegistry{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1430,6 +1491,7 @@ func TestViewAuction(t *testing.T) {
 	}
 
 	model := &ViewAuction{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1453,6 +1515,7 @@ func TestViewAuctionHistory(t *testing.T) {
 	}
 
 	model := &ViewAuctionHistory{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1478,6 +1541,7 @@ func TestWatchAuction(t *testing.T) {
 	}
 
 	model := &WatchAuction{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -1501,6 +1565,7 @@ func TestWhoisInfo(t *testing.T) {
 	}
 
 	model := &WhoisInfo{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)

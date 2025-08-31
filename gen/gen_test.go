@@ -32,6 +32,7 @@ func (c *Client) {{ $value.Upper }}(ctx context.Context, params *{{ $value.Upper
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -44,6 +45,7 @@ func (c *Client) {{ $value.Upper }}(ctx context.Context, params *{{ $value.Upper
 	}
 
 	op := &{{ $value.Upper }}{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -151,7 +153,7 @@ func TestClient_{{ $value.Upper }}(t *testing.T) {
 }
 
 func TestGenerateModelTest(t *testing.T) {
-	t.Skip("generator - one exception")
+	t.Skip("generator - several exception")
 
 	modelTestsTemplate := `package namesilo
 
@@ -176,6 +178,7 @@ func Test{{ $value.Upper }}(t *testing.T) {
 	}
 
 	model := &{{ $value.Upper }}{}
+
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)
@@ -239,6 +242,7 @@ func generate(tmpl, filename string) error {
 		if strings.Contains(d.Name(), "-") {
 			return nil
 		}
+
 		if strings.Contains(d.Name(), "_") {
 			return nil
 		}
@@ -265,6 +269,7 @@ func generate(tmpl, filename string) error {
 	}
 
 	base := template.New(filename)
+
 	parse, err := base.Parse(tmpl)
 	if err != nil {
 		return err

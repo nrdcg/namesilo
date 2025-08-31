@@ -30,7 +30,6 @@ linters:
     - varnamelen
     - wrapcheck
     - wsl # Deprecated
-    - wsl_v5
 
   settings:
     depguard:

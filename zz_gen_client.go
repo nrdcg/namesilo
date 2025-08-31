@@ -14,6 +14,7 @@ func (c *Client) AddAccountFunds(ctx context.Context, params *AddAccountFundsPar
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -26,6 +27,7 @@ func (c *Client) AddAccountFunds(ctx context.Context, params *AddAccountFundsPar
 	}
 
 	op := &AddAccountFunds{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -53,6 +55,7 @@ func (c *Client) AddAutoRenewal(ctx context.Context, params *AddAutoRenewalParam
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -65,6 +68,7 @@ func (c *Client) AddAutoRenewal(ctx context.Context, params *AddAutoRenewalParam
 	}
 
 	op := &AddAutoRenewal{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -92,6 +96,7 @@ func (c *Client) AddPrivacy(ctx context.Context, params *AddPrivacyParams) (*Add
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -104,6 +109,7 @@ func (c *Client) AddPrivacy(ctx context.Context, params *AddPrivacyParams) (*Add
 	}
 
 	op := &AddPrivacy{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -131,6 +137,7 @@ func (c *Client) AddRegisteredNameServer(ctx context.Context, params *AddRegiste
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -143,6 +150,7 @@ func (c *Client) AddRegisteredNameServer(ctx context.Context, params *AddRegiste
 	}
 
 	op := &AddRegisteredNameServer{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -170,6 +178,7 @@ func (c *Client) BidAuction(ctx context.Context, params *BidAuctionParams) (*Bid
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -182,6 +191,7 @@ func (c *Client) BidAuction(ctx context.Context, params *BidAuctionParams) (*Bid
 	}
 
 	op := &BidAuction{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -209,6 +219,7 @@ func (c *Client) BuyNowAuction(ctx context.Context, params *BuyNowAuctionParams)
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -221,6 +232,7 @@ func (c *Client) BuyNowAuction(ctx context.Context, params *BuyNowAuctionParams)
 	}
 
 	op := &BuyNowAuction{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -248,6 +260,7 @@ func (c *Client) ChangeNameServers(ctx context.Context, params *ChangeNameServer
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -260,6 +273,7 @@ func (c *Client) ChangeNameServers(ctx context.Context, params *ChangeNameServer
 	}
 
 	op := &ChangeNameServers{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -287,6 +301,7 @@ func (c *Client) CheckRegisterAvailability(ctx context.Context, params *CheckReg
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -299,6 +314,7 @@ func (c *Client) CheckRegisterAvailability(ctx context.Context, params *CheckReg
 	}
 
 	op := &CheckRegisterAvailability{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -326,6 +342,7 @@ func (c *Client) CheckTransferAvailability(ctx context.Context, params *CheckTra
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -338,6 +355,7 @@ func (c *Client) CheckTransferAvailability(ctx context.Context, params *CheckTra
 	}
 
 	op := &CheckTransferAvailability{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -365,6 +383,7 @@ func (c *Client) CheckTransferStatus(ctx context.Context, params *CheckTransferS
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -377,6 +396,7 @@ func (c *Client) CheckTransferStatus(ctx context.Context, params *CheckTransferS
 	}
 
 	op := &CheckTransferStatus{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -404,6 +424,7 @@ func (c *Client) ConfigureEmailForward(ctx context.Context, params *ConfigureEma
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -416,6 +437,7 @@ func (c *Client) ConfigureEmailForward(ctx context.Context, params *ConfigureEma
 	}
 
 	op := &ConfigureEmailForward{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -443,6 +465,7 @@ func (c *Client) ContactAdd(ctx context.Context, params *ContactAddParams) (*Con
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -455,6 +478,7 @@ func (c *Client) ContactAdd(ctx context.Context, params *ContactAddParams) (*Con
 	}
 
 	op := &ContactAdd{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -482,6 +506,7 @@ func (c *Client) ContactDelete(ctx context.Context, params *ContactDeleteParams)
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -494,6 +519,7 @@ func (c *Client) ContactDelete(ctx context.Context, params *ContactDeleteParams)
 	}
 
 	op := &ContactDelete{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -521,6 +547,7 @@ func (c *Client) ContactDomainAssociate(ctx context.Context, params *ContactDoma
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -533,6 +560,7 @@ func (c *Client) ContactDomainAssociate(ctx context.Context, params *ContactDoma
 	}
 
 	op := &ContactDomainAssociate{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -560,6 +588,7 @@ func (c *Client) ContactList(ctx context.Context, params *ContactListParams) (*C
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -572,6 +601,7 @@ func (c *Client) ContactList(ctx context.Context, params *ContactListParams) (*C
 	}
 
 	op := &ContactList{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -599,6 +629,7 @@ func (c *Client) ContactUpdate(ctx context.Context, params *ContactUpdateParams)
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -611,6 +642,7 @@ func (c *Client) ContactUpdate(ctx context.Context, params *ContactUpdateParams)
 	}
 
 	op := &ContactUpdate{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -638,6 +670,7 @@ func (c *Client) CountExpiringDomains(ctx context.Context, params *CountExpiring
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -650,6 +683,7 @@ func (c *Client) CountExpiringDomains(ctx context.Context, params *CountExpiring
 	}
 
 	op := &CountExpiringDomains{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -677,6 +711,7 @@ func (c *Client) DeleteEmailForward(ctx context.Context, params *DeleteEmailForw
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -689,6 +724,7 @@ func (c *Client) DeleteEmailForward(ctx context.Context, params *DeleteEmailForw
 	}
 
 	op := &DeleteEmailForward{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -716,6 +752,7 @@ func (c *Client) DeleteRegisteredNameServer(ctx context.Context, params *DeleteR
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -728,6 +765,7 @@ func (c *Client) DeleteRegisteredNameServer(ctx context.Context, params *DeleteR
 	}
 
 	op := &DeleteRegisteredNameServer{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -755,6 +793,7 @@ func (c *Client) DnsAddRecord(ctx context.Context, params *DnsAddRecordParams) (
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -767,6 +806,7 @@ func (c *Client) DnsAddRecord(ctx context.Context, params *DnsAddRecordParams) (
 	}
 
 	op := &DnsAddRecord{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -794,6 +834,7 @@ func (c *Client) DnsDeleteRecord(ctx context.Context, params *DnsDeleteRecordPar
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -806,6 +847,7 @@ func (c *Client) DnsDeleteRecord(ctx context.Context, params *DnsDeleteRecordPar
 	}
 
 	op := &DnsDeleteRecord{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -833,6 +875,7 @@ func (c *Client) DnsListRecords(ctx context.Context, params *DnsListRecordsParam
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -845,6 +888,7 @@ func (c *Client) DnsListRecords(ctx context.Context, params *DnsListRecordsParam
 	}
 
 	op := &DnsListRecords{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -872,6 +916,7 @@ func (c *Client) DnsSecAddRecord(ctx context.Context, params *DnsSecAddRecordPar
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -884,6 +929,7 @@ func (c *Client) DnsSecAddRecord(ctx context.Context, params *DnsSecAddRecordPar
 	}
 
 	op := &DnsSecAddRecord{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -911,6 +957,7 @@ func (c *Client) DnsSecDeleteRecord(ctx context.Context, params *DnsSecDeleteRec
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -923,6 +970,7 @@ func (c *Client) DnsSecDeleteRecord(ctx context.Context, params *DnsSecDeleteRec
 	}
 
 	op := &DnsSecDeleteRecord{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -950,6 +998,7 @@ func (c *Client) DnsSecListRecords(ctx context.Context, params *DnsSecListRecord
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -962,6 +1011,7 @@ func (c *Client) DnsSecListRecords(ctx context.Context, params *DnsSecListRecord
 	}
 
 	op := &DnsSecListRecords{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -989,6 +1039,7 @@ func (c *Client) DnsUpdateRecord(ctx context.Context, params *DnsUpdateRecordPar
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1001,6 +1052,7 @@ func (c *Client) DnsUpdateRecord(ctx context.Context, params *DnsUpdateRecordPar
 	}
 
 	op := &DnsUpdateRecord{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1028,6 +1080,7 @@ func (c *Client) DomainForward(ctx context.Context, params *DomainForwardParams)
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1040,6 +1093,7 @@ func (c *Client) DomainForward(ctx context.Context, params *DomainForwardParams)
 	}
 
 	op := &DomainForward{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1067,6 +1121,7 @@ func (c *Client) DomainForwardSubDomain(ctx context.Context, params *DomainForwa
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1079,6 +1134,7 @@ func (c *Client) DomainForwardSubDomain(ctx context.Context, params *DomainForwa
 	}
 
 	op := &DomainForwardSubDomain{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1106,6 +1162,7 @@ func (c *Client) DomainForwardSubDomainDelete(ctx context.Context, params *Domai
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1118,6 +1175,7 @@ func (c *Client) DomainForwardSubDomainDelete(ctx context.Context, params *Domai
 	}
 
 	op := &DomainForwardSubDomainDelete{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1145,6 +1203,7 @@ func (c *Client) DomainLock(ctx context.Context, params *DomainLockParams) (*Dom
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1157,6 +1216,7 @@ func (c *Client) DomainLock(ctx context.Context, params *DomainLockParams) (*Dom
 	}
 
 	op := &DomainLock{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1184,6 +1244,7 @@ func (c *Client) DomainUnlock(ctx context.Context, params *DomainUnlockParams) (
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1196,6 +1257,7 @@ func (c *Client) DomainUnlock(ctx context.Context, params *DomainUnlockParams) (
 	}
 
 	op := &DomainUnlock{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1223,6 +1285,7 @@ func (c *Client) EmailVerification(ctx context.Context, params *EmailVerificatio
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1235,6 +1298,7 @@ func (c *Client) EmailVerification(ctx context.Context, params *EmailVerificatio
 	}
 
 	op := &EmailVerification{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1262,6 +1326,7 @@ func (c *Client) GetAccountBalance(ctx context.Context, params *GetAccountBalanc
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1274,6 +1339,7 @@ func (c *Client) GetAccountBalance(ctx context.Context, params *GetAccountBalanc
 	}
 
 	op := &GetAccountBalance{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1301,6 +1367,7 @@ func (c *Client) GetDomainInfo(ctx context.Context, params *GetDomainInfoParams)
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1313,6 +1380,7 @@ func (c *Client) GetDomainInfo(ctx context.Context, params *GetDomainInfoParams)
 	}
 
 	op := &GetDomainInfo{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1340,6 +1408,7 @@ func (c *Client) GetPrices(ctx context.Context, params *GetPricesParams) (*GetPr
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1352,6 +1421,7 @@ func (c *Client) GetPrices(ctx context.Context, params *GetPricesParams) (*GetPr
 	}
 
 	op := &GetPrices{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1379,6 +1449,7 @@ func (c *Client) ListAuctions(ctx context.Context, params *ListAuctionsParams) (
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1391,6 +1462,7 @@ func (c *Client) ListAuctions(ctx context.Context, params *ListAuctionsParams) (
 	}
 
 	op := &ListAuctions{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1418,6 +1490,7 @@ func (c *Client) ListDomains(ctx context.Context, params *ListDomainsParams) (*L
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1430,6 +1503,7 @@ func (c *Client) ListDomains(ctx context.Context, params *ListDomainsParams) (*L
 	}
 
 	op := &ListDomains{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1457,6 +1531,7 @@ func (c *Client) ListEmailForwards(ctx context.Context, params *ListEmailForward
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1469,6 +1544,7 @@ func (c *Client) ListEmailForwards(ctx context.Context, params *ListEmailForward
 	}
 
 	op := &ListEmailForwards{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1496,6 +1572,7 @@ func (c *Client) ListExpiringDomains(ctx context.Context, params *ListExpiringDo
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1508,6 +1585,7 @@ func (c *Client) ListExpiringDomains(ctx context.Context, params *ListExpiringDo
 	}
 
 	op := &ListExpiringDomains{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1535,6 +1613,7 @@ func (c *Client) ListOrders(ctx context.Context, params *ListOrdersParams) (*Lis
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1547,6 +1626,7 @@ func (c *Client) ListOrders(ctx context.Context, params *ListOrdersParams) (*Lis
 	}
 
 	op := &ListOrders{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1574,6 +1654,7 @@ func (c *Client) ListRegisteredNameServers(ctx context.Context, params *ListRegi
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1586,6 +1667,7 @@ func (c *Client) ListRegisteredNameServers(ctx context.Context, params *ListRegi
 	}
 
 	op := &ListRegisteredNameServers{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1613,6 +1695,7 @@ func (c *Client) MarketplaceActiveSalesOverview(ctx context.Context, params *Mar
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1625,6 +1708,7 @@ func (c *Client) MarketplaceActiveSalesOverview(ctx context.Context, params *Mar
 	}
 
 	op := &MarketplaceActiveSalesOverview{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1652,6 +1736,7 @@ func (c *Client) MarketplaceAddOrModifySale(ctx context.Context, params *Marketp
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1664,6 +1749,7 @@ func (c *Client) MarketplaceAddOrModifySale(ctx context.Context, params *Marketp
 	}
 
 	op := &MarketplaceAddOrModifySale{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1691,6 +1777,7 @@ func (c *Client) MarketplaceLandingPageUpdate(ctx context.Context, params *Marke
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1703,6 +1790,7 @@ func (c *Client) MarketplaceLandingPageUpdate(ctx context.Context, params *Marke
 	}
 
 	op := &MarketplaceLandingPageUpdate{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1730,6 +1818,7 @@ func (c *Client) ModifyRegisteredNameServer(ctx context.Context, params *ModifyR
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1742,6 +1831,7 @@ func (c *Client) ModifyRegisteredNameServer(ctx context.Context, params *ModifyR
 	}
 
 	op := &ModifyRegisteredNameServer{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1769,6 +1859,7 @@ func (c *Client) OrderDetails(ctx context.Context, params *OrderDetailsParams) (
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1781,6 +1872,7 @@ func (c *Client) OrderDetails(ctx context.Context, params *OrderDetailsParams) (
 	}
 
 	op := &OrderDetails{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1808,6 +1900,7 @@ func (c *Client) PortfolioAdd(ctx context.Context, params *PortfolioAddParams) (
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1820,6 +1913,7 @@ func (c *Client) PortfolioAdd(ctx context.Context, params *PortfolioAddParams) (
 	}
 
 	op := &PortfolioAdd{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1847,6 +1941,7 @@ func (c *Client) PortfolioDelete(ctx context.Context, params *PortfolioDeletePar
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1859,6 +1954,7 @@ func (c *Client) PortfolioDelete(ctx context.Context, params *PortfolioDeletePar
 	}
 
 	op := &PortfolioDelete{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1886,6 +1982,7 @@ func (c *Client) PortfolioDomainAssociate(ctx context.Context, params *Portfolio
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1898,6 +1995,7 @@ func (c *Client) PortfolioDomainAssociate(ctx context.Context, params *Portfolio
 	}
 
 	op := &PortfolioDomainAssociate{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1925,6 +2023,7 @@ func (c *Client) PortfolioList(ctx context.Context, params *PortfolioListParams)
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1937,6 +2036,7 @@ func (c *Client) PortfolioList(ctx context.Context, params *PortfolioListParams)
 	}
 
 	op := &PortfolioList{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -1964,6 +2064,7 @@ func (c *Client) RegisterDomain(ctx context.Context, params *RegisterDomainParam
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -1976,6 +2077,7 @@ func (c *Client) RegisterDomain(ctx context.Context, params *RegisterDomainParam
 	}
 
 	op := &RegisterDomain{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2003,6 +2105,7 @@ func (c *Client) RegisterDomainDrop(ctx context.Context, params *RegisterDomainD
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2015,6 +2118,7 @@ func (c *Client) RegisterDomainDrop(ctx context.Context, params *RegisterDomainD
 	}
 
 	op := &RegisterDomainDrop{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2042,6 +2146,7 @@ func (c *Client) RegistrantVerificationStatus(ctx context.Context, params *Regis
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2054,6 +2159,7 @@ func (c *Client) RegistrantVerificationStatus(ctx context.Context, params *Regis
 	}
 
 	op := &RegistrantVerificationStatus{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2081,6 +2187,7 @@ func (c *Client) RemoveAutoRenewal(ctx context.Context, params *RemoveAutoRenewa
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2093,6 +2200,7 @@ func (c *Client) RemoveAutoRenewal(ctx context.Context, params *RemoveAutoRenewa
 	}
 
 	op := &RemoveAutoRenewal{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2120,6 +2228,7 @@ func (c *Client) RemovePrivacy(ctx context.Context, params *RemovePrivacyParams)
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2132,6 +2241,7 @@ func (c *Client) RemovePrivacy(ctx context.Context, params *RemovePrivacyParams)
 	}
 
 	op := &RemovePrivacy{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2159,6 +2269,7 @@ func (c *Client) RenewDomain(ctx context.Context, params *RenewDomainParams) (*R
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2171,6 +2282,7 @@ func (c *Client) RenewDomain(ctx context.Context, params *RenewDomainParams) (*R
 	}
 
 	op := &RenewDomain{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2198,6 +2310,7 @@ func (c *Client) RetrieveAuthCode(ctx context.Context, params *RetrieveAuthCodeP
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2210,6 +2323,7 @@ func (c *Client) RetrieveAuthCode(ctx context.Context, params *RetrieveAuthCodeP
 	}
 
 	op := &RetrieveAuthCode{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2237,6 +2351,7 @@ func (c *Client) TransferDomain(ctx context.Context, params *TransferDomainParam
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2249,6 +2364,7 @@ func (c *Client) TransferDomain(ctx context.Context, params *TransferDomainParam
 	}
 
 	op := &TransferDomain{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2276,6 +2392,7 @@ func (c *Client) TransferUpdateChangeEPPCode(ctx context.Context, params *Transf
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2288,6 +2405,7 @@ func (c *Client) TransferUpdateChangeEPPCode(ctx context.Context, params *Transf
 	}
 
 	op := &TransferUpdateChangeEPPCode{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2315,6 +2433,7 @@ func (c *Client) TransferUpdateResendAdminEmail(ctx context.Context, params *Tra
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2327,6 +2446,7 @@ func (c *Client) TransferUpdateResendAdminEmail(ctx context.Context, params *Tra
 	}
 
 	op := &TransferUpdateResendAdminEmail{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2354,6 +2474,7 @@ func (c *Client) TransferUpdateResubmitToRegistry(ctx context.Context, params *T
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2366,6 +2487,7 @@ func (c *Client) TransferUpdateResubmitToRegistry(ctx context.Context, params *T
 	}
 
 	op := &TransferUpdateResubmitToRegistry{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2393,6 +2515,7 @@ func (c *Client) ViewAuction(ctx context.Context, params *ViewAuctionParams) (*V
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2405,6 +2528,7 @@ func (c *Client) ViewAuction(ctx context.Context, params *ViewAuctionParams) (*V
 	}
 
 	op := &ViewAuction{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2432,6 +2556,7 @@ func (c *Client) ViewAuctionHistory(ctx context.Context, params *ViewAuctionHist
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2444,6 +2569,7 @@ func (c *Client) ViewAuctionHistory(ctx context.Context, params *ViewAuctionHist
 	}
 
 	op := &ViewAuctionHistory{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2471,6 +2597,7 @@ func (c *Client) WatchAuction(ctx context.Context, params *WatchAuctionParams) (
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2483,6 +2610,7 @@ func (c *Client) WatchAuction(ctx context.Context, params *WatchAuctionParams) (
 	}
 
 	op := &WatchAuction{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
@@ -2510,6 +2638,7 @@ func (c *Client) WhoisInfo(ctx context.Context, params *WhoisInfoParams) (*Whois
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
@@ -2522,6 +2651,7 @@ func (c *Client) WhoisInfo(ctx context.Context, params *WhoisInfoParams) (*Whois
 	}
 
 	op := &WhoisInfo{}
+
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
