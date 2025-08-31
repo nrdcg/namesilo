@@ -4,2673 +4,784 @@ package namesilo
 
 import (
 	"context"
-	"encoding/xml"
-	"fmt"
-	"io"
-	"net/http"
 )
 
 // AddAccountFunds Execute operation addAccountFunds.
 func (c *Client) AddAccountFunds(ctx context.Context, params *AddAccountFundsParams) (*AddAccountFunds, error) {
-	resp, err := c.get(ctx, "addAccountFunds", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &AddAccountFunds{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "addAccountFunds", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // AddAutoRenewal Execute operation addAutoRenewal.
 func (c *Client) AddAutoRenewal(ctx context.Context, params *AddAutoRenewalParams) (*AddAutoRenewal, error) {
-	resp, err := c.get(ctx, "addAutoRenewal", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &AddAutoRenewal{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "addAutoRenewal", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // AddPrivacy Execute operation addPrivacy.
 func (c *Client) AddPrivacy(ctx context.Context, params *AddPrivacyParams) (*AddPrivacy, error) {
-	resp, err := c.get(ctx, "addPrivacy", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &AddPrivacy{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "addPrivacy", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // AddRegisteredNameServer Execute operation addRegisteredNameServer.
 func (c *Client) AddRegisteredNameServer(ctx context.Context, params *AddRegisteredNameServerParams) (*AddRegisteredNameServer, error) {
-	resp, err := c.get(ctx, "addRegisteredNameServer", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &AddRegisteredNameServer{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "addRegisteredNameServer", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // BidAuction Execute operation bidAuction.
 func (c *Client) BidAuction(ctx context.Context, params *BidAuctionParams) (*BidAuction, error) {
-	resp, err := c.get(ctx, "bidAuction", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &BidAuction{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "bidAuction", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // BuyNowAuction Execute operation buyNowAuction.
 func (c *Client) BuyNowAuction(ctx context.Context, params *BuyNowAuctionParams) (*BuyNowAuction, error) {
-	resp, err := c.get(ctx, "buyNowAuction", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &BuyNowAuction{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "buyNowAuction", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ChangeNameServers Execute operation changeNameServers.
 func (c *Client) ChangeNameServers(ctx context.Context, params *ChangeNameServersParams) (*ChangeNameServers, error) {
-	resp, err := c.get(ctx, "changeNameServers", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ChangeNameServers{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "changeNameServers", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // CheckRegisterAvailability Execute operation checkRegisterAvailability.
 func (c *Client) CheckRegisterAvailability(ctx context.Context, params *CheckRegisterAvailabilityParams) (*CheckRegisterAvailability, error) {
-	resp, err := c.get(ctx, "checkRegisterAvailability", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &CheckRegisterAvailability{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "checkRegisterAvailability", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // CheckTransferAvailability Execute operation checkTransferAvailability.
 func (c *Client) CheckTransferAvailability(ctx context.Context, params *CheckTransferAvailabilityParams) (*CheckTransferAvailability, error) {
-	resp, err := c.get(ctx, "checkTransferAvailability", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &CheckTransferAvailability{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "checkTransferAvailability", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // CheckTransferStatus Execute operation checkTransferStatus.
 func (c *Client) CheckTransferStatus(ctx context.Context, params *CheckTransferStatusParams) (*CheckTransferStatus, error) {
-	resp, err := c.get(ctx, "checkTransferStatus", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &CheckTransferStatus{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "checkTransferStatus", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ConfigureEmailForward Execute operation configureEmailForward.
 func (c *Client) ConfigureEmailForward(ctx context.Context, params *ConfigureEmailForwardParams) (*ConfigureEmailForward, error) {
-	resp, err := c.get(ctx, "configureEmailForward", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ConfigureEmailForward{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "configureEmailForward", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ContactAdd Execute operation contactAdd.
 func (c *Client) ContactAdd(ctx context.Context, params *ContactAddParams) (*ContactAdd, error) {
-	resp, err := c.get(ctx, "contactAdd", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ContactAdd{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "contactAdd", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ContactDelete Execute operation contactDelete.
 func (c *Client) ContactDelete(ctx context.Context, params *ContactDeleteParams) (*ContactDelete, error) {
-	resp, err := c.get(ctx, "contactDelete", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ContactDelete{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "contactDelete", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ContactDomainAssociate Execute operation contactDomainAssociate.
 func (c *Client) ContactDomainAssociate(ctx context.Context, params *ContactDomainAssociateParams) (*ContactDomainAssociate, error) {
-	resp, err := c.get(ctx, "contactDomainAssociate", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ContactDomainAssociate{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "contactDomainAssociate", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ContactList Execute operation contactList.
 func (c *Client) ContactList(ctx context.Context, params *ContactListParams) (*ContactList, error) {
-	resp, err := c.get(ctx, "contactList", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ContactList{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "contactList", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ContactUpdate Execute operation contactUpdate.
 func (c *Client) ContactUpdate(ctx context.Context, params *ContactUpdateParams) (*ContactUpdate, error) {
-	resp, err := c.get(ctx, "contactUpdate", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ContactUpdate{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "contactUpdate", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // CountExpiringDomains Execute operation countExpiringDomains.
 func (c *Client) CountExpiringDomains(ctx context.Context, params *CountExpiringDomainsParams) (*CountExpiringDomains, error) {
-	resp, err := c.get(ctx, "countExpiringDomains", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &CountExpiringDomains{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "countExpiringDomains", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DeleteEmailForward Execute operation deleteEmailForward.
 func (c *Client) DeleteEmailForward(ctx context.Context, params *DeleteEmailForwardParams) (*DeleteEmailForward, error) {
-	resp, err := c.get(ctx, "deleteEmailForward", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DeleteEmailForward{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "deleteEmailForward", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DeleteRegisteredNameServer Execute operation deleteRegisteredNameServer.
 func (c *Client) DeleteRegisteredNameServer(ctx context.Context, params *DeleteRegisteredNameServerParams) (*DeleteRegisteredNameServer, error) {
-	resp, err := c.get(ctx, "deleteRegisteredNameServer", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DeleteRegisteredNameServer{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "deleteRegisteredNameServer", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DnsAddRecord Execute operation dnsAddRecord.
 func (c *Client) DnsAddRecord(ctx context.Context, params *DnsAddRecordParams) (*DnsAddRecord, error) {
-	resp, err := c.get(ctx, "dnsAddRecord", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DnsAddRecord{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "dnsAddRecord", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DnsDeleteRecord Execute operation dnsDeleteRecord.
 func (c *Client) DnsDeleteRecord(ctx context.Context, params *DnsDeleteRecordParams) (*DnsDeleteRecord, error) {
-	resp, err := c.get(ctx, "dnsDeleteRecord", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DnsDeleteRecord{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "dnsDeleteRecord", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DnsListRecords Execute operation dnsListRecords.
 func (c *Client) DnsListRecords(ctx context.Context, params *DnsListRecordsParams) (*DnsListRecords, error) {
-	resp, err := c.get(ctx, "dnsListRecords", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DnsListRecords{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "dnsListRecords", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DnsSecAddRecord Execute operation dnsSecAddRecord.
 func (c *Client) DnsSecAddRecord(ctx context.Context, params *DnsSecAddRecordParams) (*DnsSecAddRecord, error) {
-	resp, err := c.get(ctx, "dnsSecAddRecord", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DnsSecAddRecord{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "dnsSecAddRecord", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DnsSecDeleteRecord Execute operation dnsSecDeleteRecord.
 func (c *Client) DnsSecDeleteRecord(ctx context.Context, params *DnsSecDeleteRecordParams) (*DnsSecDeleteRecord, error) {
-	resp, err := c.get(ctx, "dnsSecDeleteRecord", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DnsSecDeleteRecord{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "dnsSecDeleteRecord", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DnsSecListRecords Execute operation dnsSecListRecords.
 func (c *Client) DnsSecListRecords(ctx context.Context, params *DnsSecListRecordsParams) (*DnsSecListRecords, error) {
-	resp, err := c.get(ctx, "dnsSecListRecords", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DnsSecListRecords{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "dnsSecListRecords", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DnsUpdateRecord Execute operation dnsUpdateRecord.
 func (c *Client) DnsUpdateRecord(ctx context.Context, params *DnsUpdateRecordParams) (*DnsUpdateRecord, error) {
-	resp, err := c.get(ctx, "dnsUpdateRecord", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DnsUpdateRecord{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "dnsUpdateRecord", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DomainForward Execute operation domainForward.
 func (c *Client) DomainForward(ctx context.Context, params *DomainForwardParams) (*DomainForward, error) {
-	resp, err := c.get(ctx, "domainForward", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DomainForward{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "domainForward", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DomainForwardSubDomain Execute operation domainForwardSubDomain.
 func (c *Client) DomainForwardSubDomain(ctx context.Context, params *DomainForwardSubDomainParams) (*DomainForwardSubDomain, error) {
-	resp, err := c.get(ctx, "domainForwardSubDomain", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DomainForwardSubDomain{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "domainForwardSubDomain", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DomainForwardSubDomainDelete Execute operation domainForwardSubDomainDelete.
 func (c *Client) DomainForwardSubDomainDelete(ctx context.Context, params *DomainForwardSubDomainDeleteParams) (*DomainForwardSubDomainDelete, error) {
-	resp, err := c.get(ctx, "domainForwardSubDomainDelete", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DomainForwardSubDomainDelete{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "domainForwardSubDomainDelete", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DomainLock Execute operation domainLock.
 func (c *Client) DomainLock(ctx context.Context, params *DomainLockParams) (*DomainLock, error) {
-	resp, err := c.get(ctx, "domainLock", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DomainLock{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "domainLock", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // DomainUnlock Execute operation domainUnlock.
 func (c *Client) DomainUnlock(ctx context.Context, params *DomainUnlockParams) (*DomainUnlock, error) {
-	resp, err := c.get(ctx, "domainUnlock", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &DomainUnlock{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "domainUnlock", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // EmailVerification Execute operation emailVerification.
 func (c *Client) EmailVerification(ctx context.Context, params *EmailVerificationParams) (*EmailVerification, error) {
-	resp, err := c.get(ctx, "emailVerification", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &EmailVerification{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "emailVerification", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // GetAccountBalance Execute operation getAccountBalance.
 func (c *Client) GetAccountBalance(ctx context.Context, params *GetAccountBalanceParams) (*GetAccountBalance, error) {
-	resp, err := c.get(ctx, "getAccountBalance", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &GetAccountBalance{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "getAccountBalance", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // GetDomainInfo Execute operation getDomainInfo.
 func (c *Client) GetDomainInfo(ctx context.Context, params *GetDomainInfoParams) (*GetDomainInfo, error) {
-	resp, err := c.get(ctx, "getDomainInfo", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &GetDomainInfo{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "getDomainInfo", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // GetPrices Execute operation getPrices.
 func (c *Client) GetPrices(ctx context.Context, params *GetPricesParams) (*GetPrices, error) {
-	resp, err := c.get(ctx, "getPrices", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &GetPrices{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "getPrices", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ListAuctions Execute operation listAuctions.
 func (c *Client) ListAuctions(ctx context.Context, params *ListAuctionsParams) (*ListAuctions, error) {
-	resp, err := c.get(ctx, "listAuctions", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ListAuctions{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "listAuctions", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ListDomains Execute operation listDomains.
 func (c *Client) ListDomains(ctx context.Context, params *ListDomainsParams) (*ListDomains, error) {
-	resp, err := c.get(ctx, "listDomains", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ListDomains{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "listDomains", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ListEmailForwards Execute operation listEmailForwards.
 func (c *Client) ListEmailForwards(ctx context.Context, params *ListEmailForwardsParams) (*ListEmailForwards, error) {
-	resp, err := c.get(ctx, "listEmailForwards", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ListEmailForwards{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "listEmailForwards", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ListExpiringDomains Execute operation listExpiringDomains.
 func (c *Client) ListExpiringDomains(ctx context.Context, params *ListExpiringDomainsParams) (*ListExpiringDomains, error) {
-	resp, err := c.get(ctx, "listExpiringDomains", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ListExpiringDomains{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "listExpiringDomains", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ListOrders Execute operation listOrders.
 func (c *Client) ListOrders(ctx context.Context, params *ListOrdersParams) (*ListOrders, error) {
-	resp, err := c.get(ctx, "listOrders", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ListOrders{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "listOrders", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ListRegisteredNameServers Execute operation listRegisteredNameServers.
 func (c *Client) ListRegisteredNameServers(ctx context.Context, params *ListRegisteredNameServersParams) (*ListRegisteredNameServers, error) {
-	resp, err := c.get(ctx, "listRegisteredNameServers", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ListRegisteredNameServers{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "listRegisteredNameServers", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // MarketplaceActiveSalesOverview Execute operation marketplaceActiveSalesOverview.
 func (c *Client) MarketplaceActiveSalesOverview(ctx context.Context, params *MarketplaceActiveSalesOverviewParams) (*MarketplaceActiveSalesOverview, error) {
-	resp, err := c.get(ctx, "marketplaceActiveSalesOverview", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &MarketplaceActiveSalesOverview{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "marketplaceActiveSalesOverview", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // MarketplaceAddOrModifySale Execute operation marketplaceAddOrModifySale.
 func (c *Client) MarketplaceAddOrModifySale(ctx context.Context, params *MarketplaceAddOrModifySaleParams) (*MarketplaceAddOrModifySale, error) {
-	resp, err := c.get(ctx, "marketplaceAddOrModifySale", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &MarketplaceAddOrModifySale{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "marketplaceAddOrModifySale", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // MarketplaceLandingPageUpdate Execute operation marketplaceLandingPageUpdate.
 func (c *Client) MarketplaceLandingPageUpdate(ctx context.Context, params *MarketplaceLandingPageUpdateParams) (*MarketplaceLandingPageUpdate, error) {
-	resp, err := c.get(ctx, "marketplaceLandingPageUpdate", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &MarketplaceLandingPageUpdate{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "marketplaceLandingPageUpdate", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ModifyRegisteredNameServer Execute operation modifyRegisteredNameServer.
 func (c *Client) ModifyRegisteredNameServer(ctx context.Context, params *ModifyRegisteredNameServerParams) (*ModifyRegisteredNameServer, error) {
-	resp, err := c.get(ctx, "modifyRegisteredNameServer", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ModifyRegisteredNameServer{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "modifyRegisteredNameServer", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // OrderDetails Execute operation orderDetails.
 func (c *Client) OrderDetails(ctx context.Context, params *OrderDetailsParams) (*OrderDetails, error) {
-	resp, err := c.get(ctx, "orderDetails", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &OrderDetails{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "orderDetails", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // PortfolioAdd Execute operation portfolioAdd.
 func (c *Client) PortfolioAdd(ctx context.Context, params *PortfolioAddParams) (*PortfolioAdd, error) {
-	resp, err := c.get(ctx, "portfolioAdd", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &PortfolioAdd{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "portfolioAdd", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // PortfolioDelete Execute operation portfolioDelete.
 func (c *Client) PortfolioDelete(ctx context.Context, params *PortfolioDeleteParams) (*PortfolioDelete, error) {
-	resp, err := c.get(ctx, "portfolioDelete", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &PortfolioDelete{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "portfolioDelete", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // PortfolioDomainAssociate Execute operation portfolioDomainAssociate.
 func (c *Client) PortfolioDomainAssociate(ctx context.Context, params *PortfolioDomainAssociateParams) (*PortfolioDomainAssociate, error) {
-	resp, err := c.get(ctx, "portfolioDomainAssociate", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &PortfolioDomainAssociate{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "portfolioDomainAssociate", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // PortfolioList Execute operation portfolioList.
 func (c *Client) PortfolioList(ctx context.Context, params *PortfolioListParams) (*PortfolioList, error) {
-	resp, err := c.get(ctx, "portfolioList", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &PortfolioList{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "portfolioList", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // RegisterDomain Execute operation registerDomain.
 func (c *Client) RegisterDomain(ctx context.Context, params *RegisterDomainParams) (*RegisterDomain, error) {
-	resp, err := c.get(ctx, "registerDomain", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &RegisterDomain{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "registerDomain", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // RegisterDomainDrop Execute operation registerDomainDrop.
 func (c *Client) RegisterDomainDrop(ctx context.Context, params *RegisterDomainDropParams) (*RegisterDomainDrop, error) {
-	resp, err := c.get(ctx, "registerDomainDrop", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &RegisterDomainDrop{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "registerDomainDrop", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // RegistrantVerificationStatus Execute operation registrantVerificationStatus.
 func (c *Client) RegistrantVerificationStatus(ctx context.Context, params *RegistrantVerificationStatusParams) (*RegistrantVerificationStatus, error) {
-	resp, err := c.get(ctx, "registrantVerificationStatus", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &RegistrantVerificationStatus{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "registrantVerificationStatus", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // RemoveAutoRenewal Execute operation removeAutoRenewal.
 func (c *Client) RemoveAutoRenewal(ctx context.Context, params *RemoveAutoRenewalParams) (*RemoveAutoRenewal, error) {
-	resp, err := c.get(ctx, "removeAutoRenewal", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &RemoveAutoRenewal{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "removeAutoRenewal", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // RemovePrivacy Execute operation removePrivacy.
 func (c *Client) RemovePrivacy(ctx context.Context, params *RemovePrivacyParams) (*RemovePrivacy, error) {
-	resp, err := c.get(ctx, "removePrivacy", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &RemovePrivacy{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "removePrivacy", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // RenewDomain Execute operation renewDomain.
 func (c *Client) RenewDomain(ctx context.Context, params *RenewDomainParams) (*RenewDomain, error) {
-	resp, err := c.get(ctx, "renewDomain", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &RenewDomain{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "renewDomain", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // RetrieveAuthCode Execute operation retrieveAuthCode.
 func (c *Client) RetrieveAuthCode(ctx context.Context, params *RetrieveAuthCodeParams) (*RetrieveAuthCode, error) {
-	resp, err := c.get(ctx, "retrieveAuthCode", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &RetrieveAuthCode{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "retrieveAuthCode", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // TransferDomain Execute operation transferDomain.
 func (c *Client) TransferDomain(ctx context.Context, params *TransferDomainParams) (*TransferDomain, error) {
-	resp, err := c.get(ctx, "transferDomain", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &TransferDomain{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "transferDomain", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // TransferUpdateChangeEPPCode Execute operation transferUpdateChangeEPPCode.
 func (c *Client) TransferUpdateChangeEPPCode(ctx context.Context, params *TransferUpdateChangeEPPCodeParams) (*TransferUpdateChangeEPPCode, error) {
-	resp, err := c.get(ctx, "transferUpdateChangeEPPCode", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &TransferUpdateChangeEPPCode{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "transferUpdateChangeEPPCode", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // TransferUpdateResendAdminEmail Execute operation transferUpdateResendAdminEmail.
 func (c *Client) TransferUpdateResendAdminEmail(ctx context.Context, params *TransferUpdateResendAdminEmailParams) (*TransferUpdateResendAdminEmail, error) {
-	resp, err := c.get(ctx, "transferUpdateResendAdminEmail", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &TransferUpdateResendAdminEmail{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "transferUpdateResendAdminEmail", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // TransferUpdateResubmitToRegistry Execute operation transferUpdateResubmitToRegistry.
 func (c *Client) TransferUpdateResubmitToRegistry(ctx context.Context, params *TransferUpdateResubmitToRegistryParams) (*TransferUpdateResubmitToRegistry, error) {
-	resp, err := c.get(ctx, "transferUpdateResubmitToRegistry", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &TransferUpdateResubmitToRegistry{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "transferUpdateResubmitToRegistry", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ViewAuction Execute operation viewAuction.
 func (c *Client) ViewAuction(ctx context.Context, params *ViewAuctionParams) (*ViewAuction, error) {
-	resp, err := c.get(ctx, "viewAuction", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ViewAuction{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "viewAuction", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // ViewAuctionHistory Execute operation viewAuctionHistory.
 func (c *Client) ViewAuctionHistory(ctx context.Context, params *ViewAuctionHistoryParams) (*ViewAuctionHistory, error) {
-	resp, err := c.get(ctx, "viewAuctionHistory", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &ViewAuctionHistory{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "viewAuctionHistory", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // WatchAuction Execute operation watchAuction.
 func (c *Client) WatchAuction(ctx context.Context, params *WatchAuctionParams) (*WatchAuction, error) {
-	resp, err := c.get(ctx, "watchAuction", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &WatchAuction{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "watchAuction", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }
 
 // WhoisInfo Execute operation whoisInfo.
 func (c *Client) WhoisInfo(ctx context.Context, params *WhoisInfoParams) (*WhoisInfo, error) {
-	resp, err := c.get(ctx, "whoisInfo", params)
-	if err != nil {
-		return nil, err
-	}
-
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
-	}
-
-	bytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
 	op := &WhoisInfo{}
 
-	err = xml.Unmarshal(bytes, op)
+	err := c.do(ctx, "whoisInfo", params, op)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+		return nil, err
 	}
 
-	switch op.Reply.Code {
-	case SuccessfulAPIOperation:
-		// Successful API operation
-		return op, nil
-	case SuccessfulRegistration:
-		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
-		return op, nil
-	case SuccessfulOrder:
-		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
-		return op, nil
-	default:
-		// error
-		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
-	}
+	return op, checkReply(op.Reply)
 }

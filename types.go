@@ -14,6 +14,14 @@ type Reply struct {
 	Detail string `xml:"detail"`
 }
 
+func (r Reply) getCode() string {
+	return r.Code
+}
+
+func (r Reply) getDetail() string {
+	return r.Detail
+}
+
 // Operation was generated 2019-03-20 19:35:05.
 type Operation struct {
 	XMLName xml.Name `xml:"namesilo"`

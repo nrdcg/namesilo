@@ -3,7 +3,10 @@ package namesilo
 
 import (
 	"context"
+	"encoding/xml"
 	"errors"
+	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"time"
@@ -48,30 +51,49 @@ func NewClient(apiKey string) *Client {
 	}
 }
 
-func (c *Client) get(ctx context.Context, name string, params any) (*http.Response, error) {
+func (c *Client) do(ctx context.Context, name string, params, op any) error {
 	endpoint := c.Endpoint.JoinPath(name)
 
-	if params != nil {
-		v, err := querystring.Values(params)
-		if err != nil {
-			return nil, err
-		}
-
-		endpoint.RawQuery = v.Encode()
+	query, err := querystring.Values(params)
+	if err != nil {
+		return err
 	}
 
-	query := endpoint.Query()
 	query.Set("version", "1")
 	query.Set("type", "xml")
 	query.Set("key", c.apiKey)
+
 	endpoint.RawQuery = query.Encode()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, endpoint.String(), http.NoBody)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return c.HTTPClient.Do(req)
+	resp, err := c.HTTPClient.Do(req)
+	if err != nil {
+		return err
+	}
+
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		data, _ := io.ReadAll(resp.Body)
+
+		return fmt.Errorf("error: %d: %s", resp.StatusCode, string(data))
+	}
+
+	data, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	err = xml.Unmarshal(data, op)
+	if err != nil {
+		return fmt.Errorf("failed to decode: %w: %s", err, data)
+	}
+
+	return nil
 }
 
 func GetEndpoint(prod, ote bool) (*url.URL, error) {
@@ -88,4 +110,26 @@ func GetEndpoint(prod, ote bool) (*url.URL, error) {
 	}
 
 	return url.Parse(SandboxAPIEndpoint)
+}
+
+type replyGetter interface {
+	getCode() string
+	getDetail() string
+}
+
+func checkReply(reply replyGetter) error {
+	switch reply.getCode() {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return nil
+	default:
+		// error
+		return fmt.Errorf("code: %s, details: %s", reply.getCode(), reply.getDetail())
+	}
 }
