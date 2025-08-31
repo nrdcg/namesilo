@@ -236,6 +236,13 @@ func generate(tmpl, filename string) error {
 			return nil
 		}
 
+		if strings.Contains(d.Name(), "-") {
+			return nil
+		}
+		if strings.Contains(d.Name(), "_") {
+			return nil
+		}
+
 		baseName := strings.TrimSuffix(d.Name(), filepath.Ext(d.Name()))
 		baseNames = append(baseNames, BaseName{
 			Lower: baseName,
