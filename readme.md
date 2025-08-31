@@ -84,4 +84,4 @@ func main() {
 
 ## API Documentation
 
-- [API docs](https://www.namesilo.com/api_reference.php)
+- [API docs](https://www.namesilo.com/api-reference)
