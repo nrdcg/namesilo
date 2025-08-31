@@ -480,8 +480,18 @@ type ListDomainsReply struct {
 	Reply
 
 	Domains struct {
-		Domain []string `xml:"domain"`
+		Domain []struct {
+			Name    string `xml:",chardata"`
+			Created string `xml:"created,attr"`
+			Expires string `xml:"expires,attr"`
+			MaxBid  string `xml:"maxBid,attr,omitempty"`
+		} `xml:"domain"`
 	} `xml:"domains"`
+	Pager struct {
+		Total    string `xml:"total"`
+		PageSize string `xml:"pageSize"`
+		Page     string `xml:"page"`
+	} `xml:"pager"`
 }
 
 // ListEmailForwards was generated 2019-03-20 19:35:05.

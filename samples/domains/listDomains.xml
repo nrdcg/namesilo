@@ -7,12 +7,17 @@
         <code>300</code>
         <detail>success</detail>
         <domains>
-            <domain>namesilo.com</domain>
-            <domain>namesilo.net</domain>
-            <domain>namesilo.biz</domain>
-            <domain>namesilo.info</domain>
-            <domain>namesilo.mobi</domain>
-            <domain>namesilo.org</domain>
+            <domain created="1998-02-03" expires="2023-02-03" maxBid="50">namesilo.com</domain>
+            <domain created="2000-02-03" expires="2023-02-03">namesilo.net</domain>
+            <domain created="2000-02-03" expires="2023-02-03">namesilo.biz</domain>
+            <domain created="2000-02-03" expires="2023-02-03">namesilo.info</domain>
+            <domain created="2000-02-03" expires="2023-02-03">namesilo.mobi</domain>
+            <domain created="2000-03-04" expires="2023-03-04">namesilo.org</domain>
         </domains>
+        <pager>
+            <total>100</total>
+            <pageSize>10</pageSize>
+            <page>1</page>
+        </pager>
     </reply>
 </namesilo>
