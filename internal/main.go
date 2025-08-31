@@ -64,7 +64,7 @@ type BaseName struct {
 func generate(tmpl, filename string) error {
 	var baseNames []BaseName
 
-	err := filepath.WalkDir(filepath.FromSlash("samples"), func(path string, d os.DirEntry, err error) error {
+	err := filepath.WalkDir(filepath.FromSlash("fixtures"), func(path string, d os.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}

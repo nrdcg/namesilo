@@ -36,7 +36,7 @@ func setupFakeAPI(t *testing.T, dir, operation string) *Client {
 			}
 		}
 
-		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", dir, operation+".xml")))
+		f, err := os.Open(filepath.Clean(filepath.Join(".", "fixtures", dir, operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

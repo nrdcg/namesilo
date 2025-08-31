@@ -42,261 +42,261 @@ func toCleanString(data []byte) string {
 }
 
 func TestAddAccountFunds(t *testing.T) {
-	assertXMLEqual(t, &AddAccountFunds{}, "./samples/account/addAccountFunds.xml")
+	assertXMLEqual(t, &AddAccountFunds{}, "./fixtures/account/addAccountFunds.xml")
 }
 
 func TestAddAutoRenewal(t *testing.T) {
-	assertXMLEqual(t, &AddAutoRenewal{}, "./samples/domains/addAutoRenewal.xml")
+	assertXMLEqual(t, &AddAutoRenewal{}, "./fixtures/domains/addAutoRenewal.xml")
 }
 
 func TestAddPrivacy(t *testing.T) {
-	assertXMLEqual(t, &AddPrivacy{}, "./samples/privacy/addPrivacy.xml")
+	assertXMLEqual(t, &AddPrivacy{}, "./fixtures/privacy/addPrivacy.xml")
 }
 
 func TestAddRegisteredNameServer(t *testing.T) {
-	assertXMLEqual(t, &AddRegisteredNameServer{}, "./samples/nameserver/addRegisteredNameServer.xml")
+	assertXMLEqual(t, &AddRegisteredNameServer{}, "./fixtures/nameserver/addRegisteredNameServer.xml")
 }
 
 func TestBidAuction(t *testing.T) {
-	assertXMLEqual(t, &BidAuction{}, "./samples/auctions/bidAuction.xml")
+	assertXMLEqual(t, &BidAuction{}, "./fixtures/auctions/bidAuction.xml")
 }
 
 func TestBuyNowAuction(t *testing.T) {
-	assertXMLEqual(t, &BuyNowAuction{}, "./samples/auctions/buyNowAuction.xml")
+	assertXMLEqual(t, &BuyNowAuction{}, "./fixtures/auctions/buyNowAuction.xml")
 }
 
 func TestChangeNameServers(t *testing.T) {
-	assertXMLEqual(t, &ChangeNameServers{}, "./samples/nameserver/changeNameServers.xml")
+	assertXMLEqual(t, &ChangeNameServers{}, "./fixtures/nameserver/changeNameServers.xml")
 }
 
 func TestCheckRegisterAvailability(t *testing.T) {
-	assertXMLEqual(t, &CheckRegisterAvailability{}, "./samples/domains/checkRegisterAvailability.xml")
+	assertXMLEqual(t, &CheckRegisterAvailability{}, "./fixtures/domains/checkRegisterAvailability.xml")
 }
 
 func TestCheckTransferAvailability(t *testing.T) {
-	assertXMLEqual(t, &CheckTransferAvailability{}, "./samples/domains/checkTransferAvailability.xml")
+	assertXMLEqual(t, &CheckTransferAvailability{}, "./fixtures/domains/checkTransferAvailability.xml")
 }
 
 func TestCheckTransferStatus(t *testing.T) {
-	assertXMLEqual(t, &CheckTransferStatus{}, "./samples/transfers/checkTransferStatus.xml")
+	assertXMLEqual(t, &CheckTransferStatus{}, "./fixtures/transfers/checkTransferStatus.xml")
 }
 
 func TestConfigureEmailForward(t *testing.T) {
-	assertXMLEqual(t, &ConfigureEmailForward{}, "./samples/email/configureEmailForward.xml")
+	assertXMLEqual(t, &ConfigureEmailForward{}, "./fixtures/email/configureEmailForward.xml")
 }
 
 func TestContactAdd(t *testing.T) {
-	assertXMLEqual(t, &ContactAdd{}, "./samples/contact/contactAdd.xml")
+	assertXMLEqual(t, &ContactAdd{}, "./fixtures/contact/contactAdd.xml")
 }
 
 func TestContactDelete(t *testing.T) {
-	assertXMLEqual(t, &ContactDelete{}, "./samples/contact/contactDelete.xml")
+	assertXMLEqual(t, &ContactDelete{}, "./fixtures/contact/contactDelete.xml")
 }
 
 func TestContactDomainAssociate(t *testing.T) {
-	assertXMLEqual(t, &ContactDomainAssociate{}, "./samples/contact/contactDomainAssociate.xml")
+	assertXMLEqual(t, &ContactDomainAssociate{}, "./fixtures/contact/contactDomainAssociate.xml")
 }
 
 func TestContactList(t *testing.T) {
-	assertXMLEqual(t, &ContactList{}, "./samples/contact/contactList.xml")
+	assertXMLEqual(t, &ContactList{}, "./fixtures/contact/contactList.xml")
 }
 
 func TestContactUpdate(t *testing.T) {
-	assertXMLEqual(t, &ContactUpdate{}, "./samples/contact/contactUpdate.xml")
+	assertXMLEqual(t, &ContactUpdate{}, "./fixtures/contact/contactUpdate.xml")
 }
 
 func TestCountExpiringDomains(t *testing.T) {
-	assertXMLEqual(t, &CountExpiringDomains{}, "./samples/account/countExpiringDomains.xml")
+	assertXMLEqual(t, &CountExpiringDomains{}, "./fixtures/account/countExpiringDomains.xml")
 }
 
 func TestDeleteEmailForward(t *testing.T) {
-	assertXMLEqual(t, &DeleteEmailForward{}, "./samples/email/deleteEmailForward.xml")
+	assertXMLEqual(t, &DeleteEmailForward{}, "./fixtures/email/deleteEmailForward.xml")
 }
 
 func TestDeleteRegisteredNameServer(t *testing.T) {
-	assertXMLEqual(t, &DeleteRegisteredNameServer{}, "./samples/nameserver/deleteRegisteredNameServer.xml")
+	assertXMLEqual(t, &DeleteRegisteredNameServer{}, "./fixtures/nameserver/deleteRegisteredNameServer.xml")
 }
 
 func TestDnsAddRecord(t *testing.T) {
-	assertXMLEqual(t, &DnsAddRecord{}, "./samples/dns/dnsAddRecord.xml")
+	assertXMLEqual(t, &DnsAddRecord{}, "./fixtures/dns/dnsAddRecord.xml")
 }
 
 func TestDnsDeleteRecord(t *testing.T) {
-	assertXMLEqual(t, &DnsDeleteRecord{}, "./samples/dns/dnsDeleteRecord.xml")
+	assertXMLEqual(t, &DnsDeleteRecord{}, "./fixtures/dns/dnsDeleteRecord.xml")
 }
 
 func TestDnsListRecords(t *testing.T) {
-	assertXMLEqual(t, &DnsListRecords{}, "./samples/dns/dnsListRecords.xml")
+	assertXMLEqual(t, &DnsListRecords{}, "./fixtures/dns/dnsListRecords.xml")
 }
 
 func TestDnsSecAddRecord(t *testing.T) {
-	assertXMLEqual(t, &DnsSecAddRecord{}, "./samples/dns/dnsSecAddRecord.xml")
+	assertXMLEqual(t, &DnsSecAddRecord{}, "./fixtures/dns/dnsSecAddRecord.xml")
 }
 
 func TestDnsSecDeleteRecord(t *testing.T) {
-	assertXMLEqual(t, &DnsSecDeleteRecord{}, "./samples/dns/dnsSecDeleteRecord.xml")
+	assertXMLEqual(t, &DnsSecDeleteRecord{}, "./fixtures/dns/dnsSecDeleteRecord.xml")
 }
 
 func TestDnsSecListRecords(t *testing.T) {
-	assertXMLEqual(t, &DnsSecListRecords{}, "./samples/dns/dnsSecListRecords.xml")
+	assertXMLEqual(t, &DnsSecListRecords{}, "./fixtures/dns/dnsSecListRecords.xml")
 }
 
 func TestDnsUpdateRecord(t *testing.T) {
-	assertXMLEqual(t, &DnsUpdateRecord{}, "./samples/dns/dnsUpdateRecord.xml")
+	assertXMLEqual(t, &DnsUpdateRecord{}, "./fixtures/dns/dnsUpdateRecord.xml")
 }
 
 func TestDomainForward(t *testing.T) {
-	assertXMLEqual(t, &DomainForward{}, "./samples/domains/domainForward.xml")
+	assertXMLEqual(t, &DomainForward{}, "./fixtures/domains/domainForward.xml")
 }
 
 func TestDomainForwardSubDomain(t *testing.T) {
-	assertXMLEqual(t, &DomainForwardSubDomain{}, "./samples/domains/domainForwardSubDomain.xml")
+	assertXMLEqual(t, &DomainForwardSubDomain{}, "./fixtures/domains/domainForwardSubDomain.xml")
 }
 
 func TestDomainForwardSubDomainDelete(t *testing.T) {
-	assertXMLEqual(t, &DomainForwardSubDomainDelete{}, "./samples/domains/domainForwardSubDomainDelete.xml")
+	assertXMLEqual(t, &DomainForwardSubDomainDelete{}, "./fixtures/domains/domainForwardSubDomainDelete.xml")
 }
 
 func TestDomainLock(t *testing.T) {
-	assertXMLEqual(t, &DomainLock{}, "./samples/domains/domainLock.xml")
+	assertXMLEqual(t, &DomainLock{}, "./fixtures/domains/domainLock.xml")
 }
 
 func TestDomainUnlock(t *testing.T) {
-	assertXMLEqual(t, &DomainUnlock{}, "./samples/domains/domainUnlock.xml")
+	assertXMLEqual(t, &DomainUnlock{}, "./fixtures/domains/domainUnlock.xml")
 }
 
 func TestEmailVerification(t *testing.T) {
-	assertXMLEqual(t, &EmailVerification{}, "./samples/email/emailVerification.xml")
+	assertXMLEqual(t, &EmailVerification{}, "./fixtures/email/emailVerification.xml")
 }
 
 func TestGetAccountBalance(t *testing.T) {
-	assertXMLEqual(t, &GetAccountBalance{}, "./samples/account/getAccountBalance.xml")
+	assertXMLEqual(t, &GetAccountBalance{}, "./fixtures/account/getAccountBalance.xml")
 }
 
 func TestGetDomainInfo(t *testing.T) {
-	assertXMLEqual(t, &GetDomainInfo{}, "./samples/domains/getDomainInfo.xml")
+	assertXMLEqual(t, &GetDomainInfo{}, "./fixtures/domains/getDomainInfo.xml")
 }
 
 func TestGetPrices(t *testing.T) {
-	assertXMLEqual(t, &GetPrices{}, "./samples/domains/getPrices.xml")
+	assertXMLEqual(t, &GetPrices{}, "./fixtures/domains/getPrices.xml")
 }
 
 func TestListAuctions(t *testing.T) {
-	assertXMLEqual(t, &ListAuctions{}, "./samples/auctions/listAuctions.xml")
+	assertXMLEqual(t, &ListAuctions{}, "./fixtures/auctions/listAuctions.xml")
 }
 
 func TestListDomains(t *testing.T) {
-	assertXMLEqual(t, &ListDomains{}, "./samples/domains/listDomains.xml")
+	assertXMLEqual(t, &ListDomains{}, "./fixtures/domains/listDomains.xml")
 }
 
 func TestListEmailForwards(t *testing.T) {
-	assertXMLEqual(t, &ListEmailForwards{}, "./samples/email/listEmailForwards.xml")
+	assertXMLEqual(t, &ListEmailForwards{}, "./fixtures/email/listEmailForwards.xml")
 }
 
 func TestListExpiringDomains(t *testing.T) {
-	assertXMLEqual(t, &ListExpiringDomains{}, "./samples/account/listExpiringDomains.xml")
+	assertXMLEqual(t, &ListExpiringDomains{}, "./fixtures/account/listExpiringDomains.xml")
 }
 
 func TestListOrders(t *testing.T) {
-	assertXMLEqual(t, &ListOrders{}, "./samples/account/listOrders.xml")
+	assertXMLEqual(t, &ListOrders{}, "./fixtures/account/listOrders.xml")
 }
 
 func TestListRegisteredNameServers(t *testing.T) {
-	assertXMLEqual(t, &ListRegisteredNameServers{}, "./samples/nameserver/listRegisteredNameServers.xml")
+	assertXMLEqual(t, &ListRegisteredNameServers{}, "./fixtures/nameserver/listRegisteredNameServers.xml")
 }
 
 func TestMarketplaceActiveSalesOverview(t *testing.T) {
-	assertXMLEqual(t, &MarketplaceActiveSalesOverview{}, "./samples/marketplace/marketplaceActiveSalesOverview.xml")
+	assertXMLEqual(t, &MarketplaceActiveSalesOverview{}, "./fixtures/marketplace/marketplaceActiveSalesOverview.xml")
 }
 
 func TestMarketplaceAddOrModifySale(t *testing.T) {
-	assertXMLEqual(t, &MarketplaceAddOrModifySale{}, "./samples/marketplace/marketplaceAddOrModifySale.xml")
+	assertXMLEqual(t, &MarketplaceAddOrModifySale{}, "./fixtures/marketplace/marketplaceAddOrModifySale.xml")
 }
 
 func TestMarketplaceLandingPageUpdate(t *testing.T) {
-	assertXMLEqual(t, &MarketplaceLandingPageUpdate{}, "./samples/marketplace/marketplaceLandingPageUpdate.xml")
+	assertXMLEqual(t, &MarketplaceLandingPageUpdate{}, "./fixtures/marketplace/marketplaceLandingPageUpdate.xml")
 }
 
 func TestModifyRegisteredNameServer(t *testing.T) {
-	assertXMLEqual(t, &ModifyRegisteredNameServer{}, "./samples/nameserver/modifyRegisteredNameServer.xml")
+	assertXMLEqual(t, &ModifyRegisteredNameServer{}, "./fixtures/nameserver/modifyRegisteredNameServer.xml")
 }
 
 func TestOrderDetails(t *testing.T) {
-	assertXMLEqual(t, &OrderDetails{}, "./samples/account/orderDetails.xml")
+	assertXMLEqual(t, &OrderDetails{}, "./fixtures/account/orderDetails.xml")
 }
 
 func TestPortfolioAdd(t *testing.T) {
-	assertXMLEqual(t, &PortfolioAdd{}, "./samples/portfolio/portfolioAdd.xml")
+	assertXMLEqual(t, &PortfolioAdd{}, "./fixtures/portfolio/portfolioAdd.xml")
 }
 
 func TestPortfolioDelete(t *testing.T) {
-	assertXMLEqual(t, &PortfolioDelete{}, "./samples/portfolio/portfolioDelete.xml")
+	assertXMLEqual(t, &PortfolioDelete{}, "./fixtures/portfolio/portfolioDelete.xml")
 }
 
 func TestPortfolioDomainAssociate(t *testing.T) {
-	assertXMLEqual(t, &PortfolioDomainAssociate{}, "./samples/portfolio/portfolioDomainAssociate.xml")
+	assertXMLEqual(t, &PortfolioDomainAssociate{}, "./fixtures/portfolio/portfolioDomainAssociate.xml")
 }
 
 func TestPortfolioList(t *testing.T) {
-	assertXMLEqual(t, &PortfolioList{}, "./samples/portfolio/portfolioList.xml")
+	assertXMLEqual(t, &PortfolioList{}, "./fixtures/portfolio/portfolioList.xml")
 }
 
 func TestRegisterDomain(t *testing.T) {
-	assertXMLEqual(t, &RegisterDomain{}, "./samples/domains/registerDomain.xml")
+	assertXMLEqual(t, &RegisterDomain{}, "./fixtures/domains/registerDomain.xml")
 }
 
 func TestRegisterDomainDrop(t *testing.T) {
-	assertXMLEqual(t, &RegisterDomainDrop{}, "./samples/domains/registerDomainDrop.xml")
+	assertXMLEqual(t, &RegisterDomainDrop{}, "./fixtures/domains/registerDomainDrop.xml")
 }
 
 func TestRegistrantVerificationStatus(t *testing.T) {
-	assertXMLEqual(t, &RegistrantVerificationStatus{}, "./samples/email/registrantVerificationStatus.xml")
+	assertXMLEqual(t, &RegistrantVerificationStatus{}, "./fixtures/email/registrantVerificationStatus.xml")
 }
 
 func TestRemoveAutoRenewal(t *testing.T) {
-	assertXMLEqual(t, &RemoveAutoRenewal{}, "./samples/domains/removeAutoRenewal.xml")
+	assertXMLEqual(t, &RemoveAutoRenewal{}, "./fixtures/domains/removeAutoRenewal.xml")
 }
 
 func TestRemovePrivacy(t *testing.T) {
-	assertXMLEqual(t, &RemovePrivacy{}, "./samples/privacy/removePrivacy.xml")
+	assertXMLEqual(t, &RemovePrivacy{}, "./fixtures/privacy/removePrivacy.xml")
 }
 
 func TestRenewDomain(t *testing.T) {
-	assertXMLEqual(t, &RenewDomain{}, "./samples/domains/renewDomain.xml")
+	assertXMLEqual(t, &RenewDomain{}, "./fixtures/domains/renewDomain.xml")
 }
 
 func TestRetrieveAuthCode(t *testing.T) {
-	assertXMLEqual(t, &RetrieveAuthCode{}, "./samples/transfers/retrieveAuthCode.xml")
+	assertXMLEqual(t, &RetrieveAuthCode{}, "./fixtures/transfers/retrieveAuthCode.xml")
 }
 
 func TestTransferDomain(t *testing.T) {
-	assertXMLEqual(t, &TransferDomain{}, "./samples/transfers/transferDomain.xml")
+	assertXMLEqual(t, &TransferDomain{}, "./fixtures/transfers/transferDomain.xml")
 }
 
 func TestTransferUpdateChangeEPPCode(t *testing.T) {
-	assertXMLEqual(t, &TransferUpdateChangeEPPCode{}, "./samples/transfers/transferUpdateChangeEPPCode.xml")
+	assertXMLEqual(t, &TransferUpdateChangeEPPCode{}, "./fixtures/transfers/transferUpdateChangeEPPCode.xml")
 }
 
 func TestTransferUpdateResendAdminEmail(t *testing.T) {
-	assertXMLEqual(t, &TransferUpdateResendAdminEmail{}, "./samples/transfers/transferUpdateResendAdminEmail.xml")
+	assertXMLEqual(t, &TransferUpdateResendAdminEmail{}, "./fixtures/transfers/transferUpdateResendAdminEmail.xml")
 }
 
 func TestTransferUpdateResubmitToRegistry(t *testing.T) {
-	assertXMLEqual(t, &TransferUpdateResubmitToRegistry{}, "./samples/transfers/transferUpdateResubmitToRegistry.xml")
+	assertXMLEqual(t, &TransferUpdateResubmitToRegistry{}, "./fixtures/transfers/transferUpdateResubmitToRegistry.xml")
 }
 
 func TestViewAuction(t *testing.T) {
-	assertXMLEqual(t, &ViewAuction{}, "./samples/auctions/viewAuction.xml")
+	assertXMLEqual(t, &ViewAuction{}, "./fixtures/auctions/viewAuction.xml")
 }
 
 func TestViewAuctionHistory(t *testing.T) {
-	assertXMLEqual(t, &ViewAuctionHistory{}, "./samples/auctions/viewAuctionHistory.xml")
+	assertXMLEqual(t, &ViewAuctionHistory{}, "./fixtures/auctions/viewAuctionHistory.xml")
 }
 
 func TestWatchAuction(t *testing.T) {
-	assertXMLEqual(t, &WatchAuction{}, "./samples/auctions/watchAuction.xml")
+	assertXMLEqual(t, &WatchAuction{}, "./fixtures/auctions/watchAuction.xml")
 }
 
 func TestWhoisInfo(t *testing.T) {
-	assertXMLEqual(t, &WhoisInfo{}, "./samples/domains/whoisInfo.xml")
+	assertXMLEqual(t, &WhoisInfo{}, "./fixtures/domains/whoisInfo.xml")
 }
