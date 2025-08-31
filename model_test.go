@@ -4,1580 +4,297 @@ import (
 	"encoding/xml"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
+
+func assertXMLEqual(t *testing.T, model any, fixture string) {
+	t.Helper()
+
+	expected, err := os.ReadFile(filepath.FromSlash(fixture))
+	require.NoError(t, err)
+
+	err = xml.Unmarshal(expected, model)
+	require.NoError(t, err)
+
+	raw, err := xml.MarshalIndent(model, "", "    ")
+	require.NoError(t, err)
+
+	// Fix self-closing tags.
+	exp, err := regexp.Compile("<(\\w+)></\\w+>")
+	require.NoError(t, err)
+
+	raw = exp.ReplaceAll(raw, []byte("<$1/>"))
+
+	if toCleanString(raw) != toCleanString(expected) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(raw), string(expected))
+		t.Error("Errors")
+	}
+}
 
 func toCleanString(data []byte) string {
 	return strings.TrimSuffix(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
 }
 
 func TestAddAccountFunds(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/addAccountFunds.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &AddAccountFunds{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &AddAccountFunds{}, "./samples/account/addAccountFunds.xml")
 }
 
 func TestAddAutoRenewal(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/addAutoRenewal.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &AddAutoRenewal{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &AddAutoRenewal{}, "./samples/domains/addAutoRenewal.xml")
 }
 
 func TestAddPrivacy(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/privacy/addPrivacy.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &AddPrivacy{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &AddPrivacy{}, "./samples/privacy/addPrivacy.xml")
 }
 
 func TestAddRegisteredNameServer(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/nameserver/addRegisteredNameServer.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &AddRegisteredNameServer{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &AddRegisteredNameServer{}, "./samples/nameserver/addRegisteredNameServer.xml")
 }
 
 func TestBidAuction(t *testing.T) {
-	t.Skip("because <errors/> become <errors></errors>")
-
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/bidAuction.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &BidAuction{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &BidAuction{}, "./samples/auctions/bidAuction.xml")
 }
 
 func TestBuyNowAuction(t *testing.T) {
-	t.Skip("because <errors/> become <errors></errors>")
-
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/buyNowAuction.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &BuyNowAuction{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &BuyNowAuction{}, "./samples/auctions/buyNowAuction.xml")
 }
 
 func TestChangeNameServers(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/nameserver/changeNameServers.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ChangeNameServers{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ChangeNameServers{}, "./samples/nameserver/changeNameServers.xml")
 }
 
 func TestCheckRegisterAvailability(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/checkRegisterAvailability.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &CheckRegisterAvailability{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &CheckRegisterAvailability{}, "./samples/domains/checkRegisterAvailability.xml")
 }
 
 func TestCheckTransferAvailability(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/checkTransferAvailability.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &CheckTransferAvailability{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &CheckTransferAvailability{}, "./samples/domains/checkTransferAvailability.xml")
 }
 
 func TestCheckTransferStatus(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/transfers/checkTransferStatus.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &CheckTransferStatus{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &CheckTransferStatus{}, "./samples/transfers/checkTransferStatus.xml")
 }
 
 func TestConfigureEmailForward(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/email/configureEmailForward.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ConfigureEmailForward{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ConfigureEmailForward{}, "./samples/email/configureEmailForward.xml")
 }
 
 func TestContactAdd(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/contact/contactAdd.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ContactAdd{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ContactAdd{}, "./samples/contact/contactAdd.xml")
 }
 
 func TestContactDelete(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/contact/contactDelete.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ContactDelete{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ContactDelete{}, "./samples/contact/contactDelete.xml")
 }
 
 func TestContactDomainAssociate(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/contact/contactDomainAssociate.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ContactDomainAssociate{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ContactDomainAssociate{}, "./samples/contact/contactDomainAssociate.xml")
 }
 
 func TestContactList(t *testing.T) {
-	t.Skip("because <usnc/> become <usnc></usnc>")
-
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/contact/contactList.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ContactList{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ContactList{}, "./samples/contact/contactList.xml")
 }
 
 func TestContactUpdate(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/contact/contactUpdate.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ContactUpdate{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ContactUpdate{}, "./samples/contact/contactUpdate.xml")
 }
 
 func TestCountExpiringDomains(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/countExpiringDomains.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &CountExpiringDomains{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &CountExpiringDomains{}, "./samples/account/countExpiringDomains.xml")
 }
 
 func TestDeleteEmailForward(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/email/deleteEmailForward.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DeleteEmailForward{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DeleteEmailForward{}, "./samples/email/deleteEmailForward.xml")
 }
 
 func TestDeleteRegisteredNameServer(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/nameserver/deleteRegisteredNameServer.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DeleteRegisteredNameServer{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DeleteRegisteredNameServer{}, "./samples/nameserver/deleteRegisteredNameServer.xml")
 }
 
 func TestDnsAddRecord(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/dns/dnsAddRecord.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DnsAddRecord{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DnsAddRecord{}, "./samples/dns/dnsAddRecord.xml")
 }
 
 func TestDnsDeleteRecord(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/dns/dnsDeleteRecord.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DnsDeleteRecord{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DnsDeleteRecord{}, "./samples/dns/dnsDeleteRecord.xml")
 }
 
 func TestDnsListRecords(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/dns/dnsListRecords.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DnsListRecords{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DnsListRecords{}, "./samples/dns/dnsListRecords.xml")
 }
 
 func TestDnsSecAddRecord(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/dns/dnsSecAddRecord.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DnsSecAddRecord{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DnsSecAddRecord{}, "./samples/dns/dnsSecAddRecord.xml")
 }
 
 func TestDnsSecDeleteRecord(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/dns/dnsSecDeleteRecord.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DnsSecDeleteRecord{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DnsSecDeleteRecord{}, "./samples/dns/dnsSecDeleteRecord.xml")
 }
 
 func TestDnsSecListRecords(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/dns/dnsSecListRecords.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DnsSecListRecords{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DnsSecListRecords{}, "./samples/dns/dnsSecListRecords.xml")
 }
 
 func TestDnsUpdateRecord(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/dns/dnsUpdateRecord.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DnsUpdateRecord{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DnsUpdateRecord{}, "./samples/dns/dnsUpdateRecord.xml")
 }
 
 func TestDomainForward(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/domainForward.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DomainForward{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DomainForward{}, "./samples/domains/domainForward.xml")
 }
 
 func TestDomainForwardSubDomain(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/domainForwardSubDomain.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DomainForwardSubDomain{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DomainForwardSubDomain{}, "./samples/domains/domainForwardSubDomain.xml")
 }
 
 func TestDomainForwardSubDomainDelete(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/domainForwardSubDomainDelete.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DomainForwardSubDomainDelete{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DomainForwardSubDomainDelete{}, "./samples/domains/domainForwardSubDomainDelete.xml")
 }
 
 func TestDomainLock(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/domainLock.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DomainLock{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DomainLock{}, "./samples/domains/domainLock.xml")
 }
 
 func TestDomainUnlock(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/domainUnlock.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &DomainUnlock{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &DomainUnlock{}, "./samples/domains/domainUnlock.xml")
 }
 
 func TestEmailVerification(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/email/emailVerification.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &EmailVerification{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &EmailVerification{}, "./samples/email/emailVerification.xml")
 }
 
 func TestGetAccountBalance(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/getAccountBalance.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &GetAccountBalance{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &GetAccountBalance{}, "./samples/account/getAccountBalance.xml")
 }
 
 func TestGetDomainInfo(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/getDomainInfo.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &GetDomainInfo{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &GetDomainInfo{}, "./samples/domains/getDomainInfo.xml")
 }
 
 func TestGetPrices(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/getPrices.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &GetPrices{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &GetPrices{}, "./samples/domains/getPrices.xml")
 }
 
 func TestListAuctions(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/listAuctions.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ListAuctions{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ListAuctions{}, "./samples/auctions/listAuctions.xml")
 }
 
 func TestListDomains(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/listDomains.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ListDomains{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ListDomains{}, "./samples/domains/listDomains.xml")
 }
 
 func TestListEmailForwards(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/email/listEmailForwards.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ListEmailForwards{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ListEmailForwards{}, "./samples/email/listEmailForwards.xml")
 }
 
 func TestListExpiringDomains(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/listExpiringDomains.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ListExpiringDomains{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ListExpiringDomains{}, "./samples/account/listExpiringDomains.xml")
 }
 
 func TestListOrders(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/listOrders.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ListOrders{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ListOrders{}, "./samples/account/listOrders.xml")
 }
 
 func TestListRegisteredNameServers(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/nameserver/listRegisteredNameServers.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ListRegisteredNameServers{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ListRegisteredNameServers{}, "./samples/nameserver/listRegisteredNameServers.xml")
 }
 
 func TestMarketplaceActiveSalesOverview(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/marketplace/marketplaceActiveSalesOverview.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &MarketplaceActiveSalesOverview{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &MarketplaceActiveSalesOverview{}, "./samples/marketplace/marketplaceActiveSalesOverview.xml")
 }
 
 func TestMarketplaceAddOrModifySale(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/marketplace/marketplaceAddOrModifySale.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &MarketplaceAddOrModifySale{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &MarketplaceAddOrModifySale{}, "./samples/marketplace/marketplaceAddOrModifySale.xml")
 }
 
 func TestMarketplaceLandingPageUpdate(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/marketplace/marketplaceLandingPageUpdate.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &MarketplaceLandingPageUpdate{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &MarketplaceLandingPageUpdate{}, "./samples/marketplace/marketplaceLandingPageUpdate.xml")
 }
 
 func TestModifyRegisteredNameServer(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/nameserver/modifyRegisteredNameServer.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ModifyRegisteredNameServer{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ModifyRegisteredNameServer{}, "./samples/nameserver/modifyRegisteredNameServer.xml")
 }
 
 func TestOrderDetails(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/orderDetails.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &OrderDetails{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &OrderDetails{}, "./samples/account/orderDetails.xml")
 }
 
 func TestPortfolioAdd(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/portfolio/portfolioAdd.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &PortfolioAdd{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &PortfolioAdd{}, "./samples/portfolio/portfolioAdd.xml")
 }
 
 func TestPortfolioDelete(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/portfolio/portfolioDelete.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &PortfolioDelete{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &PortfolioDelete{}, "./samples/portfolio/portfolioDelete.xml")
 }
 
 func TestPortfolioDomainAssociate(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/portfolio/portfolioDomainAssociate.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &PortfolioDomainAssociate{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &PortfolioDomainAssociate{}, "./samples/portfolio/portfolioDomainAssociate.xml")
 }
 
 func TestPortfolioList(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/portfolio/portfolioList.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &PortfolioList{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &PortfolioList{}, "./samples/portfolio/portfolioList.xml")
 }
 
 func TestRegisterDomain(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/registerDomain.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &RegisterDomain{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &RegisterDomain{}, "./samples/domains/registerDomain.xml")
 }
 
 func TestRegisterDomainDrop(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/registerDomainDrop.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &RegisterDomainDrop{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &RegisterDomainDrop{}, "./samples/domains/registerDomainDrop.xml")
 }
 
 func TestRegistrantVerificationStatus(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/email/registrantVerificationStatus.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &RegistrantVerificationStatus{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &RegistrantVerificationStatus{}, "./samples/email/registrantVerificationStatus.xml")
 }
 
 func TestRemoveAutoRenewal(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/removeAutoRenewal.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &RemoveAutoRenewal{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &RemoveAutoRenewal{}, "./samples/domains/removeAutoRenewal.xml")
 }
 
 func TestRemovePrivacy(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/privacy/removePrivacy.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &RemovePrivacy{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &RemovePrivacy{}, "./samples/privacy/removePrivacy.xml")
 }
 
 func TestRenewDomain(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/renewDomain.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &RenewDomain{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &RenewDomain{}, "./samples/domains/renewDomain.xml")
 }
 
 func TestRetrieveAuthCode(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/transfers/retrieveAuthCode.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &RetrieveAuthCode{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &RetrieveAuthCode{}, "./samples/transfers/retrieveAuthCode.xml")
 }
 
 func TestTransferDomain(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/transfers/transferDomain.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &TransferDomain{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &TransferDomain{}, "./samples/transfers/transferDomain.xml")
 }
 
 func TestTransferUpdateChangeEPPCode(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/transfers/transferUpdateChangeEPPCode.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &TransferUpdateChangeEPPCode{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &TransferUpdateChangeEPPCode{}, "./samples/transfers/transferUpdateChangeEPPCode.xml")
 }
 
 func TestTransferUpdateResendAdminEmail(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/transfers/transferUpdateResendAdminEmail.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &TransferUpdateResendAdminEmail{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &TransferUpdateResendAdminEmail{}, "./samples/transfers/transferUpdateResendAdminEmail.xml")
 }
 
 func TestTransferUpdateResubmitToRegistry(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/transfers/transferUpdateResubmitToRegistry.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &TransferUpdateResubmitToRegistry{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &TransferUpdateResubmitToRegistry{}, "./samples/transfers/transferUpdateResubmitToRegistry.xml")
 }
 
 func TestViewAuction(t *testing.T) {
-	t.Skip("because <errors/> become <errors></errors>")
-
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/viewAuction.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ViewAuction{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ViewAuction{}, "./samples/auctions/viewAuction.xml")
 }
 
 func TestViewAuctionHistory(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/viewAuctionHistory.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &ViewAuctionHistory{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &ViewAuctionHistory{}, "./samples/auctions/viewAuctionHistory.xml")
 }
 
 func TestWatchAuction(t *testing.T) {
-	t.Skip("because <errors/> become <errors></errors>")
-
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/watchAuction.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &WatchAuction{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &WatchAuction{}, "./samples/auctions/watchAuction.xml")
 }
 
 func TestWhoisInfo(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/whoisInfo.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &WhoisInfo{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t, &WhoisInfo{}, "./samples/domains/whoisInfo.xml")
 }

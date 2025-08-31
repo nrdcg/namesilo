@@ -92,9 +92,12 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func setupFakeAPI(dir, operation string) (*http.ServeMux, string, func()) {
+func setupFakeAPI(t *testing.T, dir, operation string) *Client {
+	t.Helper()
+
 	mux := http.NewServeMux()
 	server := httptest.NewServer(mux)
+	t.Cleanup(server.Close)
 
 	mux.HandleFunc("/"+operation, func(w http.ResponseWriter, r *http.Request) {
 		query := r.URL.Query()
@@ -121,20 +124,17 @@ func setupFakeAPI(dir, operation string) (*http.ServeMux, string, func()) {
 		}
 	})
 
-	return mux, server.URL, func() {
-		server.Close()
-	}
-}
-{{range $key, $value := .Names }}
-func TestClient_{{ $value.Upper }}(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("{{ $value.Dir }}", "{{ $value.Lower }}")
-	defer teardown()
-
 	transport, err := NewTokenTransport("1234")
 	require.NoError(t, err)
 
 	client := NewClient(transport.Client())
-	client.Endpoint = serverURL
+	client.Endpoint = server.URL
+
+	return client
+}
+{{range $key, $value := .Names }}
+func TestClient_{{ $value.Upper }}(t *testing.T) {
+	client := setupFakeAPI(t, "{{ $value.Dir }}", "{{ $value.Lower }}")
 
 	params := &{{ $value.Upper }}Params{}
 
@@ -153,18 +153,44 @@ func TestClient_{{ $value.Upper }}(t *testing.T) {
 }
 
 func TestGenerateModelTest(t *testing.T) {
-	t.Skip("generator - several exception")
+	t.Skip("generator")
 
 	modelTestsTemplate := `package namesilo
 
 import (
+	"bytes"
 	"encoding/xml"
 	"os"
 	"path/filepath"
-	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
+
+func assertXMLEqual(t *testing.T, model any, fixture string) {
+	t.Helper()
+
+	expected, err := os.ReadFile(filepath.FromSlash(fixture))
+	require.NoError(t, err)
+
+	err = xml.Unmarshal(expected, model)
+	require.NoError(t, err)
+
+	raw, err := xml.MarshalIndent(model, "", "    ")
+	require.NoError(t, err)
+
+	// Fix self-closing tags.
+	exp, err := regexp.Compile("<(\\w+)></\\w+>")
+	require.NoError(t, err)
+
+	raw = exp.ReplaceAll(raw, []byte("<$1/>"))
+
+	if toCleanString(raw) != toCleanString(expected) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(raw), string(expected))
+		t.Error("Errors")
+	}
+}
 
 func toCleanString(data []byte) string {
 	return strings.TrimSuffix(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
@@ -172,27 +198,7 @@ func toCleanString(data []byte) string {
 
 {{range $key, $value := .Names }}
 func Test{{ $value.Upper }}(t *testing.T) {
-	bytes, err := os.ReadFile(filepath.FromSlash("./samples/{{ $value.Dir }}/{{ $value.Lower }}.xml"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	model := &{{ $value.Upper }}{}
-
-	err = xml.Unmarshal(bytes, model)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	indent, err := xml.MarshalIndent(model, "", "    ")
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if toCleanString(indent) != toCleanString(bytes) {
-		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
-		t.Error("Errors")
-	}
+	assertXMLEqual(t,  &{{ $value.Upper }}{}, "./samples/{{ $value.Dir }}/{{ $value.Lower }}.xml")
 }
 {{end}}
 `

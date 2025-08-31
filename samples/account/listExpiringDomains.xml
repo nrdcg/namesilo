@@ -13,7 +13,7 @@
                 <createdOn>2020-09-21</createdOn>
                 <expiresOn>2020-11-21</expiresOn>
                 <status>1</status>
-                <nsServers></nsServers>
+                <nsServers/>
             </entry>
             <entry>
                 <id>8</id>
@@ -21,7 +21,7 @@
                 <createdOn>2020-09-21</createdOn>
                 <expiresOn>2020-10-21</expiresOn>
                 <status>1</status>
-                <nsServers></nsServers>
+                <nsServers/>
             </entry>
         </body>
     </reply>
