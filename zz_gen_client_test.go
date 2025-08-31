@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
+func setupFakeAPI(dir, operation string) (*http.ServeMux, string, func()) {
 	mux := http.NewServeMux()
 	server := httptest.NewServer(mux)
 
@@ -29,7 +29,7 @@ func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 			}
 		}
 
-		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", operation+".xml")))
+		f, err := os.Open(filepath.Clean(filepath.Join(".", "samples", dir, operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -48,7 +48,7 @@ func setupFakeAPI(operation string) (*http.ServeMux, string, func()) {
 }
 
 func TestClient_AddAccountFunds(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("addAccountFunds")
+	_, serverURL, teardown := setupFakeAPI("account", "addAccountFunds")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -68,7 +68,7 @@ func TestClient_AddAccountFunds(t *testing.T) {
 }
 
 func TestClient_AddAutoRenewal(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("addAutoRenewal")
+	_, serverURL, teardown := setupFakeAPI("domains", "addAutoRenewal")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -88,7 +88,7 @@ func TestClient_AddAutoRenewal(t *testing.T) {
 }
 
 func TestClient_AddPrivacy(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("addPrivacy")
+	_, serverURL, teardown := setupFakeAPI("privacy", "addPrivacy")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -108,7 +108,7 @@ func TestClient_AddPrivacy(t *testing.T) {
 }
 
 func TestClient_AddRegisteredNameServer(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("addRegisteredNameServer")
+	_, serverURL, teardown := setupFakeAPI("nameserver", "addRegisteredNameServer")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -128,7 +128,7 @@ func TestClient_AddRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_ChangeNameServers(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("changeNameServers")
+	_, serverURL, teardown := setupFakeAPI("nameserver", "changeNameServers")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -148,7 +148,7 @@ func TestClient_ChangeNameServers(t *testing.T) {
 }
 
 func TestClient_CheckRegisterAvailability(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("checkRegisterAvailability")
+	_, serverURL, teardown := setupFakeAPI("domains", "checkRegisterAvailability")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -168,7 +168,7 @@ func TestClient_CheckRegisterAvailability(t *testing.T) {
 }
 
 func TestClient_CheckTransferAvailability(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("checkTransferAvailability")
+	_, serverURL, teardown := setupFakeAPI("domains", "checkTransferAvailability")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -188,7 +188,7 @@ func TestClient_CheckTransferAvailability(t *testing.T) {
 }
 
 func TestClient_CheckTransferStatus(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("checkTransferStatus")
+	_, serverURL, teardown := setupFakeAPI("transfers", "checkTransferStatus")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -208,7 +208,7 @@ func TestClient_CheckTransferStatus(t *testing.T) {
 }
 
 func TestClient_ConfigureEmailForward(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("configureEmailForward")
+	_, serverURL, teardown := setupFakeAPI("email", "configureEmailForward")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -228,7 +228,7 @@ func TestClient_ConfigureEmailForward(t *testing.T) {
 }
 
 func TestClient_ContactAdd(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("contactAdd")
+	_, serverURL, teardown := setupFakeAPI("contact", "contactAdd")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -248,7 +248,7 @@ func TestClient_ContactAdd(t *testing.T) {
 }
 
 func TestClient_ContactDelete(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("contactDelete")
+	_, serverURL, teardown := setupFakeAPI("contact", "contactDelete")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -268,7 +268,7 @@ func TestClient_ContactDelete(t *testing.T) {
 }
 
 func TestClient_ContactDomainAssociate(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("contactDomainAssociate")
+	_, serverURL, teardown := setupFakeAPI("contact", "contactDomainAssociate")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -288,7 +288,7 @@ func TestClient_ContactDomainAssociate(t *testing.T) {
 }
 
 func TestClient_ContactList(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("contactList")
+	_, serverURL, teardown := setupFakeAPI("contact", "contactList")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -308,7 +308,7 @@ func TestClient_ContactList(t *testing.T) {
 }
 
 func TestClient_ContactUpdate(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("contactUpdate")
+	_, serverURL, teardown := setupFakeAPI("contact", "contactUpdate")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -328,7 +328,7 @@ func TestClient_ContactUpdate(t *testing.T) {
 }
 
 func TestClient_DeleteEmailForward(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("deleteEmailForward")
+	_, serverURL, teardown := setupFakeAPI("email", "deleteEmailForward")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -348,7 +348,7 @@ func TestClient_DeleteEmailForward(t *testing.T) {
 }
 
 func TestClient_DeleteRegisteredNameServer(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("deleteRegisteredNameServer")
+	_, serverURL, teardown := setupFakeAPI("nameserver", "deleteRegisteredNameServer")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -368,7 +368,7 @@ func TestClient_DeleteRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_DnsAddRecord(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("dnsAddRecord")
+	_, serverURL, teardown := setupFakeAPI("dns", "dnsAddRecord")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -388,7 +388,7 @@ func TestClient_DnsAddRecord(t *testing.T) {
 }
 
 func TestClient_DnsDeleteRecord(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("dnsDeleteRecord")
+	_, serverURL, teardown := setupFakeAPI("dns", "dnsDeleteRecord")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -408,7 +408,7 @@ func TestClient_DnsDeleteRecord(t *testing.T) {
 }
 
 func TestClient_DnsListRecords(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("dnsListRecords")
+	_, serverURL, teardown := setupFakeAPI("dns", "dnsListRecords")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -428,7 +428,7 @@ func TestClient_DnsListRecords(t *testing.T) {
 }
 
 func TestClient_DnsSecAddRecord(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("dnsSecAddRecord")
+	_, serverURL, teardown := setupFakeAPI("dns", "dnsSecAddRecord")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -448,7 +448,7 @@ func TestClient_DnsSecAddRecord(t *testing.T) {
 }
 
 func TestClient_DnsSecDeleteRecord(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("dnsSecDeleteRecord")
+	_, serverURL, teardown := setupFakeAPI("dns", "dnsSecDeleteRecord")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -468,7 +468,7 @@ func TestClient_DnsSecDeleteRecord(t *testing.T) {
 }
 
 func TestClient_DnsSecListRecords(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("dnsSecListRecords")
+	_, serverURL, teardown := setupFakeAPI("dns", "dnsSecListRecords")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -488,7 +488,7 @@ func TestClient_DnsSecListRecords(t *testing.T) {
 }
 
 func TestClient_DnsUpdateRecord(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("dnsUpdateRecord")
+	_, serverURL, teardown := setupFakeAPI("dns", "dnsUpdateRecord")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -508,7 +508,7 @@ func TestClient_DnsUpdateRecord(t *testing.T) {
 }
 
 func TestClient_DomainForward(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("domainForward")
+	_, serverURL, teardown := setupFakeAPI("domains", "domainForward")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -528,7 +528,7 @@ func TestClient_DomainForward(t *testing.T) {
 }
 
 func TestClient_DomainForwardSubDomain(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("domainForwardSubDomain")
+	_, serverURL, teardown := setupFakeAPI("domains", "domainForwardSubDomain")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -548,7 +548,7 @@ func TestClient_DomainForwardSubDomain(t *testing.T) {
 }
 
 func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("domainForwardSubDomainDelete")
+	_, serverURL, teardown := setupFakeAPI("domains", "domainForwardSubDomainDelete")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -568,7 +568,7 @@ func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
 }
 
 func TestClient_DomainLock(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("domainLock")
+	_, serverURL, teardown := setupFakeAPI("domains", "domainLock")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -588,7 +588,7 @@ func TestClient_DomainLock(t *testing.T) {
 }
 
 func TestClient_DomainUnlock(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("domainUnlock")
+	_, serverURL, teardown := setupFakeAPI("domains", "domainUnlock")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -608,7 +608,7 @@ func TestClient_DomainUnlock(t *testing.T) {
 }
 
 func TestClient_EmailVerification(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("emailVerification")
+	_, serverURL, teardown := setupFakeAPI("email", "emailVerification")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -628,7 +628,7 @@ func TestClient_EmailVerification(t *testing.T) {
 }
 
 func TestClient_GetAccountBalance(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("getAccountBalance")
+	_, serverURL, teardown := setupFakeAPI("account", "getAccountBalance")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -648,7 +648,7 @@ func TestClient_GetAccountBalance(t *testing.T) {
 }
 
 func TestClient_GetDomainInfo(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("getDomainInfo")
+	_, serverURL, teardown := setupFakeAPI("domains", "getDomainInfo")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -668,7 +668,7 @@ func TestClient_GetDomainInfo(t *testing.T) {
 }
 
 func TestClient_GetPrices(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("getPrices")
+	_, serverURL, teardown := setupFakeAPI("domains", "getPrices")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -688,7 +688,7 @@ func TestClient_GetPrices(t *testing.T) {
 }
 
 func TestClient_ListDomains(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("listDomains")
+	_, serverURL, teardown := setupFakeAPI("domains", "listDomains")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -708,7 +708,7 @@ func TestClient_ListDomains(t *testing.T) {
 }
 
 func TestClient_ListEmailForwards(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("listEmailForwards")
+	_, serverURL, teardown := setupFakeAPI("email", "listEmailForwards")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -728,7 +728,7 @@ func TestClient_ListEmailForwards(t *testing.T) {
 }
 
 func TestClient_ListOrders(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("listOrders")
+	_, serverURL, teardown := setupFakeAPI("account", "listOrders")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -748,7 +748,7 @@ func TestClient_ListOrders(t *testing.T) {
 }
 
 func TestClient_ListRegisteredNameServers(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("listRegisteredNameServers")
+	_, serverURL, teardown := setupFakeAPI("nameserver", "listRegisteredNameServers")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -768,7 +768,7 @@ func TestClient_ListRegisteredNameServers(t *testing.T) {
 }
 
 func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("marketplaceActiveSalesOverview")
+	_, serverURL, teardown := setupFakeAPI("marketplace", "marketplaceActiveSalesOverview")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -788,7 +788,7 @@ func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
 }
 
 func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("marketplaceAddOrModifySale")
+	_, serverURL, teardown := setupFakeAPI("marketplace", "marketplaceAddOrModifySale")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -808,7 +808,7 @@ func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
 }
 
 func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("marketplaceLandingPageUpdate")
+	_, serverURL, teardown := setupFakeAPI("marketplace", "marketplaceLandingPageUpdate")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -828,7 +828,7 @@ func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
 }
 
 func TestClient_ModifyRegisteredNameServer(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("modifyRegisteredNameServer")
+	_, serverURL, teardown := setupFakeAPI("nameserver", "modifyRegisteredNameServer")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -848,7 +848,7 @@ func TestClient_ModifyRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_OrderDetails(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("orderDetails")
+	_, serverURL, teardown := setupFakeAPI("account", "orderDetails")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -868,7 +868,7 @@ func TestClient_OrderDetails(t *testing.T) {
 }
 
 func TestClient_PortfolioAdd(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("portfolioAdd")
+	_, serverURL, teardown := setupFakeAPI("portfolio", "portfolioAdd")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -888,7 +888,7 @@ func TestClient_PortfolioAdd(t *testing.T) {
 }
 
 func TestClient_PortfolioDelete(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("portfolioDelete")
+	_, serverURL, teardown := setupFakeAPI("portfolio", "portfolioDelete")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -908,7 +908,7 @@ func TestClient_PortfolioDelete(t *testing.T) {
 }
 
 func TestClient_PortfolioDomainAssociate(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("portfolioDomainAssociate")
+	_, serverURL, teardown := setupFakeAPI("portfolio", "portfolioDomainAssociate")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -928,7 +928,7 @@ func TestClient_PortfolioDomainAssociate(t *testing.T) {
 }
 
 func TestClient_PortfolioList(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("portfolioList")
+	_, serverURL, teardown := setupFakeAPI("portfolio", "portfolioList")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -948,7 +948,7 @@ func TestClient_PortfolioList(t *testing.T) {
 }
 
 func TestClient_RegisterDomain(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("registerDomain")
+	_, serverURL, teardown := setupFakeAPI("domains", "registerDomain")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -968,7 +968,7 @@ func TestClient_RegisterDomain(t *testing.T) {
 }
 
 func TestClient_RegisterDomainDrop(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("registerDomainDrop")
+	_, serverURL, teardown := setupFakeAPI("domains", "registerDomainDrop")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -988,7 +988,7 @@ func TestClient_RegisterDomainDrop(t *testing.T) {
 }
 
 func TestClient_RegistrantVerificationStatus(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("registrantVerificationStatus")
+	_, serverURL, teardown := setupFakeAPI("email", "registrantVerificationStatus")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1008,7 +1008,7 @@ func TestClient_RegistrantVerificationStatus(t *testing.T) {
 }
 
 func TestClient_RemoveAutoRenewal(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("removeAutoRenewal")
+	_, serverURL, teardown := setupFakeAPI("domains", "removeAutoRenewal")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1028,7 +1028,7 @@ func TestClient_RemoveAutoRenewal(t *testing.T) {
 }
 
 func TestClient_RemovePrivacy(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("removePrivacy")
+	_, serverURL, teardown := setupFakeAPI("privacy", "removePrivacy")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1048,7 +1048,7 @@ func TestClient_RemovePrivacy(t *testing.T) {
 }
 
 func TestClient_RenewDomain(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("renewDomain")
+	_, serverURL, teardown := setupFakeAPI("domains", "renewDomain")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1068,7 +1068,7 @@ func TestClient_RenewDomain(t *testing.T) {
 }
 
 func TestClient_RetrieveAuthCode(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("retrieveAuthCode")
+	_, serverURL, teardown := setupFakeAPI("transfers", "retrieveAuthCode")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1088,7 +1088,7 @@ func TestClient_RetrieveAuthCode(t *testing.T) {
 }
 
 func TestClient_TransferDomain(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("transferDomain")
+	_, serverURL, teardown := setupFakeAPI("transfers", "transferDomain")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1108,7 +1108,7 @@ func TestClient_TransferDomain(t *testing.T) {
 }
 
 func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("transferUpdateChangeEPPCode")
+	_, serverURL, teardown := setupFakeAPI("transfers", "transferUpdateChangeEPPCode")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1128,7 +1128,7 @@ func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
 }
 
 func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("transferUpdateResendAdminEmail")
+	_, serverURL, teardown := setupFakeAPI("transfers", "transferUpdateResendAdminEmail")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
@@ -1148,7 +1148,7 @@ func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
 }
 
 func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
-	_, serverURL, teardown := setupFakeAPI("transferUpdateResubmitToRegistry")
+	_, serverURL, teardown := setupFakeAPI("transfers", "transferUpdateResubmitToRegistry")
 	defer teardown()
 
 	transport, err := NewTokenTransport("1234")
