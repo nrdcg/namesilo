@@ -92,8 +92,6 @@ linters:
         text: type Dns(.+) should be DNS(.+)
       - path: params.go
         text: type Dns(.+) should be DNS(.+)
-      - path: zz_gen_client.go
-        text: method Dns(.+) should be DNS(.+)
 
 issues:
   max-issues-per-linter: 0
