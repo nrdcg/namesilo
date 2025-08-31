@@ -1,0 +1,50 @@
+<namesilo>
+    <script/>
+    <request>
+        <operation>registerDomain</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>210</code>
+        <detail>You have receive this Trademark notice because you have applied for a domain name which matches at least one trademark record submitted to the Trademark Clearinghouse. You need to agree with these claims adding to request submit_claims array with notice_id values and submit_date parameter with 20XX-MM-DDTHH:mm:ss UTC datetime.</detail>
+        <claims>
+            <claim_code>0000000000/A/0/0/aAA0AAaAAaaaAAaAaaaAA00a0000000000</claim_code>
+            <notice_id>0000aaa00000000000123456789</notice_id>
+            <not_after>2024-01-10 12:00:00</not_after>
+            <accepted_date/>
+            <info>
+                <markName>TRADEMARK</markName>
+                <holder>
+                    <name/>
+                    <org>ACME, INC.</org>
+                    <street>address</street>
+                    <street>address 2</street>
+                    <city>Town</city>
+                    <state>State</state>
+                    <zip>00000</zip>
+                    <country>US</country>
+                    <phone/>
+                    <fax/>
+                    <email/>
+                </holder>
+                <contact>
+                    <name>John Doe</name>
+                    <org>Acme Inc.</org>
+                    <street>address a</street>
+                    <street>address b</street>
+                    <city>City</city>
+                    <state>State</state>
+                    <zip>11111</zip>
+                    <country>US</country>
+                    <phone>+1.5555555555</phone>
+                    <fax/>
+                    <email>[email protected]</email>
+                </contact>
+                <jurDesc/>
+                <classes>important information here </classes>
+                <goodsAndServices>any additional data here </goodsAndServices>
+                <jurisdiction>United States of America</jurisdiction>
+            </info>
+        </claims>
+    </reply>
+</namesilo>

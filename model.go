@@ -698,9 +698,57 @@ type RegisterDomain struct {
 type RegisterDomainReply struct {
 	Reply
 
-	Message     string `xml:"message"`
-	Domain      string `xml:"domain"`
-	OrderAmount string `xml:"order_amount"`
+	Message     string               `xml:"message"`
+	Domain      string               `xml:"domain"`
+	OrderAmount string               `xml:"order_amount"`
+	Claims      *RegisterDomainClaim `xml:"claims,omitempty"`
+}
+
+// RegisterDomainClaim A reply representation.
+type RegisterDomainClaim struct {
+	ClaimCode    string                  `xml:"claim_code"`
+	NoticeID     string                  `xml:"notice_id"`
+	NotAfter     string                  `xml:"not_after"`
+	AcceptedDate string                  `xml:"accepted_date"`
+	Info         RegisterDomainClaimInfo `xml:"info"`
+}
+
+// RegisterDomainClaimInfo A reply representation.
+type RegisterDomainClaimInfo struct {
+	MarkName         string                         `xml:"markName"`
+	Holder           RegisterDomainClaimInfoHolder  `xml:"holder"`
+	Contact          RegisterDomainClaimInfoContact `xml:"contact"`
+	JurDesc          string                         `xml:"jurDesc"`
+	Classes          string                         `xml:"classes"`
+	GoodsAndServices string                         `xml:"goodsAndServices"`
+	Jurisdiction     string                         `xml:"jurisdiction"`
+}
+
+// RegisterDomainClaimInfoHolder A reply representation.
+type RegisterDomainClaimInfoHolder struct {
+	Name    string   `xml:"name"`
+	Org     string   `xml:"org"`
+	Street  []string `xml:"street"`
+	City    string   `xml:"city"`
+	State   string   `xml:"state"`
+	Zip     string   `xml:"zip"`
+	Country string   `xml:"country"`
+	Phone   string   `xml:"phone"`
+	Fax     string   `xml:"fax"`
+	Email   string   `xml:"email"`
+}
+
+type RegisterDomainClaimInfoContact struct {
+	Name    string   `xml:"name"`
+	Org     string   `xml:"org"`
+	Street  []string `xml:"street"`
+	City    string   `xml:"city"`
+	State   string   `xml:"state"`
+	Zip     string   `xml:"zip"`
+	Country string   `xml:"country"`
+	Phone   string   `xml:"phone"`
+	Fax     string   `xml:"fax"`
+	Email   string   `xml:"email"`
 }
 
 // RegistrantVerificationStatus was generated 2019-03-20 19:35:05.
