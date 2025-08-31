@@ -75,7 +75,12 @@ type CheckRegisterAvailabilityReply struct {
 	Reply
 
 	Available struct {
-		Domain []string `xml:"domain"`
+		Domain []struct {
+			Name     string `xml:",chardata"`
+			Price    string `xml:"price,attr"`
+			Premium  string `xml:"premium,attr"`
+			Duration string `xml:"duration,attr"`
+		} `xml:"domain"`
 	} `xml:"available"`
 	Unavailable struct {
 		Domain string `xml:"domain"`
@@ -97,7 +102,11 @@ type CheckTransferAvailabilityReply struct {
 	Reply
 
 	Available struct {
-		Domain []string `xml:"domain"`
+		Domain []struct {
+			Name    string `xml:",chardata"`
+			Price   string `xml:"price,attr"`
+			Premium string `xml:"premium,attr,omitempty"`
+		} `xml:"domain"`
 	} `xml:"available"`
 	Unavailable struct {
 		Domain []struct {
