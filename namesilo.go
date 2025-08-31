@@ -2,6 +2,7 @@
 package namesilo
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -42,19 +43,27 @@ func NewClient(httpClient *http.Client) *Client {
 	}
 }
 
-func (c *Client) get(name string, params any) (*http.Response, error) {
+func (c *Client) get(ctx context.Context, name string, params any) (*http.Response, error) {
 	uri, err := url.Parse(fmt.Sprintf("%s/%s", c.Endpoint, name))
 	if err != nil {
 		return nil, err
 	}
 
 	if params != nil {
-		v, err := querystring.Values(params)
+		var v url.Values
+
+		v, err = querystring.Values(params)
 		if err != nil {
 			return nil, err
 		}
+
 		uri.RawQuery = v.Encode()
 	}
 
-	return c.HTTPClient.Get(uri.String())
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, uri.String(), http.NoBody)
+	if err != nil {
+		return nil, err
+	}
+
+	return c.HTTPClient.Do(req)
 }

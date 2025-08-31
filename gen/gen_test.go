@@ -19,6 +19,7 @@ func TestGenerateClientMethods(t *testing.T) {
 	clientMethodsTemplate := `package namesilo
 
 import (
+	"context"
 	"encoding/xml"
 	"fmt"
 	"io"
@@ -26,8 +27,8 @@ import (
 )
 {{range $key, $value := .Names }}
 // {{ $value.Upper }} Execute operation {{ $value.Lower }}.
-func (c *Client) {{ $value.Upper }}(params *{{ $value.Upper }}Params) (*{{ $value.Upper }}, error) {
-	resp, err := c.get("{{ $value.Lower }}", params)
+func (c *Client) {{ $value.Upper }}(ctx context.Context, params *{{ $value.Upper }}Params) (*{{ $value.Upper }}, error) {
+	resp, err := c.get(ctx, "{{ $value.Lower }}", params)
 	if err != nil {
 		return nil, err
 	}
@@ -76,6 +77,7 @@ func TestGenerateClientTest(t *testing.T) {
 	clientTestsTemplate := `package namesilo
 
 import (
+	"context"
 	"encoding/xml"
 	"io"
 	"net/http"
@@ -134,7 +136,7 @@ func TestClient_{{ $value.Upper }}(t *testing.T) {
 
 	params := &{{ $value.Upper }}Params{}
 
-	result, err := client.{{ $value.Upper }}(params)
+	result, err := client.{{ $value.Upper }}(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)

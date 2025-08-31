@@ -1,6 +1,7 @@
 package namesilo
 
 import (
+	"context"
 	"encoding/xml"
 	"io"
 	"net/http"
@@ -59,7 +60,7 @@ func TestClient_AddAccountFunds(t *testing.T) {
 
 	params := &AddAccountFundsParams{}
 
-	result, err := client.AddAccountFunds(params)
+	result, err := client.AddAccountFunds(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -79,7 +80,7 @@ func TestClient_AddAutoRenewal(t *testing.T) {
 
 	params := &AddAutoRenewalParams{}
 
-	result, err := client.AddAutoRenewal(params)
+	result, err := client.AddAutoRenewal(context.TODO(), params)
 	require.Error(t, err)
 
 	require.NotNil(t, result)
@@ -99,7 +100,7 @@ func TestClient_AddPrivacy(t *testing.T) {
 
 	params := &AddPrivacyParams{}
 
-	result, err := client.AddPrivacy(params)
+	result, err := client.AddPrivacy(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -119,7 +120,7 @@ func TestClient_AddRegisteredNameServer(t *testing.T) {
 
 	params := &AddRegisteredNameServerParams{}
 
-	result, err := client.AddRegisteredNameServer(params)
+	result, err := client.AddRegisteredNameServer(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -139,7 +140,7 @@ func TestClient_ChangeNameServers(t *testing.T) {
 
 	params := &ChangeNameServersParams{}
 
-	result, err := client.ChangeNameServers(params)
+	result, err := client.ChangeNameServers(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -159,7 +160,7 @@ func TestClient_CheckRegisterAvailability(t *testing.T) {
 
 	params := &CheckRegisterAvailabilityParams{}
 
-	result, err := client.CheckRegisterAvailability(params)
+	result, err := client.CheckRegisterAvailability(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -179,7 +180,7 @@ func TestClient_CheckTransferAvailability(t *testing.T) {
 
 	params := &CheckTransferAvailabilityParams{}
 
-	result, err := client.CheckTransferAvailability(params)
+	result, err := client.CheckTransferAvailability(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -199,7 +200,7 @@ func TestClient_CheckTransferStatus(t *testing.T) {
 
 	params := &CheckTransferStatusParams{}
 
-	result, err := client.CheckTransferStatus(params)
+	result, err := client.CheckTransferStatus(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -219,7 +220,7 @@ func TestClient_ConfigureEmailForward(t *testing.T) {
 
 	params := &ConfigureEmailForwardParams{}
 
-	result, err := client.ConfigureEmailForward(params)
+	result, err := client.ConfigureEmailForward(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -239,7 +240,7 @@ func TestClient_ContactAdd(t *testing.T) {
 
 	params := &ContactAddParams{}
 
-	result, err := client.ContactAdd(params)
+	result, err := client.ContactAdd(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -259,7 +260,7 @@ func TestClient_ContactDelete(t *testing.T) {
 
 	params := &ContactDeleteParams{}
 
-	result, err := client.ContactDelete(params)
+	result, err := client.ContactDelete(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -279,7 +280,7 @@ func TestClient_ContactDomainAssociate(t *testing.T) {
 
 	params := &ContactDomainAssociateParams{}
 
-	result, err := client.ContactDomainAssociate(params)
+	result, err := client.ContactDomainAssociate(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -299,7 +300,7 @@ func TestClient_ContactList(t *testing.T) {
 
 	params := &ContactListParams{}
 
-	result, err := client.ContactList(params)
+	result, err := client.ContactList(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -319,7 +320,7 @@ func TestClient_ContactUpdate(t *testing.T) {
 
 	params := &ContactUpdateParams{}
 
-	result, err := client.ContactUpdate(params)
+	result, err := client.ContactUpdate(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -339,7 +340,7 @@ func TestClient_DeleteEmailForward(t *testing.T) {
 
 	params := &DeleteEmailForwardParams{}
 
-	result, err := client.DeleteEmailForward(params)
+	result, err := client.DeleteEmailForward(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -359,7 +360,7 @@ func TestClient_DeleteRegisteredNameServer(t *testing.T) {
 
 	params := &DeleteRegisteredNameServerParams{}
 
-	result, err := client.DeleteRegisteredNameServer(params)
+	result, err := client.DeleteRegisteredNameServer(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -379,7 +380,7 @@ func TestClient_DnsAddRecord(t *testing.T) {
 
 	params := &DnsAddRecordParams{}
 
-	result, err := client.DnsAddRecord(params)
+	result, err := client.DnsAddRecord(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -399,7 +400,7 @@ func TestClient_DnsDeleteRecord(t *testing.T) {
 
 	params := &DnsDeleteRecordParams{}
 
-	result, err := client.DnsDeleteRecord(params)
+	result, err := client.DnsDeleteRecord(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -419,7 +420,7 @@ func TestClient_DnsListRecords(t *testing.T) {
 
 	params := &DnsListRecordsParams{}
 
-	result, err := client.DnsListRecords(params)
+	result, err := client.DnsListRecords(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -439,7 +440,7 @@ func TestClient_DnsSecAddRecord(t *testing.T) {
 
 	params := &DnsSecAddRecordParams{}
 
-	result, err := client.DnsSecAddRecord(params)
+	result, err := client.DnsSecAddRecord(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -459,7 +460,7 @@ func TestClient_DnsSecDeleteRecord(t *testing.T) {
 
 	params := &DnsSecDeleteRecordParams{}
 
-	result, err := client.DnsSecDeleteRecord(params)
+	result, err := client.DnsSecDeleteRecord(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -479,7 +480,7 @@ func TestClient_DnsSecListRecords(t *testing.T) {
 
 	params := &DnsSecListRecordsParams{}
 
-	result, err := client.DnsSecListRecords(params)
+	result, err := client.DnsSecListRecords(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -499,7 +500,7 @@ func TestClient_DnsUpdateRecord(t *testing.T) {
 
 	params := &DnsUpdateRecordParams{}
 
-	result, err := client.DnsUpdateRecord(params)
+	result, err := client.DnsUpdateRecord(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -519,7 +520,7 @@ func TestClient_DomainForward(t *testing.T) {
 
 	params := &DomainForwardParams{}
 
-	result, err := client.DomainForward(params)
+	result, err := client.DomainForward(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -539,7 +540,7 @@ func TestClient_DomainForwardSubDomain(t *testing.T) {
 
 	params := &DomainForwardSubDomainParams{}
 
-	result, err := client.DomainForwardSubDomain(params)
+	result, err := client.DomainForwardSubDomain(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -559,7 +560,7 @@ func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
 
 	params := &DomainForwardSubDomainDeleteParams{}
 
-	result, err := client.DomainForwardSubDomainDelete(params)
+	result, err := client.DomainForwardSubDomainDelete(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -579,7 +580,7 @@ func TestClient_DomainLock(t *testing.T) {
 
 	params := &DomainLockParams{}
 
-	result, err := client.DomainLock(params)
+	result, err := client.DomainLock(context.TODO(), params)
 	require.Error(t, err)
 
 	require.NotNil(t, result)
@@ -599,7 +600,7 @@ func TestClient_DomainUnlock(t *testing.T) {
 
 	params := &DomainUnlockParams{}
 
-	result, err := client.DomainUnlock(params)
+	result, err := client.DomainUnlock(context.TODO(), params)
 	require.Error(t, err)
 
 	require.NotNil(t, result)
@@ -619,7 +620,7 @@ func TestClient_EmailVerification(t *testing.T) {
 
 	params := &EmailVerificationParams{}
 
-	result, err := client.EmailVerification(params)
+	result, err := client.EmailVerification(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -639,7 +640,7 @@ func TestClient_GetAccountBalance(t *testing.T) {
 
 	params := &GetAccountBalanceParams{}
 
-	result, err := client.GetAccountBalance(params)
+	result, err := client.GetAccountBalance(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -659,7 +660,7 @@ func TestClient_GetDomainInfo(t *testing.T) {
 
 	params := &GetDomainInfoParams{}
 
-	result, err := client.GetDomainInfo(params)
+	result, err := client.GetDomainInfo(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -679,7 +680,7 @@ func TestClient_GetPrices(t *testing.T) {
 
 	params := &GetPricesParams{}
 
-	result, err := client.GetPrices(params)
+	result, err := client.GetPrices(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -699,7 +700,7 @@ func TestClient_ListDomains(t *testing.T) {
 
 	params := &ListDomainsParams{}
 
-	result, err := client.ListDomains(params)
+	result, err := client.ListDomains(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -719,7 +720,7 @@ func TestClient_ListEmailForwards(t *testing.T) {
 
 	params := &ListEmailForwardsParams{}
 
-	result, err := client.ListEmailForwards(params)
+	result, err := client.ListEmailForwards(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -739,7 +740,7 @@ func TestClient_ListOrders(t *testing.T) {
 
 	params := &ListOrdersParams{}
 
-	result, err := client.ListOrders(params)
+	result, err := client.ListOrders(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -759,7 +760,7 @@ func TestClient_ListRegisteredNameServers(t *testing.T) {
 
 	params := &ListRegisteredNameServersParams{}
 
-	result, err := client.ListRegisteredNameServers(params)
+	result, err := client.ListRegisteredNameServers(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -779,7 +780,7 @@ func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
 
 	params := &MarketplaceActiveSalesOverviewParams{}
 
-	result, err := client.MarketplaceActiveSalesOverview(params)
+	result, err := client.MarketplaceActiveSalesOverview(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -799,7 +800,7 @@ func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
 
 	params := &MarketplaceAddOrModifySaleParams{}
 
-	result, err := client.MarketplaceAddOrModifySale(params)
+	result, err := client.MarketplaceAddOrModifySale(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -819,7 +820,7 @@ func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
 
 	params := &MarketplaceLandingPageUpdateParams{}
 
-	result, err := client.MarketplaceLandingPageUpdate(params)
+	result, err := client.MarketplaceLandingPageUpdate(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -839,7 +840,7 @@ func TestClient_ModifyRegisteredNameServer(t *testing.T) {
 
 	params := &ModifyRegisteredNameServerParams{}
 
-	result, err := client.ModifyRegisteredNameServer(params)
+	result, err := client.ModifyRegisteredNameServer(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -859,7 +860,7 @@ func TestClient_OrderDetails(t *testing.T) {
 
 	params := &OrderDetailsParams{}
 
-	result, err := client.OrderDetails(params)
+	result, err := client.OrderDetails(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -879,7 +880,7 @@ func TestClient_PortfolioAdd(t *testing.T) {
 
 	params := &PortfolioAddParams{}
 
-	result, err := client.PortfolioAdd(params)
+	result, err := client.PortfolioAdd(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -899,7 +900,7 @@ func TestClient_PortfolioDelete(t *testing.T) {
 
 	params := &PortfolioDeleteParams{}
 
-	result, err := client.PortfolioDelete(params)
+	result, err := client.PortfolioDelete(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -919,7 +920,7 @@ func TestClient_PortfolioDomainAssociate(t *testing.T) {
 
 	params := &PortfolioDomainAssociateParams{}
 
-	result, err := client.PortfolioDomainAssociate(params)
+	result, err := client.PortfolioDomainAssociate(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -939,7 +940,7 @@ func TestClient_PortfolioList(t *testing.T) {
 
 	params := &PortfolioListParams{}
 
-	result, err := client.PortfolioList(params)
+	result, err := client.PortfolioList(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -959,7 +960,7 @@ func TestClient_RegisterDomain(t *testing.T) {
 
 	params := &RegisterDomainParams{}
 
-	result, err := client.RegisterDomain(params)
+	result, err := client.RegisterDomain(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -979,7 +980,7 @@ func TestClient_RegisterDomainDrop(t *testing.T) {
 
 	params := &RegisterDomainDropParams{}
 
-	result, err := client.RegisterDomainDrop(params)
+	result, err := client.RegisterDomainDrop(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -999,7 +1000,7 @@ func TestClient_RegistrantVerificationStatus(t *testing.T) {
 
 	params := &RegistrantVerificationStatusParams{}
 
-	result, err := client.RegistrantVerificationStatus(params)
+	result, err := client.RegistrantVerificationStatus(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -1019,7 +1020,7 @@ func TestClient_RemoveAutoRenewal(t *testing.T) {
 
 	params := &RemoveAutoRenewalParams{}
 
-	result, err := client.RemoveAutoRenewal(params)
+	result, err := client.RemoveAutoRenewal(context.TODO(), params)
 	require.Error(t, err)
 
 	require.NotNil(t, result)
@@ -1039,7 +1040,7 @@ func TestClient_RemovePrivacy(t *testing.T) {
 
 	params := &RemovePrivacyParams{}
 
-	result, err := client.RemovePrivacy(params)
+	result, err := client.RemovePrivacy(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -1059,7 +1060,7 @@ func TestClient_RenewDomain(t *testing.T) {
 
 	params := &RenewDomainParams{}
 
-	result, err := client.RenewDomain(params)
+	result, err := client.RenewDomain(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -1079,7 +1080,7 @@ func TestClient_RetrieveAuthCode(t *testing.T) {
 
 	params := &RetrieveAuthCodeParams{}
 
-	result, err := client.RetrieveAuthCode(params)
+	result, err := client.RetrieveAuthCode(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -1099,7 +1100,7 @@ func TestClient_TransferDomain(t *testing.T) {
 
 	params := &TransferDomainParams{}
 
-	result, err := client.TransferDomain(params)
+	result, err := client.TransferDomain(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -1119,7 +1120,7 @@ func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
 
 	params := &TransferUpdateChangeEPPCodeParams{}
 
-	result, err := client.TransferUpdateChangeEPPCode(params)
+	result, err := client.TransferUpdateChangeEPPCode(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -1139,7 +1140,7 @@ func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
 
 	params := &TransferUpdateResendAdminEmailParams{}
 
-	result, err := client.TransferUpdateResendAdminEmail(params)
+	result, err := client.TransferUpdateResendAdminEmail(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
@@ -1159,7 +1160,7 @@ func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
 
 	params := &TransferUpdateResubmitToRegistryParams{}
 
-	result, err := client.TransferUpdateResubmitToRegistry(params)
+	result, err := client.TransferUpdateResubmitToRegistry(context.TODO(), params)
 	require.NoError(t, err)
 
 	require.NotNil(t, result)
