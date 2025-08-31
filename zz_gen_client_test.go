@@ -328,6 +328,26 @@ func TestClient_ContactUpdate(t *testing.T) {
 	assert.IsType(t, &ContactUpdate{}, result)
 }
 
+func TestClient_CountExpiringDomains(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("account", "countExpiringDomains")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &CountExpiringDomainsParams{}
+
+	result, err := client.CountExpiringDomains(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &CountExpiringDomains{}, result)
+}
+
 func TestClient_DeleteEmailForward(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("email", "deleteEmailForward")
 	defer teardown()
@@ -726,6 +746,26 @@ func TestClient_ListEmailForwards(t *testing.T) {
 	require.NotNil(t, result)
 
 	assert.IsType(t, &ListEmailForwards{}, result)
+}
+
+func TestClient_ListExpiringDomains(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("account", "listExpiringDomains")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &ListExpiringDomainsParams{}
+
+	result, err := client.ListExpiringDomains(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &ListExpiringDomains{}, result)
 }
 
 func TestClient_ListOrders(t *testing.T) {

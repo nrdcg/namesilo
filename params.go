@@ -155,6 +155,11 @@ type ContactUpdateParams struct {
 	CIRAWHOISDisplay     string `url:"cawd"` // CIRA
 }
 
+// CountExpiringDomainsParams Parameters for operation countExpiringDomains.
+type CountExpiringDomainsParams struct {
+	DaysCount int `url:"daysCount"` // Required
+}
+
 // DeleteEmailForwardParams Parameters for operation deleteEmailForward.
 type DeleteEmailForwardParams struct {
 	Domain string `url:"domain"` // Required
@@ -294,6 +299,13 @@ type ListDomainsParams struct {
 // ListEmailForwardsParams Parameters for operation listEmailForwards.
 type ListEmailForwardsParams struct {
 	Domain string `url:"domain"` // Required
+}
+
+// ListExpiringDomainsParams Parameters for operation listExpiringDomains.
+type ListExpiringDomainsParams struct {
+	DaysCount int `url:"daysCount"` // Required
+	Page      int `url:"page"`      // Optional
+	PageSize  int `url:"pageSize"`  // Optional
 }
 
 // ListOrdersParams Parameters for operation listOrders.

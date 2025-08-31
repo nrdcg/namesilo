@@ -554,6 +554,45 @@ func (c *Client) ContactUpdate(ctx context.Context, params *ContactUpdateParams)
 	}
 }
 
+// CountExpiringDomains Execute operation countExpiringDomains.
+func (c *Client) CountExpiringDomains(ctx context.Context, params *CountExpiringDomainsParams) (*CountExpiringDomains, error) {
+	resp, err := c.get(ctx, "countExpiringDomains", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &CountExpiringDomains{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
 // DeleteEmailForward Execute operation deleteEmailForward.
 func (c *Client) DeleteEmailForward(ctx context.Context, params *DeleteEmailForwardParams) (*DeleteEmailForward, error) {
 	resp, err := c.get(ctx, "deleteEmailForward", params)
@@ -1313,6 +1352,45 @@ func (c *Client) ListEmailForwards(ctx context.Context, params *ListEmailForward
 	}
 
 	op := &ListEmailForwards{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
+// ListExpiringDomains Execute operation listExpiringDomains.
+func (c *Client) ListExpiringDomains(ctx context.Context, params *ListExpiringDomainsParams) (*ListExpiringDomains, error) {
+	resp, err := c.get(ctx, "listExpiringDomains", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &ListExpiringDomains{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)

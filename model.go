@@ -220,6 +220,20 @@ type ContactDelete struct {
 	Reply   Reply    `xml:"reply"`
 }
 
+// CountExpiringDomains was generated 2025-08-30 10:52:05.
+type CountExpiringDomains struct {
+	XMLName xml.Name                  `xml:"namesilo"`
+	Request Request                   `xml:"request"`
+	Reply   CountExpiringDomainsReply `xml:"reply"`
+}
+
+// CountExpiringDomainsReply A reply representation.
+type CountExpiringDomainsReply struct {
+	Reply
+
+	Body string `xml:"body"`
+}
+
 // DeleteEmailForward was generated 2019-03-20 19:35:05.
 type DeleteEmailForward struct {
 	XMLName xml.Name                `xml:"namesilo"`
@@ -512,6 +526,29 @@ type ListEmailForwardsReply struct {
 type Address struct {
 	Email      string   `xml:"email"`
 	ForwardsTo []string `xml:"forwards_to"`
+}
+
+// ListExpiringDomains was generated 2025-08-30 10:51:05.
+type ListExpiringDomains struct {
+	XMLName xml.Name                 `xml:"namesilo"`
+	Request Request                  `xml:"request"`
+	Reply   ListExpiringDomainsReply `xml:"reply"`
+}
+
+// ListExpiringDomainsReply A reply representation.
+type ListExpiringDomainsReply struct {
+	Reply
+
+	Body struct {
+		Entry []struct {
+			ID        string `xml:"id"`
+			Domain    string `xml:"domain"`
+			CreatedOn string `xml:"createdOn"`
+			ExpiresOn string `xml:"expiresOn"`
+			Status    string `xml:"status"`
+			NsServers string `xml:"nsServers"`
+		} `xml:"entry"`
+	} `xml:"body"`
 }
 
 // ListOrders was generated 2019-03-20 19:35:05.

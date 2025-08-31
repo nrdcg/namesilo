@@ -336,6 +336,29 @@ func TestContactUpdate(t *testing.T) {
 	}
 }
 
+func TestCountExpiringDomains(t *testing.T) {
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/countExpiringDomains.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &CountExpiringDomains{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
 func TestDeleteEmailForward(t *testing.T) {
 	bytes, err := os.ReadFile(filepath.FromSlash("./samples/email/deleteEmailForward.xml"))
 	if err != nil {
@@ -780,6 +803,29 @@ func TestListEmailForwards(t *testing.T) {
 	}
 
 	model := &ListEmailForwards{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
+func TestListExpiringDomains(t *testing.T) {
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/account/listExpiringDomains.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &ListExpiringDomains{}
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)

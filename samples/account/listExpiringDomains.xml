@@ -1,0 +1,28 @@
+<namesilo>
+    <request>
+        <operation>listExpiringDomains</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <body>
+            <entry>
+                <id>7</id>
+                <domain>tester7.ca</domain>
+                <createdOn>2020-09-21</createdOn>
+                <expiresOn>2020-11-21</expiresOn>
+                <status>1</status>
+                <nsServers></nsServers>
+            </entry>
+            <entry>
+                <id>8</id>
+                <domain>tester8.ca</domain>
+                <createdOn>2020-09-21</createdOn>
+                <expiresOn>2020-10-21</expiresOn>
+                <status>1</status>
+                <nsServers></nsServers>
+            </entry>
+        </body>
+    </reply>
+</namesilo>
