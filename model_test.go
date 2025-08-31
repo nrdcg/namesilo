@@ -104,6 +104,56 @@ func TestAddRegisteredNameServer(t *testing.T) {
 	}
 }
 
+func TestBidAuction(t *testing.T) {
+	t.Skip("because <errors/> become <errors></errors>")
+
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/bidAuction.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &BidAuction{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
+func TestBuyNowAuction(t *testing.T) {
+	t.Skip("because <errors/> become <errors></errors>")
+
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/buyNowAuction.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &BuyNowAuction{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
 func TestChangeNameServers(t *testing.T) {
 	bytes, err := os.ReadFile(filepath.FromSlash("./samples/nameserver/changeNameServers.xml"))
 	if err != nil {
@@ -773,6 +823,29 @@ func TestGetPrices(t *testing.T) {
 	}
 }
 
+func TestListAuctions(t *testing.T) {
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/listAuctions.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &ListAuctions{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
 func TestListDomains(t *testing.T) {
 	bytes, err := os.ReadFile(filepath.FromSlash("./samples/domains/listDomains.xml"))
 	if err != nil {
@@ -1332,6 +1405,79 @@ func TestTransferUpdateResubmitToRegistry(t *testing.T) {
 	}
 
 	model := &TransferUpdateResubmitToRegistry{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
+func TestViewAuction(t *testing.T) {
+	t.Skip("because <errors/> become <errors></errors>")
+
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/viewAuction.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &ViewAuction{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
+func TestViewAuctionHistory(t *testing.T) {
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/viewAuctionHistory.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &ViewAuctionHistory{}
+	err = xml.Unmarshal(bytes, model)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	indent, err := xml.MarshalIndent(model, "", "    ")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if toCleanString(indent) != toCleanString(bytes) {
+		t.Logf("Got:\n%s\n\nWant:\n%s\n", string(indent), string(bytes))
+		t.Error("Errors")
+	}
+}
+
+func TestWatchAuction(t *testing.T) {
+	t.Skip("because <errors/> become <errors></errors>")
+
+	bytes, err := os.ReadFile(filepath.FromSlash("./samples/auctions/watchAuction.xml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	model := &WatchAuction{}
 	err = xml.Unmarshal(bytes, model)
 	if err != nil {
 		t.Fatal(err)

@@ -128,6 +128,46 @@ func TestClient_AddRegisteredNameServer(t *testing.T) {
 	assert.IsType(t, &AddRegisteredNameServer{}, result)
 }
 
+func TestClient_BidAuction(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("auctions", "bidAuction")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &BidAuctionParams{}
+
+	result, err := client.BidAuction(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &BidAuction{}, result)
+}
+
+func TestClient_BuyNowAuction(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("auctions", "buyNowAuction")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &BuyNowAuctionParams{}
+
+	result, err := client.BuyNowAuction(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &BuyNowAuction{}, result)
+}
+
 func TestClient_ChangeNameServers(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("nameserver", "changeNameServers")
 	defer teardown()
@@ -708,6 +748,26 @@ func TestClient_GetPrices(t *testing.T) {
 	assert.IsType(t, &GetPrices{}, result)
 }
 
+func TestClient_ListAuctions(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("auctions", "listAuctions")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &ListAuctionsParams{}
+
+	result, err := client.ListAuctions(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &ListAuctions{}, result)
+}
+
 func TestClient_ListDomains(t *testing.T) {
 	_, serverURL, teardown := setupFakeAPI("domains", "listDomains")
 	defer teardown()
@@ -1206,6 +1266,66 @@ func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
 	require.NotNil(t, result)
 
 	assert.IsType(t, &TransferUpdateResubmitToRegistry{}, result)
+}
+
+func TestClient_ViewAuction(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("auctions", "viewAuction")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &ViewAuctionParams{}
+
+	result, err := client.ViewAuction(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &ViewAuction{}, result)
+}
+
+func TestClient_ViewAuctionHistory(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("auctions", "viewAuctionHistory")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &ViewAuctionHistoryParams{}
+
+	result, err := client.ViewAuctionHistory(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &ViewAuctionHistory{}, result)
+}
+
+func TestClient_WatchAuction(t *testing.T) {
+	_, serverURL, teardown := setupFakeAPI("auctions", "watchAuction")
+	defer teardown()
+
+	transport, err := NewTokenTransport("1234")
+	require.NoError(t, err)
+
+	client := NewClient(transport.Client())
+	client.Endpoint = serverURL
+
+	params := &WatchAuctionParams{}
+
+	result, err := client.WatchAuction(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &WatchAuction{}, result)
 }
 
 func TestClient_WhoisInfo(t *testing.T) {

@@ -1,0 +1,30 @@
+<namesilo>
+    <request>
+        <operation>viewAuctionHistory</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <body>
+            <entry>
+                <auctionId>1003</auctionId>
+                <bidderId>3</bidderId>
+                <bidderTitle>Bidder 1</bidderTitle>
+                <bidAmount>68</bidAmount>
+                <metReserve>true</metReserve>
+                <proxyBid>false</proxyBid>
+                <createdAt>2020-09-06T21:57:35+0000</createdAt>
+            </entry>
+            <entry>
+                <auctionId>1003</auctionId>
+                <bidderId>3</bidderId>
+                <bidderTitle>Bidder 1</bidderTitle>
+                <bidAmount>63</bidAmount>
+                <metReserve>true</metReserve>
+                <proxyBid>false</proxyBid>
+                <createdAt>2020-09-06T20:28:21+0000</createdAt>
+            </entry>
+        </body>
+    </reply>
+</namesilo>

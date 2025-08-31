@@ -36,6 +36,18 @@ type AddRegisteredNameServerParams struct {
 	IP13 string `url:"ip13"` // Optional
 }
 
+// BidAuctionParams Parameters for operation bidAuction.
+type BidAuctionParams struct {
+	AuctionID string `url:"auctionId"` // Required
+	Bid       string `url:"bid"`       // Required
+	ProxyBid  string `url:"proxyBid"`  // Optional
+}
+
+// BuyNowAuctionParams Parameters for operation buyNowAuction.
+type BuyNowAuctionParams struct {
+	AuctionID string `url:"auctionId"` // Required
+}
+
 // ChangeNameServersParams Parameters for operation changeNameServers.
 type ChangeNameServersParams struct {
 	Domains string `url:"domain"` // Required (A comma-delimited list of up to 200 domains)
@@ -291,6 +303,22 @@ type GetPricesParams struct {
 	RegistrationDomains string `url:"registration_domains"` // Required
 }
 
+// ListAuctionsParams Parameters for operation listAuctions.
+type ListAuctionsParams struct {
+	DomainID      string `url:"domainId"`      // Optional
+	DomainName    string `url:"domainName"`    // Optional
+	TypeID        string `url:"typeId"`        // Optional
+	StatusID      string `url:"statusId"`      // Optional
+	BuyNow        string `url:"buyNow"`        // Optional
+	MinCurrentBid string `url:"minCurrentBid"` // Optional
+	MaxCurrentBid string `url:"maxCurrentBid"` // Optional
+	OrderBy       string `url:"orderBy"`       // Optional
+	OrderType     string `url:"orderType"`     // Optional
+	Page          int    `url:"page"`          // Optional
+	PageSize      int    `url:"pageSize"`      // Optional
+	Watchlist     string `url:"watchlist"`     // Optional
+}
+
 // ListDomainsParams Parameters for operation listDomains.
 type ListDomainsParams struct {
 	Portfolio string `url:"portfolio"` // Optional
@@ -528,6 +556,22 @@ type TransferUpdateResendAdminEmailParams struct {
 // TransferUpdateResubmitToRegistryParams Parameters for operation transferUpdateResubmitToRegistry.
 type TransferUpdateResubmitToRegistryParams struct {
 	Domain string `url:"domain"` // Required
+}
+
+// ViewAuctionParams Parameters for operation viewAuction.
+type ViewAuctionParams struct {
+	AuctionID string `url:"auctionId"` // Required
+}
+
+// ViewAuctionHistoryParams Parameters for operation viewAuctionHistory.
+type ViewAuctionHistoryParams struct {
+	AuctionID string `url:"auctionId"` // Required
+}
+
+// WatchAuctionParams Parameters for operation watchAuction.
+type WatchAuctionParams struct {
+	AuctionID string `url:"auctionId"` // Required
+	Watch     string `url:"watch"`     // Required
 }
 
 // WhoisInfoParams Parameters for operation whoisInfo.

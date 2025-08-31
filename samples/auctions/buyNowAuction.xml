@@ -1,0 +1,17 @@
+<namesilo>
+    <request>
+        <operation>buyNowAuction</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <body>
+            <auctionId>1003</auctionId>
+            <userId>3</userId>
+            <bid>75</bid>
+            <proxyBid>0</proxyBid>
+            <errors/>
+        </body>
+    </reply>
+</namesilo>

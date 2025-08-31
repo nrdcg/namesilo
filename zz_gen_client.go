@@ -164,6 +164,84 @@ func (c *Client) AddRegisteredNameServer(ctx context.Context, params *AddRegiste
 	}
 }
 
+// BidAuction Execute operation bidAuction.
+func (c *Client) BidAuction(ctx context.Context, params *BidAuctionParams) (*BidAuction, error) {
+	resp, err := c.get(ctx, "bidAuction", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &BidAuction{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
+// BuyNowAuction Execute operation buyNowAuction.
+func (c *Client) BuyNowAuction(ctx context.Context, params *BuyNowAuctionParams) (*BuyNowAuction, error) {
+	resp, err := c.get(ctx, "buyNowAuction", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &BuyNowAuction{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
 // ChangeNameServers Execute operation changeNameServers.
 func (c *Client) ChangeNameServers(ctx context.Context, params *ChangeNameServersParams) (*ChangeNameServers, error) {
 	resp, err := c.get(ctx, "changeNameServers", params)
@@ -1295,6 +1373,45 @@ func (c *Client) GetPrices(ctx context.Context, params *GetPricesParams) (*GetPr
 	}
 }
 
+// ListAuctions Execute operation listAuctions.
+func (c *Client) ListAuctions(ctx context.Context, params *ListAuctionsParams) (*ListAuctions, error) {
+	resp, err := c.get(ctx, "listAuctions", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &ListAuctions{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
 // ListDomains Execute operation listDomains.
 func (c *Client) ListDomains(ctx context.Context, params *ListDomainsParams) (*ListDomains, error) {
 	resp, err := c.get(ctx, "listDomains", params)
@@ -2249,6 +2366,123 @@ func (c *Client) TransferUpdateResubmitToRegistry(ctx context.Context, params *T
 	}
 
 	op := &TransferUpdateResubmitToRegistry{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
+// ViewAuction Execute operation viewAuction.
+func (c *Client) ViewAuction(ctx context.Context, params *ViewAuctionParams) (*ViewAuction, error) {
+	resp, err := c.get(ctx, "viewAuction", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &ViewAuction{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
+// ViewAuctionHistory Execute operation viewAuctionHistory.
+func (c *Client) ViewAuctionHistory(ctx context.Context, params *ViewAuctionHistoryParams) (*ViewAuctionHistory, error) {
+	resp, err := c.get(ctx, "viewAuctionHistory", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &ViewAuctionHistory{}
+	err = xml.Unmarshal(bytes, op)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)
+	}
+
+	switch op.Reply.Code {
+	case SuccessfulAPIOperation:
+		// Successful API operation
+		return op, nil
+	case SuccessfulRegistration:
+		// Successful registration, but not all provided hosts were valid resulting in our nameservers being used
+		return op, nil
+	case SuccessfulOrder:
+		// Successful order, but there was an error with the contact information provided so your account default contact profile was used
+		return op, nil
+	default:
+		// error
+		return op, fmt.Errorf("code: %s, details: %s", op.Reply.Code, op.Reply.Detail)
+	}
+}
+
+// WatchAuction Execute operation watchAuction.
+func (c *Client) WatchAuction(ctx context.Context, params *WatchAuctionParams) (*WatchAuction, error) {
+	resp, err := c.get(ctx, "watchAuction", params)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("error: HTTP status code %v", resp.StatusCode)
+	}
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	op := &WatchAuction{}
 	err = xml.Unmarshal(bytes, op)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode: %w: %s", err, bytes)

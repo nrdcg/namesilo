@@ -56,6 +56,55 @@ type AddRegisteredNameServer struct {
 	Reply   Reply    `xml:"reply"`
 }
 
+// BidAuction was generated 2025-08-31 11:37:00.
+type BidAuction struct {
+	XMLName xml.Name        `xml:"namesilo"`
+	Request Request         `xml:"request"`
+	Reply   BidAuctionReply `xml:"reply"`
+}
+
+// BidAuctionReply A reply representation.
+type BidAuctionReply struct {
+	Reply
+
+	Body BidReply `xml:"body"`
+}
+
+// BuyNowAuction was generated 2025-08-31 11:37:00.
+type BuyNowAuction struct {
+	XMLName xml.Name           `xml:"namesilo"`
+	Request Request            `xml:"request"`
+	Reply   BuyNowAuctionReply `xml:"reply"`
+}
+
+// BuyNowAuctionReply A reply representation.
+type BuyNowAuctionReply struct {
+	Reply
+
+	Body BidReply `xml:"body"`
+}
+
+// BidderReply A reply representation.
+type BidderReply struct {
+	UserID                 string `xml:"userId"`
+	UserMaxBid             string `xml:"userMaxBid"`
+	ProxyMaxBid            string `xml:"proxyMaxBid"`
+	Balance                string `xml:"balance"`
+	CreditLimit            string `xml:"creditLimit"`
+	OutstandingCommitments string `xml:"outstandingCommitments"`
+	RenewPriceThisDomain   string `xml:"renewPriceThisDomain"`
+	UserInWatchlist        string `xml:"userInWatchlist"`
+}
+
+// BidReply A reply representation.
+type BidReply struct {
+	AuctionID string `xml:"auctionId"`
+	UserID    string `xml:"userId"`
+	Bid       string `xml:"bid"`
+	ProxyBid  string `xml:"proxyBid"`
+	Errors    string `xml:"errors"`
+}
+
 // ChangeNameServers was generated 2019-03-20 19:35:05.
 type ChangeNameServers struct {
 	XMLName xml.Name `xml:"namesilo"`
@@ -482,6 +531,39 @@ type ComNet struct {
 	Renew        string `xml:"renew"`
 }
 
+// ListAuctions was generated 2025-08-31 11:37:00.
+type ListAuctions struct {
+	XMLName xml.Name          `xml:"namesilo"`
+	Request Request           `xml:"request"`
+	Reply   ListAuctionsReply `xml:"reply"`
+}
+
+// ListAuctionsReply A reply representation.
+type ListAuctionsReply struct {
+	Reply
+
+	Body struct {
+		Entry []struct {
+			ID               string `xml:"id"`
+			LeaderUserID     string `xml:"leaderUserId"`
+			OwnerUserID      string `xml:"ownerUserId"`
+			DomainID         string `xml:"domainId"`
+			Domain           string `xml:"domain"`
+			StatusID         string `xml:"statusId"`
+			TypeID           string `xml:"typeId"`
+			OpeningBid       string `xml:"openingBid"`
+			CurrentBid       string `xml:"currentBid"`
+			MaxBid           string `xml:"maxBid"`
+			HasBids          string `xml:"hasBids"`
+			BidsQuantity     string `xml:"bidsQuantity"`
+			DomainCreatedOn  string `xml:"domainCreatedOn"`
+			AuctionEndsOn    string `xml:"auctionEndsOn"`
+			AuctionEndsOnUtc string `xml:"auctionEndsOnUtc"`
+			URL              string `xml:"url"`
+		} `xml:"entry"`
+	} `xml:"body"`
+}
+
 // ListDomains was generated 2019-03-20 19:35:05.
 type ListDomains struct {
 	XMLName xml.Name         `xml:"namesilo"`
@@ -900,6 +982,95 @@ type TransferUpdateResubmitToRegistry struct {
 	XMLName xml.Name `xml:"namesilo"`
 	Request Request  `xml:"request"`
 	Reply   Reply    `xml:"reply"`
+}
+
+// ViewAuction was generated 2025-08-31 11:37:00.
+type ViewAuction struct {
+	XMLName xml.Name         `xml:"namesilo"`
+	Request Request          `xml:"request"`
+	Reply   ViewAuctionReply `xml:"reply"`
+}
+
+// ViewAuctionReply A reply representation.
+type ViewAuctionReply struct {
+	Reply
+
+	Body struct {
+		ID              string      `xml:"id"`
+		LeaderUserID    string      `xml:"leaderUserId"`
+		OwnerUserID     string      `xml:"ownerUserId"`
+		DomainID        string      `xml:"domainId"`
+		Domain          string      `xml:"domain"`
+		StatusID        string      `xml:"statusId"`
+		TypeID          string      `xml:"typeId"`
+		OpeningBid      string      `xml:"openingBid"`
+		CurrentBid      string      `xml:"currentBid"`
+		MaxBid          string      `xml:"maxBid"`
+		DomainCreatedOn string      `xml:"domainCreatedOn"`
+		AuctionEndsOn   string      `xml:"auctionEndsOn"`
+		MinBid          string      `xml:"minBid"`
+		HasBids         string      `xml:"hasBids"`
+		BidsQuantity    string      `xml:"bidsQuantity"`
+		BiddingScheme   string      `xml:"biddingScheme"`
+		Bidder          BidderReply `xml:"bidder"`
+		Errors          string      `xml:"errors"`
+		IsValid         string      `xml:"isValid"`
+	} `xml:"body"`
+}
+
+// ViewAuctionHistory was generated 2025-08-31 11:37:00.
+type ViewAuctionHistory struct {
+	XMLName xml.Name                `xml:"namesilo"`
+	Request Request                 `xml:"request"`
+	Reply   ViewAuctionHistoryReply `xml:"reply"`
+}
+
+// ViewAuctionHistoryReply A reply representation.
+type ViewAuctionHistoryReply struct {
+	Reply
+
+	Body struct {
+		Entry []struct {
+			AuctionID   string `xml:"auctionId"`
+			BidderID    string `xml:"bidderId"`
+			BidderTitle string `xml:"bidderTitle"`
+			BidAmount   string `xml:"bidAmount"`
+			MetReserve  string `xml:"metReserve"`
+			ProxyBid    string `xml:"proxyBid"`
+			CreatedAt   string `xml:"createdAt"`
+		} `xml:"entry"`
+	} `xml:"body"`
+}
+
+// WatchAuction was generated 2025-08-31 11:37:00.
+type WatchAuction struct {
+	XMLName xml.Name          `xml:"namesilo"`
+	Request Request           `xml:"request"`
+	Reply   WatchAuctionReply `xml:"reply"`
+}
+
+// WatchAuctionReply A reply representation.
+type WatchAuctionReply struct {
+	Reply
+
+	Body struct {
+		ID              string      `xml:"id"`
+		LeaderUserID    string      `xml:"leaderUserId"`
+		OwnerUserID     string      `xml:"ownerUserId"`
+		DomainID        string      `xml:"domainId"`
+		Domain          string      `xml:"domain"`
+		StatusID        string      `xml:"statusId"`
+		TypeID          string      `xml:"typeId"`
+		OpeningBid      string      `xml:"openingBid"`
+		CurrentBid      string      `xml:"currentBid"`
+		MaxBid          string      `xml:"maxBid"`
+		DomainCreatedOn string      `xml:"domainCreatedOn"`
+		AuctionEndsOn   string      `xml:"auctionEndsOn"`
+		MinBid          string      `xml:"minBid"`
+		Bidder          BidderReply `xml:"bidder"`
+		Errors          string      `xml:"errors"`
+		IsValid         string      `xml:"isValid"`
+	} `xml:"body"`
 }
 
 // WhoisInfo was generated 2025-08-31 10:05:00.
