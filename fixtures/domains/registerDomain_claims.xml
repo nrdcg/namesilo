@@ -6,7 +6,11 @@
     </request>
     <reply>
         <code>210</code>
-        <detail>You have receive this Trademark notice because you have applied for a domain name which matches at least one trademark record submitted to the Trademark Clearinghouse. You need to agree with these claims adding to request submit_claims array with notice_id values and submit_date parameter with 20XX-MM-DDTHH:mm:ss UTC datetime.</detail>
+        <detail>You have receive this Trademark notice because you have applied for a domain name which matches at least
+            one trademark record submitted to the Trademark Clearinghouse. You need to agree with these claims adding to
+            request submit_claims array with notice_id values and submit_date parameter with 20XX-MM-DDTHH:mm:ss UTC
+            datetime.
+        </detail>
         <claims>
             <claim_code>0000000000/A/0/0/aAA0AAaAAaaaAAaAaaaAA00a0000000000</claim_code>
             <notice_id>0000aaa00000000000123456789</notice_id>
@@ -38,11 +42,11 @@
                     <country>US</country>
                     <phone>+1.5555555555</phone>
                     <fax/>
-                    <email>[email protected]</email>
+                    <email>[email protected]</email>
                 </contact>
                 <jurDesc/>
-                <classes>important information here </classes>
-                <goodsAndServices>any additional data here </goodsAndServices>
+                <classes>important information here</classes>
+                <goodsAndServices>any additional data here</goodsAndServices>
                 <jurisdiction>United States of America</jurisdiction>
             </info>
         </claims>

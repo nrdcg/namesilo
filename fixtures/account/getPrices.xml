@@ -7,14 +7,14 @@
         <code>300</code>
         <detail>success</detail>
         <com>
-            <registration>8.99</registration>
-            <transfer>8.39</transfer>
-            <renew>8.99</renew>
+            <registration>10.00</registration>
+            <transfer>10.40</transfer>
+            <renew>11.95</renew>
         </com>
         <net>
-            <registration>9.29</registration>
-            <transfer>8.99</transfer>
-            <renew>9.29</renew>
+            <registration>11.85</registration>
+            <transfer>11.35</transfer>
+            <renew>11.85</renew>
         </net>
     </reply>
 </namesilo>

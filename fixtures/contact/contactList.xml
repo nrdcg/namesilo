@@ -19,7 +19,7 @@
             <state>ST</state>
             <zip>55555</zip>
             <country>US</country>
-            <email>homer @simpsons.com</email>
+            <email>[email protected]</email>
             <phone>999-555-1212</phone>
             <fax>555-123-4567</fax>
             <usnc>C21</usnc>
@@ -42,7 +42,7 @@
             <state>AZ</state>
             <zip>12345</zip>
             <country>US</country>
-            <email>test @test.com</email>
+            <email>[email protected]</email>
             <phone>480-555-1212</phone>
             <fax>888-777-6666</fax>
             <usnc/>

@@ -1,0 +1,25 @@
+<namesilo>
+    <request>
+        <operation>domainPush</operation>
+        <ip>55.555.55.55</ip>
+    </request>
+    <reply>
+        <code>300</code>
+        <detail>success</detail>
+        <body>
+            <recipientLogin>tester2</recipientLogin>
+            <domainsPushStatuses>
+                <entry>
+                    <domain>namesilo.com</domain>
+                    <success>true</success>
+                    <error></error>
+                </entry>
+                <entry>
+                    <domain>goole.com</domain>
+                    <success>false</success>
+                    <error>Domain not fount or not belong to user</error>
+                </entry>
+            </domainsPushStatuses>
+        </body>
+    </reply>
+</namesilo>

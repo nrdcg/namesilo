@@ -6,6 +6,7 @@
     <reply>
         <code>300</code>
         <detail>success</detail>
+        <order_number>123456</order_number>
         <order_date>2016-12-24 12:12:12</order_date>
         <method>Bitcoin</method>
         <total>26.97</total>

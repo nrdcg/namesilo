@@ -1,6 +1,6 @@
 <namesilo>
     <request>
-        <operation>viewAuction</operation>
+        <operation>watchAuction</operation>
         <ip>55.555.55.55</ip>
     </request>
     <reply>

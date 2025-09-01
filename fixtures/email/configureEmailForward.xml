@@ -6,6 +6,6 @@
     <reply>
         <code>300</code>
         <detail>success</detail>
-        <message>test@namesilo.com has been successfully (&#34;created&#34; or &#34;changed&#34;)</message>
+        <message>[email protected] has been successfully ("created" or "changed")</message>
     </reply>
 </namesilo>
