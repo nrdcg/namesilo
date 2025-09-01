@@ -43,6 +43,6 @@ func toCleanString(data []byte) string {
 
 {{range $key, $value := .Names }}
 func Test{{ $value.Upper }}(t *testing.T) {
-	assertXMLEqual(t,  &{{ $value.Upper }}{}, "./fixtures/{{ $value.Dir }}/{{ $value.Lower }}.xml")
+	assertXMLEqual(t,  &{{ $value.Upper }}{}, "./fixtures/operations/{{ $value.Lower }}.xml")
 }
 {{end}}

@@ -58,13 +58,12 @@ type {{ $value.Upper }}Params struct {
 type BaseName struct {
 	Lower string
 	Upper string
-	Dir   string
 }
 
 func generate(tmpl, filename string) error {
 	var baseNames []BaseName
 
-	err := filepath.WalkDir(filepath.FromSlash("fixtures"), func(path string, d os.DirEntry, err error) error {
+	err := filepath.WalkDir(filepath.FromSlash("fixtures"), func(_ string, d os.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
@@ -89,7 +88,6 @@ func generate(tmpl, filename string) error {
 		baseNames = append(baseNames, BaseName{
 			Lower: baseName,
 			Upper: strings.ToUpper(string(baseName[0])) + baseName[1:],
-			Dir:   filepath.Base(filepath.Dir(path)),
 		})
 
 		return nil

@@ -17,7 +17,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func setupFakeAPI(t *testing.T, dir, operation string) *Client {
+func setupFakeAPI(t *testing.T, operation string) *Client {
 	t.Helper()
 
 	mux := http.NewServeMux()
@@ -36,7 +36,7 @@ func setupFakeAPI(t *testing.T, dir, operation string) *Client {
 			}
 		}
 
-		f, err := os.Open(filepath.Clean(filepath.Join(".", "fixtures", dir, operation+".xml")))
+		f, err := os.Open(filepath.Clean(filepath.Join(".", "fixtures", "operations", operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -56,7 +56,7 @@ func setupFakeAPI(t *testing.T, dir, operation string) *Client {
 }
 
 func TestClient_AddAccountFunds(t *testing.T) {
-	client := setupFakeAPI(t, "account", "addAccountFunds")
+	client := setupFakeAPI(t, "addAccountFunds")
 
 	params := &AddAccountFundsParams{}
 
@@ -69,7 +69,7 @@ func TestClient_AddAccountFunds(t *testing.T) {
 }
 
 func TestClient_AddAutoRenewal(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "addAutoRenewal")
+	client := setupFakeAPI(t, "addAutoRenewal")
 
 	params := &AddAutoRenewalParams{}
 
@@ -82,7 +82,7 @@ func TestClient_AddAutoRenewal(t *testing.T) {
 }
 
 func TestClient_AddPrivacy(t *testing.T) {
-	client := setupFakeAPI(t, "privacy", "addPrivacy")
+	client := setupFakeAPI(t, "addPrivacy")
 
 	params := &AddPrivacyParams{}
 
@@ -95,7 +95,7 @@ func TestClient_AddPrivacy(t *testing.T) {
 }
 
 func TestClient_AddRegisteredNameServer(t *testing.T) {
-	client := setupFakeAPI(t, "nameserver", "addRegisteredNameServer")
+	client := setupFakeAPI(t, "addRegisteredNameServer")
 
 	params := &AddRegisteredNameServerParams{}
 
@@ -108,7 +108,7 @@ func TestClient_AddRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_BidAuction(t *testing.T) {
-	client := setupFakeAPI(t, "auctions", "bidAuction")
+	client := setupFakeAPI(t, "bidAuction")
 
 	params := &BidAuctionParams{}
 
@@ -121,7 +121,7 @@ func TestClient_BidAuction(t *testing.T) {
 }
 
 func TestClient_BuyNowAuction(t *testing.T) {
-	client := setupFakeAPI(t, "auctions", "buyNowAuction")
+	client := setupFakeAPI(t, "buyNowAuction")
 
 	params := &BuyNowAuctionParams{}
 
@@ -134,7 +134,7 @@ func TestClient_BuyNowAuction(t *testing.T) {
 }
 
 func TestClient_ChangeNameServers(t *testing.T) {
-	client := setupFakeAPI(t, "nameserver", "changeNameServers")
+	client := setupFakeAPI(t, "changeNameServers")
 
 	params := &ChangeNameServersParams{}
 
@@ -147,7 +147,7 @@ func TestClient_ChangeNameServers(t *testing.T) {
 }
 
 func TestClient_CheckRegisterAvailability(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "checkRegisterAvailability")
+	client := setupFakeAPI(t, "checkRegisterAvailability")
 
 	params := &CheckRegisterAvailabilityParams{}
 
@@ -160,7 +160,7 @@ func TestClient_CheckRegisterAvailability(t *testing.T) {
 }
 
 func TestClient_CheckTransferAvailability(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "checkTransferAvailability")
+	client := setupFakeAPI(t, "checkTransferAvailability")
 
 	params := &CheckTransferAvailabilityParams{}
 
@@ -173,7 +173,7 @@ func TestClient_CheckTransferAvailability(t *testing.T) {
 }
 
 func TestClient_CheckTransferStatus(t *testing.T) {
-	client := setupFakeAPI(t, "transfers", "checkTransferStatus")
+	client := setupFakeAPI(t, "checkTransferStatus")
 
 	params := &CheckTransferStatusParams{}
 
@@ -186,7 +186,7 @@ func TestClient_CheckTransferStatus(t *testing.T) {
 }
 
 func TestClient_ConfigureEmailForward(t *testing.T) {
-	client := setupFakeAPI(t, "email", "configureEmailForward")
+	client := setupFakeAPI(t, "configureEmailForward")
 
 	params := &ConfigureEmailForwardParams{}
 
@@ -199,7 +199,7 @@ func TestClient_ConfigureEmailForward(t *testing.T) {
 }
 
 func TestClient_ContactAdd(t *testing.T) {
-	client := setupFakeAPI(t, "contact", "contactAdd")
+	client := setupFakeAPI(t, "contactAdd")
 
 	params := &ContactAddParams{}
 
@@ -212,7 +212,7 @@ func TestClient_ContactAdd(t *testing.T) {
 }
 
 func TestClient_ContactDelete(t *testing.T) {
-	client := setupFakeAPI(t, "contact", "contactDelete")
+	client := setupFakeAPI(t, "contactDelete")
 
 	params := &ContactDeleteParams{}
 
@@ -225,7 +225,7 @@ func TestClient_ContactDelete(t *testing.T) {
 }
 
 func TestClient_ContactDomainAssociate(t *testing.T) {
-	client := setupFakeAPI(t, "contact", "contactDomainAssociate")
+	client := setupFakeAPI(t, "contactDomainAssociate")
 
 	params := &ContactDomainAssociateParams{}
 
@@ -238,7 +238,7 @@ func TestClient_ContactDomainAssociate(t *testing.T) {
 }
 
 func TestClient_ContactList(t *testing.T) {
-	client := setupFakeAPI(t, "contact", "contactList")
+	client := setupFakeAPI(t, "contactList")
 
 	params := &ContactListParams{}
 
@@ -251,7 +251,7 @@ func TestClient_ContactList(t *testing.T) {
 }
 
 func TestClient_ContactUpdate(t *testing.T) {
-	client := setupFakeAPI(t, "contact", "contactUpdate")
+	client := setupFakeAPI(t, "contactUpdate")
 
 	params := &ContactUpdateParams{}
 
@@ -264,7 +264,7 @@ func TestClient_ContactUpdate(t *testing.T) {
 }
 
 func TestClient_CountExpiringDomains(t *testing.T) {
-	client := setupFakeAPI(t, "account", "countExpiringDomains")
+	client := setupFakeAPI(t, "countExpiringDomains")
 
 	params := &CountExpiringDomainsParams{}
 
@@ -277,7 +277,7 @@ func TestClient_CountExpiringDomains(t *testing.T) {
 }
 
 func TestClient_DeleteEmailForward(t *testing.T) {
-	client := setupFakeAPI(t, "email", "deleteEmailForward")
+	client := setupFakeAPI(t, "deleteEmailForward")
 
 	params := &DeleteEmailForwardParams{}
 
@@ -290,7 +290,7 @@ func TestClient_DeleteEmailForward(t *testing.T) {
 }
 
 func TestClient_DeleteRegisteredNameServer(t *testing.T) {
-	client := setupFakeAPI(t, "nameserver", "deleteRegisteredNameServer")
+	client := setupFakeAPI(t, "deleteRegisteredNameServer")
 
 	params := &DeleteRegisteredNameServerParams{}
 
@@ -303,7 +303,7 @@ func TestClient_DeleteRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_DnsAddRecord(t *testing.T) {
-	client := setupFakeAPI(t, "dns", "dnsAddRecord")
+	client := setupFakeAPI(t, "dnsAddRecord")
 
 	params := &DnsAddRecordParams{}
 
@@ -316,7 +316,7 @@ func TestClient_DnsAddRecord(t *testing.T) {
 }
 
 func TestClient_DnsDeleteRecord(t *testing.T) {
-	client := setupFakeAPI(t, "dns", "dnsDeleteRecord")
+	client := setupFakeAPI(t, "dnsDeleteRecord")
 
 	params := &DnsDeleteRecordParams{}
 
@@ -329,7 +329,7 @@ func TestClient_DnsDeleteRecord(t *testing.T) {
 }
 
 func TestClient_DnsListRecords(t *testing.T) {
-	client := setupFakeAPI(t, "dns", "dnsListRecords")
+	client := setupFakeAPI(t, "dnsListRecords")
 
 	params := &DnsListRecordsParams{}
 
@@ -342,7 +342,7 @@ func TestClient_DnsListRecords(t *testing.T) {
 }
 
 func TestClient_DnsSecAddRecord(t *testing.T) {
-	client := setupFakeAPI(t, "dns", "dnsSecAddRecord")
+	client := setupFakeAPI(t, "dnsSecAddRecord")
 
 	params := &DnsSecAddRecordParams{}
 
@@ -355,7 +355,7 @@ func TestClient_DnsSecAddRecord(t *testing.T) {
 }
 
 func TestClient_DnsSecDeleteRecord(t *testing.T) {
-	client := setupFakeAPI(t, "dns", "dnsSecDeleteRecord")
+	client := setupFakeAPI(t, "dnsSecDeleteRecord")
 
 	params := &DnsSecDeleteRecordParams{}
 
@@ -368,7 +368,7 @@ func TestClient_DnsSecDeleteRecord(t *testing.T) {
 }
 
 func TestClient_DnsSecListRecords(t *testing.T) {
-	client := setupFakeAPI(t, "dns", "dnsSecListRecords")
+	client := setupFakeAPI(t, "dnsSecListRecords")
 
 	params := &DnsSecListRecordsParams{}
 
@@ -381,7 +381,7 @@ func TestClient_DnsSecListRecords(t *testing.T) {
 }
 
 func TestClient_DnsUpdateRecord(t *testing.T) {
-	client := setupFakeAPI(t, "dns", "dnsUpdateRecord")
+	client := setupFakeAPI(t, "dnsUpdateRecord")
 
 	params := &DnsUpdateRecordParams{}
 
@@ -394,7 +394,7 @@ func TestClient_DnsUpdateRecord(t *testing.T) {
 }
 
 func TestClient_DomainForward(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "domainForward")
+	client := setupFakeAPI(t, "domainForward")
 
 	params := &DomainForwardParams{}
 
@@ -407,7 +407,7 @@ func TestClient_DomainForward(t *testing.T) {
 }
 
 func TestClient_DomainForwardSubDomain(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "domainForwardSubDomain")
+	client := setupFakeAPI(t, "domainForwardSubDomain")
 
 	params := &DomainForwardSubDomainParams{}
 
@@ -420,7 +420,7 @@ func TestClient_DomainForwardSubDomain(t *testing.T) {
 }
 
 func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "domainForwardSubDomainDelete")
+	client := setupFakeAPI(t, "domainForwardSubDomainDelete")
 
 	params := &DomainForwardSubDomainDeleteParams{}
 
@@ -433,7 +433,7 @@ func TestClient_DomainForwardSubDomainDelete(t *testing.T) {
 }
 
 func TestClient_DomainLock(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "domainLock")
+	client := setupFakeAPI(t, "domainLock")
 
 	params := &DomainLockParams{}
 
@@ -446,7 +446,7 @@ func TestClient_DomainLock(t *testing.T) {
 }
 
 func TestClient_DomainUnlock(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "domainUnlock")
+	client := setupFakeAPI(t, "domainUnlock")
 
 	params := &DomainUnlockParams{}
 
@@ -459,7 +459,7 @@ func TestClient_DomainUnlock(t *testing.T) {
 }
 
 func TestClient_EmailVerification(t *testing.T) {
-	client := setupFakeAPI(t, "email", "emailVerification")
+	client := setupFakeAPI(t, "emailVerification")
 
 	params := &EmailVerificationParams{}
 
@@ -472,7 +472,7 @@ func TestClient_EmailVerification(t *testing.T) {
 }
 
 func TestClient_GetAccountBalance(t *testing.T) {
-	client := setupFakeAPI(t, "account", "getAccountBalance")
+	client := setupFakeAPI(t, "getAccountBalance")
 
 	params := &GetAccountBalanceParams{}
 
@@ -485,7 +485,7 @@ func TestClient_GetAccountBalance(t *testing.T) {
 }
 
 func TestClient_GetDomainInfo(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "getDomainInfo")
+	client := setupFakeAPI(t, "getDomainInfo")
 
 	params := &GetDomainInfoParams{}
 
@@ -498,7 +498,7 @@ func TestClient_GetDomainInfo(t *testing.T) {
 }
 
 func TestClient_GetPrices(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "getPrices")
+	client := setupFakeAPI(t, "getPrices")
 
 	params := &GetPricesParams{}
 
@@ -511,7 +511,7 @@ func TestClient_GetPrices(t *testing.T) {
 }
 
 func TestClient_ListAuctions(t *testing.T) {
-	client := setupFakeAPI(t, "auctions", "listAuctions")
+	client := setupFakeAPI(t, "listAuctions")
 
 	params := &ListAuctionsParams{}
 
@@ -524,7 +524,7 @@ func TestClient_ListAuctions(t *testing.T) {
 }
 
 func TestClient_ListDomains(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "listDomains")
+	client := setupFakeAPI(t, "listDomains")
 
 	params := &ListDomainsParams{}
 
@@ -537,7 +537,7 @@ func TestClient_ListDomains(t *testing.T) {
 }
 
 func TestClient_ListEmailForwards(t *testing.T) {
-	client := setupFakeAPI(t, "email", "listEmailForwards")
+	client := setupFakeAPI(t, "listEmailForwards")
 
 	params := &ListEmailForwardsParams{}
 
@@ -550,7 +550,7 @@ func TestClient_ListEmailForwards(t *testing.T) {
 }
 
 func TestClient_ListExpiringDomains(t *testing.T) {
-	client := setupFakeAPI(t, "account", "listExpiringDomains")
+	client := setupFakeAPI(t, "listExpiringDomains")
 
 	params := &ListExpiringDomainsParams{}
 
@@ -563,7 +563,7 @@ func TestClient_ListExpiringDomains(t *testing.T) {
 }
 
 func TestClient_ListOrders(t *testing.T) {
-	client := setupFakeAPI(t, "account", "listOrders")
+	client := setupFakeAPI(t, "listOrders")
 
 	params := &ListOrdersParams{}
 
@@ -576,7 +576,7 @@ func TestClient_ListOrders(t *testing.T) {
 }
 
 func TestClient_ListRegisteredNameServers(t *testing.T) {
-	client := setupFakeAPI(t, "nameserver", "listRegisteredNameServers")
+	client := setupFakeAPI(t, "listRegisteredNameServers")
 
 	params := &ListRegisteredNameServersParams{}
 
@@ -589,7 +589,7 @@ func TestClient_ListRegisteredNameServers(t *testing.T) {
 }
 
 func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
-	client := setupFakeAPI(t, "marketplace", "marketplaceActiveSalesOverview")
+	client := setupFakeAPI(t, "marketplaceActiveSalesOverview")
 
 	params := &MarketplaceActiveSalesOverviewParams{}
 
@@ -602,7 +602,7 @@ func TestClient_MarketplaceActiveSalesOverview(t *testing.T) {
 }
 
 func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
-	client := setupFakeAPI(t, "marketplace", "marketplaceAddOrModifySale")
+	client := setupFakeAPI(t, "marketplaceAddOrModifySale")
 
 	params := &MarketplaceAddOrModifySaleParams{}
 
@@ -615,7 +615,7 @@ func TestClient_MarketplaceAddOrModifySale(t *testing.T) {
 }
 
 func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
-	client := setupFakeAPI(t, "marketplace", "marketplaceLandingPageUpdate")
+	client := setupFakeAPI(t, "marketplaceLandingPageUpdate")
 
 	params := &MarketplaceLandingPageUpdateParams{}
 
@@ -628,7 +628,7 @@ func TestClient_MarketplaceLandingPageUpdate(t *testing.T) {
 }
 
 func TestClient_ModifyRegisteredNameServer(t *testing.T) {
-	client := setupFakeAPI(t, "nameserver", "modifyRegisteredNameServer")
+	client := setupFakeAPI(t, "modifyRegisteredNameServer")
 
 	params := &ModifyRegisteredNameServerParams{}
 
@@ -641,7 +641,7 @@ func TestClient_ModifyRegisteredNameServer(t *testing.T) {
 }
 
 func TestClient_OrderDetails(t *testing.T) {
-	client := setupFakeAPI(t, "account", "orderDetails")
+	client := setupFakeAPI(t, "orderDetails")
 
 	params := &OrderDetailsParams{}
 
@@ -654,7 +654,7 @@ func TestClient_OrderDetails(t *testing.T) {
 }
 
 func TestClient_PortfolioAdd(t *testing.T) {
-	client := setupFakeAPI(t, "portfolio", "portfolioAdd")
+	client := setupFakeAPI(t, "portfolioAdd")
 
 	params := &PortfolioAddParams{}
 
@@ -667,7 +667,7 @@ func TestClient_PortfolioAdd(t *testing.T) {
 }
 
 func TestClient_PortfolioDelete(t *testing.T) {
-	client := setupFakeAPI(t, "portfolio", "portfolioDelete")
+	client := setupFakeAPI(t, "portfolioDelete")
 
 	params := &PortfolioDeleteParams{}
 
@@ -680,7 +680,7 @@ func TestClient_PortfolioDelete(t *testing.T) {
 }
 
 func TestClient_PortfolioDomainAssociate(t *testing.T) {
-	client := setupFakeAPI(t, "portfolio", "portfolioDomainAssociate")
+	client := setupFakeAPI(t, "portfolioDomainAssociate")
 
 	params := &PortfolioDomainAssociateParams{}
 
@@ -693,7 +693,7 @@ func TestClient_PortfolioDomainAssociate(t *testing.T) {
 }
 
 func TestClient_PortfolioList(t *testing.T) {
-	client := setupFakeAPI(t, "portfolio", "portfolioList")
+	client := setupFakeAPI(t, "portfolioList")
 
 	params := &PortfolioListParams{}
 
@@ -706,7 +706,7 @@ func TestClient_PortfolioList(t *testing.T) {
 }
 
 func TestClient_RegisterDomain(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "registerDomain")
+	client := setupFakeAPI(t, "registerDomain")
 
 	params := &RegisterDomainParams{}
 
@@ -719,7 +719,7 @@ func TestClient_RegisterDomain(t *testing.T) {
 }
 
 func TestClient_RegisterDomainDrop(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "registerDomainDrop")
+	client := setupFakeAPI(t, "registerDomainDrop")
 
 	params := &RegisterDomainDropParams{}
 
@@ -732,7 +732,7 @@ func TestClient_RegisterDomainDrop(t *testing.T) {
 }
 
 func TestClient_RegistrantVerificationStatus(t *testing.T) {
-	client := setupFakeAPI(t, "email", "registrantVerificationStatus")
+	client := setupFakeAPI(t, "registrantVerificationStatus")
 
 	params := &RegistrantVerificationStatusParams{}
 
@@ -745,7 +745,7 @@ func TestClient_RegistrantVerificationStatus(t *testing.T) {
 }
 
 func TestClient_RemoveAutoRenewal(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "removeAutoRenewal")
+	client := setupFakeAPI(t, "removeAutoRenewal")
 
 	params := &RemoveAutoRenewalParams{}
 
@@ -758,7 +758,7 @@ func TestClient_RemoveAutoRenewal(t *testing.T) {
 }
 
 func TestClient_RemovePrivacy(t *testing.T) {
-	client := setupFakeAPI(t, "privacy", "removePrivacy")
+	client := setupFakeAPI(t, "removePrivacy")
 
 	params := &RemovePrivacyParams{}
 
@@ -771,7 +771,7 @@ func TestClient_RemovePrivacy(t *testing.T) {
 }
 
 func TestClient_RenewDomain(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "renewDomain")
+	client := setupFakeAPI(t, "renewDomain")
 
 	params := &RenewDomainParams{}
 
@@ -784,7 +784,7 @@ func TestClient_RenewDomain(t *testing.T) {
 }
 
 func TestClient_RetrieveAuthCode(t *testing.T) {
-	client := setupFakeAPI(t, "transfers", "retrieveAuthCode")
+	client := setupFakeAPI(t, "retrieveAuthCode")
 
 	params := &RetrieveAuthCodeParams{}
 
@@ -797,7 +797,7 @@ func TestClient_RetrieveAuthCode(t *testing.T) {
 }
 
 func TestClient_TransferDomain(t *testing.T) {
-	client := setupFakeAPI(t, "transfers", "transferDomain")
+	client := setupFakeAPI(t, "transferDomain")
 
 	params := &TransferDomainParams{}
 
@@ -810,7 +810,7 @@ func TestClient_TransferDomain(t *testing.T) {
 }
 
 func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
-	client := setupFakeAPI(t, "transfers", "transferUpdateChangeEPPCode")
+	client := setupFakeAPI(t, "transferUpdateChangeEPPCode")
 
 	params := &TransferUpdateChangeEPPCodeParams{}
 
@@ -823,7 +823,7 @@ func TestClient_TransferUpdateChangeEPPCode(t *testing.T) {
 }
 
 func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
-	client := setupFakeAPI(t, "transfers", "transferUpdateResendAdminEmail")
+	client := setupFakeAPI(t, "transferUpdateResendAdminEmail")
 
 	params := &TransferUpdateResendAdminEmailParams{}
 
@@ -836,7 +836,7 @@ func TestClient_TransferUpdateResendAdminEmail(t *testing.T) {
 }
 
 func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
-	client := setupFakeAPI(t, "transfers", "transferUpdateResubmitToRegistry")
+	client := setupFakeAPI(t, "transferUpdateResubmitToRegistry")
 
 	params := &TransferUpdateResubmitToRegistryParams{}
 
@@ -849,7 +849,7 @@ func TestClient_TransferUpdateResubmitToRegistry(t *testing.T) {
 }
 
 func TestClient_ViewAuction(t *testing.T) {
-	client := setupFakeAPI(t, "auctions", "viewAuction")
+	client := setupFakeAPI(t, "viewAuction")
 
 	params := &ViewAuctionParams{}
 
@@ -862,7 +862,7 @@ func TestClient_ViewAuction(t *testing.T) {
 }
 
 func TestClient_ViewAuctionHistory(t *testing.T) {
-	client := setupFakeAPI(t, "auctions", "viewAuctionHistory")
+	client := setupFakeAPI(t, "viewAuctionHistory")
 
 	params := &ViewAuctionHistoryParams{}
 
@@ -875,7 +875,7 @@ func TestClient_ViewAuctionHistory(t *testing.T) {
 }
 
 func TestClient_WatchAuction(t *testing.T) {
-	client := setupFakeAPI(t, "auctions", "watchAuction")
+	client := setupFakeAPI(t, "watchAuction")
 
 	params := &WatchAuctionParams{}
 
@@ -888,7 +888,7 @@ func TestClient_WatchAuction(t *testing.T) {
 }
 
 func TestClient_WhoisInfo(t *testing.T) {
-	client := setupFakeAPI(t, "domains", "whoisInfo")
+	client := setupFakeAPI(t, "whoisInfo")
 
 	params := &WhoisInfoParams{}
 

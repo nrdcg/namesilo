@@ -17,7 +17,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func setupFakeAPI(t *testing.T, dir, operation string) *Client {
+func setupFakeAPI(t *testing.T, operation string) *Client {
 	t.Helper()
 
 	mux := http.NewServeMux()
@@ -36,7 +36,7 @@ func setupFakeAPI(t *testing.T, dir, operation string) *Client {
 			}
 		}
 
-		f, err := os.Open(filepath.Clean(filepath.Join(".", "fixtures", dir, operation+".xml")))
+		f, err := os.Open(filepath.Clean(filepath.Join(".", "fixtures", "operations", operation+".xml")))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -56,7 +56,7 @@ func setupFakeAPI(t *testing.T, dir, operation string) *Client {
 }
 {{range $key, $value := .Names }}
 func TestClient_{{ $value.Upper }}(t *testing.T) {
-	client := setupFakeAPI(t, "{{ $value.Dir }}", "{{ $value.Lower }}")
+	client := setupFakeAPI(t, "{{ $value.Lower }}")
 
 	params := &{{ $value.Upper }}Params{}
 
