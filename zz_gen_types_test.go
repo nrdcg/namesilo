@@ -293,6 +293,10 @@ func TestViewAuctionHistory(t *testing.T) {
 	assertXMLEqual(t, &ViewAuctionHistory{}, "./fixtures/operations/viewAuctionHistory.xml")
 }
 
+func TestViewAuctions(t *testing.T) {
+	assertXMLEqual(t, &ViewAuctions{}, "./fixtures/operations/viewAuctions.xml")
+}
+
 func TestWatchAuction(t *testing.T) {
 	assertXMLEqual(t, &WatchAuction{}, "./fixtures/operations/watchAuction.xml")
 }

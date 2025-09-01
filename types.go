@@ -1026,6 +1026,50 @@ type ViewAuctionReply struct {
 	} `xml:"body"`
 }
 
+// ViewAuctions was generated 2025-09-01 17:34:00.
+type ViewAuctions struct {
+	XMLName xml.Name          `xml:"namesilo"`
+	Request Request           `xml:"request"`
+	Reply   ViewAuctionsReply `xml:"reply"`
+}
+
+// ViewAuctionsReply A reply representation.
+type ViewAuctionsReply struct {
+	Reply
+
+	Body struct {
+		Entry []struct {
+			ID              string `xml:"id"`
+			LeaderUserID    string `xml:"leaderUserId"`
+			OwnerUserID     string `xml:"ownerUserId"`
+			DomainID        string `xml:"domainId"`
+			Domain          string `xml:"domain"`
+			StatusID        string `xml:"statusId"`
+			TypeID          string `xml:"typeId"`
+			OpeningBid      string `xml:"openingBid"`
+			CurrentBid      string `xml:"currentBid"`
+			MaxBid          string `xml:"maxBid"`
+			DomainCreatedOn string `xml:"domainCreatedOn"`
+			AuctionEndsOn   string `xml:"auctionEndsOn"`
+			MinBid          string `xml:"minBid"`
+			HasBids         string `xml:"hasBids"`
+			BidsQuantity    string `xml:"bidsQuantity"`
+			Bidder          struct {
+				UserID                 string `xml:"userId"`
+				UserMaxBid             string `xml:"userMaxBid"`
+				ProxyMaxBid            string `xml:"proxyMaxBid"`
+				Balance                string `xml:"balance"`
+				CreditLimit            string `xml:"creditLimit"`
+				OutstandingCommitments string `xml:"outstandingCommitments"`
+				RenewPriceThisDomain   string `xml:"renewPriceThisDomain"`
+				UserInWatchlist        string `xml:"userInWatchlist"`
+			} `xml:"bidder"`
+			Errors  string `xml:"errors"`
+			IsValid string `xml:"isValid"`
+		} `xml:"entry"`
+	} `xml:"body"`
+}
+
 // ViewAuctionHistory was generated 2025-08-31 11:37:00.
 type ViewAuctionHistory struct {
 	XMLName xml.Name                `xml:"namesilo"`

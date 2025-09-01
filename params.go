@@ -563,6 +563,11 @@ type ViewAuctionParams struct {
 	AuctionID string `url:"auctionId"` // Required
 }
 
+// ViewAuctionsParams Parameters for operation viewAuctions.
+type ViewAuctionsParams struct {
+	AuctionIDs []string `url:"auctionIds,brackets"`
+}
+
 // ViewAuctionHistoryParams Parameters for operation viewAuctionHistory.
 type ViewAuctionHistoryParams struct {
 	AuctionID string `url:"auctionId"` // Required

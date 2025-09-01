@@ -874,6 +874,19 @@ func TestClient_ViewAuctionHistory(t *testing.T) {
 	assert.IsType(t, &ViewAuctionHistory{}, result)
 }
 
+func TestClient_ViewAuctions(t *testing.T) {
+	client := setupFakeAPI(t, "viewAuctions")
+
+	params := &ViewAuctionsParams{}
+
+	result, err := client.ViewAuctions(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &ViewAuctions{}, result)
+}
+
 func TestClient_WatchAuction(t *testing.T) {
 	client := setupFakeAPI(t, "watchAuction")
 

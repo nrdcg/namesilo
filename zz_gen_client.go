@@ -762,6 +762,18 @@ func (c *Client) ViewAuctionHistory(ctx context.Context, params *ViewAuctionHist
 	return op, checkReply(op.Reply)
 }
 
+// ViewAuctions Execute operation viewAuctions.
+func (c *Client) ViewAuctions(ctx context.Context, params *ViewAuctionsParams) (*ViewAuctions, error) {
+	op := &ViewAuctions{}
+
+	err := c.do(ctx, "viewAuctions", params, op)
+	if err != nil {
+		return nil, err
+	}
+
+	return op, checkReply(op.Reply)
+}
+
 // WatchAuction Execute operation watchAuction.
 func (c *Client) WatchAuction(ctx context.Context, params *WatchAuctionParams) (*WatchAuction, error) {
 	op := &WatchAuction{}
