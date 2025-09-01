@@ -161,6 +161,10 @@ func TestDomainLock(t *testing.T) {
 	assertXMLEqual(t, &DomainLock{}, "./fixtures/operations/domainLock.xml")
 }
 
+func TestDomainPush(t *testing.T) {
+	assertXMLEqual(t, &DomainPush{}, "./fixtures/operations/domainPush.xml")
+}
+
 func TestDomainUnlock(t *testing.T) {
 	assertXMLEqual(t, &DomainUnlock{}, "./fixtures/operations/domainUnlock.xml")
 }

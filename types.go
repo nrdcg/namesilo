@@ -442,6 +442,29 @@ type DomainLock struct {
 	Reply   Reply    `xml:"reply"`
 }
 
+// DomainPush was generated 2025-09-01 17:41:00.
+type DomainPush struct {
+	XMLName xml.Name        `xml:"namesilo"`
+	Request Request         `xml:"request"`
+	Reply   DomainPushReply `xml:"reply"`
+}
+
+// DomainPushReply A reply representation.
+type DomainPushReply struct {
+	Reply
+
+	Body struct {
+		RecipientLogin      string `xml:"recipientLogin"`
+		DomainsPushStatuses struct {
+			Entry []struct {
+				Domain  string `xml:"domain"`
+				Success string `xml:"success"`
+				Error   string `xml:"error"`
+			} `xml:"entry"`
+		} `xml:"domainsPushStatuses"`
+	} `xml:"body"`
+}
+
 // DomainUnlock was generated 2019-03-20 19:35:05.
 type DomainUnlock struct {
 	XMLName xml.Name `xml:"namesilo"`

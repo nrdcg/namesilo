@@ -366,6 +366,18 @@ func (c *Client) DomainLock(ctx context.Context, params *DomainLockParams) (*Dom
 	return op, checkReply(op.Reply)
 }
 
+// DomainPush Execute operation domainPush.
+func (c *Client) DomainPush(ctx context.Context, params *DomainPushParams) (*DomainPush, error) {
+	op := &DomainPush{}
+
+	err := c.do(ctx, "domainPush", params, op)
+	if err != nil {
+		return nil, err
+	}
+
+	return op, checkReply(op.Reply)
+}
+
 // DomainUnlock Execute operation domainUnlock.
 func (c *Client) DomainUnlock(ctx context.Context, params *DomainUnlockParams) (*DomainUnlock, error) {
 	op := &DomainUnlock{}

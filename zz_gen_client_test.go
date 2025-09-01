@@ -445,6 +445,19 @@ func TestClient_DomainLock(t *testing.T) {
 	assert.IsType(t, &DomainLock{}, result)
 }
 
+func TestClient_DomainPush(t *testing.T) {
+	client := setupFakeAPI(t, "domainPush")
+
+	params := &DomainPushParams{}
+
+	result, err := client.DomainPush(context.TODO(), params)
+	require.NoError(t, err)
+
+	require.NotNil(t, result)
+
+	assert.IsType(t, &DomainPush{}, result)
+}
+
 func TestClient_DomainUnlock(t *testing.T) {
 	client := setupFakeAPI(t, "domainUnlock")
 

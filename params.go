@@ -279,6 +279,12 @@ type DomainLockParams struct {
 	Domain string `url:"domain"` // Required
 }
 
+// DomainPushParams Parameters for operation domainPush.
+type DomainPushParams struct {
+	RecipientLogin string   `url:"recipientLogin"`
+	Domains        []string `url:"domains,brackets"`
+}
+
 // DomainUnlockParams Parameters for operation domainUnlock.
 type DomainUnlockParams struct {
 	Domain string `url:"domain"` // Required
