@@ -52,7 +52,7 @@ import (
 func main() {
 	client := namesilo.NewClient("1234")
 
-	// Set the endpoint to use the OTE endpoint.
+	// Get the endpoint to use the OTE endpoint.
 	endpoint, err := namesilo.GetEndpoint(false, true)
 	if err != nil {
 		log.Fatal(err)
