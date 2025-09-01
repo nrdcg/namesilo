@@ -752,6 +752,7 @@ type OrderDetails struct {
 type OrderDetailsReply struct {
 	Reply
 
+	OrderNumber  string        `xml:"order_number"`
 	OrderDate    string        `xml:"order_date"`
 	Method       string        `xml:"method"`
 	Total        string        `xml:"total"`
@@ -813,8 +814,7 @@ type PortfolioListReply struct {
 
 // Portfolios A Portfolios representation.
 type Portfolios struct {
-	Name string `xml:"name"`
-	Code string `xml:"code"`
+	Name []string `xml:"name"`
 }
 
 // RegisterDomainDrop was generated 2019-03-20 19:35:05.
